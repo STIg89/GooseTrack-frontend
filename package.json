@@ -1,14 +1,15 @@
 {
-  "name": "react-homework-template",
+  "name": "GooseTrack-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://goitacademy.github.io/react-homework-template/",
+  "homepage": "https://STIg89.github.io/GooseTrack-frontend/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.3"
   },
