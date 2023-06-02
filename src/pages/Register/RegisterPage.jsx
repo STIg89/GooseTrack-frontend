@@ -2,7 +2,7 @@ import { RegisterForm } from '../../components/Auth/RegisterForm/RegisterForm';
 import { AuthNavigate } from '../../components/Auth/AuthNavigate/AuthNavigate';
 import { Container } from '../Register/RegisterPage.styled';
 
-const Register = () => {
+const RegisterPage = () => {
   return (
     <Container>
       <RegisterForm />
@@ -11,4 +11,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;

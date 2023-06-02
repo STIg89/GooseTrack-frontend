@@ -1,8 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { register } from '../../../redux/auth/operations';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
+
+import { setAuthHeader } from '../../../redux/auth/operations';
+import { refreshUser } from '../../../redux/auth/operations';
+import { selectToken } from '../../../redux/auth/selectors';
 
 import {
   Wrapper,
@@ -48,6 +53,12 @@ export const RegisterForm = () => {
   const emailId = nanoid();
   const passwordId = nanoid();
   const nameId = nanoid();
+
+  const token = useSelector(selectToken);
+  setAuthHeader(token);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [token, dispatch]);
 
   return (
     <Formik

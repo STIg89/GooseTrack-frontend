@@ -1,30 +1,33 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { setAuthHeader } from '../redux/auth/operations';
-import { refreshUser } from '../redux/auth/operations';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from '../redux/auth/selectors';
 
-const Register = lazy(() => import('../pages/Register/RegisterPage'));
+import ChoosedMonth from './Calendar/ChoosedMonth/ChoosedMonth';
+import ChoosedDay from './Calendar/ChoosedDay/ChoosedDay';
 
-const App = () => {
-  const token = useSelector(selectToken);
-  setAuthHeader(token);
+const StartPage = lazy(() => import('pages/Start/StartPage'));
+const LoginPage = lazy(() => import('pages/Login/LoginPage'));
+const RegisterPage = lazy(() => import('pages/Register/RegisterPage'));
+const AccountPage = lazy(() => import('pages/Account/AccountPage'));
+const CalendarPage = lazy(() => import('pages/Calendar/CalendarPage'));
+const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [token, dispatch]);
-
+export const App = () => {
   return (
-    <>
-      <Suspense fallback={''}>
-        <Routes>
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </Suspense>
-    </>
+    <Suspense fallback={''}>
+      <Routes>
+        <Route>
+          <Route path="" element={<StartPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+
+          <Route path="main" element={<MainLayout />} />
+          <Route path="calendar" element={<CalendarPage />} />
+          <Route path="month/:currentDate" element={<ChoosedMonth />} />
+          <Route path="day/:currentDay" element={<ChoosedDay />} />
+          <Route path="account" element={<AccountPage />} />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 
