@@ -1,5 +1,12 @@
+import { Container } from './ChoosedDay.Styled';
+import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
+
 const ChoosedDay = () => {
-  return <div>ChoosedDay</div>;
+  return (
+    <Container>
+      <TasksColumnsList />
+    </Container>
+  );
 };
 
 export default ChoosedDay;
