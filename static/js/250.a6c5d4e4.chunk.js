@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkGooseTrack_frontend=self.webpackChunkGooseTrack_frontend||[]).push([[250],{656:function(e,n,r){r.r(n);var s=r(184);n.default=function(){return(0,s.jsx)("div",{children:"RegisterPage"})}}}]);
+//# sourceMappingURL=250.a6c5d4e4.chunk.js.map
