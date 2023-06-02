@@ -1,5 +1,9 @@
+import AuthSection from "components/Start/AuthSection/AuthSection";
+
 const StartPage = () => {
-  return <div>StartPage</div>;
+  return (
+    <AuthSection/>
+  )
 };
 
 export default StartPage;
