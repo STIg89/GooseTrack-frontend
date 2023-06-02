@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/72.5b80cbda.chunk.js","mappings":"kJAIA,UAJkB,WAChB,OAAO,yBAAK,aACb,C","sources":["pages/Start/StartPage.jsx"],"sourcesContent":["const StartPage = () => {\n  return <div>StartPage</div>;\n};\n\nexport default StartPage;\n"],"names":[],"sourceRoot":""}
