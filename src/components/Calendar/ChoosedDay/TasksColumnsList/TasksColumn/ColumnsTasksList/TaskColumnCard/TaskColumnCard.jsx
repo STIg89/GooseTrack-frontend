@@ -1,19 +1,26 @@
-import { AvatarWraper, ToolBarWraper } from './TaskColumnCard.Styled';
+import {
+  Avatar,
+  CardWraper,
+  PriorityWraper,
+  TaskText,
+  ToolsWraper,
+  Wraper,
+} from './TaskColumnCard.Styled';
 import TaskToolBar from './TaskToolbar/TaskToolbar';
 
 const TaskColumnCard = ({ taskText, priority }) => {
   return (
-    <>
-      <p>{taskText}</p>
-      <ToolBarWraper>
-        <AvatarWraper>
-          <img alt="avatar" width={32} height={32}></img>
-          <p>{priority}</p>
-        </AvatarWraper>
+    <CardWraper>
+      <TaskText>{taskText}</TaskText>
+      <Wraper>
+        <ToolsWraper>
+          <Avatar alt="avatar"></Avatar>
+          <PriorityWraper text={priority}>{priority}</PriorityWraper>
+        </ToolsWraper>
 
         <TaskToolBar />
-      </ToolBarWraper>
-    </>
+      </Wraper>
+    </CardWraper>
   );
 };
 export default TaskColumnCard;

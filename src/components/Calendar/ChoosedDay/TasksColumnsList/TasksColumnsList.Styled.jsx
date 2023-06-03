@@ -12,7 +12,7 @@ export const ColumnsList = styled.ul`
 export const ColumnsItem = styled.li`
    {
     padding: 18px;
-    background-color: #ffffff;
+    background-color: var(--primary-background-color);
     border-radius: 8px;
   }
 `;
