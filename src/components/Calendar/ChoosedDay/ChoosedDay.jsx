@@ -1,4 +1,4 @@
-import { Container } from './ChoosedDay.Styled';
+import Container from './ChoosedDay.Styled';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 
 const ChoosedDay = () => {

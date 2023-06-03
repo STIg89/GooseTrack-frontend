@@ -1,21 +1,28 @@
-import { AddBtn, ColumnHeader } from './TasksColumn.Styled';
-import Icons from '../../../../../images/sprite.svg';
 import ColumnsTasksList from './ColumnsTasksList/ColumnsTasksList';
+import ColumnHeadBar from './ColumnHeadBar/ColumnHeadBar';
 
 const TasksColumn = ({ headName }) => {
+  const tasks = [
+    {
+      taskText:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
+      priority: 'low',
+    },
+    {
+      taskText:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
+      priority: 'medium',
+    },
+    {
+      taskText:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
+      priority: 'high',
+    },
+  ];
   return (
     <>
-      {' '}
-      <ColumnHeader>
-        <div>{headName}</div>
-
-        <AddBtn>
-          <svg stroke="black" width={12} height={12}>
-            <use href={`${Icons}#profile-plus-s`}></use>
-          </svg>
-        </AddBtn>
-      </ColumnHeader>
-      <ColumnsTasksList></ColumnsTasksList>
+      <ColumnHeadBar headName={headName} />
+      <ColumnsTasksList tasks={tasks} />
     </>
   );
 };

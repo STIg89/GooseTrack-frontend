@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+const Container = styled.div`
    {
-    background-color: #f7f6f9;
+    background-color: var(--secondary-background-color);
     @media screen and (min-width: 375px) {
       max-width: 335px;
       height: 432px;
@@ -21,7 +21,7 @@ export const Container = styled.div`
     }
 
     ::-webkit-scrollbar-track {
-      background: #f2f2f2;
+      background-color: var(--scrollbar-bg-color);
 
       border-radius: 12px;
     }
@@ -29,11 +29,12 @@ export const Container = styled.div`
     ::-webkit-scrollbar-thumb {
       border-radius: 12px;
 
-      background: #e7e5e5;
+      background-color: var(--scrollbar-color);
     }
 
     ::-webkit-scrollbar-track:hover {
-      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+      box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.1);
     }
   }
 `;
+export default Container;

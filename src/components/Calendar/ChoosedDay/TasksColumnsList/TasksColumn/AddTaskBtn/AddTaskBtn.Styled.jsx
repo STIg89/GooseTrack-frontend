@@ -1,33 +1,31 @@
 import styled from 'styled-components';
 
 export const TaskBtn = styled.button`
-   {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: 299px;
+  width: 299px;
 
-    height: 48px;
+  height: 48px;
 
-    color: #111111;
+  color: #111111;
 
-    background-color: #e3f3ff;
+  background-color: var(--active-item-sidebar-background);
 
-    border: dashed 1px #3e85f3;
+  border: dashed 1px #3e85f3;
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    font-family: Inter;
+  font-family: Inter;
 
-    font-size: 14px;
+  font-size: 14px;
 
-    line-height: 18px;
+  line-height: 18px;
 
-    align: center;
+  align: center;
 
-    vertical-align: top;
-  }
+  vertical-align: top;
 `;
 export const TaskBtnsvg = styled.svg`
    {

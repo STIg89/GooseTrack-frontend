@@ -1,11 +1,17 @@
-const ColumnHeadBar = ({ todoHead }) => {
+import { AddBtn, ColumnHeader } from './ColumnHeadBar.Styled';
+import Icons from '../../../../../../images/sprite.svg';
+const ColumnHeadBar = ({ headName }) => {
   return (
     <div>
-      <div>{todoHead}</div>
+      <ColumnHeader>
+        <div>{headName}</div>
 
-      <button type="button" onClick={() => console.log('click add btn')}>
-        +
-      </button>
+        <AddBtn>
+          <svg stroke="black" width={12} height={12}>
+            <use href={`${Icons}#profile-plus-s`}></use>
+          </svg>
+        </AddBtn>
+      </ColumnHeader>
     </div>
   );
 };
