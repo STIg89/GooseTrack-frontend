@@ -4,7 +4,7 @@ import {
   Status,
   SvgStyled,
 } from './ColumnHeadBar.Styled';
-import Icons from '../../../../../../images/sprite.svg';
+import Icons from 'images/sprite.svg';
 const ColumnHeadBar = ({ headName }) => {
   return (
     <ColumnHeader>

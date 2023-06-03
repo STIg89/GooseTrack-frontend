@@ -6,7 +6,12 @@ const ColumnsTasksList = ({ tasks }) => {
     <TaskslistWraper>
       {tasks.map(item => {
         return (
-          <TaskColumnCard taskText={item.taskText} priority={item.priority} />
+          <TaskColumnCard
+            taskText={item.title}
+            priority={item.priority}
+            id={item._id}
+            key={item._id}
+          />
         );
       })}
     </TaskslistWraper>
