@@ -1,6 +1,6 @@
 import { TaskBtn, TaskBtnsvg } from './AddTaskBtn.Styled';
 
-import Icons from '../../../../../../images/sprite.svg';
+import Icons from 'images/sprite.svg';
 
 const AddTaskBtn = () => {
   return (

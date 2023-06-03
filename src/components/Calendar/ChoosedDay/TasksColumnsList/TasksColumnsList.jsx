@@ -4,9 +4,9 @@ import TasksColumn from './TasksColumn/TasksColumn';
 import { ColumnsItem, ColumnsList } from './TasksColumnsList.Styled';
 
 const TasksColumnsList = ({ tasks }) => {
-  const todotasks = tasks.filter(item => item.status === 'To do');
-  const inprogresstasks = tasks.filter(item => item.status === 'In progress');
-  const donetasks = tasks.filter(item => item.status === 'Done');
+  const todotasks = tasks.filter(item => item.category === 'to-do');
+  const inprogresstasks = tasks.filter(item => item.category === 'in-progress');
+  const donetasks = tasks.filter(item => item.category === 'done');
 
   return (
     <ColumnsList>

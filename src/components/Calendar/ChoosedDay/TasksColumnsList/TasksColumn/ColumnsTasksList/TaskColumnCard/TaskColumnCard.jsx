@@ -8,7 +8,7 @@ import {
 } from './TaskColumnCard.Styled';
 import TaskToolBar from './TaskToolbar/TaskToolbar';
 
-const TaskColumnCard = ({ taskText, priority }) => {
+const TaskColumnCard = ({ taskText, priority, id }) => {
   return (
     <CardWraper>
       <TaskText>{taskText}</TaskText>
@@ -18,7 +18,7 @@ const TaskColumnCard = ({ taskText, priority }) => {
           <PriorityWraper text={priority}>{priority}</PriorityWraper>
         </ToolsWraper>
 
-        <TaskToolBar />
+        <TaskToolBar id={id} />
       </Wraper>
     </CardWraper>
   );
