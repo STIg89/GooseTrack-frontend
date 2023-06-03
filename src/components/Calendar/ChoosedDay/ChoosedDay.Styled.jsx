@@ -5,13 +5,15 @@ const Container = styled.div`
     background-color: var(--secondary-background-color);
     @media screen and (min-width: 375px) {
       max-width: 335px;
-      height: 432px;
+      height: 470px;
     }
     @media screen and (min-width: 768px) {
       max-width: 704px;
+      height: 800px;
     }
     @media screen and (min-width: 1440px) {
       max-width: 1087px;
+      height: 666px;
     }
 
     overflow: auto;
