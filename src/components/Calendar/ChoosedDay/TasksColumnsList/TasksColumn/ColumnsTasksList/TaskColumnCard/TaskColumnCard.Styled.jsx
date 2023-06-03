@@ -34,11 +34,11 @@ export const PriorityWraper = styled.p`
   border-radius: 4px;
   background-color: ${props => {
     if (props.text.includes('low')) {
-      return 'var(--priority-low-bg-color)';
+      return 'var(--task-priority-low-color)';
     } else if (props.text.includes('medium')) {
-      return 'var(--priority-medium-bg-color)';
+      return 'var(--task-priority-medium-color)';
     } else {
-      return 'var(--priority-high-bg-color)';
+      return 'var(--task-priority-high-color)';
     }
   }};
 `;
