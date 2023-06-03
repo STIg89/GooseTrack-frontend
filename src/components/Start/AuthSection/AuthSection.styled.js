@@ -151,12 +151,12 @@ export const BtnLogIn = styled(NavLink)`
             stroke: var(--primary-background-color);
         }
         &:focus {
-            color: var(--accent-text-color);
+            color: var(--btn-text-color);
             background-color: #1e63cc;
             
         }
         &:hover {
-            color: var(--primary-background-color);
+            color: var(--btn-text-color);
             background-color: #1e63cc;
         }
   }
