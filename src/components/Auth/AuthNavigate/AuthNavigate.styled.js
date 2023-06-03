@@ -9,8 +9,7 @@ export const AuthLink = styled(Link)`
   border-bottom: 1px solid var(--color-button-period-type);
   text-decoration: none;
   color: var(--accent-background-color);
-  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
-    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+  text-shadow: var(--logo-txt-shadow);
   &:hover,
   :focus {
     color: var(--accent-background-color);
@@ -21,5 +20,10 @@ export const AuthLink = styled(Link)`
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
+  }
+
+  @media (max-width: 375px) {
+    width: 100%;
+    text-align: center;
   }
 `;
