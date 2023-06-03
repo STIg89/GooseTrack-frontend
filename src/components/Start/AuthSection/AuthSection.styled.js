@@ -92,17 +92,17 @@ export const BtnSignUp = styled(NavLink)`
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
+    transition: all var(--animation);
 
     &:focus {
       color: var(--accent-text-color);
       background-color: var(--primary-background-color);
-      transition: all var(--animation);
+      
     }
 
     &:hover {
         color: var(--accent-text-color);
         background-color: var(--primary-background-color);
-        transition: all var(--animation);
     }
   }
 `;
@@ -130,6 +130,7 @@ export const BtnLogIn = styled(NavLink)`
   align-items: center;
   display: flex;
   justify-content: center;
+  transition: all var(--animation);
 
     ${media.tablet} {
         margin: 0;
@@ -141,7 +142,7 @@ export const BtnLogIn = styled(NavLink)`
         font-weight: 600;
         font-size: 14px;
         line-height: 18px;
-
+    
         &:hover ${SvgIcon} {
             transform: scale(1.2);
             stroke: var(--primary-background-color);
@@ -152,12 +153,11 @@ export const BtnLogIn = styled(NavLink)`
         &:focus {
             color: var(--accent-text-color);
             background-color: #1e63cc;
-            transition: all var(--animation);
+            
         }
         &:hover {
             color: var(--primary-background-color);
             background-color: #1e63cc;
-            transition: all var(--animation);
         }
   }
 `;
