@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 const media = {
     tablet: "@media screen and (min-width: 768px)",
-    desktop: "@media screen and (min-width: 1200px)"
+    desktop: "@media screen and (min-width: 1440px)"
   };
 
 export const Container = styled.div`
     padding-right: 20px;
     padding-left: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--primary-background-color);
 
     ${media.tablet} {
         padding-right: 32px;
@@ -33,7 +33,7 @@ export const List = styled.ul`
         min-height: auto;
     }
     ${media.desktop} {
-        max-width: 1200px;
+        max-width: 1440px;
     }
 `;
 
@@ -95,7 +95,7 @@ export const TextNumber = styled.p`
     line-height: 100%;
     padding: 0;
     margin: 20px 0 20px;
-    color: #3E85F3;
+    color: var(--accent-background-color);
 
     ${media.tablet} {
         font-size: 104px;
@@ -107,10 +107,10 @@ export const TextButton = styled.button`
     font-size: 32px;
     line-height: 40px;
     font-weight: 700;
-    color: #3E85F3;
+    color: var(--accent-background-color);
     width: 214px;
     height: 56px;
-    background-color: #DCEBF7;
+    background-color: var(--auth-bg-color);
     border-radius: 44px;
     border: none;
 
@@ -128,7 +128,7 @@ export const Title = styled.h2`
     font-family: Inter;
     font-weight: 700;
     line-height: 40px;
-    color: #171820;
+    color: var(--secondary-background-color);
     margin: 8px 0;
 
     ${media.tablet} {
