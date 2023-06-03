@@ -8,6 +8,7 @@ import { nanoid } from 'nanoid';
 import { setAuthHeader } from '../../../redux/auth/operations';
 import { refreshUser } from '../../../redux/auth/operations';
 import { selectToken } from '../../../redux/auth/selectors';
+import { AuthNavigate } from '../../../components/Auth/AuthNavigate/AuthNavigate';
 
 import {
   Wrapper,
@@ -20,12 +21,12 @@ import {
   RegisterParaghraph,
   ErrorMessage,
   ButtonText,
+  Svg,
   RegisterGooseImage,
 } from './RegisterForm.styled';
-import Icon from '../../../images/log-in-01.svg';
-import GooseRegister from '../../../images/goose-register.png';
-import GooseRegister2x from '../../../images/goose-register@2x.png';
-import { AuthNavigate } from '../AuthNavigate/AuthNavigate';
+import gooseRegister2x from '../../../images/goose-register@2x.png';
+import gooseRegister from '../../../images/goose-register.png';
+import Icons from '../../../images/sprite.svg';
 
 const routes = {
   register: '/register',
@@ -140,14 +141,16 @@ export const RegisterForm = () => {
               <RegisterButton type="submit" disabled={isSubmitting}>
                 <ButtonText>
                   Sign Up
-                  <img src={Icon} alt="Login Icon" />
+                  <Svg>
+                    <use href={`${Icons}#login-door-sf`}></use>
+                  </Svg>
                 </ButtonText>
               </RegisterButton>
             </Form>
             <AuthNavigate route={routes.login} content="Log In" />
             <RegisterGooseImage
-              srcSet={`${GooseRegister} 1x, ${GooseRegister2x} 2x`}
-              src={GooseRegister}
+              srcSet={`${gooseRegister} 1x, ${gooseRegister2x} 2x`}
+              src={gooseRegister2x}
               alt="goose"
             />
           </RegisterFormContainer>
