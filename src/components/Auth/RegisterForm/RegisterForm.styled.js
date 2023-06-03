@@ -16,6 +16,10 @@ export const RegisterFormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 375px) {
+    width: 100%;
+  }
 `;
 
 export const Form = styled.form`
@@ -35,7 +39,6 @@ export const Form = styled.form`
 
   @media (max-width: 375px) {
     width: 100%;
-    padding: 24px;
   }
 `;
 
