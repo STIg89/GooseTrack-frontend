@@ -32,6 +32,11 @@ export const Form = styled.form`
     padding: 40px;
     margin-bottom: 24px;
   }
+
+  @media (max-width: 375px) {
+    width: 100%;
+    padding: 24px;
+  }
 `;
 
 export const RegisterFormTitle = styled.h1`
@@ -40,8 +45,7 @@ export const RegisterFormTitle = styled.h1`
   font-size: 1.125rem;
   line-height: 1.5rem;
   color: var(--accent-background-color);
-  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
-    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+  text-shadow: var(--logo-txt-shadow);
   margin-bottom: 22px;
 `;
 
@@ -59,17 +63,16 @@ export const RegisterLabel = styled.label`
 export const RegisterInput = styled.input`
   background-color: var(--primary-background-color);
   outline: none;
-  border: 1px solid rgba(220, 227, 229, 0.6);
+  border: var(--border-auth);
   border-radius: 8px;
   padding: 0.875rem;
   width: 100%;
   &::placeholder {
-    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 18px;
-    color: #dce3e5;
+    color: var(--auth-placeholder-color);
   }
 `;
 
@@ -97,7 +100,7 @@ export const RegisterButton = styled.button`
   padding: 14px;
   margin-top: 30px;
   background: var(--accent-background-color);
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
+  box-shadow: var(--shadow-logout-btn);
   border-radius: 16px;
   border: none;
   cursor: pointer;
@@ -105,11 +108,18 @@ export const RegisterButton = styled.button`
   &:hover,
   :focus {
     transform: scale(1.02);
+    background: var(--hover-btn-background-color);
   }
 
   @media (min-width: 768px) {
     width: 400px;
     height: 56px;
+  }
+
+  @media (max-width: 375px) {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 12px;
   }
 `;
 
