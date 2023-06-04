@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   background-color: #dcebf7;
 `;
 
-export const RegisterFormContainer = styled.div`
+export const StyleFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,7 +21,7 @@ export const RegisterFormContainer = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  // padding: 40px 24px;
+  padding: 40px 24px;
   width: 335px;
   margin-bottom: 18px;
   background-color: #fff;
@@ -34,7 +34,7 @@ export const Form = styled.form`
   }
 `;
 
-export const RegisterFormTitle = styled.h1`
+export const StyleFormTitle = styled.h1`
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -46,7 +46,7 @@ export const RegisterFormTitle = styled.h1`
   margin-bottom: 22px;
 `;
 
-export const RegisterLabel = styled.label`
+export const StyleLabel = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -58,7 +58,7 @@ export const RegisterLabel = styled.label`
   color: #616161;
 `;
 
-export const RegisterInput = styled.input`
+export const StyleInput = styled.input`
   background-color: #ffffff;
   outline: none;
   border: 1px solid rgba(220, 227, 229, 0.6);
@@ -75,7 +75,7 @@ export const RegisterInput = styled.input`
   }
 `;
 
-export const RegisterParaghraph = styled.p`
+export const StyleParaghraph = styled.p`
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -90,7 +90,7 @@ export const RegisterParaghraph = styled.p`
   }
 `;
 
-export const RegisterButton = styled.button`
+export const StyleButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,6 +113,8 @@ export const RegisterButton = styled.button`
   @media (min-width: 768px) {
     width: 400px;
     height: 56px;
+    padding: 16px;
+    margin-top: 48px;
   }
 `;
 
@@ -154,12 +156,24 @@ export const ErrorMessage = styled.span`
 
 export const RegisterGooseImage = styled.img`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1440px) {
     position: absolute;
     width: 400px;
     height: 454px;
     left: 50px;
     bottom: 0;
+    display: block;
+  }
+`;
+
+export const LoginGooseImage = styled.img`
+  display: none;
+  @media (min-width: 1440px) {
+    position: absolute;
+    width: 368px;
+    height: 521px;
+    right: 60px;
+    bottom: 19px;
     display: block;
   }
 `;

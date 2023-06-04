@@ -11,13 +11,13 @@ import { selectToken } from '../../../redux/auth/selectors';
 
 import {
   Wrapper,
-  RegisterButton,
-  RegisterFormContainer,
-  RegisterFormTitle,
+  StyleButton,
+  StyleFormContainer,
+  StyleFormTitle,
   Form,
-  RegisterInput,
-  RegisterLabel,
-  RegisterParaghraph,
+  StyleInput,
+  StyleLabel,
+  StyleParaghraph,
   ErrorMessage,
   ButtonText,
   RegisterGooseImage,
@@ -89,12 +89,12 @@ export const RegisterForm = () => {
         isSubmitting,
       }) => (
         <Wrapper>
-          <RegisterFormContainer>
+          <StyleFormContainer>
             <Form autoComplete="off" onSubmit={handleSubmit}>
-              <RegisterFormTitle>Sign Up</RegisterFormTitle>
-              <RegisterLabel htmlFor={nameId}>
-                <RegisterParaghraph>Name</RegisterParaghraph>
-                <RegisterInput
+              <StyleFormTitle>Sign Up</StyleFormTitle>
+              <StyleLabel htmlFor={nameId}>
+                <StyleParaghraph>Name</StyleParaghraph>
+                <StyleInput
                   type="text"
                   name="name"
                   id={nameId}
@@ -103,13 +103,13 @@ export const RegisterForm = () => {
                   value={values.name}
                   placeholder="Enter your name"
                 />
-              </RegisterLabel>
+              </StyleLabel>
               <ErrorMessage>
                 {errors.name && touched.name && errors.name}
               </ErrorMessage>
-              <RegisterLabel htmlFor={emailId}>
-                <RegisterParaghraph>Email</RegisterParaghraph>
-                <RegisterInput
+              <StyleLabel htmlFor={emailId}>
+                <StyleParaghraph>Email</StyleParaghraph>
+                <StyleInput
                   type="email"
                   name="email"
                   id={emailId}
@@ -118,13 +118,13 @@ export const RegisterForm = () => {
                   value={values.email}
                   placeholder="Enter email"
                 />
-              </RegisterLabel>
+              </StyleLabel>
               <ErrorMessage>
                 {errors.email && touched.email && errors.email}
               </ErrorMessage>
-              <RegisterLabel htmlFor={passwordId}>
-                <RegisterParaghraph>Password</RegisterParaghraph>
-                <RegisterInput
+              <StyleLabel htmlFor={passwordId}>
+                <StyleParaghraph>Password</StyleParaghraph>
+                <StyleInput
                   type="password"
                   name="password"
                   id={passwordId}
@@ -133,16 +133,16 @@ export const RegisterForm = () => {
                   value={values.password}
                   placeholder="Enter password"
                 />
-              </RegisterLabel>
+              </StyleLabel>
               <ErrorMessage>
                 {errors.password && touched.password && errors.password}
               </ErrorMessage>
-              <RegisterButton type="submit" disabled={isSubmitting}>
+              <StyleButton type="submit" disabled={isSubmitting}>
                 <ButtonText>
                   Sign Up
                   <img src={Icon} alt="Login Icon" />
                 </ButtonText>
-              </RegisterButton>
+              </StyleButton>
             </Form>
             <AuthNavigate route={routes.login} content="Log In" />
             <RegisterGooseImage
@@ -150,7 +150,7 @@ export const RegisterForm = () => {
               src={GooseRegister}
               alt="goose"
             />
-          </RegisterFormContainer>
+          </StyleFormContainer>
         </Wrapper>
       )}
     </Formik>
