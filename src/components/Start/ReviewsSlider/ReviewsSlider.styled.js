@@ -117,6 +117,8 @@ padding-bottom: 64px;
 
 & .slick-arrow.slick-next{
     cursor: pointer;
+    display: flex;
+    align-items: center;
 height: 50px;
  width: 39px;
  right:calc(50% + 15px);  
