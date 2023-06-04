@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field, Form, ErrorMessage } from 'formik';
+import { Field, Form } from 'formik';
 
 export const Wrapper = styled.div`
   display: flex;
