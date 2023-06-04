@@ -13,6 +13,38 @@ export const Wraper = styled.div`
   gap: 10px;
   align-items: center;
 `;
-export const BtnStyled = styled.div`
+export const BtnStyled = styled.button`
   background-color: transparent;
+  border: none;
+`;
+export const BtnArrow = styled.div`
+  background-color: transparent;
+  position: relative;
+`;
+export const ChouseCat = styled.div`
+  position: absolute;
+
+  background-color: var(--primary-background-color);
+  flex-direction: column;
+  gap: 14px;
+  width: 115px;
+  height: 70px;
+  border: transparent;
+  border-radius: 8px;
+  padding: 14px;
+  font-family: Inter;
+  font-style: Medium;
+  font-size: 12px;
+`;
+export const InputStyled = styled.input`
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+`;
+export const LabelStyled = styled.label`
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
