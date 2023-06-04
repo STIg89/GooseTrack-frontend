@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkGooseTrack_frontend=self.webpackChunkGooseTrack_frontend||[]).push([[166],{7166:function(n,r,t){t.r(r);var e=t(7689),o=t(9434),c=t(2791),u=t(1686),i=t(9273),s=t(184);r.default=function(){var n=(0,o.I0)();return(0,c.useEffect)((function(){try{n((0,i.Ec)())}catch(r){u.Notify.error("Authorization error")}}),[n]),(0,s.jsxs)("div",{children:[(0,s.jsx)("div",{children:"MainLayout"}),(0,s.jsx)("button",{type:"button",onClick:function(){return n((0,i.kS)())},children:"LOGOUT"}),(0,s.jsx)(e.j3,{})]})}}}]);
-//# sourceMappingURL=166.f22b6da7.chunk.js.map
