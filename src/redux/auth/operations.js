@@ -2,7 +2,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 
-axios.defaults.baseURL = 'http://localhost:4000';
+// axios.defaults.baseURL = 'http://localhost:4000';
+
+axios.defaults.baseURL = 'https://goosetrack-backend.onrender.com';
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -33,7 +35,6 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
     const { data } = await axios.post('/api/auth/login', user);
-    console.log(data.token);
     setAuthHeader(data.token);
     return data;
   } catch (error) {
@@ -65,7 +66,6 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthHeader(persistedToken);
       const res = await axios.get('/api/auth/current');
-      console.log('res:', res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
