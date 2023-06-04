@@ -25,11 +25,12 @@ export const App = () => {
             <Route path="register" element={<RegisterPage />} />
           </Route>
           <Route path="" element={<PrivateRoute />}>
-            <Route path="" element={<MainLayout />} />
-            <Route path="calendar" element={<CalendarPage />} />
-            <Route path="month/:currentDate" element={<ChoosedMonth />} />
-            <Route path="day/:currentDay" element={<ChoosedDay />} />
-            <Route path="account" element={<AccountPage />} />
+            <Route path="" element={<MainLayout />}>
+              <Route path="calendar" element={<CalendarPage />} />
+              <Route path="month/:currentDate" element={<ChoosedMonth />} />
+              <Route path="day/:currentDay" element={<ChoosedDay />} />
+              <Route path="account" element={<AccountPage />} />
+            </Route>
           </Route>
           <Route path="*" element={<Page404 />} />
         </Route>
