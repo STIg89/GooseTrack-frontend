@@ -1,5 +1,12 @@
+import { Outlet } from 'react-router';
+
 const CalendarPage = () => {
-  return <div>CalendarPage</div>;
+  return (
+    <div>
+      <div>CalendarPage</div>
+      <Outlet />
+    </div>
+  );
 };
 
 export default CalendarPage;
