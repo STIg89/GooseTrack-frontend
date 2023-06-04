@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
 import { register } from '../../../redux/auth/operations';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
 
-import { setAuthHeader } from '../../../redux/auth/operations';
-import { refreshUser } from '../../../redux/auth/operations';
-import { selectToken } from '../../../redux/auth/selectors';
+// import { setAuthHeader } from '../../../redux/auth/operations';
+// import { refreshUser } from '../../../redux/auth/operations';
+// import { selectToken } from '../../../redux/auth/selectors';
 import { AuthNavigate } from '../../../components/Auth/AuthNavigate/AuthNavigate';
 
 import {
@@ -27,10 +27,6 @@ import {
 import gooseRegister2x from '../../../images/goose-register@2x.png';
 import gooseRegister from '../../../images/goose-register.png';
 import Icons from '../../../images/sprite.svg';
-
-const routes = {
-  register: '/register',
-};
 
 const validationSchema = yup.object().shape({
   name: yup
@@ -54,12 +50,6 @@ export const RegisterForm = () => {
   const emailId = nanoid();
   const passwordId = nanoid();
   const nameId = nanoid();
-
-  const token = useSelector(selectToken);
-  setAuthHeader(token);
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [token, dispatch]);
 
   return (
     <Formik
@@ -147,7 +137,7 @@ export const RegisterForm = () => {
                 </ButtonText>
               </StyleButton>
             </Form>
-            <AuthNavigate route={routes.login} content="Log In" />
+            <AuthNavigate route="/login" content="Log In" />
             <RegisterGooseImage
               srcSet={`${gooseRegister} 1x, ${gooseRegister2x} 2x`}
               src={gooseRegister2x}

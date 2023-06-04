@@ -28,10 +28,6 @@ import gooseLogin2x from '../../../images/goose-login-2x.png';
 import gooseLogin from '../../../images/goose-login.png';
 import Icons from '../../../images/sprite.svg';
 
-const routes = {
-  login: '/login',
-};
-
 const validationSchema = yup.object().shape({
   email: yup
     .string()
@@ -126,7 +122,7 @@ export const LoginForm = () => {
                 </ButtonText>
               </StyleButton>
             </Form>
-            <AuthNavigate route={routes.register} content="Sign Up" />
+            <AuthNavigate route="/register" content="Sign Up" />
             <LoginGooseImage
               srcSet={`${gooseLogin} 1x, ${gooseLogin2x} 2x`}
               src={gooseLogin2x}
