@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import ChoosedMonth from './Calendar/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from './Calendar/ChoosedDay/ChoosedDay';
+import Page404 from './Page404/Page404';
 
 const StartPage = lazy(() => import('pages/Start/StartPage'));
 const LoginPage = lazy(() => import('pages/Login/LoginPage'));
@@ -25,6 +26,7 @@ export const App = () => {
           <Route path="month/:currentDate" element={<ChoosedMonth />} />
           <Route path="day/:currentDay" element={<ChoosedDay />} />
           <Route path="account" element={<AccountPage />} />
+          <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
     </Suspense>
