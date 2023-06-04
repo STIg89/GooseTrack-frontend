@@ -2,7 +2,10 @@ import { Outlet } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Notify } from 'notiflix';
-import { logout, refreshUser } from 'redux/auth/operations';
+import { refreshUser } from 'redux/auth/operations';
+import Header from 'components/MainLayout/Header/Header';
+import { MainContainer } from './MainLayout.styled';
+import Sidebar from 'components/MainLayout/SideBar/SideBar';
 
 const MainLayout = () => {
   const dispatch = useDispatch();
@@ -16,13 +19,11 @@ const MainLayout = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div>MainLayout</div>
-      <button type="button" onClick={() => dispatch(logout())}>
-        LOGOUT
-      </button>
+    <MainContainer>
+      <Header />
+      <Sidebar />
       <Outlet />
-    </div>
+    </MainContainer>
   );
 };
 
