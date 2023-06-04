@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/166.9248f1eb.chunk.js","mappings":"mJAIA,UAJmB,WACjB,OAAO,yBAAK,cACb,C","sources":["pages/MainLayout/MainLayout.jsx"],"sourcesContent":["const MainLayout = () => {\n  return <div>MainLayout</div>;\n};\n\nexport default MainLayout;\n"],"names":[],"sourceRoot":""}
