@@ -4,8 +4,7 @@ import { selectToken } from 'redux/auth/selectors';
 
 const PublicRoute = () => {
   const token = useSelector(selectToken);
-  console.log('token:', token);
 
-  return token ? <Navigate to="calendar" replace /> : <Outlet />;
+  return token ? <Outlet /> : <Navigate to="/login" replace />;
 };
 export default PublicRoute;

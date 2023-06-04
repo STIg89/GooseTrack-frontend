@@ -46,6 +46,7 @@ export const LoginForm = () => {
   const passwordId = nanoid();
 
   const token = useSelector(selectToken);
+  console.log('token:', token);
   setAuthHeader(token);
   useEffect(() => {
     dispatch(refreshUser());
