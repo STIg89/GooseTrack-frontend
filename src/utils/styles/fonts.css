@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('../../../assets/fonts/CoolveticaRg-Italic.eot');
+  src: url('../../../assets/fonts/CoolveticaRg-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../../assets/fonts/CoolveticaRg-Italic.woff2') format('woff2'),
+    url('../../../assets/fonts/CoolveticaRg-Italic.woff') format('woff'),
+    url('../../../assets/fonts/CoolveticaRg-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('../../../assets/fonts/CoolveticaRg-Regular.eot');
+  src: url('../../../assets/fonts/CoolveticaRg-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../../assets/fonts/CoolveticaRg-Regular.woff2') format('woff2'),
+    url('../../../assets/fonts/CoolveticaRg-Regular.woff') format('woff'),
+    url('../../../assets/fonts/CoolveticaRg-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Regular.eot');
+  src: url('../../../assets/fonts/Inter-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../../assets/fonts/Inter-Regular.woff2') format('woff2'),
+    url('../../../assets/fonts/Inter-Regular.woff') format('woff'),
+    url('../../../assets/fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Medium.eot');
+  src: url('../../../assets/fonts/Inter-Medium.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../../assets/fonts/Inter-Medium.woff2') format('woff2'),
+    url('../../../assets/fonts/Inter-Medium.woff') format('woff'),
+    url('../../../assets/fonts/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-SemiBold.eot');
+  src: url('../../../assets/fonts/Inter-SemiBold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../../assets/fonts/Inter-SemiBold.woff2') format('woff2'),
+    url('../../../assets/fonts/Inter-SemiBold.woff') format('woff'),
+    url('../../../assets/fonts/Inter-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('../../../assets/fonts/Inter-Bold.eot');
+  src: url('../../../assets/fonts/Inter-Bold.eot?#iefix')
+      format('embedded-opentype'),
+    url('../../../assets/fonts/Inter-Bold.woff2') format('woff2'),
+    url('../../../assets/fonts/Inter-Bold.woff') format('woff'),
+    url('../../../assets/fonts/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
