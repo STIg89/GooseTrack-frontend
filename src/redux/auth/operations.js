@@ -22,6 +22,17 @@ export const register = createAsyncThunk(
   }
 );
 
+export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
+  try {
+    const { data } = await axios.post('/auth/login', user);
+    setAuthHeader(data.token);
+    return data;
+  } catch (error) {
+    Notify.failure('Please check your email and password and try again');
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
