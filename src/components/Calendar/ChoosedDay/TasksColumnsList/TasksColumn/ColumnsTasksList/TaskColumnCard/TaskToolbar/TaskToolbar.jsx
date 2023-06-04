@@ -7,11 +7,7 @@ import { selectTasks } from 'redux/tasks/selectors';
 const TaskToolBar = ({ id }) => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
-  const editTask = tasks.find(task => task._id === id);
-
-  // console.log('editTask', editTask);
-  // editTask.category = '123456';
-  // console.log('editTask', editTask);
+  let editTask = tasks.find(task => task._id === id);
 
   const category = ['to-do', 'in-progress', 'done'];
   return (
@@ -31,10 +27,12 @@ const TaskToolBar = ({ id }) => {
                       console.log('меняем прогресс na', item);
                       console.log('editTask', editTask);
                       console.log('editTask.category:', editTask.category);
+                      console.log(typeof editTask);
+                      console.log(typeof item);
 
-                      editTask.priority = 'low';
+                      editTask = { ...editTask, category: item };
                       console.log('editTask new', editTask);
-                      dispatch(patchTask(id, editTask));
+                      dispatch(patchTask({ id: id, task: editTask }));
                     }}
                   />
                   <label htmlFor={id}>{item}</label>
