@@ -45,21 +45,41 @@ justify-content: space-between;
 `
 export const Logo = styled.div`
 display: flex;
+justify-content: center;
+align-items: center;
+color: var(--calendar-digit-color);
 `
-export const GooseLogo = styled.img`
+export const LogoIcon = styled.img`
 width: 36px;
-height: 35px;
+   height: 35px;
+   margin-right: 6px;
 
 ${media.tablet} {
-    width: 60px;
-    height: 58px;
-  }
+  width: 60px;
+   height: 58px;
+}
+
+${media.desktop} {
+   width: 71px;
+   height: 68px;
+   margin-right: 10px;
+}
+`
+export const LogoSvg = styled.svg`
+  width: 80px;
+  height: 22px;
+  fill: var(--accent-text-color);
 
   ${media.tablet} {
-    font-size: 50px;
-  }
-`
+  width: 90px;
+   height: 24px;
+}
 
+${media.desktop} {
+   width: 120px;
+}
+
+`
 export const StyledCalendarIcon = styled(LuCalendarCheck2)`
 margin-right: 8px;
 
@@ -194,13 +214,16 @@ color: var(--accent-text-color);
 `
 export const CloseBtn = styled.button`
 display: flex;
-font-size: 16px;
+font-size: 20px;
 align-items: center;
 text-align: center;
 border: none;
 background: none;
     cursor: pointer;
 
+    ${media.tablet} {
+   font-size: 30px;
+  }
     ${media.desktop} {
    display: none;
   }

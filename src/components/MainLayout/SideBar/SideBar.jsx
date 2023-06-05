@@ -1,10 +1,7 @@
 import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
 import { CgClose } from 'react-icons/cg';
 import Icons from "../../../images/sprite.svg"
-import LogoImg from "../Header/test_image/logo-light-theme.png"
-// import LogoImg from '../Header/test_image/GOOSE_LOGO.svg';
-// import UserCheckIcon from '../Header/test_image/user-check-01.svg';
-// import LogoText from "../Header/test_image/GooseTrack.svg"
+import LogoImg from "../Header/test_image/GooseLogo.png"
 
 import {
   CloseBtn,
@@ -14,7 +11,8 @@ import {
   SideBarNav,
   SideBarLinks,
   Logo,
-  GooseLogo,
+  LogoIcon,
+  LogoSvg,
   Svg,
   StyledNavLink,
   StyledCalendarIcon,
@@ -27,8 +25,10 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
       <SideBarDiv>
         <LogoDiv>
           <Logo>
-            <GooseLogo src={LogoImg} alt="" />
-            {/* <img src={LogoText}/> */}
+            <LogoIcon src={LogoImg} alt='logo'/>
+            <LogoSvg>
+              <use href={`${Icons}#icon-logo-text`}></use>
+            </LogoSvg>
           </Logo>
 
           <CloseBtn onClick={onCloseClick}>
@@ -44,7 +44,6 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
                 <Svg>
                   <use href={`${Icons}#icon-user-check`}></use>
                 </Svg>
-                {/* <UserIcon src={UserCheckIcon} alt="icon" /> */}
                 My account
               </StyledNavLink>
             </li>
