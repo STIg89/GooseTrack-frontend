@@ -1,4 +1,3 @@
-// import Vector from "../test_image/Vector.svg"
 import { BiMoon } from 'react-icons/bi';
 // import { MdOutlineWbSunny } from 'react-icons/md';
 import { Toggler } from './ThemeToggler.styled';

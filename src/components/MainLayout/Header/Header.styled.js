@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const media = {
-    tablet: "@media screen and (min-width: 768px)",
-    desktop: "@media screen and (min-width: 1440px)"
+  tablet: "@media screen and (min-width: 768px)",
+  desktop: "@media screen and (min-width: 1440px)"
 };
 
 export const Container = styled.div`
@@ -19,18 +19,32 @@ export const Container = styled.div`
   }
 `;
 
+export const NoAvatar = styled.div`
+width:32px;
+height:32px;
+display: flex;
+justify-content: center;
+align-items: center;
+line-height: 0;
+border-radius: 50%;
+margin-left: 8px;
+color: var(--secondary-text-color);
+background-color: var(--avatar-background-color);
+font-size: 25px;
+outline:  2px solid var(--accent-background-color);
+
+${media.tablet} {
+width:44px;
+height:44px;
+margin-left: 14px;
+  }
+`
+
 export const Box = styled.div`
   display: flex;
   width: 100%;
  justify-content: flex-end;
   align-items: center;
-  /* padding: 14px;
-  margin-top: 30px;
-  color: var(--primary-text-color); */
-
-  ${media.desktop} {
-
-  } 
 `;
 
 export const UserAvatar = styled.img`
