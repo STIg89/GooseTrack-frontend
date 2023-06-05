@@ -8,7 +8,10 @@ import { fetchDayTasks } from 'redux/tasks/operations';
 const DayCalendarHead = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [viewport, setViewport] = useState(window.innerWidth);
+  const week = [];
 
+  // check the date from the request parameter. if invalid, we return the current date
   const useDateValidation = () => {
     const params = useParams();
     const date = new Date(params.currentDay);
@@ -24,9 +27,10 @@ const DayCalendarHead = () => {
   };
 
   const validDate = useDateValidation();
+  console.log('validDate: ', validDate);
+  const [selectedDay, setSelectedDay] = useState(new Date(validDate));
 
-  const [viewport, setViewport] = useState(window.innerWidth);
-
+  // days of the week from 0-6 for getDat()
   const getWeek = () => {
     if (viewport < 376) {
       return ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
@@ -34,29 +38,21 @@ const DayCalendarHead = () => {
     return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   };
 
+  // bring the date to the format'yyyy-MM-dd'
   const currentDay = format(validDate, 'yyyy-MM-dd');
   console.log("currentDay = format(validDate, 'yyyy-MM-dd'): ", currentDay);
 
-  useEffect(() => {
-    dispatch(fetchDayTasks(currentDay));
-
-    const handleResize = () => setViewport(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [dispatch, currentDay]);
-
   const selectDay = validDate;
+  console.log('selectDay', selectDay);
 
+  // we find the day of the week by number
   const currentDayOfWeek = selectDay.getDay();
-  const [selectedDay, setSelectedDay] = useState(new Date(validDate));
-  const days = [];
+  console.log('currentDayOfWeek', currentDayOfWeek);
 
-  const handleDayClick = currentDay => {
+  const onPickOftheDay = currentDay => {
     setSelectedDay(currentDay);
-    currentDay = new Date(currentDay);
-    const validDate = format(currentDay, 'ddMMMMyyyy');
-    const result = validDate.charAt(0) + validDate.slice(1);
-    navigate(`/calendar/day/${result}`);
+    const choosenDay = format(currentDay, 'yyyy-MM-dd');
+    navigate(`/calendar/day/${choosenDay}`);
   };
 
   for (let i = 0; i < 7; i++) {
@@ -72,8 +68,8 @@ const DayCalendarHead = () => {
       selectedDay.getDate() &&
       selectDay.getDate() === date.getDate();
 
-    days.push(
-      <div key={i} onClick={() => handleDayClick(date)}>
+    week.push(
+      <div key={i} onClick={() => onPickOftheDay(date)}>
         <span>{getWeek()[date.getDay()]}</span>
         <Day
           style={
@@ -94,9 +90,17 @@ const DayCalendarHead = () => {
     );
   }
 
+  useEffect(() => {
+    dispatch(fetchDayTasks(currentDay));
+
+    const handleResize = () => setViewport(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [dispatch, currentDay]);
+
   return (
     <DayList>
-      {days.map(items => (
+      {week.map(items => (
         <DayItem key={Math.random()}>{items}</DayItem>
       ))}
     </DayList>

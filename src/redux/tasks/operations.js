@@ -6,7 +6,7 @@ export const fetchDayTasks = createAsyncThunk(
   'tasks/fetchDay',
   async (day, thunkAPI) => {
     try {
-      const response = await axios.get(`api/tasks?month=${day}`);
+      const response = await axios.get(`api/tasks?month=${day}&limit=100`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
