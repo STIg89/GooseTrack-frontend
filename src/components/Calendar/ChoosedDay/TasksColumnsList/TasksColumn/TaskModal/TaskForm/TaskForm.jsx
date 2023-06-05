@@ -12,7 +12,7 @@ import {
 } from './TaskForm.styled';
 
 export const TaskForm = () => {
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState('low');
 
   const handleOptionChange = event => {
     setSelectedOption(event.target.value);
@@ -72,3 +72,5 @@ export const TaskForm = () => {
     </Form>
   );
 };
+
+export default TaskForm;

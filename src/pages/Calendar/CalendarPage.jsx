@@ -1,5 +1,11 @@
+import TaskModal from 'components/Calendar/ChoosedDay/TasksColumnsList/TasksColumn/TaskModal/TaskModal';
+
 const CalendarPage = () => {
-  return <div>CalendarPage</div>;
+  return (
+    <div>
+      <TaskModal />
+    </div>
+  );
 };
 
 export default CalendarPage;

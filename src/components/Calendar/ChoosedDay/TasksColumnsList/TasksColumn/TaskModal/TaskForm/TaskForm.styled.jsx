@@ -47,6 +47,11 @@ export const RadioButtonsContainer = styled.div`
   gap: 16px;
 `;
 
+export const RadioButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const RadioLabel = styled.label`
   font-family: 'Inter';
   font-weight: 600;
@@ -56,41 +61,68 @@ export const RadioLabel = styled.label`
 `;
 
 export const RadioInput = styled.input`
-  margin-right: 4px;
+  margin-right: 6px;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 1px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  outline: none;
-  /* border-color: ${props => {
-    switch (props.value) {
-      case 'low':
-        return 'rgba(255, 20, 20, 0.5)';
-      case 'medium':
-        return '#ff9614';
-      case 'high':
-        return '#ffea14';
-      default:
-        return '';
-    }
-  }}; */
+  outline: 2px solid
+    ${props => {
+      if (props.checked) {
+        switch (props.value) {
+          case 'low':
+            return 'rgba(114, 194, 248, 0.5)';
+          case 'medium':
+            return 'rgba(243, 178, 73, 0.5)';
+          case 'high':
+            return 'rgba(234, 61, 101, 0.5)';
+          default:
+            return '';
+        }
+      }
+
+      switch (props.value) {
+        case 'low':
+          return 'rgb(114, 194, 248)';
+        case 'medium':
+          return 'rgb(243, 178, 73)';
+        case 'high':
+          return 'rgb(234, 61, 101)';
+        default:
+          return '';
+      }
+    }};
+
+  border: 2px solid
+    ${props => {
+      if (props.checked) {
+        return '#fff';
+      }
+
+      switch (props.value) {
+        case 'low':
+          return '#72C2F8';
+        case 'medium':
+          return '#F3B249';
+        case 'high':
+          return '#EA3D65';
+        default:
+          return '';
+      }
+    }};
+
   background-color: ${props => {
     switch (props.value) {
       case 'low':
-        return '#ff1414';
+        return '#72C2F8';
       case 'medium':
-        return '#ff9614';
+        return '#F3B249';
       case 'high':
-        return '#ffea14';
+        return '#EA3D65';
       default:
         return '';
     }
   }};
-`;
-
-export const RadioButtonContainer = styled.div`
-  display: flex;
 `;
 
 /* &:checked::before {
