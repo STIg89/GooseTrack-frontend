@@ -16,7 +16,7 @@ const ChoosedDay = () => {
 
   useEffect(() => {
     dispatch(fetchDayTasks(currentDay));
-  }, [dispatch]);
+  }, [currentDay, dispatch]);
 
   const tasks = useSelector(selectTasks);
 
