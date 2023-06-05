@@ -28,6 +28,7 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
     );
     // row.find(item => item.key === selectedDate);
     // console.log(startOfWeek(selectedDate, { weekStartsOn: 1 }));
+    // eslint-disable-next-line
   }, [selectedDate]);
 
   while (day <= endDate) {
