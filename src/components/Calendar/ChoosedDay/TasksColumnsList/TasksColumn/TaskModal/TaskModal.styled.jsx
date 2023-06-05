@@ -1,28 +1,9 @@
 import styled from 'styled-components';
 
-export const ModalForm = styled.div`
-  position: relative;
-  padding: 48px 16px 40px 16px;
-  margin: 24px 18px 14px 18px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-  border-radius: 8px;
-`;
-
-export const CloseIcon = styled.svg`
-  position: absolute;
-  margin-right: 14px;
-  margin-top: 14px;
-  width: 14px;
-  height: 14px;
-  top: 0;
-  right: 0;
-`;
-
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 14px;
-  margin-top: 40px;
+  margin-top: 32px;
   width: 100%;
 `;
 
@@ -39,9 +20,19 @@ export const AddButton = styled.button`
   color: #ffffff;
   outline: none;
   border: none;
-  padding: 12px 40px 12px 40px;
+  padding: 12px 40px;
   background-color: #3e85f3;
   border-radius: 8px;
+  transition: background-color 250ms;
+
+  &:hover,
+  &:focus {
+    background-color: #1f78fc;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 15px 63px;
+  }
 `;
 
 export const AddIcon = styled.svg`
@@ -49,6 +40,11 @@ export const AddIcon = styled.svg`
   width: 12px;
   height: 12px;
   margin-right: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 14px;
+    height: 14px;
+  }
 `;
 
 export const CancelButton = styled.button`
@@ -61,9 +57,19 @@ export const CancelButton = styled.button`
   color: #111111;
   outline: none;
   border: none;
-  padding: 12px 40px 12px 40px;
+  padding: 12px 40px;
   background-color: #efefef;
   border-radius: 8px;
+  transition: background-color 250ms;
+
+  &:hover,
+  &:focus {
+    background-color: #e2e2e2;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 14px 48px;
+  }
 `;
 
 export const EditButton = styled.button`
@@ -79,9 +85,19 @@ export const EditButton = styled.button`
   color: #ffffff;
   outline: none;
   border: none;
-  padding: 12px 40px 12px 40px;
+  padding: 12px 40px;
   background-color: #3e85f3;
   border-radius: 8px;
+  transition: background-color 250ms;
+
+  &:hover,
+  &:focus {
+    background-color: #1f78fc;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 15px 40px;
+  }
 `;
 
 export const EditIcon = styled.svg`
@@ -90,4 +106,9 @@ export const EditIcon = styled.svg`
   width: 16px;
   height: 16px;
   margin-right: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
 `;

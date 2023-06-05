@@ -3,7 +3,11 @@ import styled from 'styled-components';
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
+
+  @media screen and (min-width: 768px) {
+    gap: 18px;
+  }
 `;
 
 export const InputContaiter = styled.div`
@@ -33,7 +37,7 @@ export const Input = styled.input`
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  padding: 12px 14px 12px 14px;
+  padding: 12px 14px;
   outline: none;
   border: none;
   border-radius: 8px;
@@ -45,6 +49,10 @@ export const RadioButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 10px;
+  }
 `;
 
 export const RadioButtonContainer = styled.div`
@@ -63,8 +71,8 @@ export const RadioLabel = styled.label`
 export const RadioInput = styled.input`
   margin-right: 6px;
   appearance: none;
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   outline: 2px solid
     ${props => {
@@ -123,42 +131,9 @@ export const RadioInput = styled.input`
         return '';
     }
   }};
+
+  &:hover,
+  &:focus {
+    transition: border 250ms, outline 250ms;
+  }
 `;
-
-/* &:checked::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: ${props => {
-    switch (props.value) {
-      case 'low':
-        return '#ff1414';
-      case 'medium':
-        return '#ff9614';
-      case 'high':
-        return '#ffea14';
-      default:
-        return '';
-    }
-  }}; */
-/* } */
-
-/* &:checked + ${RadioLabel} {
-    background-color: ${props => {
-    switch (props.value) {
-      case 'low':
-        return '#ff1414';
-      case 'medium':
-        return '#ff9614';
-      case 'high':
-        return '#ffea14';
-      default:
-        return '';
-    }
-  }};
-  } */

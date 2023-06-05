@@ -1,34 +1,44 @@
+import { useSelector, useDispatch } from 'react-redux';
 import {
-  ModalForm,
   ButtonContainer,
   AddButton,
   AddIcon,
   CancelButton,
-  CloseIcon,
-  EditButton,
-  EditIcon,
+  // EditButton,
+  // EditIcon,
 } from './TaskModal.styled';
 import Icons from 'images/sprite.svg';
 
+import Modal from 'components/Modal/Modal';
 import TaskForm from './TaskForm/TaskForm';
 
-export const TaskModal = () => {
-  return (
-    <ModalForm>
-      <CloseIcon>
-        <use href={`${Icons}#icon-close`}></use>
-      </CloseIcon>
+import { selectTasks } from 'redux/tasks/selectors';
+import { addTask } from 'redux/tasks/operations';
 
+export const TaskModal = ({ onCloseModal }) => {
+  const dispatch = useDispatch();
+  const tasks = useSelector(selectTasks);
+
+  const addTaskSubmit = () => {
+    dispatch(addTask({}));
+
+    // console.log(addTask());
+  };
+
+  return (
+    <Modal onCloseModal={onCloseModal}>
       <TaskForm />
 
       <ButtonContainer>
-        <AddButton type="button">
+        <AddButton type="button" onClick={addTaskSubmit}>
           <AddIcon>
             <use href={`${Icons}#add-btn-s`}></use>
           </AddIcon>
           Add
         </AddButton>
-        <CancelButton type="button">Cancel</CancelButton>
+        <CancelButton type="button" onClick={() => onCloseModal()}>
+          Cancel
+        </CancelButton>
 
         {/* <EditButton type="button">
           <EditIcon>
@@ -37,7 +47,7 @@ export const TaskModal = () => {
           Edit
         </EditButton> */}
       </ButtonContainer>
-    </ModalForm>
+    </Modal>
   );
 };
 
