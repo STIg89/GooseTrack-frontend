@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   ButtonContainer,
   AddButton,
@@ -12,12 +12,12 @@ import Icons from 'images/sprite.svg';
 import Modal from 'components/Modal/Modal';
 import TaskForm from './TaskForm/TaskForm';
 
-import { selectTasks } from 'redux/tasks/selectors';
+// import { selectTasks } from 'redux/tasks/selectors';
 import { addTask } from 'redux/tasks/operations';
 
 export const TaskModal = ({ onCloseModal }) => {
   const dispatch = useDispatch();
-  const tasks = useSelector(selectTasks);
+  // const tasks = useSelector(selectTasks);
 
   const addTaskSubmit = () => {
     dispatch(addTask({}));
