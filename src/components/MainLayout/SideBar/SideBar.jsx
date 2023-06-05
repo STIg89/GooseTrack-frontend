@@ -2,6 +2,8 @@ import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
 import { CgClose } from 'react-icons/cg';
 import LogoImg from '../Header/test_image/GOOSE_LOGO.svg';
 import UserCheckIcon from '../Header/test_image/user-check-01.svg';
+// import LogoText from "../Header/test_image/GooseTrack.svg"
+
 import {
   CloseBtn,
   SideBarDiv,
@@ -18,19 +20,20 @@ import {
   TitleSideBar,
 } from './SideBar.styled';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onCloseClick }) => {
   return (
-    <SideBarContainer>
+    <SideBarContainer style={{ display: isOpen ? 'block' : 'none' }}>
       <SideBarDiv>
         <LogoDiv>
           <Logo>
             <GooseLogo src={LogoImg} alt="" />
-            {/* <GooseLogoText src={Logo_text} alt="" /> */}
+            {/* <img src={LogoText}/> */}
           </Logo>
 
-          <CloseBtn>
-            <CgClose />
-          </CloseBtn>
+            <CloseBtn onClick={onCloseClick}>
+              <CgClose />
+            </CloseBtn>
+
         </LogoDiv>
         <SideBarNav>
           <TitleSideBar>User Panel</TitleSideBar>
