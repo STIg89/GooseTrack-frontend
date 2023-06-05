@@ -15,11 +15,8 @@ export const DayItem = styled.li`
   flex-direction: column;
   align-items: center;
 `;
-export const DayButton = styled.button`
-  background-color: transparent;
-  border: none;
+export const Day = styled.span`
   border-radius: 6px;
-  color: var(--primary-text-color);
   :hover {
     background-color: var(--accent-background-color);
     color: var(--btn-text-color);
