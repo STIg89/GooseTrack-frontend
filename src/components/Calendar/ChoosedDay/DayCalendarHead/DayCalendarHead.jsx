@@ -1,9 +1,10 @@
-import { Day, DayItem, DayList } from './DayCalendarHead.Styled';
+import { Day, DayList } from './DayCalendarHead.Styled';
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchDayTasks } from 'redux/tasks/operations';
+import { DayWrap } from './DayCalendarHead.Styled';
 
 const DayCalendarHead = () => {
   const navigate = useNavigate();
@@ -42,11 +43,8 @@ const DayCalendarHead = () => {
   const currentDay = format(validDate, 'yyyy-MM-dd');
   console.log("currentDay = format(validDate, 'yyyy-MM-dd'): ", currentDay);
 
-  const selectDay = validDate;
-  console.log('selectDay', selectDay);
-
   // we find the day of the week by number
-  const currentDayOfWeek = selectDay.getDay();
+  const currentDayOfWeek = validDate.getDay();
   console.log('currentDayOfWeek', currentDayOfWeek);
 
   const onPickOftheDay = currentDay => {
@@ -56,9 +54,9 @@ const DayCalendarHead = () => {
   };
 
   for (let i = 0; i < 7; i++) {
-    const date = new Date(selectDay);
+    const date = new Date(validDate);
     date.setDate(
-      selectDay.getDate() +
+      validDate.getDate() +
         i -
         currentDayOfWeek +
         (currentDayOfWeek === 0 ? -6 : 1)
@@ -66,10 +64,10 @@ const DayCalendarHead = () => {
     const isDaySelected =
       selectedDay &&
       selectedDay.getDate() &&
-      selectDay.getDate() === date.getDate();
+      validDate.getDate() === date.getDate();
 
     week.push(
-      <div key={i} onClick={() => onPickOftheDay(date)}>
+      <DayWrap key={i} onClick={() => onPickOftheDay(date)}>
         <span>{getWeek()[date.getDay()]}</span>
         <Day
           style={
@@ -86,7 +84,7 @@ const DayCalendarHead = () => {
         >
           {date.getDate()}
         </Day>
-      </div>
+      </DayWrap>
     );
   }
 
@@ -101,7 +99,7 @@ const DayCalendarHead = () => {
   return (
     <DayList>
       {week.map(items => (
-        <DayItem key={Math.random()}>{items}</DayItem>
+        <li key={Math.random()}>{items}</li>
       ))}
     </DayList>
   );

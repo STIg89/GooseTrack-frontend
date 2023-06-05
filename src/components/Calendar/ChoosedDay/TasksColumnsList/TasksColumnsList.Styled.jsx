@@ -6,7 +6,7 @@ export const ColumnsList = styled.ul`
     list-style: none;
 
     padding: 0px;
-    justify-content: space-evenly;
+    justify-content: space-between;
     @media screen and (min-width: 768px) {
       justify-content: flex-start;
       gap: 10px;
