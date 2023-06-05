@@ -12,6 +12,7 @@ const DayCalendarHead = () => {
   const useDateValidation = () => {
     const params = useParams();
     const date = new Date(params.currentDay);
+    console.log('date from params: ', date);
 
     if (Object.prototype.toString.call(date) === '[object Date]') {
       if (isNaN(date)) {
@@ -28,9 +29,9 @@ const DayCalendarHead = () => {
 
   const getWeek = () => {
     if (viewport < 376) {
-      return ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+      return ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
     }
-    return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   };
 
   const currentDay = format(validDate, 'yyyy-MM-dd');
