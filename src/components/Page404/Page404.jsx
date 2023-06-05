@@ -9,6 +9,7 @@ import img404x3 from 'images/404-3x.png';
 const Page404 = () => {
     const navigate = useNavigate();
     const [countdown, setCountdown] = useState(10);
+    
     useEffect(() => {
         const timer = setInterval(() => {
         setCountdown((prevCountdown) => prevCountdown - 1);

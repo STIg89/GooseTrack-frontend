@@ -1,18 +1,20 @@
 import FeedbackBtn from "../Header/AddFeedbackBtn/AddFeedbackBtn"
-// import CalendarPage from "pages/Calendar/CalendarPage"
 import ThemeToggler from "./ThemeToggler/ThemeToggler"
-import { Title, Container, Box, BrgMenu, BrgBtn, UserAvatar, UserName} from "./Header.styled"
-import Icons from "../../../images/sprite.svg"
+import { Title, Container, Box, BrgMenu, BrgBtn, UserAvatar, UserName } from "./Header.styled"
+import Icons from "images/sprite.svg"
 
-const Header = () => {
+const Header = ({ isOpen, onOpenClick }) => {
 
     return (
         <Container>
-            <BrgBtn>
-                <BrgMenu>
-                    <use href={`${Icons}#profile-mobile-menu`}></use>
-                </BrgMenu>
-            </BrgBtn>
+            {!isOpen &&
+                (
+                    <BrgBtn onClick={onOpenClick}>
+                        <BrgMenu>
+                            <use href={`${Icons}#profile-mobile-menu`}></use>
+                        </BrgMenu>
+                    </BrgBtn>
+                )}
             <Box>
                 <Title>Calendar</Title>
                 <FeedbackBtn />
