@@ -10,13 +10,12 @@ const media = {
 export const SideBarContainer = styled.div`
 
 background-color: var(--active-button-period-type);
-position: absolute;
+position: fixed;
 top: 0;
 left: 0;
 width: 225px;
 justify-content: flex-start;
 height: 100%;
-/* visibility: hidden; */
 
 ${media.tablet} {
   width: 289px;
@@ -41,6 +40,7 @@ ${media.tablet} {
 export const LogoDiv = styled.div`
 gap: 6px;
 display: flex;
+align-items: center;
 justify-content: space-between;
 `
 export const Logo = styled.div`
@@ -56,8 +56,7 @@ ${media.tablet} {
   }
 
   ${media.tablet} {
-    width: 71px;
-    height: 68px;
+    font-size: 50px;
   }
 `
 
@@ -179,13 +178,16 @@ line-height: 22px;
 color: var(--accent-text-color);
 `
 export const CloseBtn = styled.button`
-height: auto;
-height: 17px;
 display: flex;
+font-size: 16px;
 align-items: center;
 text-align: center;
 border: none;
 background: none;
     cursor: pointer;
+
+    ${media.desktop} {
+   display: none;
+  }
 `
 
