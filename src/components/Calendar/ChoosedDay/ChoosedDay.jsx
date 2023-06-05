@@ -5,59 +5,21 @@ import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchTasks } from 'redux/tasks/operations';
+import { fetchDayTasks } from 'redux/tasks/operations';
+import { useParams } from 'react-router-dom';
 
 const ChoosedDay = () => {
-  // const tasks = [
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'low',
-  //     status: 'To do',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'medium',
-  //     status: 'In progress',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'low',
-  //     status: 'To do',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'high',
-  //     status: 'Done',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'high',
-  //     status: 'To do',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'high',
-  //     status: 'In progress',
-  //   },
-  // ];
-
+  let { currentDay } = useParams();
   const dispatch = useDispatch();
-  const tasks = useSelector(selectTasks);
 
   useEffect(() => {
-    dispatch(fetchTasks());
+    dispatch(fetchDayTasks(currentDay));
   }, [dispatch]);
 
   return (
     <Container>
-      <DayCalendarHead />
-      <TasksColumnsList tasks={tasks} />
+      <DayCalendarHead currentDay={currentDay} />
+      <TasksColumnsList />
     </Container>
   );
 };

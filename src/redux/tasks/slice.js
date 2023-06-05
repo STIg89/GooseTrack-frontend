@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addTask, deleteTask, fetchTasks, patchTask } from './operations';
+import { addTask, deleteTask, fetchDayTasks, patchTask } from './operations';
 
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState: { tasks: [], isLoading: false, error: null },
   extraReducers: builder => {
     builder
-      .addCase(fetchTasks.pending, state => {
+      .addCase(fetchDayTasks.pending, state => {
         state.isLoading = true;
       })
-      .addCase(fetchTasks.fulfilled, (state, { payload }) => {
+      .addCase(fetchDayTasks.fulfilled, (state, { payload }) => {
         state.tasks = payload;
         state.isLoading = false;
         state.error = null;
       })
-      .addCase(fetchTasks.rejected, (state, { payload }) => {
+      .addCase(fetchDayTasks.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
       })

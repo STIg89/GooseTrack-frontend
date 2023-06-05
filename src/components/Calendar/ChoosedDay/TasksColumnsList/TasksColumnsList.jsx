@@ -1,9 +1,13 @@
+import { useSelector } from 'react-redux';
 import AddTaskBtn from './TasksColumn/AddTaskBtn/AddTaskBtn';
 import TasksColumn from './TasksColumn/TasksColumn';
 
 import { ColumnsItem, ColumnsList } from './TasksColumnsList.Styled';
+import { selectTasks } from 'redux/tasks/selectors';
 
-const TasksColumnsList = ({ tasks }) => {
+const TasksColumnsList = () => {
+  const tasks = useSelector(selectTasks);
+
   const todotasks = tasks.filter(item => item.category === 'to-do');
   const inprogresstasks = tasks.filter(item => item.category === 'in-progress');
   const donetasks = tasks.filter(item => item.category === 'done');

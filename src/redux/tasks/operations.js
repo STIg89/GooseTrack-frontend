@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchTasks = createAsyncThunk(
-  'tasks/fetch',
-  async (_, thunkAPI) => {
+export const fetchDayTasks = createAsyncThunk(
+  'tasks/fetchDay',
+  async (day, thunkAPI) => {
     try {
-      const response = await axios.get(`api/tasks?month=7`);
+      const response = await axios.get(`api/tasks?month=${day}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
