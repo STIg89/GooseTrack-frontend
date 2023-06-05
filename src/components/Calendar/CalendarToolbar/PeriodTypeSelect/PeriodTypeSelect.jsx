@@ -1,8 +1,10 @@
 import React from 'react';
-import PeriodTypesSelectStyled from '../PeriodTypeSelect/PeriodTypesSelect.styled';
+import {
+  TypesTabs,
+  TypesTabsContainer,
+} from '../PeriodTypeSelect/PeriodTypesSelect.styled';
 
 const PeriodTypeSelect = () => {
-  const { TypesTabs, TypesTabsContainer } = PeriodTypesSelectStyled;
   return (
     <div
       style={{

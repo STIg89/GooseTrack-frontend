@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
-const PeriodView = styled.div`
+export const PeriodView = styled.div`
   padding: 6px 12px;
   border-radius: 8px;
   font-weight: 700;
@@ -13,7 +12,7 @@ const PeriodView = styled.div`
   background-color: var(--color-button-period-type);
   color: var(--btn-text-color);
 `;
-const PeriodTabs = styled.button`
+export const PeriodTabs = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,12 +29,12 @@ const PeriodTabs = styled.button`
     fill: transparent;
   }
 `;
-const PeriodTabsContainer = styled.div`
+export const PeriodTabsContainer = styled.div`
   display: flex;
   border-radius: 8px;
   overflow: hidden;
 `;
-const PeriodContainer = styled.div`
+export const PeriodContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,9 +46,3 @@ const PeriodContainer = styled.div`
   }
 `;
 
-export default {
-  PeriodView,
-  PeriodTabs,
-  PeriodContainer,
-  PeriodTabsContainer,
-};

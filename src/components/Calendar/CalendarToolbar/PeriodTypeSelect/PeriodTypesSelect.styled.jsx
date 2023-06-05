@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const TypesTabsContainer = styled.div`
+export const TypesTabsContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -9,7 +9,7 @@ const TypesTabsContainer = styled.div`
   border-radius: 8px;
   overflow: hidden;
 `;
-const TypesTabs = styled(Link)`
+export const TypesTabs = styled(Link)`
   color: var(--color-button-period-type);
   padding: 8px 16px;
   background-color: var(--button-period-type);
@@ -27,7 +27,3 @@ const TypesTabs = styled(Link)`
     background-color: var(--active-button-period-type);
   }
 `;
-export default {
-  TypesTabsContainer,
-  TypesTabs,
-};
