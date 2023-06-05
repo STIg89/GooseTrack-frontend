@@ -10,10 +10,12 @@ const Container = styled.div`
     @media screen and (min-width: 768px) {
       max-width: 704px;
       height: 800px;
+      margin-left: 290px;
     }
     @media screen and (min-width: 1440px) {
       max-width: 1087px;
       height: 666px;
+      margin-left: 290px;
     }
 
     overflow: auto;

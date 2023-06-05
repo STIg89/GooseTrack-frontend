@@ -17,7 +17,6 @@ const TaskColumnCard = ({ taskText, priority, id }) => {
           <Avatar alt="avatar"></Avatar>
           <PriorityWraper text={priority}>{priority}</PriorityWraper>
         </ToolsWraper>
-
         <TaskToolBar id={id} />
       </Wraper>
     </CardWraper>

@@ -1,28 +1,23 @@
-import AddTaskBtn from './TasksColumn/AddTaskBtn/AddTaskBtn';
 import TasksColumn from './TasksColumn/TasksColumn';
 
 import { ColumnsItem, ColumnsList } from './TasksColumnsList.Styled';
 
-const TasksColumnsList = ({ tasks }) => {
-  const todotasks = tasks.filter(item => item.category === 'to-do');
-  const inprogresstasks = tasks.filter(item => item.category === 'in-progress');
-  const donetasks = tasks.filter(item => item.category === 'done');
-
+const TasksColumnsList = ({ readinessTasks }) => {
   return (
     <ColumnsList>
       <ColumnsItem>
-        <TasksColumn headName="To do" tasks={todotasks} />
-        <AddTaskBtn />
+        <TasksColumn headName="To do" tasks={readinessTasks.todotasks} />
       </ColumnsItem>
 
       <ColumnsItem>
-        <TasksColumn headName="In progress" tasks={inprogresstasks} />
-        <AddTaskBtn />
+        <TasksColumn
+          headName="In progress"
+          tasks={readinessTasks.inprogresstasks}
+        />
       </ColumnsItem>
 
       <ColumnsItem>
-        <TasksColumn headName="Done" tasks={donetasks} />
-        <AddTaskBtn />
+        <TasksColumn headName="Done" tasks={readinessTasks.donetasks} />
       </ColumnsItem>
     </ColumnsList>
   );

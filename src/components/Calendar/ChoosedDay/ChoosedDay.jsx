@@ -1,63 +1,35 @@
-import { selectTasks } from 'redux/tasks/selectors';
 import Container from './ChoosedDay.Styled';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchTasks } from 'redux/tasks/operations';
+import { fetchDayTasks } from 'redux/tasks/operations';
+import { useParams } from 'react-router-dom';
+import { selectTasks } from 'redux/tasks/selectors';
 
 const ChoosedDay = () => {
-  // const tasks = [
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'low',
-  //     status: 'To do',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'medium',
-  //     status: 'In progress',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'low',
-  //     status: 'To do',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'high',
-  //     status: 'Done',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'high',
-  //     status: 'To do',
-  //   },
-  //   {
-  //     taskText:
-  //       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, libero.',
-  //     priority: 'high',
-  //     status: 'In progress',
-  //   },
-  // ];
+  let { currentDay } = useParams();
+
+  console.log('currentDay', currentDay);
 
   const dispatch = useDispatch();
-  const tasks = useSelector(selectTasks);
 
   useEffect(() => {
-    dispatch(fetchTasks());
-  }, [dispatch]);
+    dispatch(fetchDayTasks(currentDay));
+  }, [currentDay, dispatch]);
+
+  const tasks = useSelector(selectTasks);
+
+  const readinessTasks = {
+    todotasks: tasks.filter(item => item.category === 'to-do'),
+    inprogresstasks: tasks.filter(item => item.category === 'in-progress'),
+    donetasks: tasks.filter(item => item.category === 'done'),
+  };
 
   return (
     <Container>
       <DayCalendarHead />
-      <TasksColumnsList tasks={tasks} />
+      <TasksColumnsList readinessTasks={readinessTasks} />
     </Container>
   );
 };

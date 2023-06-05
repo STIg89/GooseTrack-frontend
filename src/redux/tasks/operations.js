@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 
-export const fetchTasks = createAsyncThunk(
-  'tasks/fetch',
-  async (_, thunkAPI) => {
+export const fetchDayTasks = createAsyncThunk(
+  'tasks/fetchDay',
+  async (day, thunkAPI) => {
     try {
-      const response = await axios.get(`api/tasks?month=7`);
+      const response = await axios.get(`api/tasks?month=${day}&limit=100`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -20,6 +21,7 @@ export const patchTask = createAsyncThunk(
       const response = await axios.patch(`api/tasks/${id}`, task);
       return response.data;
     } catch (error) {
+      Notify.failure('Sorry, something went wrong. Try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,8 +32,10 @@ export const deleteTask = createAsyncThunk(
   async (taskId, thunkAPI) => {
     try {
       const response = await axios.delete(`api/tasks/${taskId}`);
+      Notify.success('Task hastily deleted');
       return response.data;
     } catch (error) {
+      Notify.failure('Sorry, task not deleted. Try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }
