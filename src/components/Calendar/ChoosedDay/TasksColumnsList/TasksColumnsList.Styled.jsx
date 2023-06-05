@@ -4,8 +4,14 @@ export const ColumnsList = styled.ul`
    {
     display: flex;
     list-style: none;
-    margin: 0;
+
     padding: 0px;
+    justify-content: space-evenly;
+    @media screen and (min-width: 768px) {
+      justify-content: flex-start;
+      gap: 10px;
+      margin-left: 15px;
+    }
   }
 `;
 
