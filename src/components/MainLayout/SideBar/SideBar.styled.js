@@ -85,18 +85,23 @@ ${media.tablet} {
   }
 `
 
-export const UserIcon = styled.img`
+export const Svg = styled.svg`
 margin-right: 8px;
 
-${media.tablet} {
-  margin-right: 10px;
-  }
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--not-active-item-sidebar-text-color);
+
+  ${media.tablet} {
+   margin-right: 10px;
+}
 `
 
 export const StyledNavLink = styled(NavLink)`
   display: flex;
   color: var(--not-active-item-sidebar-text-color);
-  /* opacity: 0.5; */
+  opacity: 0.5;
   align-items: center;
   margin-right: 0;
 
@@ -126,7 +131,13 @@ justify-content: flex-start;
 :focus {
   fill: var(--accent-text-color);
   color: var(--accent-text-color);
-  background-color: var(--hover-active-item-sidebar-background);
+  stroke: var(--accent-text-color);
+  
+  &:hover ${Svg},
+  &:focus ${Svg},
+  &.active ${Svg} {
+    stroke: var(--accent-text-color); /* change the stroke color */
+  }
 }
 
 ${media.tablet} {
