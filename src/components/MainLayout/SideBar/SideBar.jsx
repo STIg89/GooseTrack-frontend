@@ -12,7 +12,6 @@ import {
   LogoDiv,
   SideBarNav,
   SideBarLinks,
-  SideBarLi,
   Logo,
   GooseLogo,
   UserIcon,
@@ -39,19 +38,19 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
         <SideBarNav>
           <TitleSideBar>User Panel</TitleSideBar>
           <SideBarLinks>
-            <SideBarLi>
-              <StyledNavLink>
+            <li>
+              <StyledNavLink to="account" >
                 <UserIcon src={UserCheckIcon} alt="icon" />
                 My account
               </StyledNavLink>
-            </SideBarLi>
+            </li>
 
-            <SideBarLi>
-              <StyledNavLink>
+            <li>
+              <StyledNavLink to="calendar">
                 <StyledCalendarIcon />
                 Calendar
               </StyledNavLink>
-            </SideBarLi>
+            </li>
           </SideBarLinks>
         </SideBarNav>
       </SideBarDiv>
