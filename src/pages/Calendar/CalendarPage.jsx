@@ -1,9 +1,10 @@
-import TaskModal from 'components/Calendar/ChoosedDay/TasksColumnsList/TasksColumn/TaskModal/TaskModal';
+import { Outlet } from 'react-router';
 
 const CalendarPage = () => {
   return (
     <div>
-      <TaskModal />
+      <div>CalendarPage</div>
+      <Outlet />
     </div>
   );
 };

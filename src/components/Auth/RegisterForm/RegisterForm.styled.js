@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   background-color: var(--auth-bg-color);
 `;
 
-export const RegisterFormContainer = styled.div`
+export const StyleFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,7 +42,7 @@ export const Form = styled.form`
   }
 `;
 
-export const RegisterFormTitle = styled.h1`
+export const StyleFormTitle = styled.h1`
   font-style: normal;
   font-weight: 600;
   font-size: 1.125rem;
@@ -52,7 +52,7 @@ export const RegisterFormTitle = styled.h1`
   margin-bottom: 22px;
 `;
 
-export const RegisterLabel = styled.label`
+export const StyleLabel = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 0.5rem;
@@ -63,7 +63,7 @@ export const RegisterLabel = styled.label`
   color: var(--secondary-text-color);
 `;
 
-export const RegisterInput = styled.input`
+export const StyleInput = styled.input`
   background-color: var(--primary-background-color);
   outline: none;
   border: var(--border-auth);
@@ -79,7 +79,7 @@ export const RegisterInput = styled.input`
   }
 `;
 
-export const RegisterParaghraph = styled.p`
+export const StyleParaghraph = styled.p`
   font-style: normal;
   font-weight: 600;
   font-size: 14px;
@@ -93,7 +93,7 @@ export const RegisterParaghraph = styled.p`
   }
 `;
 
-export const RegisterButton = styled.button`
+export const StyleButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,6 +172,18 @@ export const RegisterGooseImage = styled.img`
     height: 416px;
     left: 50px;
     bottom: 0;
+    display: block;
+  }
+`;
+
+export const LoginGooseImage = styled.img`
+  display: none;
+  @media (min-width: 1350px) {
+    position: fixed;
+    width: 368px;
+    height: 521px;
+    right: 60px;
+    bottom: 19px;
     display: block;
   }
 `;
