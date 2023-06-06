@@ -13,12 +13,17 @@ const CalendarToolbar = ({ setCurrentDate, currentDate }) => {
   };
 
   return (
-    <div>
+    <>
       <PeriodContainer>
-        <PeriodPaginator nextMonth={nextMonth} prevMonth={prevMonth} />
+        <PeriodPaginator
+          nextMonth={nextMonth}
+          prevMonth={prevMonth}
+          currentDate={currentDate}
+          setCurrentDate={setCurrentDate}
+        />
         <PeriodTypeSelect />
       </PeriodContainer>
-    </div>
+    </>
   );
 };
 export default CalendarToolbar;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   format,
   startOfWeek,
@@ -6,10 +6,11 @@ import {
   startOfMonth,
   endOfMonth,
   endOfWeek,
-  isSameMonth,
   isSameDay,
 } from 'date-fns';
 import { ColumnCell, Number, Row, Calendar } from './CalendarTable.styled';
+import { nanoid } from 'nanoid';
+import { useNavigate } from 'react-router-dom';
 
 const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
   const monthStart = startOfMonth(currentDate);
@@ -21,32 +22,39 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
   let days = [];
   let day = startDate;
   let formattedDate = '';
-  useEffect(() => {
-    console.log(rows);
-    rows.filter(
-      item => item.key === startOfWeek(selectedDate, { weekStartsOn: 1 })
-    );
-    // row.find(item => item.key === selectedDate);
-    // console.log(startOfWeek(selectedDate, { weekStartsOn: 1 }));
-    // eslint-disable-next-line
-  }, [selectedDate]);
+  const navigate = useNavigate();
+
+  const parseDate = date => {
+    const parsedYear = date.getFullYear().toString();
+    const parsedMonth =
+      date.getMonth() < 9
+        ? `0${date.getMonth() + 1}`
+        : `${date.getMonth() + 1}`;
+    const parsedDay =
+      date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
+    const parsedDate = `${parsedYear}-${parsedMonth}-${parsedDay}`;
+    return parsedDate;
+  };
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
+      const initDate = day;
+
+      //new Date(getYear(day), getMonth(day), getDay(day))
       formattedDate = format(day, dateFormat);
       days.push(
         <ColumnCell
-          props={{ date: day }}
           className={`column cell ${
-            !isSameMonth(day, monthStart)
+            day.getMonth() !== monthStart.getMonth()
               ? 'disabled'
               : isSameDay(day, selectedDate)
               ? 'selected'
               : ''
           }`}
-          key={day}
-          onClick={event => {
-            onDateClick(event);
+          key={nanoid()}
+          onClick={() => {
+            onDateClick(initDate);
+            navigate(`/${parseDate(initDate)}`);
           }}
         >
           <Number className="number">{formattedDate}</Number>
@@ -54,16 +62,13 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
       );
       day = addDays(day, 1);
     }
-    rows.push(<Row key={day}>{days}</Row>);
+    rows.push(<Row key={nanoid()}>{days}</Row>);
     days = [];
   }
-  const onDateClick = event => {
-    setSelectedDate(event.target);
-    const currentTarget = event.target;
-    currentTarget.classList.add('selected');
-    const prevTarget = currentTarget;
-    prevTarget.classList.remove('selected');
+  const onDateClick = date => {
+    setSelectedDate(date);
   };
+
   return <Calendar>{rows}</Calendar>;
 };
 export default CalendarTable;

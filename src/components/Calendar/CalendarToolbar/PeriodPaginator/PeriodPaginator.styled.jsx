@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const GroupPeriod = styled.div`
+  display: flex;
+  gap: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 260px;
+    justify-content: space-between;
+  }
+`;
 export const PeriodView = styled.div`
   padding: 6px 12px;
   border-radius: 8px;
@@ -11,6 +20,11 @@ export const PeriodView = styled.div`
   text-transform: uppercase;
   background-color: var(--color-button-period-type);
   color: var(--btn-text-color);
+  @media screen and (min-width: 768px) {
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.12;
+  }
 `;
 export const PeriodTabs = styled.button`
   display: flex;
@@ -40,9 +54,10 @@ export const PeriodContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 24px;
+  gap: 18px;
   @media screen and (min-width: 768px) {
-    justify-content: flex-start;
-    gap: 8px;
+    width: 100%;
+    flex-wrap: no-wrap;
+    margin-bottom: 32px;
   }
 `;
-

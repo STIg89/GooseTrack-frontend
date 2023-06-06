@@ -13,7 +13,7 @@ export const ColumnCell = styled.div`
   font-size: 12px;
   line-height: 1.17;
   text-transform: uppercase;
-  transition: 0.25s ease-out;
+  transition: 0.1s ease-out;
   color: var(--calendar-digit-color);
 
   pointer-events: pointer;
@@ -26,6 +26,10 @@ export const ColumnCell = styled.div`
     color: white;
     background-color: var(--color-button-period-type);
   }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.12;
+  }
 `;
 
 export const Number = styled.div`
@@ -35,7 +39,12 @@ export const Number = styled.div`
   right: 4px;
   padding: 4px 6px;
   border-radius: 6px;
-  transition: 0.5s ease-in;
+  transition: 0.1s ease-in;
+  @media screen and (min-width: 768px) {
+    padding: 4px 8px;
+    top: 8px;
+    right: 8px;
+  }
 `;
 export const Row = styled.div`
   margin: 0;
