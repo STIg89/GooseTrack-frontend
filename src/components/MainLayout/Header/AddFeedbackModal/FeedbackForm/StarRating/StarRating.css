@@ -1,0 +1,57 @@
+.rating {
+    position: relative;
+    font-size: 40px;
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 50%;
+  }
+  
+  .rating::before {
+    content: '★★★★★';
+    display: block;
+    color: lightgray;
+  }
+  
+  .rating-items {
+    position: absolute;
+    width: 41%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    /* flex-direction: row-reverse; */
+  }
+  
+  .rating-item {
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    opacity: 0;
+    visibility: hidden;
+    top: 0;
+    left: 0;
+  }
+  
+  .rating-label {
+    flex: 0 0 20%;
+    height: 100%;
+    cursor: pointer;
+    color: lightgray;
+  }
+  
+  .rating-label::before {
+    content: '★';
+    display: block;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .rating-label:hover,
+  .rating-label:hover ~ .rating-label,
+  .rating-label:checked ~ .rating-label:hover {
+    color: rgba(255, 172, 51, 0.5);
+  }
+  
+  .rating-item:checked,
+  .rating-item:checked ~ .rating-label {
+    color: rgba(255, 172, 51, 1);
+  }
