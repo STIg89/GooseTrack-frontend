@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchDayTasks } from 'redux/tasks/operations';
 import { DayWrap } from './DayCalendarHead.Styled';
+import { useDateValidation } from 'helpers/useDateValidation';
 
 const DayCalendarHead = () => {
   const navigate = useNavigate();
@@ -13,18 +14,6 @@ const DayCalendarHead = () => {
   const week = [];
 
   // check the date from the request parameter. if invalid, we return the current date
-  const useDateValidation = () => {
-    const params = useParams();
-    const date = new Date(params.currentDay);
-
-    if (Object.prototype.toString.call(date) === '[object Date]') {
-      if (isNaN(date)) {
-        return new Date();
-      } else {
-        return date;
-      }
-    }
-  };
 
   const validDate = useDateValidation();
 
