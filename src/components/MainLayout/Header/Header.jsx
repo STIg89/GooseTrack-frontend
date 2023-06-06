@@ -1,20 +1,23 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useLocation, useParams } from 'react-router-dom';
-import HeaderImg from '../Header/test_image/GooseHeader.png'
+import HeaderImg from '../Header/test_image/GooseHeader.png';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
 import { ThemeToggler } from '../../../utils/theme/theme';
 import {
   Title,
   Container,
-  Box, Div,
+  Box,
+  Div,
   BrgMenu,
   BrgBtn,
   UserAvatar,
-  UserName, GooseImg,
-  NoAvatar, Span,
+  UserName,
+  GooseImg,
+  NoAvatar,
+  Span,
   TitleCalendar,
-  HeaderParagraph
+  HeaderParagraph,
 } from './Header.styled';
 import Icons from 'images/sprite.svg';
 
@@ -40,26 +43,22 @@ const Header = ({ isOpen, onOpenClick }) => {
         </BrgBtn>
       )}
       <TitleCalendar>
-        {location.pathname === "/calendar" && (
+        {location.pathname === '/calendar' && <Title> Calendar</Title>}
 
-          < Title > Calendar</Title>
-        )}
-        
-        {location.pathname === "/account" && (
+        {location.pathname === '/account' && <Title> User Profile</Title>}
 
-          < Title > User Profile</Title>
-        )}
-
-        {(location.pathname === `/calendar/day/${currentDay}`) && (
+        {location.pathname === `/calendar/day/${currentDay}` && (
           <>
-            <GooseImg src={HeaderImg} alt="Goose"/>
-           <Div>
-            <Title>Calendar</Title>
-            <HeaderParagraph> <Span>Let go</Span> of the past and focus on the present!</HeaderParagraph>
-           </Div>
+            <GooseImg src={HeaderImg} alt="Goose" />
+            <Div>
+              <Title>Calendar</Title>
+              <HeaderParagraph>
+                {' '}
+                <Span>Let go</Span> of the past and focus on the present!
+              </HeaderParagraph>
+            </Div>
           </>
         )}
-
       </TitleCalendar>
       <Box>
         <FeedbackBtn />
@@ -71,7 +70,7 @@ const Header = ({ isOpen, onOpenClick }) => {
           <NoAvatar>{firstLetter}</NoAvatar>
         )}
       </Box>
-    </Container >
+    </Container>
   );
 };
 
