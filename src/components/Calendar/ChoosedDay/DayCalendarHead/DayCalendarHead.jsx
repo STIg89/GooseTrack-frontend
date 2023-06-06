@@ -16,7 +16,6 @@ const DayCalendarHead = () => {
   const useDateValidation = () => {
     const params = useParams();
     const date = new Date(params.currentDay);
-    console.log('date from params: ', date);
 
     if (Object.prototype.toString.call(date) === '[object Date]') {
       if (isNaN(date)) {
@@ -28,7 +27,7 @@ const DayCalendarHead = () => {
   };
 
   const validDate = useDateValidation();
-  console.log('validDate: ', validDate);
+
   const [selectedDay, setSelectedDay] = useState(new Date(validDate));
 
   // days of the week from 0-6 for getDat()
@@ -41,11 +40,9 @@ const DayCalendarHead = () => {
 
   // bring the date to the format'yyyy-MM-dd'
   const currentDay = format(validDate, 'yyyy-MM-dd');
-  console.log("currentDay = format(validDate, 'yyyy-MM-dd'): ", currentDay);
 
   // we find the day of the week by number
   const currentDayOfWeek = validDate.getDay();
-  console.log('currentDayOfWeek', currentDayOfWeek);
 
   const onPickOftheDay = currentDay => {
     setSelectedDay(currentDay);

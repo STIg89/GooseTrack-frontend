@@ -4,9 +4,12 @@ import { Notify } from 'notiflix';
 
 export const fetchDayTasks = createAsyncThunk(
   'tasks/fetchDay',
-  async (day, thunkAPI) => {
+  async (reqObj, thunkAPI) => {
     try {
-      const response = await axios.get(`api/tasks?month=${day}&limit=100`);
+      const response = await axios.get(
+        `api/tasks?month=${reqObj.month}&day=${reqObj.day}&year=${reqObj.year}&page=1&limit=100`
+      );
+
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
