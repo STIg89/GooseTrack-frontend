@@ -8,6 +8,7 @@ const media = {
 };
 
 export const SideBarContainer = styled.div`
+z-index: 10;
   background-color: var(--active-button-period-type);
   position: fixed;
   top: 0;

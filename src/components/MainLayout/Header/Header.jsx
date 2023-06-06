@@ -5,7 +5,7 @@ import Icons from "images/sprite.svg"
 import { useSelector } from "react-redux"
 import { selectUser } from "redux/auth/selectors"
 
-const Header = ({ isOpen, onOpenClick }) => {
+ const Header = ({ isOpen, onOpenClick }) => {
 
     const { name } = useSelector(selectUser);
     const firstLetter = name?.charAt(0).toUpperCase();
@@ -37,3 +37,5 @@ const Header = ({ isOpen, onOpenClick }) => {
         </Container>
     )
 }
+
+export default Header
