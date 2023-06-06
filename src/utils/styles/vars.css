@@ -79,7 +79,7 @@
   --shadow-logout-btn-hover: 4px 2px 16px rgba(136, 165, 191, 1);
 }
 
-.dark-theme {
+[data-theme='dark'] {
   --secondary-background-color: #171820;
   --primary-background-color: #21222c;
   --sidebar-background-color: #13151a;

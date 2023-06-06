@@ -9,7 +9,7 @@ export const MainContainer = styled.div`
   margin-top: 24px;
   margin-left: 20px;
   margin-right: 20px;
-
+  background: var(--secondary-background-color);
   ${media.tablet} {
     margin-top: 24px;
     margin-left: 32px;
