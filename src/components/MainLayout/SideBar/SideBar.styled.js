@@ -8,6 +8,7 @@ const media = {
 };
 
 export const SideBarContainer = styled.div`
+z-index: 10;
   background-color: var(--active-button-period-type);
   position: fixed;
   top: 0;
@@ -43,22 +44,42 @@ export const LogoDiv = styled.div`
   justify-content: space-between;
 `;
 export const Logo = styled.div`
-  display: flex;
-`;
-export const GooseLogo = styled.img`
-  width: 36px;
-  height: 35px;
+display: flex;
+justify-content: center;
+align-items: center;
+color: var(--calendar-digit-color);
+`
+export const LogoIcon = styled.img`
+width: 36px;
+   height: 35px;
+   margin-right: 6px;
+
+${media.tablet} {
+  width: 60px;
+   height: 58px;
+}
+
+${media.desktop} {
+   width: 71px;
+   height: 68px;
+   margin-right: 10px;
+}
+`
+export const LogoSvg = styled.svg`
+  width: 80px;
+  height: 22px;
+  fill: var(--accent-text-color);
 
   ${media.tablet} {
-    width: 60px;
-    height: 58px;
-  }
+  width: 90px;
+   height: 24px;
+}
 
-  ${media.tablet} {
-    font-size: 50px;
-  }
-`;
+${media.desktop} {
+   width: 120px;
+}
 
+`
 export const StyledCalendarIcon = styled(LuCalendarCheck2)`
   margin-right: 8px;
 
@@ -84,35 +105,18 @@ export const SideBarLinks = styled.ul`
   }
 `;
 
-export const UserIcon = styled.img`
-  margin-right: 8px;
+export const Svg = styled.svg`
+margin-right: 8px;
+
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--not-active-item-sidebar-text-color);
 
   ${media.tablet} {
-    margin-right: 10px;
-  }
-`;
-
-export const SideBarLi = styled.li`
-  height: 40px;
-  padding-left: 12px;
-  align-items: center;
-  justify-content: center;
-  background-color: aliceblue;
-  margin-bottom: 16px;
-  border-radius: 8px;
-
-  display: flex;
-  justify-content: flex-start;
-
-  > :not(:last-child) {
-    margin-bottom: 18px;
-  }
-
-  ${media.tablet} {
-    height: 56px;
-    padding-left: 20px;
-  }
-`;
+   margin-right: 10px;
+}
+`
 
 export const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -126,6 +130,40 @@ export const StyledNavLink = styled(NavLink)`
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
+
+  height: 40px;
+padding-left: 12px;
+align-items: center;
+justify-content: center;
+background-color: aliceblue;
+margin-bottom: 16px;
+border-radius: 8px;
+
+  display: flex;
+  justify-content: flex-start;
+
+  > :not(:last-child) {
+    margin-bottom: 18px;
+  }
+
+&.active,
+:hover,
+:focus {
+  fill: var(--accent-text-color);
+  color: var(--accent-text-color);
+  stroke: var(--accent-text-color);
+  
+  &:hover ${Svg},
+  &:focus ${Svg},
+  &.active ${Svg} {
+    stroke: var(--accent-text-color); /* change the stroke color */
+  }
+}
+
+${media.tablet} {
+    height: 56px;
+    padding-left: 20px;
+  }
 `;
 
 export const BrgMenu = styled.svg`
@@ -174,15 +212,18 @@ export const GooseLogoText = styled.img`
   color: var(--accent-text-color);
 `;
 export const CloseBtn = styled.button`
-  display: flex;
-  font-size: 16px;
-  align-items: center;
-  text-align: center;
-  border: none;
-  background: none;
-  cursor: pointer;
+display: flex;
+font-size: 20px;
+align-items: center;
+text-align: center;
+border: none;
+background: none;
+    cursor: pointer;
 
-  ${media.desktop} {
-    display: none;
+    ${media.tablet} {
+   font-size: 30px;
+  }
+    ${media.desktop} {
+   display: none;
   }
 `;

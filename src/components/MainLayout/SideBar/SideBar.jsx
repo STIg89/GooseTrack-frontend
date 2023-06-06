@@ -1,8 +1,7 @@
 import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
 import { CgClose } from 'react-icons/cg';
-import LogoImg from '../Header/test_image/GOOSE_LOGO.svg';
-import UserCheckIcon from '../Header/test_image/user-check-01.svg';
-// import LogoText from "../Header/test_image/GooseTrack.svg"
+import Icons from "../../../images/sprite.svg"
+import LogoImg from "../Header/test_image/GooseLogo.png"
 
 import {
   CloseBtn,
@@ -11,10 +10,10 @@ import {
   LogoDiv,
   SideBarNav,
   SideBarLinks,
-  SideBarLi,
   Logo,
-  GooseLogo,
-  UserIcon,
+  LogoIcon,
+  LogoSvg,
+  Svg,
   StyledNavLink,
   StyledCalendarIcon,
   TitleSideBar,
@@ -26,31 +25,35 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
       <SideBarDiv>
         <LogoDiv>
           <Logo>
-            <GooseLogo src={LogoImg} alt="" />
-            {/* <img src={LogoText}/> */}
+            <LogoIcon src={LogoImg} alt='logo'/>
+            <LogoSvg>
+              <use href={`${Icons}#icon-logo-text`}></use>
+            </LogoSvg>
           </Logo>
 
-            <CloseBtn onClick={onCloseClick}>
-              <CgClose />
-            </CloseBtn>
+          <CloseBtn onClick={onCloseClick}>
+            <CgClose />
+          </CloseBtn>
 
         </LogoDiv>
         <SideBarNav>
           <TitleSideBar>User Panel</TitleSideBar>
           <SideBarLinks>
-            <SideBarLi>
-              <StyledNavLink>
-                <UserIcon src={UserCheckIcon} alt="icon" />
+            <li>
+              <StyledNavLink to="account" >
+                <Svg>
+                  <use href={`${Icons}#icon-user-check`}></use>
+                </Svg>
                 My account
               </StyledNavLink>
-            </SideBarLi>
+            </li>
 
-            <SideBarLi>
-              <StyledNavLink>
+            <li>
+              <StyledNavLink to="calendar">
                 <StyledCalendarIcon />
                 Calendar
               </StyledNavLink>
-            </SideBarLi>
+            </li>
           </SideBarLinks>
         </SideBarNav>
       </SideBarDiv>
