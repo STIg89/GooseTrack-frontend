@@ -8,11 +8,11 @@ const Container = styled.div`
       height: 470px;
     }
     @media screen and (min-width: 768px) {
-      max-width: 704px;
+      max-width: 718px;
       height: 800px;
     }
     @media screen and (min-width: 1440px) {
-      max-width: 1087px;
+      max-width: 1151px;
       height: 666px;
     }
 

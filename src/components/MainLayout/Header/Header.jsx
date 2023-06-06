@@ -37,5 +37,3 @@ const Header = ({ isOpen, onOpenClick }) => {
         </Container>
     )
 }
-
-export default Header
