@@ -2,7 +2,7 @@ import Container from './ChoosedDay.Styled';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { fetchDayTasks } from 'redux/tasks/operations';
 import { useParams } from 'react-router-dom';
 import { selectTasks } from 'redux/tasks/selectors';
@@ -10,13 +10,27 @@ import { selectTasks } from 'redux/tasks/selectors';
 const ChoosedDay = () => {
   let { currentDay } = useParams();
 
-  console.log('currentDay', currentDay);
+  const date = new Date(currentDay);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  const reqObj = useMemo(() => {
+    const reqObj = {
+      month,
+      day,
+      year,
+      page: 1,
+      limit: 100,
+    };
+    return reqObj;
+  }, [month, day, year]);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDayTasks(currentDay));
-  }, [currentDay, dispatch]);
+    dispatch(fetchDayTasks(reqObj));
+  }, [reqObj, dispatch]);
 
   const tasks = useSelector(selectTasks);
 
