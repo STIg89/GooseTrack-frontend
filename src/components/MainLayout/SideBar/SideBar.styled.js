@@ -8,8 +8,8 @@ const media = {
 };
 
 export const SideBarContainer = styled.div`
-z-index: 10;
-  background-color: var(--active-button-period-type);
+  z-index: 10;
+  background-color: var(--sidebar-background-color);
   position: fixed;
   top: 0;
   left: 0;
@@ -44,42 +44,41 @@ export const LogoDiv = styled.div`
   justify-content: space-between;
 `;
 export const Logo = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-color: var(--calendar-digit-color);
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--calendar-digit-color);
+`;
 export const LogoIcon = styled.img`
-width: 36px;
-   height: 35px;
-   margin-right: 6px;
+  width: 36px;
+  height: 35px;
+  margin-right: 6px;
 
-${media.tablet} {
-  width: 60px;
-   height: 58px;
-}
+  ${media.tablet} {
+    width: 60px;
+    height: 58px;
+  }
 
-${media.desktop} {
-   width: 71px;
-   height: 68px;
-   margin-right: 10px;
-}
-`
+  ${media.desktop} {
+    width: 71px;
+    height: 68px;
+    margin-right: 10px;
+  }
+`;
 export const LogoSvg = styled.svg`
   width: 80px;
   height: 22px;
-  fill: var(--accent-text-color);
+  fill: var(--accent-background-color);
 
   ${media.tablet} {
-  width: 90px;
-   height: 24px;
-}
+    width: 90px;
+    height: 24px;
+  }
 
-${media.desktop} {
-   width: 120px;
-}
-
-`
+  ${media.desktop} {
+    width: 120px;
+  }
+`;
 export const StyledCalendarIcon = styled(LuCalendarCheck2)`
   margin-right: 8px;
 
@@ -106,7 +105,7 @@ export const SideBarLinks = styled.ul`
 `;
 
 export const Svg = styled.svg`
-margin-right: 8px;
+  margin-right: 8px;
 
   width: 18px;
   height: 18px;
@@ -114,9 +113,9 @@ margin-right: 8px;
   stroke: var(--not-active-item-sidebar-text-color);
 
   ${media.tablet} {
-   margin-right: 10px;
-}
-`
+    margin-right: 10px;
+  }
+`;
 
 export const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -132,12 +131,12 @@ export const StyledNavLink = styled(NavLink)`
   line-height: 19px;
 
   height: 40px;
-padding-left: 12px;
-align-items: center;
-justify-content: center;
-background-color: aliceblue;
-margin-bottom: 16px;
-border-radius: 8px;
+  padding-left: 12px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sidebar-background-color);
+  margin-bottom: 16px;
+  border-radius: 8px;
 
   display: flex;
   justify-content: flex-start;
@@ -146,21 +145,20 @@ border-radius: 8px;
     margin-bottom: 18px;
   }
 
-&.active,
-:hover,
-:focus {
-  fill: var(--accent-text-color);
-  color: var(--accent-text-color);
-  stroke: var(--accent-text-color);
-  
-  &:hover ${Svg},
-  &:focus ${Svg},
-  &.active ${Svg} {
-    stroke: var(--accent-text-color); /* change the stroke color */
-  }
-}
+  &.active,
+  :hover,
+  :focus {
+    fill: var(--accent-text-color);
+    color: var(--accent-text-color);
+    stroke: var(--accent-text-color);
+    background: var(--active-item-sidebar-background);
 
-${media.tablet} {
+    &:hover ${Svg}, &:focus ${Svg}, &.active ${Svg} {
+      stroke: var(--accent-text-color); /* change the stroke color */
+    }
+  }
+
+  ${media.tablet} {
     height: 56px;
     padding-left: 20px;
   }
@@ -212,18 +210,18 @@ export const GooseLogoText = styled.img`
   color: var(--accent-text-color);
 `;
 export const CloseBtn = styled.button`
-display: flex;
-font-size: 20px;
-align-items: center;
-text-align: center;
-border: none;
-background: none;
-    cursor: pointer;
+  display: flex;
+  font-size: 20px;
+  align-items: center;
+  text-align: center;
+  border: none;
+  background: none;
+  cursor: pointer;
 
-    ${media.tablet} {
-   font-size: 30px;
+  ${media.tablet} {
+    font-size: 30px;
   }
-    ${media.desktop} {
-   display: none;
+  ${media.desktop} {
+    display: none;
   }
 `;

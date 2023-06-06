@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const media = {
-  tablet: "@media screen and (min-width: 768px)",
-  desktop: "@media screen and (min-width: 1440px)"
+  tablet: '@media screen and (min-width: 768px)',
+  desktop: '@media screen and (min-width: 1440px)',
 };
 
 export const Container = styled.div`
@@ -10,7 +10,7 @@ export const Container = styled.div`
   margin-top: 40px;
   margin-bottom: 32px;
   justify-content: space-between;
-  position: relative
+  position: relative;
 
   ${media.desktop} {
     justify-content: space-between;
@@ -20,69 +20,68 @@ export const Container = styled.div`
 `;
 
 export const NoAvatar = styled.div`
-width:32px;
-height:32px;
-display: flex;
-justify-content: center;
-align-items: center;
-line-height: 0;
-border-radius: 50%;
-margin-left: 8px;
-color: var(--secondary-text-color);
-background-color: var(--avatar-background-color);
-font-size: 25px;
-outline:  2px solid var(--accent-background-color);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+  border-radius: 50%;
+  margin-left: 8px;
+  color: var(--secondary-text-color);
+  background-color: var(--avatar-background-color);
+  font-size: 25px;
+  outline: 2px solid var(--accent-background-color);
 
-${media.tablet} {
-width:44px;
-height:44px;
-margin-left: 14px;
+  ${media.tablet} {
+    width: 44px;
+    height: 44px;
+    margin-left: 14px;
   }
-`
+`;
 
 export const Box = styled.div`
   display: flex;
   width: 100%;
- justify-content: flex-end;
+  justify-content: flex-end;
   align-items: center;
 `;
 
 export const UserAvatar = styled.img`
-width:32px;
-height:32px;
-border-radius: 50%;
-margin-left: 8px;
-outline:  3px solid var(--accent-background-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-left: 8px;
+  outline: 3px solid var(--accent-background-color);
 
-${media.tablet} {
-width:44px;
-height:44px;
-margin-left: 14px;
+  ${media.tablet} {
+    width: 44px;
+    height: 44px;
+    margin-left: 14px;
   }
-`
+`;
 export const BrgMenu = styled.svg`
- width: 34px;
- height: 34px;
- stroke: #111111;
+  width: 34px;
+  height: 34px;
+  stroke: #111111;
 
- &:hover,
+  &:hover,
   :focus {
-   cursor: pointer;
+    cursor: pointer;
   }
 `;
 
 export const BrgBtn = styled.button`
-background: none;
-border: none;
+  background: none;
+  border: none;
 
-${media.desktop} {
-   display: none;
+  ${media.desktop} {
+    display: none;
   }
-`
+`;
 export const Title = styled.h2`
-
   text-align: center;
- 
+
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 32px;
@@ -95,16 +94,16 @@ export const Title = styled.h2`
   color: var(--primary-text-color);
 
   ${media.desktop} {
-   /* display: block; */
-   display: block;
-   position: absolute;
+    /* display: block; */
+    display: block;
+    position: absolute;
     left: 300px;
   }
 `;
 
 export const UserName = styled.h4`
   text-align: center;
- 
+
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 14px;
