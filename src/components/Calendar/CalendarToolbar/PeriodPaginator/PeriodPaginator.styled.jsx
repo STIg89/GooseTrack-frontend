@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const GroupPeriod = styled.div`
   display: flex;
   gap: 8px;
+  justify-content: space-between;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     width: 260px;
@@ -55,6 +57,7 @@ export const PeriodContainer = styled.div`
   flex-wrap: wrap;
   margin-bottom: 24px;
   gap: 18px;
+  width: 100%;
   @media screen and (min-width: 768px) {
     width: 100%;
     flex-wrap: no-wrap;
