@@ -2,9 +2,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 
-axios.defaults.baseURL = 'http://localhost:4000';
+// axios.defaults.baseURL = 'http://localhost:4000';
 
-// axios.defaults.baseURL = 'https://goosetrack-backend.onrender.com';
+axios.defaults.baseURL = 'https://goosetrack-backend.onrender.com';
 
 export const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -43,16 +43,19 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   }
 });
 
-export const loginWithToken = createAsyncThunk('auth/loginWithToken', async (token, thunkAPI) => {
-  try {
-    const { data } = await axios.get(`/api/auth/login/${token}`);
-    setAuthHeader(data.token);
-    return data;
-  } catch (error) {
-    Notify.failure('Please check your token and try again');
-    return thunkAPI.rejectWithValue(error.message);
+export const loginWithToken = createAsyncThunk(
+  'auth/loginWithToken',
+  async (token, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/api/auth/login/${token}`);
+      setAuthHeader(data.token);
+      return data;
+    } catch (error) {
+      Notify.failure('Please check your token and try again');
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
