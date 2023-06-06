@@ -17,17 +17,19 @@ import {
   // EditButton,
   // EditIcon,
 } from './TaskForm.styled';
+import { format } from 'date-fns';
+
 import Icons from 'images/sprite.svg';
 
+import { useDateValidation } from 'helpers/useDateValidation';
 import { addTask } from 'redux/tasks/operations';
 
 export const TaskForm = ({ onCloseModal }) => {
-  const [selectedOption, setSelectedOption] = useState('low');
-  const [title, setTitle] = useState('');
-  const [start, setStart] = useState('');
-  const [end, setEnd] = useState('');
-  const [priority, setPriority] = useState('low');
   const dispatch = useDispatch();
+  const [selectedOption, setSelectedOption] = useState('low');
+  const [priority, setPriority] = useState('low');
+  const validDate = useDateValidation();
+  const currentDay = format(validDate, 'yyyy-MM-dd');
 
   const handleOptionChange = event => {
     setSelectedOption(event.target.value);
@@ -40,20 +42,21 @@ export const TaskForm = ({ onCloseModal }) => {
     const start = e.target.elements.start.value;
     const end = e.target.elements.end.value;
 
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    const formatDate = `${year}-${month}-${day}`;
+    const startTime = start.split(':');
+    const endTime = end.split(':');
+
+    const startNumber = parseInt(startTime[0], 10);
+    const endNumber = parseInt(endTime[0], 10);
+
+    if (startNumber > endNumber) {
+      console.log('Не вірний час');
+      return;
+    }
 
     if (title.trim() === '' || start.trim() === '' || end.trim() === '') {
       console.log('Пусто');
       return;
     }
-
-    setTitle(title);
-    setStart(start);
-    setEnd(end);
 
     dispatch(
       addTask({
@@ -61,16 +64,11 @@ export const TaskForm = ({ onCloseModal }) => {
         start,
         end,
         priority,
-        date: formatDate,
+        date: currentDay,
         category: 'to-do',
       })
     );
   };
-
-  // console.log('title =', title);
-  // console.log('start =', start);
-  // console.log('end =', end);
-  // console.log('priority =', priority);
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -82,12 +80,12 @@ export const TaskForm = ({ onCloseModal }) => {
       <InputTimeContaiter>
         <InputContaiter>
           <Label>Start</Label>
-          <Input type="time" name="end" />
+          <Input type="time" name="start" />
         </InputContaiter>
 
         <InputContaiter>
           <Label>End</Label>
-          <Input type="time" name="start" />
+          <Input type="time" name="end" />
         </InputContaiter>
       </InputTimeContaiter>
 
