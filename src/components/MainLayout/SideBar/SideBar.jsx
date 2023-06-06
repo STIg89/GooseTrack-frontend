@@ -1,5 +1,4 @@
 import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
-import { CgClose } from 'react-icons/cg';
 import Icons from "../../../images/sprite.svg"
 import LogoImg from "../Header/test_image/GooseLogo.png"
 
@@ -17,6 +16,7 @@ import {
   StyledNavLink,
   StyledCalendarIcon,
   TitleSideBar,
+  CloseIcon
 } from './SideBar.styled';
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
@@ -32,7 +32,7 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
           </Logo>
 
           <CloseBtn onClick={onCloseClick}>
-            <CgClose />
+            <CloseIcon color='--primary-text-color'/>
           </CloseBtn>
 
         </LogoDiv>

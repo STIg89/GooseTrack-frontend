@@ -41,8 +41,7 @@ export const NoAvatar = styled.div`
 `;
 
 export const Box = styled.div`
-  display: flex;
-  width: 100%;
+  display: flex;  
   justify-content: flex-end;
   align-items: center;
 `;
@@ -63,7 +62,7 @@ export const UserAvatar = styled.img`
 export const BrgMenu = styled.svg`
   width: 34px;
   height: 34px;
-  stroke: #111111;
+  stroke: var(--primary-text-color);
 
   &:hover,
   :focus {
@@ -79,8 +78,7 @@ export const BrgBtn = styled.button`
     display: none;
   }
 `;
-export const Title = styled.h2`
-  text-align: center;
+export const Title = styled.h2`  
 
   font-family: 'Inter', sans-serif;
   font-weight: 700;
@@ -90,14 +88,9 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
   display: none;
 
-  padding: 14px;
-  color: var(--primary-text-color);
-
   ${media.desktop} {
-    /* display: block; */
     display: block;
-    position: absolute;
-    left: 300px;
+    /* margin-top: 42px; */
   }
 `;
 
@@ -118,3 +111,51 @@ export const UserName = styled.h4`
     margin-left: 14px;
   }
 `;
+
+export const TitleCalendar = styled.div`
+display: flex;
+text-align: left;
+`
+
+
+export const HeaderParagraph = styled.h2`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 8px;
+  display: none;
+  color: var(--primary-text-color);
+
+  ${media.desktop} {
+    font-size: 18px;
+    line-height: 18px;
+    display: block;
+  }
+`;
+
+export const Span = styled.span`
+color: var(--accent-text-color);
+`
+
+export const Div = styled.div`
+  display: none;
+
+  ${media.desktop} {
+    
+    display: flex;
+    flex-direction: column;
+  }
+`
+
+export const GooseImg = styled.img`
+  width: 64px;
+  height: 60px;
+  
+  visibility: hidden;
+
+  ${media.desktop} {
+    visibility: visible;
+  }
+`
