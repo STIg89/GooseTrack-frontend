@@ -69,7 +69,7 @@ export const LogoIcon = styled.img`
 export const LogoSvg = styled.svg`
   width: 80px;
   height: 22px;
-  fill: var(--accent-text-color);
+  fill: var(--accent-background-color);
 
   ${media.tablet} {
     width: 90px;
@@ -181,7 +181,7 @@ export const TitleSideBar = styled.h4`
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-  color: var(--not-active-item-sidebar-text-color);
+  color: var(--user-text-panel);
   margin-bottom: 24px;
   margin-top: 64px;
 
@@ -221,5 +221,5 @@ export const CloseBtn = styled.button`
 `;
 
 export const CloseIcon = styled(CgClose)`
- color: var(--primary-text-color);
-` 
+  color: var(--primary-text-color);
+`;
