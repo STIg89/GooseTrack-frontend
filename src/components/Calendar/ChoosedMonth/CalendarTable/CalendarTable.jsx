@@ -38,7 +38,7 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
       limit: 100,
     };
     dispatch(fetchAllTasks(reqObj));
-  }, []);
+  }, [currentDate, dispatch]);
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
