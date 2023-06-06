@@ -1,102 +1,137 @@
 import styled from 'styled-components';
-import { NavLink } from "react-router-dom";
-import { LuCalendarCheck2 } from "react-icons/lu";
+import { NavLink } from 'react-router-dom';
+import { LuCalendarCheck2 } from 'react-icons/lu';
 
 const media = {
-  tablet: "@media screen and (min-width: 768px)",
-  desktop: "@media screen and (min-width: 1440px)"
+  tablet: '@media screen and (min-width: 768px)',
+  desktop: '@media screen and (min-width: 1440px)',
 };
 
 export const SideBarContainer = styled.div`
-
-background-color: var(--active-button-period-type);
-position: absolute;
-top: 0;
-left: 0;
-width: 225px;
-justify-content: flex-start;
-height: 100%;
-/* visibility: hidden; */
-
-${media.tablet} {
-  width: 289px;
-}
-  
-${media.desktop} {
+z-index: 10;
+  background-color: var(--active-button-period-type);
   position: fixed;
-}
-`
-
-export const SideBarDiv = styled.div`
-margin-top: 24px;
-margin-left: 20px;
-margin-right: 20px;
-
-${media.tablet} {
-  margin-left: 32px;
-  margin-right: 32px;
-}
-`
-
-export const LogoDiv = styled.div`
-gap: 6px;
-display: flex;
-justify-content: space-between;
-`
-export const Logo = styled.div`
-display: flex;
-`
-export const GooseLogo = styled.img`
-width: 36px;
-height: 35px;
-
-${media.tablet} {
-    width: 60px;
-    height: 58px;
-  }
+  top: 0;
+  left: 0;
+  width: 225px;
+  justify-content: flex-start;
+  height: 100%;
 
   ${media.tablet} {
-    width: 71px;
-    height: 68px;
+    width: 289px;
   }
-`
 
-export const StyledCalendarIcon = styled(LuCalendarCheck2)`
-margin-right: 8px;
+  ${media.desktop} {
+    position: fixed;
+  }
+`;
+
+export const SideBarDiv = styled.div`
+  margin-top: 24px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  ${media.tablet} {
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+`;
+
+export const LogoDiv = styled.div`
+  gap: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const Logo = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+color: var(--calendar-digit-color);
+`
+export const LogoIcon = styled.img`
+width: 36px;
+   height: 35px;
+   margin-right: 6px;
 
 ${media.tablet} {
-  margin-right: 10px;
+  width: 60px;
+   height: 58px;
+}
+
+${media.desktop} {
+   width: 71px;
+   height: 68px;
+   margin-right: 10px;
+}
+`
+export const LogoSvg = styled.svg`
+  width: 80px;
+  height: 22px;
+  fill: var(--accent-text-color);
+
+  ${media.tablet} {
+  width: 90px;
+   height: 24px;
+}
+
+${media.desktop} {
+   width: 120px;
+}
+
+`
+export const StyledCalendarIcon = styled(LuCalendarCheck2)`
+  margin-right: 8px;
+
+  ${media.tablet} {
+    margin-right: 10px;
   }
-  `
+`;
 
 export const SideBarNav = styled.div`
-width: 100%;
-margin-top: 64px;
+  width: 100%;
+  margin-top: 64px;
 
-${media.tablet} {
+  ${media.tablet} {
     margin-top: 50px;
   }
-`
+`;
 
 export const SideBarLinks = styled.ul`
-height: 56px;
+  height: 56px;
 
-${media.tablet} {
+  ${media.tablet} {
     gap: 16px;
   }
-`
+`;
 
-export const UserIcon = styled.img`
+export const Svg = styled.svg`
 margin-right: 8px;
 
-${media.tablet} {
-  margin-right: 10px;
-  }
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--not-active-item-sidebar-text-color);
+
+  ${media.tablet} {
+   margin-right: 10px;
+}
 `
 
-export const SideBarLi = styled.li`
+export const StyledNavLink = styled(NavLink)`
+  display: flex;
+  color: var(--not-active-item-sidebar-text-color);
+  opacity: 0.5;
+  align-items: center;
+  margin-right: 0;
 
-height: 40px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+
+  height: 40px;
 padding-left: 12px;
 align-items: center;
 justify-content: center;
@@ -104,88 +139,91 @@ background-color: aliceblue;
 margin-bottom: 16px;
 border-radius: 8px;
 
-display: flex;
-justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 
->:not(:last-child) {
+  > :not(:last-child) {
     margin-bottom: 18px;
   }
+
+&.active,
+:hover,
+:focus {
+  fill: var(--accent-text-color);
+  color: var(--accent-text-color);
+  stroke: var(--accent-text-color);
+  
+  &:hover ${Svg},
+  &:focus ${Svg},
+  &.active ${Svg} {
+    stroke: var(--accent-text-color); /* change the stroke color */
+  }
+}
 
 ${media.tablet} {
     height: 56px;
     padding-left: 20px;
   }
-`
-
-export const StyledNavLink = styled(NavLink)`
-  display: flex;
-  color: var(--not-active-item-sidebar-text-color);
-opacity: 0.5;
-  align-items: center;
-  margin-right: 0;
-
-  font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 16px;
-line-height: 19px;
-
-`
+`;
 
 export const BrgMenu = styled.svg`
- width: 34px;
- height: 34px;
- stroke: #111111;
+  width: 34px;
+  height: 34px;
+  stroke: #111111;
 
- &:hover,
+  &:hover,
   :focus {
-   cursor: pointer;
+    cursor: pointer;
   }
 `;
 
 export const TitleSideBar = styled.h4`
   font-family: 'Inter';
-font-style: normal;
-font-weight: 600;
-font-size: 14px;
-line-height: 17px;
-color: var(--not-active-item-sidebar-text-color);
-opacity: 0.5;
-margin-bottom: 24px;
-margin-top: 64px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--not-active-item-sidebar-text-color);
+  opacity: 0.5;
+  margin-bottom: 24px;
+  margin-top: 64px;
 
-${media.tablet} {
-margin-top: 50px;
+  ${media.tablet} {
+    margin-top: 50px;
   }
 
-${media.desktop} {
-  margin-bottom: 32px;
-margin-top: 32px;
+  ${media.desktop} {
+    margin-bottom: 32px;
+    margin-top: 32px;
   }
-`
+`;
 export const BrgBtn = styled.button`
-background: none;
-border: none;
+  background: none;
+  border: none;
 
-${media.desktop} {
-   display: none;
+  ${media.desktop} {
+    display: none;
   }
-`
+`;
 
 export const GooseLogoText = styled.img`
-
-font-size: 16px;
-line-height: 22px;
-color: var(--accent-text-color);
-`
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--accent-text-color);
+`;
 export const CloseBtn = styled.button`
-height: auto;
-height: 17px;
 display: flex;
+font-size: 20px;
 align-items: center;
 text-align: center;
 border: none;
 background: none;
     cursor: pointer;
-`
 
+    ${media.tablet} {
+   font-size: 30px;
+  }
+    ${media.desktop} {
+   display: none;
+  }
+`;

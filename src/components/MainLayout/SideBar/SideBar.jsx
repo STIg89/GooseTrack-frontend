@@ -1,7 +1,8 @@
 import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
 import { CgClose } from 'react-icons/cg';
-import LogoImg from '../Header/test_image/GOOSE_LOGO.svg';
-import UserCheckIcon from '../Header/test_image/user-check-01.svg';
+import Icons from "../../../images/sprite.svg"
+import LogoImg from "../Header/test_image/GooseLogo.png"
+
 import {
   CloseBtn,
   SideBarDiv,
@@ -9,45 +10,50 @@ import {
   LogoDiv,
   SideBarNav,
   SideBarLinks,
-  SideBarLi,
   Logo,
-  GooseLogo,
-  UserIcon,
+  LogoIcon,
+  LogoSvg,
+  Svg,
   StyledNavLink,
   StyledCalendarIcon,
   TitleSideBar,
 } from './SideBar.styled';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onCloseClick }) => {
   return (
-    <SideBarContainer>
+    <SideBarContainer style={{ display: isOpen ? 'block' : 'none' }}>
       <SideBarDiv>
         <LogoDiv>
           <Logo>
-            <GooseLogo src={LogoImg} alt="" />
-            {/* <GooseLogoText src={Logo_text} alt="" /> */}
+            <LogoIcon src={LogoImg} alt='logo'/>
+            <LogoSvg>
+              <use href={`${Icons}#icon-logo-text`}></use>
+            </LogoSvg>
           </Logo>
 
-          <CloseBtn>
+          <CloseBtn onClick={onCloseClick}>
             <CgClose />
           </CloseBtn>
+
         </LogoDiv>
         <SideBarNav>
           <TitleSideBar>User Panel</TitleSideBar>
           <SideBarLinks>
-            <SideBarLi>
-              <StyledNavLink>
-                <UserIcon src={UserCheckIcon} alt="icon" />
+            <li>
+              <StyledNavLink to="account" >
+                <Svg>
+                  <use href={`${Icons}#icon-user-check`}></use>
+                </Svg>
                 My account
               </StyledNavLink>
-            </SideBarLi>
+            </li>
 
-            <SideBarLi>
-              <StyledNavLink>
+            <li>
+              <StyledNavLink to="calendar">
                 <StyledCalendarIcon />
                 Calendar
               </StyledNavLink>
-            </SideBarLi>
+            </li>
           </SideBarLinks>
         </SideBarNav>
       </SideBarDiv>

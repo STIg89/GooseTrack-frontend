@@ -1,12 +1,24 @@
 import { Outlet } from 'react-router';
-import ChoosedDay from 'components/Calendar/ChoosedDay/ChoosedDay';
+import { useState } from 'react';
+
+import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar';
+import ChoosedMonth from 'components/Calendar/ChoosedMonth/ChoosedMonth';
 
 const CalendarPage = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(new Date());
   return (
     <div>
-      <div>
-        <ChoosedDay />
-      </div>
+      <CalendarToolbar
+        setCurrentDate={setCurrentDate}
+        currentDate={currentDate}
+      />
+      <ChoosedMonth
+        setCurrentDate={setCurrentDate}
+        currentDate={currentDate}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
 
       <Outlet />
     </div>

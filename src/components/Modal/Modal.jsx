@@ -1,7 +1,10 @@
+import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 import { ModalStyled, CloseIcon, Overlay } from './Modal.styled';
 
 import Icons from 'images/sprite.svg';
+
+const modalRoot = document.getElementById('modal-root');
 
 const Modal = ({ children, onCloseModal }) => {
   useEffect(() => {
@@ -21,7 +24,7 @@ const Modal = ({ children, onCloseModal }) => {
     onCloseModal();
   };
 
-  return (
+  return createPortal(
     <div style={{}}>
       <Overlay onClick={handleOverlayClick}>
         <ModalStyled>
@@ -31,7 +34,8 @@ const Modal = ({ children, onCloseModal }) => {
           {children}
         </ModalStyled>
       </Overlay>
-    </div>
+    </div>,
+    modalRoot
   );
 };
 
