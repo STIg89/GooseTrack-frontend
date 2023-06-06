@@ -54,7 +54,7 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
           key={nanoid()}
           onClick={() => {
             onDateClick(initDate);
-            navigate(`/${parseDate(initDate)}`);
+            navigate(`day/${parseDate(initDate)}`);
           }}
         >
           <Number className="number">{formattedDate}</Number>
