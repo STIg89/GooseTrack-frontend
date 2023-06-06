@@ -4,7 +4,7 @@ import PeriodPaginator from 'components/Calendar/CalendarToolbar/PeriodPaginator
 import { PeriodContainer } from 'components/Calendar/CalendarToolbar/PeriodPaginator/PeriodPaginator.styled';
 import PeriodTypeSelect from 'components/Calendar/CalendarToolbar/PeriodTypeSelect/PeriodTypeSelect';
 
-const CalendarToolbar = ({ setCurrentDate, currentDate }) => {
+const CalendarToolbar = ({ setCurrentDate, currentDate, selectedDate }) => {
   const nextMonth = () => {
     setCurrentDate(addMonths(currentDate, 1));
   };
@@ -21,7 +21,7 @@ const CalendarToolbar = ({ setCurrentDate, currentDate }) => {
           currentDate={currentDate}
           setCurrentDate={setCurrentDate}
         />
-        <PeriodTypeSelect />
+        <PeriodTypeSelect selectedDate={selectedDate} />
       </PeriodContainer>
     </>
   );
