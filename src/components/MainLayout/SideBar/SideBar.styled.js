@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { LuCalendarCheck2 } from 'react-icons/lu';
+import { CgClose } from 'react-icons/cg';
 
 const media = {
   tablet: '@media screen and (min-width: 768px)',
@@ -68,7 +69,7 @@ export const LogoIcon = styled.img`
 export const LogoSvg = styled.svg`
   width: 80px;
   height: 22px;
-  fill: var(--accent-background-color);
+  fill: var(--accent-text-color);
 
   ${media.tablet} {
     width: 90px;
@@ -120,7 +121,6 @@ export const Svg = styled.svg`
 export const StyledNavLink = styled(NavLink)`
   display: flex;
   color: var(--not-active-item-sidebar-text-color);
-  opacity: 0.5;
   align-items: center;
   margin-right: 0;
 
@@ -182,7 +182,6 @@ export const TitleSideBar = styled.h4`
   font-size: 14px;
   line-height: 17px;
   color: var(--not-active-item-sidebar-text-color);
-  opacity: 0.5;
   margin-bottom: 24px;
   margin-top: 64px;
 
@@ -204,11 +203,6 @@ export const BrgBtn = styled.button`
   }
 `;
 
-export const GooseLogoText = styled.img`
-  font-size: 16px;
-  line-height: 22px;
-  color: var(--accent-text-color);
-`;
 export const CloseBtn = styled.button`
   display: flex;
   font-size: 20px;
@@ -225,3 +219,7 @@ export const CloseBtn = styled.button`
     display: none;
   }
 `;
+
+export const CloseIcon = styled(CgClose)`
+ color: var(--primary-text-color);
+` 

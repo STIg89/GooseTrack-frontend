@@ -63,7 +63,7 @@ export const UserAvatar = styled.img`
 export const BrgMenu = styled.svg`
   width: 34px;
   height: 34px;
-  stroke: #111111;
+  stroke: var(--primary-text-color);
 
   &:hover,
   :focus {
