@@ -4,13 +4,17 @@ import {
   TypesTabsContainer,
   TabsFlex,
 } from '../PeriodTypeSelect/PeriodTypesSelect.styled';
+import { parseDate } from 'utils/helpers/parseDate';
 
-const PeriodTypeSelect = () => {
+const PeriodTypeSelect = ({ selectedDate }) => {
+  const parsedDate = parseDate(selectedDate);
   return (
     <TabsFlex>
       <TypesTabsContainer>
-        <TypesTabs to="month/:currentDate">Month</TypesTabs>
-        <TypesTabs to="day/:currentDay">Day</TypesTabs>
+        <TypesTabs to="/calendar" end>
+          Month
+        </TypesTabs>
+        <TypesTabs to={`day/${parsedDate}`}>Day</TypesTabs>
       </TypesTabsContainer>
     </TabsFlex>
   );

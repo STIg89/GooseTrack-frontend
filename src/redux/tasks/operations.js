@@ -55,3 +55,18 @@ export const addTask = createAsyncThunk(
     }
   }
 );
+
+export const fetchAllTasks = createAsyncThunk(
+  'tasks/fetchAllTasks',
+  async (reqObj, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `api/tasks?month=${reqObj.month}&year=${reqObj.year}&page=1&limit=100`
+      );
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

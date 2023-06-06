@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export const TypesTabsContainer = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ export const TypesTabsContainer = styled.div`
   border-radius: 8px;
   overflow: hidden;
 `;
-export const TypesTabs = styled(Link)`
+export const TypesTabs = styled(NavLink)`
   color: var(--color-button-period-type);
   padding: 8px 16px;
   background-color: var(--button-period-type);

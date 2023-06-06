@@ -12,6 +12,7 @@ const CalendarPage = () => {
       <CalendarToolbar
         setCurrentDate={setCurrentDate}
         currentDate={currentDate}
+        selectedDate={selectedDate}
       />
       <ChoosedMonth
         setCurrentDate={setCurrentDate}

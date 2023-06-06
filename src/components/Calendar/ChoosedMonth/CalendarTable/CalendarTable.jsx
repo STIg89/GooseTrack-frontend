@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   format,
   startOfWeek,
@@ -11,6 +11,11 @@ import {
 import { ColumnCell, Number, Row, Calendar } from './CalendarTable.styled';
 import { nanoid } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
+import { parseDate } from 'utils/helpers/parseDate';
+
+import MonthTaskList from '../MonthTaskList/MonthTaskList';
+import { useDispatch } from 'react-redux';
+import { fetchAllTasks } from 'redux/tasks/operations';
 
 const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
   const monthStart = startOfMonth(currentDate);
@@ -23,24 +28,21 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
   let day = startDate;
   let formattedDate = '';
   const navigate = useNavigate();
-
-  const parseDate = date => {
-    const parsedYear = date.getFullYear().toString();
-    const parsedMonth =
-      date.getMonth() < 9
-        ? `0${date.getMonth() + 1}`
-        : `${date.getMonth() + 1}`;
-    const parsedDay =
-      date.getDate() < 10 ? `0${date.getDate()}` : `${date.getDate()}`;
-    const parsedDate = `${parsedYear}-${parsedMonth}-${parsedDay}`;
-    return parsedDate;
-  };
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const reqObj = {
+      month: currentDate.getMonth() + 1,
+      day: currentDate.getDate(),
+      year: currentDate.getFullYear(),
+      page: 1,
+      limit: 100,
+    };
+    dispatch(fetchAllTasks(reqObj));
+  }, []);
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
       const initDate = day;
-
-      //new Date(getYear(day), getMonth(day), getDay(day))
       formattedDate = format(day, dateFormat);
       days.push(
         <ColumnCell
@@ -58,6 +60,7 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
           }}
         >
           <Number className="number">{formattedDate}</Number>
+          <MonthTaskList date={initDate} />
         </ColumnCell>
       );
       day = addDays(day, 1);
