@@ -1,7 +1,7 @@
 import { Day, DayList } from './DayCalendarHead.Styled';
 import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { fetchDayTasks } from 'redux/tasks/operations';
 import { DayWrap } from './DayCalendarHead.Styled';
