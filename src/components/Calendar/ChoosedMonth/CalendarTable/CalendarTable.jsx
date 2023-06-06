@@ -14,10 +14,13 @@ import { useNavigate } from 'react-router-dom';
 import { parseDate } from 'utils/helpers/parseDate';
 
 import MonthTaskList from '../MonthTaskList/MonthTaskList';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing, selectIsLoggedIn } from 'redux/auth/selectors';
 import { fetchAllTasks } from 'redux/tasks/operations';
 
 const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
@@ -30,15 +33,19 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
+    if (isRefreshing === true || isLoggedIn === false) {
+      return;
+    }
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
     const reqObj = {
-      month: currentDate.getMonth() + 1,
-      day: currentDate.getDate(),
-      year: currentDate.getFullYear(),
+      month,
+      year,
       page: 1,
       limit: 100,
     };
     dispatch(fetchAllTasks(reqObj));
-  }, [currentDate, dispatch]);
+  }, [currentDate, dispatch, isLoggedIn, isRefreshing]);
 
   while (day <= endDate) {
     for (let i = 0; i < 7; i++) {
