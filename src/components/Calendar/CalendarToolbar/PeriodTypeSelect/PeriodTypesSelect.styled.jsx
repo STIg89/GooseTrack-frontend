@@ -26,4 +26,17 @@ export const TypesTabs = styled(Link)`
   &.active {
     background-color: var(--active-button-period-type);
   }
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.12;
+  }
+`;
+export const TabsFlex = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
 `;

@@ -1,10 +1,11 @@
 import React from 'react';
 import sprite from 'images/sprite.svg';
-import { addMonths, subMonths } from 'date-fns';
+import { addMonths, subMonths, format } from 'date-fns';
 import {
   PeriodView,
   PeriodTabs,
   PeriodTabsContainer,
+  GroupPeriod,
 } from './PeriodPaginator.styled';
 
 const PeriodPaginator = ({ setCurrentDate, currentDate }) => {
@@ -14,12 +15,11 @@ const PeriodPaginator = ({ setCurrentDate, currentDate }) => {
   const prevMonth = () => {
     setCurrentDate(subMonths(currentDate, 1));
   };
-  // const monthFormat = 'MMMM';
-  // console.log(currentDate);
-  // const formattedMonth = format(currentDate, monthFormat);
+  const monthFormat = 'MMMM y';
+  const formattedMonth = format(currentDate, monthFormat);
   return (
-    <>
-      <PeriodView>{currentDate}</PeriodView>
+    <GroupPeriod>
+      <PeriodView>{formattedMonth}</PeriodView>
       <PeriodTabsContainer>
         <PeriodTabs onClick={prevMonth}>
           <svg width="16" height="16">
@@ -32,7 +32,7 @@ const PeriodPaginator = ({ setCurrentDate, currentDate }) => {
           </svg>
         </PeriodTabs>
       </PeriodTabsContainer>
-    </>
+    </GroupPeriod>
   );
 };
 export default PeriodPaginator;

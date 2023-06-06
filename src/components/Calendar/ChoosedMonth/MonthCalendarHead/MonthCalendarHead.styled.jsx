@@ -13,6 +13,9 @@ export const Column = styled.div`
   line-height: 1.12;
   padding: 16px;
   background-color: var(--primary-background-color);
+  @media screen and (min-width: 768px) {
+    padding: 14px;
+  }
 `;
 
 export const DaysRow = styled.div`
@@ -25,4 +28,10 @@ export const DaysRow = styled.div`
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
   margin-bottom: 14px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 18px;
+  }
+  @media screen and (min-width: 1100px) {
+    margin-bottom: 15px;
+  }
 `;
