@@ -11,16 +11,13 @@ import {
 import { ColumnCell, Number, Row, Calendar } from './CalendarTable.styled';
 import { nanoid } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
-import { parseDate } from 'utils/helpers/parseDate';
-
+import { parseDate } from 'helpers/parseDate';
 import MonthTaskList from '../MonthTaskList/MonthTaskList';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsRefreshing, selectIsLoggedIn } from 'redux/auth/selectors';
 import { fetchAllTasks } from 'redux/tasks/operations';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 
 const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
-  const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
@@ -32,10 +29,13 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
   let formattedDate = '';
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
-    if (isRefreshing === true || isLoggedIn === false) {
+    if (isLoggedIn === false || isRefreshing === true) {
       return;
     }
+
     const month = currentDate.getMonth() + 1;
     const year = currentDate.getFullYear();
     const reqObj = {

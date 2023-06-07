@@ -8,7 +8,7 @@ import {
   GroupPeriod,
 } from './PeriodPaginator.styled';
 
-const PeriodPaginator = ({ setCurrentDate, currentDate }) => {
+const PeriodPaginator = ({ setCurrentDate, currentDate, selectedDate }) => {
   const nextMonth = () => {
     setCurrentDate(addMonths(currentDate, 1));
   };
