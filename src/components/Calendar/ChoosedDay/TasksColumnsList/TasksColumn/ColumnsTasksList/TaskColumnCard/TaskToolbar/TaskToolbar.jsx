@@ -8,6 +8,8 @@ import {
   ToolBarItem,
   Wraper,
 } from './TaskToolbar.Styled';
+import TaskModal from '../../../TaskModal/TaskModal';
+
 import { deleteTask, patchTask } from 'redux/tasks/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
@@ -20,11 +22,15 @@ const TaskToolBar = ({ id }) => {
 
   const category = ['to-do', 'in-progress', 'done'];
 
+  const [showEditBtn, setShowEditBtn] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const handleClick = () => {
     setIsClicked(true);
   };
+
+  const handleToggleModal = () => setIsOpened(!isOpened);
 
   async function handleOptionChange(event) {
     await setSelectedOption(event.target.value);
@@ -73,7 +79,13 @@ const TaskToolBar = ({ id }) => {
         </ChouseCat>
       </BtnArrow>
 
-      <BtnStyled type="button" onClick={() => console.log('редактируем')}>
+      <BtnStyled
+        type="button"
+        onClick={() => {
+          handleToggleModal();
+          setShowEditBtn(true);
+        }}
+      >
         <ToolBarItem>
           <use href={`${Icons}#task-edit-sf`}></use>
         </ToolBarItem>
@@ -89,6 +101,14 @@ const TaskToolBar = ({ id }) => {
           <use href={`${Icons}#task-trash-sf`}></use>
         </ToolBarItem>
       </BtnStyled>
+      {isOpened && (
+        <TaskModal
+          onCloseModal={handleToggleModal}
+          showEditBtn={showEditBtn}
+          id={id}
+          category={editTask.category}
+        />
+      )}
     </Wraper>
   );
 };
