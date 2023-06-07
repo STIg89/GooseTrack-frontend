@@ -21,6 +21,7 @@ import {
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
 
+
   return (
     <SideBarContainer isOpen={isOpen}>
       <SideBarDiv>
@@ -41,7 +42,7 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
           <TitleSideBar>User Panel</TitleSideBar>
           <SideBarLinks>
             <li>
-              <StyledNavLink to="account" >
+              <StyledNavLink to="account" onClick={onCloseClick}>
                 <Svg>
                   <use href={`${Icons}#icon-user-check`}></use>
                 </Svg>
@@ -50,7 +51,7 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
             </li>
 
             <li>
-              <StyledNavLink to="calendar">
+              <StyledNavLink to="calendar" onClick={onCloseClick}>
                 <StyledCalendarIcon />
                 Calendar
               </StyledNavLink>
