@@ -3,6 +3,7 @@ import { selectUser } from 'redux/auth/selectors';
 import { useLocation, useParams } from 'react-router-dom';
 import HeaderImg from '../Header/test_image/GooseHeader.png';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
+import LanguageFlags from './LanguageFlags/LanguageFlags';
 import { ThemeToggler } from '../../../utils/theme/theme';
 import {
   Title,
@@ -21,6 +22,28 @@ import {
 } from './Header.styled';
 import Icons from 'images/sprite.svg';
 
+// import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
+// import LanguageDetector from 'i18next-browser-languagedetector';
+// import HttpApi from 'i18next-http-backend';
+// // import 'flag-icon-css/css/flag-icon.min.css';
+
+// i18n
+//   .use(initReactI18next)
+//   .use(LanguageDetector) // passes i18n down to react-i18next
+//   .use(HttpApi)
+//   .init({
+//     supportedLngs: ['en', 'ua'],
+//     fallbackLng: 'en',
+//     detection: {
+//       order: ['cookie', 'localStorage', 'htmlTag', 'path', 'subdomain'],
+//       caches: ['cookie'],
+//     },
+//     backend: {
+//       loadPath: 'assets/locales/{{lng}}/translation.json',
+//     },
+//   });
+
 const Header = ({ isOpen, onOpenClick }) => {
   const { name } = useSelector(selectUser);
   const firstLetter = name?.charAt(0).toUpperCase();
@@ -30,11 +53,13 @@ const Header = ({ isOpen, onOpenClick }) => {
 
   const location = useLocation();
   let { currentDay } = useParams();
+  const { t } = useTranslation();
 
   console.log(location.pathname);
 
   return (
     <Container>
+      <h2>{t('welcome')}</h2>
       {!isOpen && (
         <BrgBtn onClick={onOpenClick}>
           <BrgMenu>
@@ -61,6 +86,7 @@ const Header = ({ isOpen, onOpenClick }) => {
         )}
       </TitleCalendar>
       <Box>
+        <LanguageFlags />
         <FeedbackBtn />
         <ThemeToggler />
         <UserName>{name}</UserName>
