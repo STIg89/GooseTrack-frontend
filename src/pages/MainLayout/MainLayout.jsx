@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Notify } from 'notiflix';
 import { refreshUser } from 'redux/auth/operations';
 import Header from 'components/MainLayout/Header/Header';
@@ -12,6 +12,7 @@ const MainLayout = () => {
 
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     try {
       dispatch(refreshUser());
@@ -21,10 +22,30 @@ const MainLayout = () => {
   }, [dispatch]);
 
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1440)
+  let sidebarRef = useRef();
 
   const handleSidebarOpen = () => {
+    if (window.innerWidth >= 1440) {
+      return;
+    }
     setSidebarOpen(!sidebarOpen);
-  };
+  }
+
+  useEffect(() => {
+    const handleSidebarClickOutside = (e) => {
+      if (window.innerWidth < 1440) {
+        if (!sidebarRef.current.contains(e.target)) {
+          setSidebarOpen(false);
+        }
+      }
+    }
+
+    document.addEventListener("mousedown", handleSidebarClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleSidebarClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,13 +62,12 @@ const MainLayout = () => {
   return (
     <MainContainer>
       <Header isOpen={sidebarOpen} onOpenClick={handleSidebarOpen} />
-
-      {sidebarOpen &&
-        <Sidebar isOpen={sidebarOpen} onCloseClick={handleSidebarOpen} />
-      }
+      <div ref={sidebarRef}>
+        <Sidebar isOpen={sidebarOpen} onCloseClick={handleSidebarOpen} />      
+      </div>
       <Outlet />
     </MainContainer>
   );
 };
 
-export default MainLayout;
+export default MainLayout

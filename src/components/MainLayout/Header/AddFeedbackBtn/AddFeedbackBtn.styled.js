@@ -6,7 +6,7 @@ const media = {
 };
 
 export const StyledBtn = styled.button`
- padding: 8px 20px;
+ /* padding: 8px 20px; */
 gap: 10px;
 
 width: 97px;
@@ -31,7 +31,7 @@ font-family: 'Inter', sans-serif;
   }
 
   ${media.tablet} {
-    margin-right: 24px;
+    /* margin-right: 24px; */
   }
 `;
 

@@ -23,7 +23,7 @@ import { useTranslation } from 'react-i18next';
 const Sidebar = ({ isOpen, onCloseClick }) => {
   const { t } = useTranslation();
   return (
-    <SideBarContainer style={{ display: isOpen ? 'block' : 'none' }}>
+    <SideBarContainer isOpen={isOpen}>
       <SideBarDiv>
         <LogoDiv>
           <Logo>
@@ -41,7 +41,7 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
           <TitleSideBar>{t('user_panel')}</TitleSideBar>
           <SideBarLinks>
             <li>
-              <StyledNavLink to="account">
+              <StyledNavLink to="account" onClick={onCloseClick}>
                 <Svg>
                   <use href={`${Icons}#icon-user-check`}></use>
                 </Svg>
@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
             </li>
 
             <li>
-              <StyledNavLink to="calendar">
+              <StyledNavLink to="calendar" onClick={onCloseClick}>
                 <StyledCalendarIcon />
                 {t('calendar')}
               </StyledNavLink>
