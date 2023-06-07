@@ -18,6 +18,6 @@ export const MainContainer = styled.div`
 
   ${media.desktop} {
     padding-top: 40px;
-    padding-left: 32px;
+    padding-left: 320px;
   }
 `;
