@@ -101,7 +101,7 @@ export const AvatarBtn = styled.svg`
   padding: 2px;
   border-radius: 50%;
   background-color: var(--accent-background-color);
-  stroke: var(--primary-background-color);
+  stroke: var(--btn-text-color);
 
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -141,7 +141,7 @@ export const User = styled.p`
   font-weight: 600;
   font-size: 12px;
   line-height: 1.16;
-  color: var(--calendar-digit-color);
+  color: var(--label-text);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -170,7 +170,7 @@ export const StyledLabel = styled.label`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
-  color: var(--primary-text-color);
+  color: var(--label-text);
   margin: 0;
   padding: 0;
 
@@ -306,7 +306,7 @@ export const SubmitBtn = styled.button`
   font-size: 14px;
   line-height: 1.3;
   background: var(--accent-background-color);
-  color: var(--primary-background-color);
+  color: var(--btn-text-color);
   cursor: pointer;
   :hover,
   :focus {
