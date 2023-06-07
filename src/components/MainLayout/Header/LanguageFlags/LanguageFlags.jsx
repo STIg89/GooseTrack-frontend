@@ -82,9 +82,8 @@ export default function LanguageFlags() {
         }}
       >
         {languages.map(({ code, name, country_code }) => (
-          <Tooltip title={name} arrow placement="left">
+          <Tooltip title={name} key={code} arrow placement="left">
             <MenuItem
-              key={code}
               style={{
                 backgroundColor:
                   currentLanguageCode === code ? '#D8D8D8' : '#F8F8F8',
