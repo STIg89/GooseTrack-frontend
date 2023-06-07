@@ -9,7 +9,8 @@ import {
   Wraper,
 } from './TaskToolbar.Styled';
 import TaskModal from '../../../TaskModal/TaskModal';
-import { deleteTask, patchTask, fetchDayTasks } from 'redux/tasks/operations';
+
+import { deleteTask, fetchDayTasks, patchTask } from 'redux/tasks/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import { useState } from 'react';
@@ -19,7 +20,9 @@ const TaskToolBar = ({ id }) => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
   let editTask = tasks.find(task => task._id === id);
+
   const category = ['to-do', 'in-progress', 'done'];
+
   const [showEditBtn, setShowEditBtn] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -107,7 +110,6 @@ const TaskToolBar = ({ id }) => {
           <use href={`${Icons}#task-edit-sf`}></use>
         </ToolBarItem>
       </BtnStyled>
-
       <BtnStyled type="button" onClick={() => onDeleteHendler(id)}>
         <ToolBarItem>
           <use href={`${Icons}#task-trash-sf`}></use>
