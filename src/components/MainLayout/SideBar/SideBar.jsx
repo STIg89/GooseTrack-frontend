@@ -21,7 +21,6 @@ import {
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
 
-
   return (
     <SideBarContainer isOpen={isOpen}>
       <SideBarDiv>

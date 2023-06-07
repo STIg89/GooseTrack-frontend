@@ -90,7 +90,7 @@ export const LogoIcon = styled.img`
 export const LogoSvg = styled.svg`
   width: 80px;
   height: 22px;
-  fill: var(--accent-background-color);
+  fill: var(--accent-text-color);
 
   ${media.tablet} {
     width: 90px;
