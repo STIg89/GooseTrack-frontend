@@ -4,7 +4,7 @@ import {
   TypesTabsContainer,
   TabsFlex,
 } from '../PeriodTypeSelect/PeriodTypesSelect.styled';
-import { parseDate } from 'utils/helpers/parseDate';
+import { parseDate } from 'helpers/parseDate';
 
 const PeriodTypeSelect = ({ selectedDate }) => {
   const parsedDate = parseDate(selectedDate);

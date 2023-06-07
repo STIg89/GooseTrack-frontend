@@ -1,21 +1,27 @@
-import { BiMoon } from 'react-icons/bi';
-// import { MdOutlineWbSunny } from 'react-icons/md';
-import { Toggler } from './ThemeToggler.styled';
+import { useTheme } from 'hooks/useTheme';
+import Icons from 'images/sprite.svg';
+import { Button, Moon, Sun } from './ThemeToggler.styled';
 
-const ThemeToggler = () => {
-    return (
-        <>
-            {
-                <Toggler>
-                    <BiMoon />
-                </Toggler>
-            }
-
-            {/* <Toggler>
-                <MdOutlineWbSunny />
-            </Toggler> */}
-        </>
-    );
+export const ThemeToggler = () => {
+  const { theme, setTheme } = useTheme();
+  const handleTheme = evt => {
+    if (theme === 'dark') {
+      setTheme('light');
+    } else {
+      setTheme('dark');
+    }
+  };
+  return (
+    <Button type="button" onClick={handleTheme}>
+      {theme === 'light' ? (
+        <Moon>
+          <use href={`${Icons}#profile-moon-f`}></use>
+        </Moon>
+      ) : (
+        <Sun>
+          <use href={`${Icons}#profile-sun-f`}></use>
+        </Sun>
+      )}
+    </Button>
+  );
 };
-
-export default ThemeToggler;
