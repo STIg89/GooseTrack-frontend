@@ -3,5 +3,10 @@
   "language": "Language",
   "user_panel": "User Panel",
   "my_account": "My account",
-  "calendar": "Calendar"
+  "calendar": "Calendar",
+  "user": "User",
+  "user_name": "User Name",
+  "birthday": "Birthday",
+  "phone": "Phone"
+  
 }

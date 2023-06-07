@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { updateUser, uploadAvatar } from 'redux/auth/operations';
+import { useTranslation } from 'react-i18next';
 
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
@@ -47,6 +48,8 @@ export const UserForm = () => {
   const user = useSelector(selectUser);
   const [avatarUrl, setAvatarUrl] = useState('');
   const [username, setUsername] = useState('');
+
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -133,14 +136,14 @@ export const UserForm = () => {
 
             {/* User data */}
             <UserTitle>{user.name}</UserTitle>
-            <User>User</User>
+            <User>{t('user')}</User>
 
             {/* Inputs */}
             <Inputs>
               {/* Name */}
               <InputWrapper>
                 <StyledLabel htmlFor="name">
-                  User Name
+                  {t('user_name')}
                   <StyledInput
                     type="text"
                     name="name"
@@ -156,7 +159,7 @@ export const UserForm = () => {
 
               {/* Birthday */}
               <StyledLabel>
-                Birthday
+                {t('birthday')}
                 <DatePickerWrapper>
                   <StyledDatePicker
                     name="birthday"
@@ -176,7 +179,7 @@ export const UserForm = () => {
               {/* Email */}
               <InputWrapper>
                 <StyledLabel>
-                  Email
+                  Еmail
                   <StyledInput
                     type="email"
                     name="email"
@@ -193,7 +196,7 @@ export const UserForm = () => {
               {/* Phone */}
               <InputWrapper>
                 <StyledLabel>
-                  Phone
+                  {t('phone')}
                   <StyledInput
                     type="tel"
                     name="phone"
