@@ -10,10 +10,11 @@ import {
 } from './TaskToolbar.Styled';
 import TaskModal from '../../../TaskModal/TaskModal';
 
-import { deleteTask, patchTask } from 'redux/tasks/operations';
+import { deleteTask, fetchDayTasks, patchTask } from 'redux/tasks/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const TaskToolBar = ({ id }) => {
   const dispatch = useDispatch();
@@ -32,14 +33,33 @@ const TaskToolBar = ({ id }) => {
 
   const handleToggleModal = () => setIsOpened(!isOpened);
 
-  async function handleOptionChange(event) {
-    await setSelectedOption(event.target.value);
+  function handleOptionChange(event) {
+    setSelectedOption(event.target.value);
     editTask = { ...editTask, category: event.target.value };
 
     dispatch(patchTask({ id: id, task: { category: editTask.category } }));
     setIsClicked(false);
   }
+  let { currentDay } = useParams();
 
+  const onDeleteHendler = () => {
+    dispatch(deleteTask(id));
+
+    const date = new Date(currentDay);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    const reqObj = {
+      month,
+      day,
+      year,
+      page: 1,
+      limit: 100,
+    };
+
+    dispatch(fetchDayTasks(reqObj));
+  };
   return (
     <Wraper>
       <BtnArrow>
@@ -90,13 +110,7 @@ const TaskToolBar = ({ id }) => {
           <use href={`${Icons}#task-edit-sf`}></use>
         </ToolBarItem>
       </BtnStyled>
-      <BtnStyled
-        type="button"
-        onClick={() => {
-          dispatch(deleteTask(id));
-          console.log('del task with id', id);
-        }}
-      >
+      <BtnStyled type="button" onClick={() => onDeleteHendler(id)}>
         <ToolBarItem>
           <use href={`${Icons}#task-trash-sf`}></use>
         </ToolBarItem>
