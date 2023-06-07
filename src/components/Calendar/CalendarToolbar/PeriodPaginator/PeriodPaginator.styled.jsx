@@ -37,7 +37,7 @@ export const PeriodTabs = styled.button`
   color: var(--calendar-digit-color);
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
-
+  cursor: pointer;
   background-color: var(--primary-background-color);
   border: 1px solid rgba(220, 227, 229, 0.5);
   & > svg {

@@ -6,6 +6,7 @@ export const ColumnCell = styled.div`
   max-width: 100%;
   position: relative;
   height: 7em;
+  padding-top: 25px;
   border: 0.5px solid var(--modal-border-color);
   overflow: hidden;
   background: var(--primary-background-color);
@@ -29,6 +30,10 @@ export const ColumnCell = styled.div`
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.12;
+    padding-top: 33px;
+  }
+  @media screen and (min-width: 1100px) {
+    padding: 33px 3px 0px;
   }
 `;
 
