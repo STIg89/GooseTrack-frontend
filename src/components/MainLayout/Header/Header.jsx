@@ -3,7 +3,11 @@ import { selectUser } from 'redux/auth/selectors';
 import { useLocation, useParams } from 'react-router-dom';
 import HeaderImg from '../Header/test_image/GooseHeader.png';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
+
+import LanguageFlags from './LanguageFlags/LanguageFlags';
+
 import { ThemeToggler } from './ThemeToggler/ThemeToggler';
+
 import {
   Title,
   Container,
@@ -59,6 +63,7 @@ const Header = ({ isOpen, onOpenClick }) => {
         )}
       </TitleCalendar>
       <Box>
+        <LanguageFlags />
         <FeedbackBtn />
         <ThemeToggler />
         <UserName>{name}</UserName>
