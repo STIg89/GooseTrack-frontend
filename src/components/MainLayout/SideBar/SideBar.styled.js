@@ -43,9 +43,10 @@ export const SideBarContainer = styled.div`
   ${media.desktop} {
     position: fixed;
   }
-  
-  transform: ${props => props.isOpen ? "translateX(0)" : "translateX(-100%)"};
-  animation: ${props => props.isOpen ? slideInAnimation : slideOutAnimation} 0.3s ease-in-out;
+  z-index: ${props => (props.isOpen ? '10' : '-10')};
+  transform: ${props => (props.isOpen ? 'translateX(0)' : 'translateX(-100%)')};
+  animation: ${props => (props.isOpen ? slideInAnimation : slideOutAnimation)}
+    0.3s ease-in-out;
 `;
 
 export const SideBarDiv = styled.div`
