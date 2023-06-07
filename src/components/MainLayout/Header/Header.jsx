@@ -25,8 +25,6 @@ import {
 } from './Header.styled';
 import Icons from 'images/sprite.svg';
 
-import { useTranslation } from 'react-i18next';
-
 const Header = ({ isOpen, onOpenClick }) => {
   const { name } = useSelector(selectUser);
   const firstLetter = name?.charAt(0).toUpperCase();
@@ -36,7 +34,6 @@ const Header = ({ isOpen, onOpenClick }) => {
 
   const location = useLocation();
   let { currentDay } = useParams();
-  const { t } = useTranslation();
 
   console.log(location.pathname);
 
