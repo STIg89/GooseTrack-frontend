@@ -4,10 +4,10 @@ import { Field, Form } from 'formik';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+// Container
 export const Wrapper = styled.div`
-  outline: 1px solid var(--accent-background-color);
   display: flex;
-  background: var(---primary-background-color);
+  background-color: var(--primary-background-color);
   border-radius: 16px;
   margin-top: 95px;
   margin-bottom: 40px;
@@ -23,8 +23,8 @@ export const Wrapper = styled.div`
   }
 `;
 
+// Form
 export const StyledForm = styled(Form)`
-  /* outline: 1px solid red; */
   padding: 0 18px 40px 18px;
   margin-left: auto;
   margin-right: auto;
@@ -40,11 +40,17 @@ export const StyledForm = styled(Form)`
   }
 `;
 
+// Avatar
+export const AvatarContainer = styled.div`
+  position: relative;
+`;
+
 export const AvatarWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   top: -30px;
   width: 72px;
   height: 72px;
@@ -65,7 +71,13 @@ export const AvatarWrapper = styled.div`
 
 export const AvatarImage = styled.img`
   text-align: center;
-  border-radius: 50%;
+  width: 100%;
+  height: auto;
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const AvatarPlaceholder = styled.div`
@@ -92,7 +104,9 @@ export const AvatarLabel = styled.label`
 `;
 
 export const AvatarBtn = styled.svg`
-  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,10 +114,13 @@ export const AvatarBtn = styled.svg`
   height: 14px;
   padding: 2px;
   border-radius: 50%;
+  cursor: pointer;
   background-color: var(--accent-background-color);
   stroke: var(--btn-text-color);
 
   @media screen and (min-width: 768px) {
+    top: 105px;
+    right: 25px;
     width: 24px;
     height: 24px;
     padding: 3px;
@@ -120,6 +137,7 @@ export const AddAvatar = styled.input`
   margin: 0;
 `;
 
+// User
 export const UserTitle = styled.h2`
   margin-left: auto;
   margin-right: auto;
@@ -149,6 +167,7 @@ export const User = styled.p`
   }
 `;
 
+//  Inputs
 export const Inputs = styled.div`
   width: 299px;
 
@@ -167,12 +186,21 @@ export const InputWrapper = styled.div`
 `;
 
 export const StyledLabel = styled.label`
+  position: relative;
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
   color: var(--label-text);
   margin: 0;
   padding: 0;
+
+  &.error {
+    color: var(--text-error-color);
+  }
+
+  &.success {
+    color: var(--text-correct-color);
+  }
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -202,8 +230,22 @@ export const StyledInput = styled(Field)`
     font-size: 16px;
     line-height: 1.13;
   }
+
+  :hover,
+  :focus {
+    border: 1px solid var(--primary-text-color);
+  }
+
+  &.error {
+    border: 1px solid var(--text-error-color);
+  }
+
+  &.success {
+    border: 1px solid var(--text-correct-color);
+  }
 `;
 
+// DatePicker
 export const StyledDatePicker = styled(DatePicker)`
   margin-top: 8px;
   width: 299px;
@@ -219,6 +261,19 @@ export const StyledDatePicker = styled(DatePicker)`
   color: var(--primary-text-color);
   outline: none;
 
+  :hover,
+  :focus {
+    border: 1px solid var(--primary-text-color);
+  }
+
+  &.error {
+    border: 1px solid var(--text-error-color);
+  }
+
+  &.success {
+    border: 1px solid var(--text-correct-color);
+  }
+
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;
     width: 354px;
@@ -230,11 +285,13 @@ export const StyledDatePicker = styled(DatePicker)`
 
 export const DatePickerWrapper = styled.div`
   & .react-datepicker {
+    position: absolute;
+    top: -50px;
     background-color: var(--color-button-period-type);
     border-radius: 16px;
     overflow: hidden;
     border: none;
-    color: #ffffff;
+    color: var(--primary-background-color);
     width: 327px;
     height: 327px;
     display: flex;
@@ -243,8 +300,8 @@ export const DatePickerWrapper = styled.div`
     line-height: 2.2;
 
     @media screen and (min-width: 768px) {
-      width: 373px;
-      height: 354px;
+      width: 354px;
+      height: 310px;
       font-size: 18px;
     }
   }
@@ -293,6 +350,7 @@ export const DatePickerWrapper = styled.div`
   }
 `;
 
+// Submit Button
 export const SubmitBtn = styled.button`
   padding: 0;
   margin-left: auto;
@@ -312,12 +370,83 @@ export const SubmitBtn = styled.button`
   :focus {
     background: var(--hover-btn-background-color);
   }
+
+  :disabled {
+    opacity: 0.4;
+  }
+
   @media screen and (min-width: 768px) {
     width: 262px;
     height: 48px;
   }
 
   @media screen and (min-width: 1440px) {
-    margin-top: 22px;
+    margin-top: 64px;
+  }
+`;
+
+export const ErrorImg = styled.svg`
+  position: absolute;
+  top: 70%;
+  left: 90%;
+  fill: var(--text-error-color);
+  align-self: center;
+  width: 20px;
+  height: 20px;
+
+  &.datePickerCheck {
+    left: 270px;
+    @media screen and (min-width: 768px) {
+      left: 320px;
+    }
+  }
+`;
+
+export const CorrectImg = styled.svg`
+  position: absolute;
+  top: 70%;
+  left: 90%;
+  fill: var(--text-correct-color);
+  align-self: center;
+  width: 20px;
+  height: 20px;
+
+  &.datePickerCheck {
+    left: 270px;
+    @media screen and (min-width: 768px) {
+      left: 320px;
+    }
+  }
+`;
+
+export const ErrorMessage = styled.div`
+  position: absolute;
+  margin-top: -19px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 18px;
+  font-size: 12px;
+  line-height: 1.17;
+  overflow: hidden;
+  color: var(--text-error-color);
+  border-right: 0.15em solid var(--text-error-color);
+  white-space: nowrap;
+  letter-spacing: 0.08em;
+
+  animation: typing 3.5s steps(22, end) infinite,
+    blink 0.5s step-end infinite alternate;
+
+  /* The typing effect */
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+
+  /* The typewriter cursor effect */
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
   }
 `;
