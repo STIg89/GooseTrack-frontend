@@ -10,7 +10,6 @@ export const ColumnsList = styled.ul`
     @media screen and (min-width: 768px) {
       justify-content: flex-start;
       gap: 16px;
-      margin-left: 15px;
     }
     @media screen and (min-width: 1440px) {
       max-width: 1072px;
