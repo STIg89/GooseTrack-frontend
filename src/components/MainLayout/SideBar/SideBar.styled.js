@@ -17,6 +17,7 @@ export const SideBarContainer = styled.div`
   width: 225px;
   justify-content: flex-start;
   height: 100%;
+  transition: 0.2s;
 
   ${media.tablet} {
     width: 289px;

@@ -31,8 +31,6 @@ const Header = ({ isOpen, onOpenClick }) => {
   const location = useLocation();
   let { currentDay } = useParams();
 
-  console.log(location.pathname);
-
   return (
     <Container>
       {!isOpen && (
