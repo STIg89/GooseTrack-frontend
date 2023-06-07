@@ -36,6 +36,7 @@
   --accent-span-text-color: #3e85f3;
   --text-error-color: #e74a3b;
   --text-correct-color: #3cbc81;
+  --label-text: #343434;
 
   /* calendar */
   --calendar-digit-color: #343434;
@@ -86,6 +87,7 @@
   --sidebar-background-color: #13151a;
 
   --border: 1px solid rgba(255, 255, 255, 0.15);
+  --border-account-input: 1px solid rgba(255, 255, 255, 0.15);
 
   /* text-color */
   --primary-text-color: #ffffff;
@@ -96,6 +98,7 @@
   --accent-span-text-color: #3e85f3;
   --btn-text-color: #ffffff;
   --secondary-text-color: #ffffff;
+  --label-text: rgba(250, 250, 250, 0.3);
 
   --calendar-digit-color: #ffffff;
   --task-input-bg-color: rgba(255, 255, 255, 0);

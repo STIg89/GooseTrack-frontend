@@ -7,7 +7,7 @@ export const ColumnCell = styled.div`
   position: relative;
   height: 7em;
   padding-top: 25px;
-  border: 0.5px solid var(--modal-border-color);
+  border: var(--border);
   overflow: hidden;
   background: var(--primary-background-color);
   font-weight: 700;
