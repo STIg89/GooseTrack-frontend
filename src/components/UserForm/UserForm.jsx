@@ -1,38 +1,41 @@
 import { useState, useEffect } from 'react';
-import Icons from 'images/sprite.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+import { updateUser, uploadAvatar } from 'redux/auth/operations';
 
 import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+
+import Icons from 'images/sprite.svg';
 
 import {
   Wrapper,
   StyledForm,
   AvatarWrapper,
+  AvatarImage,
+  AvatarPlaceholder,
   AvatarLabel,
   AvatarBtn,
   AddAvatar,
   UserTitle,
   User,
   Inputs,
+  InputWrapper,
   StyledInput,
   StyledLabel,
+  StyledDatePicker,
   SubmitBtn,
+  DatePickerWrapper,
 } from './UserForm.styled';
 
+// Validation for phone
 const phoneRegex = /^\+?3?8?(0\d{9})$/;
 
+// Validation Schema YUP
 const validationSchema = yup.object().shape({
-  name: yup
-    .string()
-    .min(3, 'Name must be at least 3 characters')
-    .max(16, 'Name must not exceed 16 characters')
-    .required('Name is required'),
-  phone: yup
-    .string()
-    .matches(phoneRegex, 'Phone number is not valid')
-    .required('Phone is required'),
-  //   birthday: yup.date().format('DD-MM-YYYY'),
-  //   birthday: yup.date().default(() => new Date()),
+  name: yup.string().max(16, 'Name must not exceed 16 characters').required(),
+  phone: yup.string().matches(phoneRegex, 'Phone number is not valid'),
+  birthday: yup.date(),
   skype: yup.string().max(16, 'Skype must not exceed 16 characters'),
   email: yup
     .string()
@@ -41,158 +44,187 @@ const validationSchema = yup.object().shape({
 });
 
 export const UserForm = () => {
-  const [formData, setFormData] = useState({
+  const user = useSelector(selectUser);
+  const [avatarUrl, setAvatarUrl] = useState('');
+  const [username, setUsername] = useState('');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const data = {
+      name: user.name || '',
+      phone: user.phone || '',
+      birthday: user?.birthday?.slice(0, 10) || new Date(),
+      skype: user.skype || '',
+      email: user.email || '',
+    };
+    setAvatarUrl(user.avatarURL);
+    setUsername(user.name);
+    setInitialValues({ ...data });
+  }, [user]);
+
+  // Initial values for form
+  const [initialValues, setInitialValues] = useState({
     name: '',
     phone: '',
-    birthday: '',
+    birthday: new Date(),
     skype: '',
     email: '',
   });
 
-  // Get from local storage
-  useEffect(() => {
-    const storageFormData = localStorage.getItem('formData');
-    if (storageFormData) {
-      setFormData(JSON.parse(storageFormData));
-    }
-  }, []);
-
-  // Write to local storage
-  useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formData));
-  }, [formData]);
-
-  // Initial values for form
-  const initialValues = {
-    name: formData.name || '',
-    phone: formData.phone || '',
-    birthday: formData.birthday || '',
-    skype: formData.skype || '',
-    email: formData.email || '',
+  // Change avatar
+  const handleFileChange = e => {
+    let promise = dispatch(uploadAvatar(e.target.files[0]));
+    promise.then(function (response) {
+      setAvatarUrl(response.payload.data.data.updatedUser.avatarURL);
+    });
   };
 
   // Submit form
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    values.birthday = new Date(values.birthday).toISOString().split('T')[0];
+    dispatch(updateUser(values));
+    setInitialValues(values);
     resetForm();
   };
 
   return (
     <Formik
+      enableReinitialize={true}
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
       {({
+        dirty,
         errors,
         touched,
         values,
         handleSubmit,
         handleBlur,
         handleChange,
-        isSubmitting,
+        setFieldValue,
       }) => (
         <Wrapper>
           <StyledForm autoComplete="off" onSubmit={handleSubmit}>
             {/* Avatar */}
             <AvatarWrapper>
-              <img alt="" src="" />
+              {avatarUrl ? (
+                <AvatarImage alt="avatar" src={avatarUrl} />
+              ) : (
+                <AvatarPlaceholder>
+                  {username ? username[0].toUpperCase() : ''}
+                </AvatarPlaceholder>
+              )}
 
               <AvatarLabel htmlFor="avatar">
-                {/* Plus button */}
                 <AvatarBtn>
                   <use href={`${Icons}#profile-plus-s`}></use>
                 </AvatarBtn>
 
-                <AddAvatar id="avatar" type="file" name="avatar"></AddAvatar>
+                <AddAvatar
+                  id="avatar"
+                  type="file"
+                  name="avatar"
+                  onChange={handleFileChange}
+                ></AddAvatar>
               </AvatarLabel>
             </AvatarWrapper>
 
-            {/* User name */}
-            <UserTitle>User Name</UserTitle>
+            {/* User data */}
+            <UserTitle>{user.name}</UserTitle>
             <User>User</User>
 
             {/* Inputs */}
             <Inputs>
               {/* Name */}
-              <StyledLabel htmlFor="name">
-                User Name
-                <StyledInput
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Enter your name"
-                />
-                {/* {touched.name && !errors.name && <div color="green" />} */}
-                {/* {touched.name && errors.name && <div color="red" />} */}
-                <ErrorMessage name="name" component="div" />
-              </StyledLabel>
-
-              {/* Phone */}
-              <StyledLabel>
-                Phone
-                <StyledInput
-                  type="number"
-                  name="phone"
-                  id="phone"
-                  value={values.phone ? values.phone : ''}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="+380XXXXXXXXX"
-                />
-                <ErrorMessage name="phone" component="div" />
-              </StyledLabel>
+              <InputWrapper>
+                <StyledLabel htmlFor="name">
+                  User Name
+                  <StyledInput
+                    type="text"
+                    name="name"
+                    id="name"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Enter your name"
+                  />
+                  <div>{errors.name && touched.name && errors.name}</div>
+                </StyledLabel>
+              </InputWrapper>
 
               {/* Birthday */}
               <StyledLabel>
                 Birthday
-                <StyledInput
-                  type="date"
-                  name="birthday"
-                  id="birthday"
-                  value={values.birthday}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="YYYY-MM-DD"
-                />
-                <ErrorMessage name="birthday" component="div" />
-              </StyledLabel>
-
-              {/* Skype */}
-              <StyledLabel>
-                Skype
-                <StyledInput
-                  type="text"
-                  name="skype"
-                  id="skype"
-                  value={values.skype ? values.skype : ''}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Add a skype number"
-                />
-                <ErrorMessage name="skype" component="div" />
+                <DatePickerWrapper>
+                  <StyledDatePicker
+                    name="birthday"
+                    id="birthday"
+                    type="date"
+                    value={values.birthday}
+                    selected={new Date(values.birthday)}
+                    dateFormat="yyyy-MM-dd"
+                    onChange={e => {
+                      setFieldValue('birthday', e);
+                    }}
+                    maxDate={new Date()}
+                  />
+                </DatePickerWrapper>
               </StyledLabel>
 
               {/* Email */}
-              <StyledLabel>
-                Email
-                <StyledInput
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Enter your email"
-                />
-                <ErrorMessage name="email" component="div" />
-              </StyledLabel>
-            </Inputs>
+              <InputWrapper>
+                <StyledLabel>
+                  Email
+                  <StyledInput
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Enter your email"
+                  />
+                  <ErrorMessage name="email" component="div" />
+                </StyledLabel>
+              </InputWrapper>
 
-            <SubmitBtn type="submit" disabled={isSubmitting}>
+              {/* Phone */}
+              <InputWrapper>
+                <StyledLabel>
+                  Phone
+                  <StyledInput
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    value={values.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="+380XXXXXXXXX"
+                  />
+                  <ErrorMessage name="phone" component="div" />
+                </StyledLabel>
+              </InputWrapper>
+
+              {/* Skype */}
+              <InputWrapper>
+                <StyledLabel>
+                  Skype
+                  <StyledInput
+                    type="text"
+                    name="skype"
+                    id="skype"
+                    value={values.skype}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Add a skype number"
+                  />
+                  <ErrorMessage name="skype" component="div" />
+                </StyledLabel>
+              </InputWrapper>
+            </Inputs>
+            <SubmitBtn type="submit" disabled={!dirty}>
               Save changes
             </SubmitBtn>
           </StyledForm>
