@@ -25,6 +25,7 @@ export const TypesTabs = styled(NavLink)`
   &:active,
   &.active {
     background-color: var(--active-button-period-type);
+    color: var(--accent-text-color);
   }
   @media screen and (min-width: 768px) {
     font-size: 16px;
