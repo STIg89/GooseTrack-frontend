@@ -23,6 +23,7 @@
   --border-auth-error: 1px solid #e74a3b;
   --border-auth-correct: 1px solid #3cbc81;
   --border-AddTaskBtn: 1px dashed #3e85f3;
+  --border-account-input: 1px solid rgba(17, 17, 17, 0.15);
 
   /* text-color */
   --primary-text-color: #111111;
