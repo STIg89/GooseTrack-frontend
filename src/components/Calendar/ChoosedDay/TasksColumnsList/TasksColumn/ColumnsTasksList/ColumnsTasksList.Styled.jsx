@@ -2,12 +2,11 @@ import styled from 'styled-components';
 export const TaskslistWraper = styled.ul`
   display: flex;
   flex-direction: column;
-
-     overflow: auto;
+  overflow: auto;
   
-        @media screen and (min-width: 1440px) {
-gap:18px;
-       margin-bottom:32px;
+  @media screen and (min-width: 1440px) {
+    gap:18px;
+    margin-bottom:32px;
     }
 
 
