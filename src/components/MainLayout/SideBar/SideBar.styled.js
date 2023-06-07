@@ -181,7 +181,7 @@ export const TitleSideBar = styled.h4`
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-  color: var(--user-text-panel);
+  color: grey;
   margin-bottom: 24px;
   margin-top: 64px;
 
