@@ -19,6 +19,8 @@ import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 import { selectIsLoading } from 'redux/tasks/selectors';
 
 const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
