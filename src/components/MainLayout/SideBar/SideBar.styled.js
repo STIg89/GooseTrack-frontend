@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { LuCalendarCheck2 } from 'react-icons/lu';
 import { CgClose } from 'react-icons/cg';
@@ -7,6 +7,24 @@ const media = {
   tablet: '@media screen and (min-width: 768px)',
   desktop: '@media screen and (min-width: 1440px)',
 };
+
+const slideInAnimation = keyframes`
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+`;
+
+const slideOutAnimation = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+`;
 
 export const SideBarContainer = styled.div`
   z-index: 10;
@@ -17,7 +35,6 @@ export const SideBarContainer = styled.div`
   width: 225px;
   justify-content: flex-start;
   height: 100%;
-  transition: 0.2s;
 
   ${media.tablet} {
     width: 289px;
@@ -26,6 +43,9 @@ export const SideBarContainer = styled.div`
   ${media.desktop} {
     position: fixed;
   }
+  
+  transform: ${props => props.isOpen ? "translateX(0)" : "translateX(-100%)"};
+  animation: ${props => props.isOpen ? slideInAnimation : slideOutAnimation} 0.3s ease-in-out;
 `;
 
 export const SideBarDiv = styled.div`

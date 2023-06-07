@@ -12,6 +12,7 @@ const MainLayout = () => {
 
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     try {
       dispatch(refreshUser());
@@ -24,22 +25,27 @@ const MainLayout = () => {
   let sidebarRef = useRef();
 
   const handleSidebarOpen = () => {
+    if (window.innerWidth >= 1440) {
+      return;
+    }
     setSidebarOpen(!sidebarOpen);
-  };
+  }
 
   useEffect(() => {
     const handleSidebarClickOutside = (e) => {
-      if (!sidebarRef.current.contains(e.target)) {
-        setSidebarOpen(false);
+      if (window.innerWidth < 1440) {
+        if (!sidebarRef.current.contains(e.target)) {
+          setSidebarOpen(false);
+        }
       }
-    };
+    }
 
     document.addEventListener("mousedown", handleSidebarClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleSidebarClickOutside);
     };
-  });
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,13 +63,11 @@ const MainLayout = () => {
     <MainContainer>
       <Header isOpen={sidebarOpen} onOpenClick={handleSidebarOpen} />
       <div ref={sidebarRef}>
-        {sidebarOpen &&
-          <Sidebar isOpen={sidebarOpen} onCloseClick={handleSidebarOpen} />
-        }
+        <Sidebar isOpen={sidebarOpen} onCloseClick={handleSidebarOpen} />      
       </div>
       <Outlet />
     </MainContainer>
   );
 };
 
-export default MainLayout;
+export default MainLayout

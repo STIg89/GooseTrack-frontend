@@ -21,23 +21,8 @@ import {
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
 
-  // const [open, setOpen] = useState(false);
-
-  // useEffect(() => {
-  //   const hanldeClickOutside = (e) => {
-  //     if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-  //       setOpen(false)
-  //     }
-  //   }
-  //   document.addEventListener('mousedown', hanldeClickOutside);
-  //   return () => {
-  //     document.removeEventListener('mousedown', hanldeClickOutside);
-  //   };
-
-  // }, [])
-
   return (
-    <SideBarContainer style={{ display: isOpen ? 'block' : 'none' }}>
+    <SideBarContainer isOpen={isOpen}>
       <SideBarDiv>
         <LogoDiv>
           <Logo>
