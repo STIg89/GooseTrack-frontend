@@ -6,18 +6,18 @@ const media = {
 };
 
 export const MainContainer = styled.div`
-  margin-top: 24px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding-top: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
   background: var(--secondary-background-color);
   ${media.tablet} {
-    margin-top: 24px;
-    margin-left: 32px;
-    margin-right: 32px;
+    padding-top: 24px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   ${media.desktop} {
-    margin-top: 40px;
-    margin-left: 320px;
+    padding-top: 40px;
+    padding-left: 320px;
   }
 `;

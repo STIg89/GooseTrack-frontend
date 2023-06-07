@@ -44,6 +44,11 @@ export const PeriodTabs = styled.button`
     stroke: currentColor;
     fill: transparent;
   }
+  & > svg:hover,
+  & > svg:focus {
+    stroke: var(--accent-span-text-color);
+    fill: transparent;
+  }
 `;
 export const PeriodTabsContainer = styled.div`
   display: flex;
