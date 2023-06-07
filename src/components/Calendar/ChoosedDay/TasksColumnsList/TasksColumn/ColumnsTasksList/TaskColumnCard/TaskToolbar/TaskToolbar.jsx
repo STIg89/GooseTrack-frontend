@@ -33,8 +33,8 @@ const TaskToolBar = ({ id }) => {
 
   const handleToggleModal = () => setIsOpened(!isOpened);
 
-  async function handleOptionChange(event) {
-    await setSelectedOption(event.target.value);
+  function handleOptionChange(event) {
+    setSelectedOption(event.target.value);
     editTask = { ...editTask, category: event.target.value };
 
     dispatch(patchTask({ id: id, task: { category: editTask.category } }));
