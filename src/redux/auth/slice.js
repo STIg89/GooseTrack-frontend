@@ -8,8 +8,9 @@ import {
 } from './operations';
 
 const initialState = {
-  user: { name: null, email: null, isLoggedIn: false },
+  user: { name: null, email: null },
   token: null,
+  isLoggedIn: false,
   isRefreshing: false,
 };
 
@@ -24,7 +25,6 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
-        // state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(register.rejected, (state, _) => {
@@ -35,7 +35,6 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.token = action.payload.token;
-        // state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(login.rejected, (state, _) => {
@@ -53,9 +52,8 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.user.isLoggedIn = true;
-        state.isRefreshing = false;
         state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, () => initialState)
       .addCase(loginWithToken.pending, (state, _) => {
@@ -63,7 +61,6 @@ const authSlice = createSlice({
       })
       .addCase(loginWithToken.fulfilled, (state, action) => {
         state.token = action.payload.token;
-        // state.isLoggedIn = true;
         state.isRefreshing = false;
       })
       .addCase(loginWithToken.rejected, (state, _) => {
