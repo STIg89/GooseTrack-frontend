@@ -228,7 +228,7 @@ export const UserForm = () => {
               </InputWrapper>
             </Inputs>
             <SubmitBtn type="submit" disabled={!dirty}>
-              Save changes
+              {t('save_changes')}
             </SubmitBtn>
           </StyledForm>
         </Wrapper>
