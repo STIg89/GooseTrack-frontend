@@ -43,6 +43,20 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   }
 });
 
+export const loginWithToken = createAsyncThunk(
+  'auth/loginWithToken',
+  async (token, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/api/auth/login/${token}`);
+      setAuthHeader(data.token);
+      return data;
+    } catch (error) {
+      Notify.failure('Please check your token and try again');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/api/auth/logout');
@@ -68,6 +82,45 @@ export const refreshUser = createAsyncThunk(
       const res = await axios.get('/api/auth/current');
       return res.data;
     } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Update User Data
+export const updateUser = createAsyncThunk(
+  'auth/user',
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.put('/api/auth/user', data);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+      Notify.failure(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+//  Upload User Avatar
+export const uploadAvatar = createAsyncThunk(
+  'auth/user',
+  async (file, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const formData = new FormData();
+    formData.append('avatar', file, file.name);
+    const persistedToken = state.auth.token;
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.put('/api/auth/user', formData);
+      return res;
+    } catch (error) {
+      Notify.failure(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

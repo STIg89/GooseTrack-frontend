@@ -1,6 +1,4 @@
 import React from 'react';
-
-import './ChoosedMonth.css';
 import MonthCalendarHead from './MonthCalendarHead/MonthCalendarHead';
 import CalendarTable from './CalendarTable/CalendarTable';
 const ChoosedMonth = ({ currentDate, setSelectedDate, selectedDate }) => {

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const GroupPeriod = styled.div`
   display: flex;
   gap: 8px;
+  justify-content: space-between;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     width: 260px;
@@ -35,11 +37,16 @@ export const PeriodTabs = styled.button`
   color: var(--calendar-digit-color);
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
-
+  cursor: pointer;
   background-color: var(--primary-background-color);
   border: 1px solid rgba(220, 227, 229, 0.5);
   & > svg {
     stroke: currentColor;
+    fill: transparent;
+  }
+  & > svg:hover,
+  & > svg:focus {
+    stroke: var(--accent-span-text-color);
     fill: transparent;
   }
 `;
@@ -55,6 +62,7 @@ export const PeriodContainer = styled.div`
   flex-wrap: wrap;
   margin-bottom: 24px;
   gap: 18px;
+  width: 100%;
   @media screen and (min-width: 768px) {
     width: 100%;
     flex-wrap: no-wrap;

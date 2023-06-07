@@ -25,6 +25,7 @@ const TaskToolBar = ({ id }) => {
   const handleClick = () => {
     setIsClicked(true);
   };
+
   async function handleOptionChange(event) {
     await setSelectedOption(event.target.value);
     editTask = { ...editTask, category: event.target.value };
@@ -81,6 +82,7 @@ const TaskToolBar = ({ id }) => {
         type="button"
         onClick={() => {
           dispatch(deleteTask(id));
+          console.log('del task with id', id);
         }}
       >
         <ToolBarItem>
