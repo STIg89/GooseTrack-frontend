@@ -25,6 +25,9 @@ export const SideBarContainer = styled.div`
   ${media.desktop} {
     position: fixed;
   }
+
+  transform: ${props => props.isOpen ? "translateX(0)" : "translateX(-100%)"};
+  transition: 0.3s ease-in-out;
 `;
 
 export const SideBarDiv = styled.div`
@@ -69,7 +72,7 @@ export const LogoIcon = styled.img`
 export const LogoSvg = styled.svg`
   width: 80px;
   height: 22px;
-  fill: var(--accent-background-color);
+  fill: var(--accent-text-color);
 
   ${media.tablet} {
     width: 90px;

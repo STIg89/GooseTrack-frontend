@@ -15,6 +15,7 @@ const AccountPage = lazy(() => import('pages/Account/AccountPage'));
 const CalendarPage = lazy(() => import('pages/Calendar/CalendarPage'));
 const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
 
+
 export const App = () => {
   return (
     <Suspense fallback={''}>

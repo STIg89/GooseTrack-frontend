@@ -7,15 +7,12 @@ const media = {
 
 export const Container = styled.div`
   display: flex;
-  // margin-top: 40px;
   margin-bottom: 32px;
   justify-content: space-between;
   position: relative;
 
   ${media.desktop} {
     justify-content: space-between;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 `;
 
@@ -42,7 +39,7 @@ export const NoAvatar = styled.div`
 
 export const Box = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: rigth;
   align-items: center;
 `;
 

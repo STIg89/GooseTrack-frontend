@@ -2,20 +2,30 @@ import Container from './ChoosedDay.Styled';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchDayTasks } from 'redux/tasks/operations';
-import { useParams } from 'react-router-dom';
 import { selectTasks } from 'redux/tasks/selectors';
+import { useDateValidation } from 'helpers/useDateValidation';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 
 const ChoosedDay = () => {
-  let { currentDay } = useParams();
+  // check the date from the request parameter. if invalid, we return the current date
+  const validDate = useDateValidation();
+  const [selectedDay, setSelectedDay] = useState(new Date(validDate));
 
-  const date = new Date(currentDay);
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  useEffect(() => {
+    if (isLoggedIn === false || isRefreshing === true) {
+      return;
+    }
 
-  const reqObj = useMemo(() => {
+    const date = new Date(selectedDay);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
     const reqObj = {
       month,
       day,
@@ -23,14 +33,9 @@ const ChoosedDay = () => {
       page: 1,
       limit: 100,
     };
-    return reqObj;
-  }, [month, day, year]);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
     dispatch(fetchDayTasks(reqObj));
-  }, [reqObj, dispatch]);
+  }, [selectedDay, dispatch, isLoggedIn, isRefreshing]);
 
   const tasks = useSelector(selectTasks);
 
@@ -42,7 +47,10 @@ const ChoosedDay = () => {
 
   return (
     <Container>
-      <DayCalendarHead />
+      <DayCalendarHead
+        selectedDay={selectedDay}
+        setSelectedDay={setSelectedDay}
+      />
       <TasksColumnsList readinessTasks={readinessTasks} />
     </Container>
   );

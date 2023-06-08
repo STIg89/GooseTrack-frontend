@@ -13,7 +13,7 @@ export const Label = styled.label`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  color: rgba(52, 52, 52, 0.8);
+  color: var(--task-modal-label-color);
 `;
 
 export const RatingWrapper = styled.div`
@@ -32,13 +32,14 @@ export const RatingWrapper = styled.div`
 export const TextInput = styled.textarea`
   width: 100%;
   height: 127px;
-  background-color: #f7f7f7;
-  border: none;
+  background-color: var(--task-input-bg-color);
+  border: 1px solid var(--border-label-color);
   border-radius: 8px;
   margin-top: 8px;
   resize: none;
   padding-top: 14px;
   padding-left: 18px;
+  color: var(--primary-text-color);
   ::placeholder {
     font-family: 'Inter';
     font-style: normal;

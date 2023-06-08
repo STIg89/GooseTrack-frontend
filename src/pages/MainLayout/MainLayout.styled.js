@@ -21,3 +21,7 @@ export const MainContainer = styled.div`
     padding-left: 320px;
   }
 `;
+
+export const DivSidebar = styled.div`
+ visibility: ${props => props.isOpen ? "visible" : "none"};
+`

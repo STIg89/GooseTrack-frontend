@@ -43,7 +43,11 @@ export default function LanguageFlags() {
       <Tooltip title={t('language')} arrow>
         <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
           <LanguageIcon
-            style={{ width: '32px', height: '32px', marginRight: '34px' }}
+            style={{
+              width: '32px',
+              height: '32px',
+              color: 'var(--secondary-text-color)',
+            }}
           />
         </IconButton>
       </Tooltip>

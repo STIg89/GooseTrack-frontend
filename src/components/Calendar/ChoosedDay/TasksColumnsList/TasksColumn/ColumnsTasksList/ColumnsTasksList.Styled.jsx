@@ -2,9 +2,16 @@ import styled from 'styled-components';
 export const TaskslistWraper = styled.ul`
   display: flex;
   flex-direction: column;
-  list-style: none;
-  gap: 14px;
-      overflow: auto;
+  overflow: auto;
+  gap:14px;
+    @media screen and (min-width: 768px) {
+    margin-bottom:32px;
+    }
+    @media screen and (min-width: 1440px) {
+    gap:18px;
+
+    }
+
 
     ::-webkit-scrollbar {
       width: 12px;

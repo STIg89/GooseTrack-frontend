@@ -23,7 +23,6 @@ export const BtnArrow = styled.div`
 `;
 export const ChouseCat = styled.div`
   position: absolute;
-
   background-color: var(--primary-background-color);
   flex-direction: column;
   gap: 14px;
