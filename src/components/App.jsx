@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import PublicRoute from './Auth/AuthRoutes/Public';
 import PrivateRoute from './Auth/AuthRoutes/Private';
+import { Loader } from '../utils/loader/loader';
 
 import ChoosedMonth from './Calendar/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from './Calendar/ChoosedDay/ChoosedDay';
@@ -15,10 +16,9 @@ const AccountPage = lazy(() => import('pages/Account/AccountPage'));
 const CalendarPage = lazy(() => import('pages/Calendar/CalendarPage'));
 const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
 
-
 export const App = () => {
   return (
-    <Suspense fallback={''}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route>
           <Route path="" element={<PublicRoute />}>
