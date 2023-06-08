@@ -1,32 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import sprite from 'images/sprite.svg';
-import { addMonths, subMonths, format } from 'date-fns';
+import { addMonths, subMonths, format, addDays, subDays } from 'date-fns';
 import {
   PeriodView,
   PeriodTabs,
   PeriodTabsContainer,
   GroupPeriod,
 } from './PeriodPaginator.styled';
+import { useNavigate, useParams } from 'react-router-dom';
+import { parseDate } from 'helpers/parseDate';
+import { useDateValidation } from 'helpers/useDateValidation';
 
-const PeriodPaginator = ({ setCurrentDate, currentDate, selectedDate }) => {
+const PeriodPaginator = ({ setCurrentDate, currentDate }) => {
+  const params = useParams();
+  const date = useDateValidation();
+  const navigate = useNavigate();
+  const [selectedDay, setSelectedDay] = useState(new Date(date));
+
   const nextMonth = () => {
-    setCurrentDate(addMonths(currentDate, 1));
+    setCurrentDate(addMonths(selectedDay, 1));
   };
   const prevMonth = () => {
-    setCurrentDate(subMonths(currentDate, 1));
+    setCurrentDate(subMonths(selectedDay, 1));
+  };
+  const nextDay = () => {
+    setSelectedDay(addDays(selectedDay, 1));
+    const parsedDate = parseDate(selectedDay);
+    navigate(`/calendar/day/${parsedDate}`);
+  };
+  const prevDay = () => {
+    setSelectedDay(subDays(selectedDay, 1));
+    const parsedDate = parseDate(selectedDay);
+    navigate(`/calendar/day/${parsedDate}`);
   };
   const monthFormat = 'MMMM y';
-  const formattedMonth = format(currentDate, monthFormat);
+  const dayFormat = 'd MMM y';
+  const formattedMonth = format(selectedDay, monthFormat);
+  const formattedDay = format(selectedDay, dayFormat);
+
   return (
     <GroupPeriod>
-      <PeriodView>{formattedMonth}</PeriodView>
+      <PeriodView>
+        {params.currentDay ? formattedDay : formattedMonth}
+      </PeriodView>
       <PeriodTabsContainer>
-        <PeriodTabs onClick={prevMonth}>
+        <PeriodTabs onClick={params.currentDay ? prevDay : prevMonth}>
           <svg width="16" height="16">
             <use href={`${sprite}#calendar-right-sf`}></use>
           </svg>
         </PeriodTabs>
-        <PeriodTabs style={{ transform: 'rotate(180deg)' }} onClick={nextMonth}>
+        <PeriodTabs
+          style={{ transform: 'rotate(180deg)' }}
+          onClick={params.currentDay ? nextDay : nextMonth}
+        >
           <svg width="16" height="16">
             <use href={`${sprite}#calendar-right-sf`}></use>
           </svg>

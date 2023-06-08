@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTasks } from 'redux/tasks/operations';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 
-const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
+const CalendarTable = ({ currentDate, setCurrentDate }) => {
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
@@ -56,7 +56,7 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
           className={`column cell ${
             day.getMonth() !== monthStart.getMonth()
               ? 'disabled'
-              : isSameDay(day, selectedDate)
+              : isSameDay(day, currentDate)
               ? 'selected'
               : ''
           }`}
@@ -76,7 +76,7 @@ const CalendarTable = ({ currentDate, selectedDate, setSelectedDate }) => {
     days = [];
   }
   const onDateClick = date => {
-    setSelectedDate(date);
+    setCurrentDate(date);
   };
 
   return <Calendar>{rows}</Calendar>;

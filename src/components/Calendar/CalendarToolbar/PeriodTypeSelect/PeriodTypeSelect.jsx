@@ -6,8 +6,8 @@ import {
 } from '../PeriodTypeSelect/PeriodTypesSelect.styled';
 import { parseDate } from 'helpers/parseDate';
 
-const PeriodTypeSelect = ({ selectedDate }) => {
-  const parsedDate = parseDate(selectedDate);
+const PeriodTypeSelect = ({ currentDate }) => {
+  const parsedDate = parseDate(currentDate);
   return (
     <TabsFlex>
       <TypesTabsContainer>
