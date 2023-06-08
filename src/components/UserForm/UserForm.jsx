@@ -71,7 +71,7 @@ export const UserForm = () => {
     setAvatarUrl(user.avatarURL);
     setUsername(user.name);
     setInitialValues({ ...data });
-  }, [user, avatarUrl]);
+  }, [user]);
 
   // Initial values for form
   const [initialValues, setInitialValues] = useState({
@@ -128,19 +128,19 @@ export const UserForm = () => {
                     {username ? username[0].toUpperCase() : ''}
                   </AvatarPlaceholder>
                 )}
-
-                <AvatarLabel htmlFor="avatar">
-                  <AddAvatar
-                    id="avatar"
-                    type="file"
-                    name="avatar"
-                    onChange={handleFileChange}
-                  ></AddAvatar>
-                </AvatarLabel>
               </AvatarWrapper>
-              <AvatarBtn>
-                <use href={`${Icons}#profile-plus-s`}></use>
-              </AvatarBtn>
+
+              <AvatarLabel htmlFor="avatar">
+                <AvatarBtn>
+                  <use href={`${Icons}#profile-plus-s`}></use>
+                </AvatarBtn>
+                <AddAvatar
+                  id="avatar"
+                  type="file"
+                  name="avatar"
+                  onChange={handleFileChange}
+                ></AddAvatar>
+              </AvatarLabel>
             </AvatarContainer>
 
             {/* User data */}

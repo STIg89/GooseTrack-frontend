@@ -31,6 +31,8 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--primary-background-color);
+  border-radius: 16px;
 
   @media screen and (min-width: 768px) {
     padding: 40px 175px;
@@ -56,7 +58,7 @@ export const AvatarWrapper = styled.div`
   height: 72px;
   border: 2px solid var(--accent-background-color);
   border-radius: 50%;
-  background: var(---primary-background-color);
+  background-color: var(--primary-background-color);
 
   @media screen and (min-width: 768px) {
     margin-bottom: 14px;
@@ -105,8 +107,8 @@ export const AvatarLabel = styled.label`
 
 export const AvatarBtn = styled.svg`
   position: absolute;
-  top: 30px;
-  right: 15px;
+  top: -28px;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,8 +121,8 @@ export const AvatarBtn = styled.svg`
   stroke: var(--btn-text-color);
 
   @media screen and (min-width: 768px) {
-    top: 105px;
-    right: 25px;
+    top: 5px;
+
     width: 24px;
     height: 24px;
     padding: 3px;
@@ -216,7 +218,7 @@ export const StyledInput = styled(Field)`
   padding: 14px 18px;
   border: var(--border-account-input);
   border-radius: 8px;
-  background: var(---primary-background-color);
+  background: var(--primary-background-color);
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
@@ -254,7 +256,7 @@ export const StyledDatePicker = styled(DatePicker)`
   padding: 14px 18px;
   border: var(--border-account-input);
   border-radius: 8px;
-  background: var(---primary-background-color);
+  background: var(--primary-background-color);
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
@@ -421,7 +423,7 @@ export const CorrectImg = styled.svg`
 
 export const ErrorMessage = styled.div`
   position: absolute;
-  margin-top: -19px;
+  margin-top: -12px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 18px;
@@ -435,6 +437,14 @@ export const ErrorMessage = styled.div`
 
   animation: typing 3.5s steps(22, end) infinite,
     blink 0.5s step-end infinite alternate;
+
+  @media screen and (min-width: 768px) {
+    margin-top: -16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: -19px;
+  }
 
   /* The typing effect */
   @keyframes typing {
