@@ -18,6 +18,7 @@ import {
   EditIcon,
 } from './TaskForm.styled';
 import { format } from 'date-fns';
+import { Notify } from 'notiflix';
 
 import Icons from 'images/sprite.svg';
 
@@ -25,13 +26,16 @@ import { useDateValidation } from 'helpers/useDateValidation';
 import { addTask, patchTask } from 'redux/tasks/operations';
 import { selectTasks } from 'redux/tasks/selectors';
 
-const TaskForm = ({ onCloseModal, showEditBtn, id, category }) => {
-  const dispatch = useDispatch();
-  // const [titleValue, setTitleValue] = useState('');
-  // const [startValue, setStartValue] = useState('');
-  // const [endValue, setEndValue] = useState('');
-  const [selectedOption, setSelectedOption] = useState('low');
+const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
+  const [title, setTitle] = useState(editTask?.title || '');
+  const [start, setStart] = useState(editTask?.start || '');
+  const [end, setEnd] = useState(editTask?.end || '');
+  const [selectedOption, setSelectedOption] = useState(
+    editTask?.priority || 'low'
+  );
   const [priority, setPriority] = useState('low');
+  const category = editTask?.category || 'to-do';
+  const dispatch = useDispatch();
 
   const validDate = useDateValidation();
   const currentDay = format(validDate, 'yyyy-MM-dd');
@@ -49,23 +53,27 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, category }) => {
     const start = e.target.elements.start.value;
     const end = e.target.elements.end.value;
 
-    // setTitleValue(title);
-    // setStartValue(start);
-    // setEndValue(end);
-
     const startTime = start.split(':');
     const endTime = end.split(':');
 
-    const startNumber = parseInt(startTime[0], 10);
-    const endNumber = parseInt(endTime[0], 10);
+    const startHour = parseInt(startTime[0], 10);
+    const endHour = parseInt(endTime[0], 10);
+    const startMinute = parseInt(startTime[1], 10);
+    const endMinute = parseInt(endTime[1], 10);
 
-    if (startNumber > endNumber) {
-      console.log('Не вірний час');
+    if (
+      startHour > endHour ||
+      (startHour === endHour && startMinute >= endMinute)
+    ) {
+      Notify.warning(
+        'Invalid time format. The start cannot be less than the end.'
+      );
+
       return;
     }
 
     if (title.trim() === '' || start.trim() === '' || end.trim() === '') {
-      console.log('Пусто');
+      Notify.warning('All fields must be filled.');
       return;
     }
 
@@ -80,6 +88,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, category }) => {
 
     if (tasks.find(task => task._id === id)) {
       dispatch(patchTask({ id, task: editTask }));
+      Notify.success('Successfully! The task has been changed.');
     } else {
       dispatch(
         addTask({
@@ -88,21 +97,30 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, category }) => {
           end,
           priority,
           date: currentDay,
-          category: 'to-do',
+          category: addCategory,
         })
       );
+      Notify.success('Successfully! Task added.');
     }
 
     onCloseModal();
   };
 
-  // const handleChange = e => {
-  // const { name, value } = e.target;
-  // setTitleValue(prevState => ({
-  //   ...prevState,
-  //   [name]: value,
-  // }));
-  // };
+  const handleChange = e => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case 'title':
+        return setTitle(value);
+      case 'start':
+        return setStart(value);
+      case 'end':
+        return setEnd(value);
+
+      default:
+        return value;
+    }
+  };
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -112,8 +130,8 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, category }) => {
           type="text"
           placeholder="Enter text"
           name="title"
-          // onChange={handleChange}
-          // value={titleValue}
+          onChange={handleChange}
+          value={title}
         />
       </InputContaiter>
 
@@ -123,8 +141,9 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, category }) => {
           <Input
             type="time"
             name="start"
-            // onChange={handleChange}
-            // value={startValue}
+            onChange={handleChange}
+            value={start}
+            id="timeInput"
           />
         </InputContaiter>
 
@@ -133,8 +152,9 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, category }) => {
           <Input
             type="time"
             name="end"
-            // onChange={handleChange}
-            // value={endValue}
+            onChange={handleChange}
+            value={end}
+            id="timeInput"
           />
         </InputContaiter>
       </InputTimeContaiter>
