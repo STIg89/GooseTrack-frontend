@@ -44,9 +44,10 @@ export default function LanguageFlags() {
         <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
           <LanguageIcon
             style={{
+              marginRight: '40px',
               width: '32px',
               height: '32px',
-              color: 'var(--secondary-text-color)',
+              color: 'var(--accent-text-color)',
             }}
           />
         </IconButton>
@@ -87,8 +88,9 @@ export default function LanguageFlags() {
           },
         }}
       >
+        {/* title={name} key={code} arrow placement="left" */}
         {languages.map(({ code, name, country_code }) => (
-          <Tooltip title={name} key={code} arrow placement="left">
+          <Tooltip key={code}>
             <MenuItem
               style={{
                 backgroundColor:
@@ -99,20 +101,22 @@ export default function LanguageFlags() {
                     : '#F8F8F8',
               }}
             >
+              {/* <FlagsImg srcSet={`${gbFlag}`} src={gbFlag} alt="gbFlag" /> */}
               <IconButton
                 className={classNames('dropdown-item')}
                 onClick={() => {
                   i18next.changeLanguage(code);
                 }}
               >
-                <div
+                {name}
+                {/* <div
                   className={`flag-icons flag-icons-${country_code}`}
                   style={{
                     opacity: currentLanguageCode === code ? 1 : 0.3,
                     width: '3rem',
                     height: '2rem',
                   }}
-                ></div>
+                ></div> */}
               </IconButton>
             </MenuItem>
           </Tooltip>
