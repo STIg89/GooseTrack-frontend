@@ -16,7 +16,6 @@ export const StyleFormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   @media (max-width: 375px) {
     width: 100%;
   }
@@ -30,13 +29,11 @@ export const Form = styled.form`
   margin-bottom: 18px;
   background-color: var(--primary-background-color);
   border-radius: 8px;
-
   @media (min-width: 768px) {
     width: 480px;
     padding: 40px;
     margin-bottom: 24px;
   }
-
   @media (max-width: 375px) {
     width: 100%;
   }
@@ -70,6 +67,7 @@ export const StyleInput = styled.input`
   border-radius: 8px;
   padding: 0.875rem;
   width: 100%;
+  color: var(--calendar-digit-color);
   &::placeholder {
     font-style: normal;
     font-weight: 400;
@@ -87,12 +85,10 @@ export const StyleParaghraph = styled.p`
   margin-top: 24px;
   margin-bottom: 8px;
   color: var(--primary-text-color);
-
   @media (min-width: 768px) {
     margin-top: 18px;
   }
 `;
-
 export const StyleButton = styled.button`
   display: flex;
   align-items: center;
@@ -107,18 +103,15 @@ export const StyleButton = styled.button`
   border-radius: 16px;
   border: none;
   cursor: pointer;
-
   &:hover,
   :focus {
     transform: scale(1.02);
     background: var(--hover-btn-background-color);
   }
-
   @media (min-width: 768px) {
     width: 400px;
     height: 56px;
   }
-
   @media (max-width: 375px) {
     width: 100%;
     padding: 16px;
@@ -134,8 +127,7 @@ export const ButtonText = styled.span`
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.02em;
-  color: var(--primary-background-color);
-
+  color: var(--btn-text-color);
   @media (min-width: 768px) {
     font-size: 18px;
     line-height: 24px;
@@ -147,8 +139,7 @@ export const Svg = styled.svg`
   width: 18px;
   height: 18px;
   fill: transparent;
-  stroke: var(--primary-background-color);
-
+  stroke: var(--btn-text-color);
   @media (min-width: 768px) {
     width: 20px;
     height: 20px;

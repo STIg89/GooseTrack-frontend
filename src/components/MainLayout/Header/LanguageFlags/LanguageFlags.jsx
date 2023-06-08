@@ -42,7 +42,13 @@ export default function LanguageFlags() {
     <div>
       <Tooltip title={t('language')} arrow>
         <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-          <LanguageIcon style={{ width: '32px', height: '32px' }} />
+          <LanguageIcon
+            style={{
+              width: '32px',
+              height: '32px',
+              color: 'var(--secondary-text-color)',
+            }}
+          />
         </IconButton>
       </Tooltip>
       <Menu
@@ -100,7 +106,7 @@ export default function LanguageFlags() {
                 }}
               >
                 <div
-                  className={`flag-icon flag-icon-${country_code}`}
+                  className={`flag-icons flag-icons-${country_code}`}
                   style={{
                     opacity: currentLanguageCode === code ? 1 : 0.3,
                     width: '3rem',

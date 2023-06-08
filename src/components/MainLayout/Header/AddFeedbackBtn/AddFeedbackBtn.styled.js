@@ -25,12 +25,10 @@ font-family: 'Inter', sans-serif;
   :focus {
    cursor: pointer;
    background-color: var(--hover-btn-background-color);
-  };
-  
-  ${ media.tablet } {
+
+   ${ media.tablet } {
   width: 130px;
   font-size: 14px;
   line-height: 18px;
 }
-`
-
+  }`

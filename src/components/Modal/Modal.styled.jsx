@@ -9,7 +9,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--ovarlay-background-color);
   z-index: 1200;
 `;
 
@@ -20,10 +20,10 @@ export const ModalStyled = styled.div`
   position: relative;
   padding: 40px 16px;
   margin: 24px 18px 14px 18px;
-  border: 1px solid rgba(220, 227, 229, 0.8);
+  border: 1px solid var(--sidebar-background-color);
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
   border-radius: 8px;
-  background-color: #ffffff;
+  background-color: var(--sidebar-background-color);
 
   @media screen and (min-width: 768px) {
     width: 396px;
@@ -39,9 +39,10 @@ export const CloseIcon = styled.svg`
   top: 14px;
   right: 14px;
   transition: fill 250ms;
+  fill: var(--primary-text-color);
 
   &:hover,
   &:focus {
-    fill: #3e85f3;
+    fill: var(--accent-background-color);
   }
 `;

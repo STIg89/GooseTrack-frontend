@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CardWraper = styled.li`
   padding: 15px;
   background-color: var(--secondary-background-color);
+  border-radius: 8px;
 `;
 export const Wraper = styled.div`
   display: flex;
