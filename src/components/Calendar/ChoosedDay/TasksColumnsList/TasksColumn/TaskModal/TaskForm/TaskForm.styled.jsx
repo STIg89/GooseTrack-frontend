@@ -39,10 +39,10 @@ export const Input = styled.input`
   line-height: 18px;
   padding: 12px 14px;
   outline: none;
-  border: none;
+  border: 1px solid var(--border-label-color);
   border-radius: 8px;
-  background-color: #f6f6f6;
-  color: #343434;
+  background-color: var(--task-input-bg-color);
+  color: var(--calendar-digit-color);
 `;
 
 export const RadioButtonsContainer = styled.div`
@@ -65,7 +65,7 @@ export const RadioLabel = styled.label`
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
-  color: #343434;
+  color: var(--calendar-digit-color);
 `;
 
 export const RadioInput = styled.input`
@@ -192,17 +192,17 @@ export const CancelButton = styled.button`
   font-size: 14px;
   line-height: 18px;
   text-align: center;
-  color: #111111;
+  color: var(--calendar-digit-color);
   outline: none;
   border: none;
   padding: 12px 40px;
-  background-color: #efefef;
+  background-color: var(--cancel-button-background-color);
   border-radius: 8px;
   transition: background-color 250ms;
 
   &:hover,
   &:focus {
-    background-color: #e2e2e2;
+    background-color: var(--border-label-color);
   }
 
   @media screen and (min-width: 768px) {
@@ -230,7 +230,7 @@ export const EditButton = styled.button`
 
   &:hover,
   &:focus {
-    background-color: #1f78fc;
+    background-color: var(--hover-btn-background-color);
   }
 
   @media screen and (min-width: 768px) {
