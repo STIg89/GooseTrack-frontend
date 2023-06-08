@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import sprite from 'images/sprite.svg';
-import { addMonths, subMonths, format, addDays, subDays } from 'date-fns';
+import { format } from 'date-fns';
 import {
   PeriodView,
   PeriodTabs,
@@ -9,33 +9,31 @@ import {
 } from './PeriodPaginator.styled';
 import { useNavigate, useParams } from 'react-router-dom';
 import { parseDate } from 'helpers/parseDate';
-import { useDateValidation } from 'helpers/useDateValidation';
 
-const PeriodPaginator = ({ setCurrentDate, currentDate }) => {
+const PeriodPaginator = ({
+  selectedDay,
+  nextMonth,
+  prevMonth,
+  prevDay,
+  currentDate,
+  nextDay,
+}) => {
   const params = useParams();
-  const date = useDateValidation();
   const navigate = useNavigate();
-  const [selectedDay, setSelectedDay] = useState(new Date(date));
 
-  const nextMonth = () => {
-    setCurrentDate(addMonths(selectedDay, 1));
-  };
-  const prevMonth = () => {
-    setCurrentDate(subMonths(selectedDay, 1));
-  };
-  const nextDay = () => {
-    setSelectedDay(addDays(selectedDay, 1));
+  useEffect(() => {
+    if (!params.currentDay) {
+      return;
+    }
     const parsedDate = parseDate(selectedDay);
     navigate(`/calendar/day/${parsedDate}`);
-  };
-  const prevDay = () => {
-    setSelectedDay(subDays(selectedDay, 1));
-    const parsedDate = parseDate(selectedDay);
-    navigate(`/calendar/day/${parsedDate}`);
-  };
+  }, [selectedDay, navigate, params.currentDay]);
+
   const monthFormat = 'MMMM y';
   const dayFormat = 'd MMM y';
-  const formattedMonth = format(selectedDay, monthFormat);
+
+  const formattedMonth = format(currentDate, monthFormat);
+
   const formattedDay = format(selectedDay, dayFormat);
 
   return (

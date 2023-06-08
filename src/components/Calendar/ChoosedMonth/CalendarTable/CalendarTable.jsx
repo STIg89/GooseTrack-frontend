@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllTasks } from 'redux/tasks/operations';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 
-const CalendarTable = ({ currentDate, setCurrentDate }) => {
+const CalendarTable = ({ currentDate, setCurrentDate, setSelectedDay }) => {
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(monthStart);
   const startDate = startOfWeek(monthStart, { weekStartsOn: 1 });
@@ -77,6 +77,7 @@ const CalendarTable = ({ currentDate, setCurrentDate }) => {
   }
   const onDateClick = date => {
     setCurrentDate(date);
+    setSelectedDay(date);
   };
 
   return <Calendar>{rows}</Calendar>;
