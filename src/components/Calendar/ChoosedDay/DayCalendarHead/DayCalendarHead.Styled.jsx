@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const DayList = styled.ul`
   display: flex;
   font-size: 16px;
-  width: 335px;
+  max-width: 100%;
   height: 74px;
   background-color: var(--primary-background-color);
   border-radius: 8px;
@@ -10,13 +10,8 @@ export const DayList = styled.ul`
   justify-content: space-between;
   margin-bottom: 15px;
   @media screen and (min-width: 768px) {
-    width: 704px;
     height: 68px;
     font-size: 14px;
-    margin-left: 15px;
-  }
-  @media screen and (min-width: 1440px) {
-    width: 1072px;
   }
 `;
 

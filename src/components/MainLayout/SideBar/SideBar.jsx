@@ -1,6 +1,6 @@
 import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
-import Icons from "../../../images/sprite.svg"
-import LogoImg from "../Header/test_image/GooseLogo.png"
+import Icons from '../../../images/sprite.svg';
+import LogoImg from '../Header/test_image/GooseLogo.png';
 
 import {
   CloseBtn,
@@ -16,54 +16,43 @@ import {
   StyledNavLink,
   StyledCalendarIcon,
   TitleSideBar,
-  CloseIcon
+  CloseIcon,
 } from './SideBar.styled';
-// import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
-
-
-  
-  // let [secondOpening, setSecondOpening] = useState(false);
-
-  // useEffect(() => {
-    
-
-
-  // }, [])
-
+  const { t } = useTranslation();
   return (
     <SideBarContainer isOpen={isOpen}>
       <SideBarDiv>
         <LogoDiv>
           <Logo>
-            <LogoIcon src={LogoImg} alt='logo' />
+            <LogoIcon src={LogoImg} alt="logo" />
             <LogoSvg>
               <use href={`${Icons}#icon-logo-text`}></use>
             </LogoSvg>
           </Logo>
 
           <CloseBtn onClick={onCloseClick}>
-            <CloseIcon color='--primary-text-color' />
+            <CloseIcon color="--primary-text-color" />
           </CloseBtn>
-
         </LogoDiv>
         <SideBarNav>
-          <TitleSideBar>User Panel</TitleSideBar>
+          <TitleSideBar>{t('user_panel')}</TitleSideBar>
           <SideBarLinks>
             <li>
               <StyledNavLink to="account" onClick={onCloseClick}>
                 <Svg>
                   <use href={`${Icons}#icon-user-check`}></use>
                 </Svg>
-                My account
+                {t('my_account')}
               </StyledNavLink>
             </li>
 
             <li>
               <StyledNavLink to="calendar" onClick={onCloseClick}>
                 <StyledCalendarIcon />
-                Calendar
+                {t('calendar')}
               </StyledNavLink>
             </li>
           </SideBarLinks>
