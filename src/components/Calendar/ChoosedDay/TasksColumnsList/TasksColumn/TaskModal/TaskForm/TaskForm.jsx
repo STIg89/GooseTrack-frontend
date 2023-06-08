@@ -30,7 +30,9 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
   const [title, setTitle] = useState(editTask?.title || '');
   const [start, setStart] = useState(editTask?.start || '');
   const [end, setEnd] = useState(editTask?.end || '');
-  const [selectedOption, setSelectedOption] = useState('low');
+  const [selectedOption, setSelectedOption] = useState(
+    editTask?.priority || 'low'
+  );
   const [priority, setPriority] = useState('low');
   const category = editTask?.category || 'to-do';
   const dispatch = useDispatch();
