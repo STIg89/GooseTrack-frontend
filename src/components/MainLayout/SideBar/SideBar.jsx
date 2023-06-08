@@ -18,8 +18,19 @@ import {
   TitleSideBar,
   CloseIcon
 } from './SideBar.styled';
+// import { useEffect, useState } from 'react';
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
+
+
+  
+  // let [secondOpening, setSecondOpening] = useState(false);
+
+  // useEffect(() => {
+    
+
+
+  // }, [])
 
   return (
     <SideBarContainer isOpen={isOpen}>
