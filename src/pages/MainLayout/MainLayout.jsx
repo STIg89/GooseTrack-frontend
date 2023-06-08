@@ -28,7 +28,6 @@ const MainLayout = () => {
     if (window.innerWidth >= 1440) {
       return;
     }
-    console.log("setSideBarOpen", !sidebarOpen);
     setSidebarOpen(!sidebarOpen);
   }
 

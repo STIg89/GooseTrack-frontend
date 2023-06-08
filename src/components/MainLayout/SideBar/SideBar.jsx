@@ -1,6 +1,6 @@
 import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
 import Icons from '../../../images/sprite.svg';
-import LogoImg from '../Header/test_image/GooseLogo.png';
+import LogoImg from '../../../images/sidebar/GooseLogo@2x.png';
 
 import {
   CloseBtn,
