@@ -97,6 +97,7 @@
   --task-input-bg-color: #343434;
   --feedback-label-background-color: #21222c;
   --cancel-button-background-color: #21222c;
+  --auth-bg-color: #353647;
 
   --border: 1px solid rgba(255, 255, 255, 0.15);
   --border-account-input: 1px solid rgba(255, 255, 255, 0.15);
