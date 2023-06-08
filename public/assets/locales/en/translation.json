@@ -8,6 +8,9 @@
   "user_name": "User Name",
   "birthday": "Birthday",
   "phone": "Phone",
-  "save_changes": "Save changes"
+  "save_changes": "Save changes",
+  "month": "Month",
+  "day": "Day",
+  "to_do": "To do"
   
 }
