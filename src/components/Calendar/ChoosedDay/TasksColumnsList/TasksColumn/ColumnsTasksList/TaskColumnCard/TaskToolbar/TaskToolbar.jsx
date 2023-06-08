@@ -16,7 +16,7 @@ import { selectTasks } from 'redux/tasks/selectors';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const TaskToolBar = ({ id }) => {
+const TaskToolBar = ({ id, addCategory }) => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
   let editTask = tasks.find(task => task._id === id);
@@ -120,7 +120,8 @@ const TaskToolBar = ({ id }) => {
           onCloseModal={handleToggleModal}
           showEditBtn={showEditBtn}
           id={id}
-          category={editTask.category}
+          editTask={editTask}
+          addCategory={addCategory}
         />
       )}
     </Wraper>

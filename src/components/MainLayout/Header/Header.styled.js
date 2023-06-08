@@ -99,12 +99,9 @@ export const UserName = styled.h4`
   line-height: 18px;
   color: var(--primary-text-color);
 
-  margin-left: 8px;
-
   ${media.desktop} {
     font-size: 18px;
     line-height: 18px;
-    margin-left: 14px;
   }
 `;
 

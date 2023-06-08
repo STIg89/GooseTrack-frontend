@@ -5,16 +5,19 @@ import {
   TabsFlex,
 } from '../PeriodTypeSelect/PeriodTypesSelect.styled';
 import { parseDate } from 'helpers/parseDate';
+import { useTranslation } from 'react-i18next';
 
-const PeriodTypeSelect = ({ currentDate }) => {
-  const parsedDate = parseDate(currentDate);
+const PeriodTypeSelect = ({ selectedDate }) => {
+  const { t } = useTranslation();
+
+  const parsedDate = parseDate(selectedDate);
   return (
     <TabsFlex>
       <TypesTabsContainer>
         <TypesTabs to="/calendar" end>
-          Month
+          {t('month')}
         </TypesTabs>
-        <TypesTabs to={`day/${parsedDate}`}>Day</TypesTabs>
+        <TypesTabs to={`day/${parsedDate}`}>{t('day')}</TypesTabs>
       </TypesTabsContainer>
     </TabsFlex>
   );

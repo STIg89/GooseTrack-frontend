@@ -85,9 +85,13 @@
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   --shadow-logout-btn: 4px 2px 16px rgba(136, 165, 191, 0.48);
   --shadow-logout-btn-hover: 4px 2px 16px rgba(136, 165, 191, 1);
+
+  /* icon time input */
+  --icon-color-time-input: invert(0);
 }
 
 [data-theme='dark'] {
+  --test: invert(1);
   --secondary-background-color: #171820;
   --primary-background-color: #21222c;
   --sidebar-background-color: #13151a;
@@ -97,6 +101,7 @@
   --task-input-bg-color: #343434;
   --feedback-label-background-color: #21222c;
   --cancel-button-background-color: #21222c;
+  --auth-bg-color: #353647;
 
   --border: 1px solid rgba(255, 255, 255, 0.15);
   --border-account-input: 1px solid rgba(255, 255, 255, 0.15);
@@ -136,4 +141,7 @@
 
   /* shadow */
   --shadow-logout-btn: 4px 2px 16px rgba(136, 165, 191, 0.3);
+
+  /* icon time input */
+  --icon-color-time-input: invert(1);
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { updateUser, uploadAvatar } from 'redux/auth/operations';
+import { useTranslation } from 'react-i18next';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -54,6 +55,8 @@ export const UserForm = () => {
   const user = useSelector(selectUser);
   const [avatarUrl, setAvatarUrl] = useState('');
   const [username, setUsername] = useState('');
+
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -125,24 +128,24 @@ export const UserForm = () => {
                     {username ? username[0].toUpperCase() : ''}
                   </AvatarPlaceholder>
                 )}
-
-                <AvatarLabel htmlFor="avatar">
-                  <AddAvatar
-                    id="avatar"
-                    type="file"
-                    name="avatar"
-                    onChange={handleFileChange}
-                  ></AddAvatar>
-                </AvatarLabel>
               </AvatarWrapper>
-              <AvatarBtn>
-                <use href={`${Icons}#profile-plus-s`}></use>
-              </AvatarBtn>
+
+              <AvatarLabel htmlFor="avatar">
+                <AvatarBtn>
+                  <use href={`${Icons}#profile-plus-s`}></use>
+                </AvatarBtn>
+                <AddAvatar
+                  id="avatar"
+                  type="file"
+                  name="avatar"
+                  onChange={handleFileChange}
+                ></AddAvatar>
+              </AvatarLabel>
             </AvatarContainer>
 
             {/* User data */}
             <UserTitle>{user.name}</UserTitle>
-            <User>User</User>
+            <User>{t('user')}</User>
 
             {/* Inputs */}
             <Inputs>
@@ -158,7 +161,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  User Name
+                  {t('user_name')}
                   <StyledInput
                     type="text"
                     name="name"
@@ -197,7 +200,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  Birthday
+                  {t('birthday')}
                   <StyledDatePicker
                     className={`${
                       touched.birthday
@@ -286,7 +289,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  Phone
+                  {t('phone')}
                   <StyledInput
                     className={`${
                       values.phone && touched.phone
@@ -361,7 +364,7 @@ export const UserForm = () => {
               </InputWrapper>
             </Inputs>
             <SubmitBtn type="submit" disabled={!dirty}>
-              Save changes
+              {t('save_changes')}
             </SubmitBtn>
           </StyledForm>
         </Wrapper>
