@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Notify } from 'notiflix';
 import { refreshUser } from 'redux/auth/operations';
 import Header from 'components/MainLayout/Header/Header';
-import { MainContainer } from './MainLayout.styled';
+import { MainContainer, DivSidebar } from './MainLayout.styled';
 import Sidebar from 'components/MainLayout/SideBar/SideBar';
 
 
@@ -28,6 +28,7 @@ const MainLayout = () => {
     if (window.innerWidth >= 1440) {
       return;
     }
+    console.log("setSideBarOpen", !sidebarOpen);
     setSidebarOpen(!sidebarOpen);
   }
 
@@ -62,9 +63,9 @@ const MainLayout = () => {
   return (
     <MainContainer>
       <Header isOpen={sidebarOpen} onOpenClick={handleSidebarOpen} />
-      <div ref={sidebarRef}>
+      <DivSidebar ref={sidebarRef}>
         <Sidebar isOpen={sidebarOpen} onCloseClick={handleSidebarOpen} />      
-      </div>
+      </DivSidebar>
       <Outlet />
     </MainContainer>
   );
