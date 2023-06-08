@@ -11,7 +11,7 @@ import TaskToolBar from './TaskToolbar/TaskToolbar';
 import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 
-const TaskColumnCard = ({ taskText, priority, id }) => {
+const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
   const user = useSelector(selectUser);
 
   const [isCut, setIsCut] = useState(true);
@@ -35,7 +35,7 @@ const TaskColumnCard = ({ taskText, priority, id }) => {
           <Avatar src={user.avatarURL} alt="avatar"></Avatar>
           <PriorityWraper text={priority}>{priority}</PriorityWraper>
         </ToolsWraper>
-        <TaskToolBar id={id} />
+        <TaskToolBar id={id} addCategory={addCategory} />
       </Wraper>
     </CardWraper>
   );

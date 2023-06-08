@@ -29,7 +29,7 @@ export const Label = styled.label`
   font-size: 12px;
   line-height: 14px;
   margin-bottom: 8px;
-  color: #343434;
+  color: var(--label-text);
 `;
 
 export const Input = styled.input`
@@ -43,6 +43,10 @@ export const Input = styled.input`
   border-radius: 8px;
   background-color: var(--task-input-bg-color);
   color: var(--calendar-digit-color);
+
+  &::-webkit-calendar-picker-indicator {
+    filter: var(--icon-color-time-input);
+  }
 `;
 
 export const RadioButtonsContainer = styled.div`
@@ -79,11 +83,11 @@ export const RadioInput = styled.input`
       if (props.checked) {
         switch (props.value) {
           case 'low':
-            return 'rgba(114, 194, 248, 0.5)';
+            return 'var(--task-priority-low-checked-color)';
           case 'medium':
-            return 'rgba(243, 178, 73, 0.5)';
+            return 'var(--task-priority-medium-checked-color)';
           case 'high':
-            return 'rgba(234, 61, 101, 0.5)';
+            return 'var(--task-priority-high-checked-color)';
           default:
             return '';
         }
@@ -91,11 +95,11 @@ export const RadioInput = styled.input`
 
       switch (props.value) {
         case 'low':
-          return 'rgb(114, 194, 248)';
+          return 'var(--task-priority-low-color)';
         case 'medium':
-          return 'rgb(243, 178, 73)';
+          return 'var(--task-priority-medium-color)';
         case 'high':
-          return 'rgb(234, 61, 101)';
+          return 'var(--task-priority-high-color)';
         default:
           return '';
       }
@@ -104,16 +108,16 @@ export const RadioInput = styled.input`
   border: 2px solid
     ${props => {
       if (props.checked) {
-        return '#fff';
+        return 'var(--primary-background-color)';
       }
 
       switch (props.value) {
         case 'low':
-          return '#72C2F8';
+          return 'var(--task-priority-low-color)';
         case 'medium':
-          return '#F3B249';
+          return 'var(--task-priority-medium-color)';
         case 'high':
-          return '#EA3D65';
+          return 'var(--task-priority-high-color)';
         default:
           return '';
       }
@@ -122,11 +126,11 @@ export const RadioInput = styled.input`
   background-color: ${props => {
     switch (props.value) {
       case 'low':
-        return '#72C2F8';
+        return 'var(--task-priority-low-color)';
       case 'medium':
-        return '#F3B249';
+        return 'var(--task-priority-medium-color)';
       case 'high':
-        return '#EA3D65';
+        return 'var(--task-priority-high-color)';
       default:
         return '';
     }
@@ -155,11 +159,11 @@ export const AddButton = styled.button`
   font-size: 14px;
   line-height: 18px;
   text-align: center;
-  color: #ffffff;
+  color: var(--btn-text-color);
   outline: none;
   border: none;
   padding: 12px 40px;
-  background-color: #3e85f3;
+  background-color: var(--color-button-period-type);
   border-radius: 8px;
   transition: background-color 250ms;
 
@@ -174,7 +178,7 @@ export const AddButton = styled.button`
 `;
 
 export const AddIcon = styled.svg`
-  stroke: #ffffff;
+  stroke: var(--btn-text-color);
   width: 12px;
   height: 12px;
   margin-right: 8px;
@@ -220,7 +224,7 @@ export const EditButton = styled.button`
   font-size: 14px;
   line-height: 18px;
   text-align: center;
-  color: #ffffff;
+  color: var(--btn-text-color);
   outline: none;
   border: none;
   padding: 12px 40px;
@@ -239,7 +243,7 @@ export const EditButton = styled.button`
 `;
 
 export const EditIcon = styled.svg`
-  stroke: #ffffff;
+  stroke: var(--btn-text-color);
   fill: transparent;
   width: 16px;
   height: 16px;
