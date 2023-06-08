@@ -71,7 +71,7 @@ export const UserForm = () => {
     setAvatarUrl(user.avatarURL);
     setUsername(user.name);
     setInitialValues({ ...data });
-  }, [user]);
+  }, [user, avatarUrl]);
 
   // Initial values for form
   const [initialValues, setInitialValues] = useState({
