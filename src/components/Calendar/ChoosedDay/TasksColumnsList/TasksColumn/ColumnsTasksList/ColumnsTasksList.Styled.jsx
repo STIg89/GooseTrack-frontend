@@ -3,10 +3,13 @@ export const TaskslistWraper = styled.ul`
   display: flex;
   flex-direction: column;
   overflow: auto;
-  
-  @media screen and (min-width: 1440px) {
-    gap:18px;
+  gap:14px;
+    @media screen and (min-width: 768px) {
     margin-bottom:32px;
+    }
+    @media screen and (min-width: 1440px) {
+    gap:18px;
+
     }
 
 

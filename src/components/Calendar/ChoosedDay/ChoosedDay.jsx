@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { fetchDayTasks } from 'redux/tasks/operations';
 import { selectTasks } from 'redux/tasks/selectors';
 import { useDateValidation } from 'helpers/useDateValidation';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 
 const ChoosedDay = () => {
   // check the date from the request parameter. if invalid, we return the current date
@@ -13,8 +14,13 @@ const ChoosedDay = () => {
   const [selectedDay, setSelectedDay] = useState(new Date(validDate));
 
   const dispatch = useDispatch();
-
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   useEffect(() => {
+    if (isLoggedIn === false || isRefreshing === true) {
+      return;
+    }
+
     const date = new Date(selectedDay);
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -29,7 +35,7 @@ const ChoosedDay = () => {
     };
 
     dispatch(fetchDayTasks(reqObj));
-  }, [selectedDay, dispatch]);
+  }, [selectedDay, dispatch, isLoggedIn, isRefreshing]);
 
   const tasks = useSelector(selectTasks);
 
