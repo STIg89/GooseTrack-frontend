@@ -26,7 +26,7 @@ import Icons from 'images/sprite.svg';
 
 const Header = ({ isOpen, onOpenClick }) => {
   const { name, avatarURL } = useSelector(selectUser);
-  console.log(avatarURL);
+ 
   const firstLetter = name?.charAt(0).toUpperCase();
   const location = useLocation();
   let { currentDay } = useParams();
