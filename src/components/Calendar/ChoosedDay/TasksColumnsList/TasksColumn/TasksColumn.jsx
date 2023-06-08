@@ -3,12 +3,12 @@ import ColumnHeadBar from './ColumnHeadBar/ColumnHeadBar';
 import AddTaskBtn from './AddTaskBtn/AddTaskBtn';
 import { ColumnsItem } from './TasksColumn.Styled';
 
-const TasksColumn = ({ headName, tasks }) => {
+const TasksColumn = ({ headName, tasks, addCategory }) => {
   return (
     <ColumnsItem>
-      <ColumnHeadBar headName={headName} />
+      <ColumnHeadBar headName={headName} addCategory={addCategory} />
       {tasks && <ColumnsTasksList tasks={tasks} />}
-      <AddTaskBtn />
+      <AddTaskBtn addCategory={addCategory} />
     </ColumnsItem>
   );
 };

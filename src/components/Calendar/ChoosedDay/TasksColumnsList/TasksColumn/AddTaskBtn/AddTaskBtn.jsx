@@ -6,7 +6,7 @@ import { TaskBtn, TaskBtnsvg } from './AddTaskBtn.Styled';
 
 import Icons from 'images/sprite.svg';
 
-const AddTaskBtn = () => {
+const AddTaskBtn = ({ addCategory }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleToggleModal = () => setIsOpened(!isOpened);
@@ -19,7 +19,9 @@ const AddTaskBtn = () => {
         </TaskBtnsvg>
         Add task
       </TaskBtn>
-      {isOpened && <TaskModal onCloseModal={handleToggleModal} />}
+      {isOpened && (
+        <TaskModal onCloseModal={handleToggleModal} addCategory={addCategory} />
+      )}
     </>
   );
 };

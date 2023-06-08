@@ -10,7 +10,7 @@ import TaskModal from '../TaskModal/TaskModal';
 
 import Icons from 'images/sprite.svg';
 
-const ColumnHeadBar = ({ headName }) => {
+const ColumnHeadBar = ({ headName, addCategory }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const handleToggleModal = () => setIsOpened(!isOpened);
@@ -27,7 +27,9 @@ const ColumnHeadBar = ({ headName }) => {
         </AddBtn>
       </ColumnHeader>
 
-      {isOpened && <TaskModal onCloseModal={handleToggleModal} />}
+      {isOpened && (
+        <TaskModal onCloseModal={handleToggleModal} addCategory={addCategory} />
+      )}
     </>
   );
 };
