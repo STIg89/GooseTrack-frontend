@@ -10,7 +10,6 @@ export const Container = styled.div`
   margin: 0 auto;
   height: auto;
   width: 100%;
-  margin-bottom: 65px;
 `;
 
 export const Box = styled.div`
@@ -78,10 +77,22 @@ export const BoxBtn = styled.div`
 export const BtnSignUp = styled(NavLink)`
   display: none;
 
+  &:focus {
+      color: var(--accent-text-color);
+      background-color: var(--primary-background-color);
+      
+    }
+
+    &:hover {
+        color: var(--accent-text-color);
+        background-color: var(--primary-background-color);
+    }
+
   ${media.tablet} {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: underline;
     width: 121px;
     height: 46px;
     margin: 0;
@@ -93,17 +104,6 @@ export const BtnSignUp = styled(NavLink)`
     font-size: 14px;
     line-height: 18px;
     transition: all var(--animation);
-
-    &:focus {
-      color: var(--accent-text-color);
-      background-color: var(--primary-background-color);
-      
-    }
-
-    &:hover {
-        color: var(--accent-text-color);
-        background-color: var(--primary-background-color);
-    }
   }
 `;
 
@@ -132,18 +132,7 @@ export const BtnLogIn = styled(NavLink)`
   justify-content: center;
   transition: all var(--animation);
 
-    ${media.tablet} {
-        margin: 0;
-        padding: 14px 22px;
-        border: 0;
-        border-radius: 15px;
-        color: var(--accent-background-color);
-        font-family: 'Inter', sans-serif;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 18px;
-    
-        &:hover ${SvgIcon} {
+  &:hover ${SvgIcon} {
             transform: scale(1.2);
             stroke: var(--primary-background-color);
         }
@@ -159,11 +148,26 @@ export const BtnLogIn = styled(NavLink)`
             color: var(--btn-text-color);
             background-color: #1e63cc;
         }
+
+    ${media.tablet} {
+        margin: 0;
+        padding: 14px 22px;
+        border: 0;
+        border-radius: 15px;
+        color: var(--accent-background-color);
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
   }
 `;
 
 export const BtnSignUpMob = styled.button`
+    width: 121px;
+    height: 46px;
     margin-top: 200px;
+    border-radius: 15px;
+    text-decoration: underline;
     display: block;
     background-color: transparent;
     border: 0;
@@ -173,6 +177,17 @@ export const BtnSignUpMob = styled.button`
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     line-height: 14px;
+
+    &:focus {
+      color: var(--accent-text-color);
+      background-color: var(--primary-background-color);
+      
+    }
+
+    &:hover {
+        color: var(--accent-text-color);
+        background-color: var(--primary-background-color);
+    }
 
     ${media.tablet} {
         display: none;
