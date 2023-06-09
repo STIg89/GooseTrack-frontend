@@ -28,7 +28,11 @@ const ColumnHeadBar = ({ headName, addCategory }) => {
       </ColumnHeader>
 
       {isOpened && (
-        <TaskModal onCloseModal={handleToggleModal} addCategory={addCategory} />
+        <TaskModal
+          onCloseModal={handleToggleModal}
+          addCategory={addCategory}
+          isOpened={isOpened}
+        />
       )}
     </>
   );
