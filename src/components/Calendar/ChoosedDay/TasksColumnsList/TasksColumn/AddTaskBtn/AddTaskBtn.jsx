@@ -23,7 +23,11 @@ const AddTaskBtn = ({ addCategory }) => {
         {t('Add task')}
       </TaskBtn>
       {isOpened && (
-        <TaskModal onCloseModal={handleToggleModal} addCategory={addCategory} />
+        <TaskModal
+          onCloseModal={handleToggleModal}
+          addCategory={addCategory}
+          isOpened={isOpened}
+        />
       )}
     </>
   );

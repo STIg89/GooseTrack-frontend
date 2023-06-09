@@ -13,7 +13,6 @@ import { Rating } from 'react-simple-star-rating';
 // import StarRatingComponent from 'react-star-rating-component';
 
 import { useTranslation } from 'react-i18next';
-
 const FeedbackForm = ({ fetchData }) => {
   const [newComment, setNewComment] = useState('');
   const [newRate, setNewRate] = useState(0);
@@ -44,6 +43,7 @@ const FeedbackForm = ({ fetchData }) => {
     <>
       <ModalForm>
         <Label>{t('Rating')}</Label>
+
         {/* <StarRating/> */}
         {/* <StarRatingComponent
           className="test"

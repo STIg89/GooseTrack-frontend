@@ -13,7 +13,7 @@ import TaskModal from '../../../TaskModal/TaskModal';
 import { deleteTask, fetchDayTasks, patchTask } from 'redux/tasks/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const TaskToolBar = ({ id, addCategory }) => {
@@ -28,17 +28,18 @@ const TaskToolBar = ({ id, addCategory }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const handleClick = () => {
-    setIsClicked(true);
+    setIsClicked(prevState => !prevState);
   };
 
-  const handleToggleModal = () => setIsOpened(!isOpened);
+  const handleToggleModal = () => {
+    setIsOpened(!isOpened);
+  };
 
   function handleOptionChange(event) {
     setSelectedOption(event.target.value);
     editTask = { ...editTask, category: event.target.value };
 
     dispatch(patchTask({ id: id, task: { category: editTask.category } }));
-    setIsClicked(false);
   }
   let { currentDay } = useParams();
 
@@ -60,6 +61,22 @@ const TaskToolBar = ({ id, addCategory }) => {
 
     dispatch(fetchDayTasks(reqObj));
   };
+
+  const chouseCatRef = useRef(null);
+  useEffect(() => {
+    const handleChouseCatClickOutside = e => {
+      if (chouseCatRef.current && !chouseCatRef.current.contains(e.target)) {
+        setIsClicked(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleChouseCatClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleChouseCatClickOutside);
+    };
+  }, []);
+
   return (
     <Wraper>
       <BtnArrow>
@@ -73,7 +90,9 @@ const TaskToolBar = ({ id, addCategory }) => {
             <use href={`${Icons}#task-move-sf`}></use>
           </ToolBarItem>
         </BtnStyled>
+
         <ChouseCat
+          ref={chouseCatRef}
           style={isClicked ? { display: 'flex' } : { display: 'none' }}
         >
           {category.map(item => {
@@ -110,11 +129,13 @@ const TaskToolBar = ({ id, addCategory }) => {
           <use href={`${Icons}#task-edit-sf`}></use>
         </ToolBarItem>
       </BtnStyled>
+
       <BtnStyled type="button" onClick={() => onDeleteHendler(id)}>
         <ToolBarItem>
           <use href={`${Icons}#task-trash-sf`}></use>
         </ToolBarItem>
       </BtnStyled>
+
       {isOpened && (
         <TaskModal
           onCloseModal={handleToggleModal}
@@ -122,6 +143,7 @@ const TaskToolBar = ({ id, addCategory }) => {
           id={id}
           editTask={editTask}
           addCategory={addCategory}
+          isOpened={isOpened}
         />
       )}
     </Wraper>

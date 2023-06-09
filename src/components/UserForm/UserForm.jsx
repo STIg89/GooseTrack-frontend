@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
-
+import { Loader } from '../../utils/loader/loader';
 import Icons from 'images/sprite.svg';
 
 import {
@@ -54,12 +54,13 @@ const validationSchema = yup.object().shape({
 export const UserForm = () => {
   const user = useSelector(selectUser);
   const [avatarUrl, setAvatarUrl] = useState('');
+  const [showAvatartLoader, setShowAvatartLoader] = useState(false);
+
   const [username, setUsername] = useState('');
 
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
-
   useEffect(() => {
     const data = {
       name: user.name || '',
@@ -84,9 +85,11 @@ export const UserForm = () => {
 
   // Change avatar
   const handleFileChange = e => {
+    setShowAvatartLoader(true);
     let promise = dispatch(uploadAvatar(e.target.files[0]));
     promise.then(function (response) {
       setAvatarUrl(response.payload.data.data.updatedUser.avatarURL);
+      setShowAvatartLoader(false);
     });
   };
 
@@ -120,6 +123,7 @@ export const UserForm = () => {
           <StyledForm autoComplete="off" onSubmit={handleSubmit}>
             {/* Avatar */}
             <AvatarContainer>
+              {showAvatartLoader && <Loader />}
               <AvatarWrapper>
                 {avatarUrl ? (
                   <AvatarImage alt="avatar" src={avatarUrl} />
@@ -214,6 +218,12 @@ export const UserForm = () => {
                     type="date"
                     calendarStartDay={1}
                     value={values.birthday}
+                    formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
+                    showMonthDropdown
+                    showYearDropdown
+                    dropdownMode="select"
+                    yearDropdownItemNumber={100}
+                    scrollableYearDropdown
                     selected={new Date(values.birthday)}
                     dateFormat="yyyy-MM-dd"
                     onChange={e => {

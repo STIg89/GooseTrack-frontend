@@ -6,15 +6,22 @@ import Icons from 'images/sprite.svg';
 
 const modalRoot = document.getElementById('modal-root');
 
-const Modal = ({ children, onCloseModal }) => {
+const Modal = ({ children, onCloseModal, isOpened }) => {
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
     const onKeyDown = e => {
       if (e.code === 'Escape') {
         onCloseModal();
       }
     };
+
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      document.body.style.overflow = 'auto';
+    };
   }, [onCloseModal]);
 
   const handleOverlayClick = ({ currentTarget, target }) => {
@@ -25,16 +32,20 @@ const Modal = ({ children, onCloseModal }) => {
   };
 
   return createPortal(
-    <div style={{}}>
-      <Overlay onClick={handleOverlayClick}>
-        <ModalStyled>
-          <CloseIcon onClick={() => onCloseModal()}>
-            <use href={`${Icons}#icon-close`}></use>
-          </CloseIcon>
-          {children}
-        </ModalStyled>
-      </Overlay>
-    </div>,
+    <Overlay
+      onClick={handleOverlayClick}
+      // style={{
+      //   opacity: isOpened ? 1 : 0,
+      //   visibility: isOpened ? 'visible' : 'hidden',
+      // }}
+    >
+      <ModalStyled>
+        <CloseIcon onClick={() => onCloseModal()}>
+          <use href={`${Icons}#icon-close`}></use>
+        </CloseIcon>
+        {children}
+      </ModalStyled>
+    </Overlay>,
     modalRoot
   );
 };

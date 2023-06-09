@@ -1,32 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import sprite from 'images/sprite.svg';
-import { addMonths, subMonths, format } from 'date-fns';
+import { format } from 'date-fns';
 import {
   PeriodView,
   PeriodTabs,
   PeriodTabsContainer,
   GroupPeriod,
 } from './PeriodPaginator.styled';
+import { useNavigate, useParams } from 'react-router-dom';
+import { parseDate } from 'helpers/parseDate';
 
-const PeriodPaginator = ({ setCurrentDate, currentDate, selectedDate }) => {
-  const nextMonth = () => {
-    setCurrentDate(addMonths(currentDate, 1));
-  };
-  const prevMonth = () => {
-    setCurrentDate(subMonths(currentDate, 1));
-  };
+const PeriodPaginator = ({
+  selectedDay,
+  nextMonth,
+  prevMonth,
+  prevDay,
+  currentDate,
+  nextDay,
+}) => {
+  const params = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!params.currentDay) {
+      return;
+    }
+    const parsedDate = parseDate(selectedDay);
+    navigate(`/calendar/day/${parsedDate}`);
+  }, [selectedDay, navigate, params.currentDay]);
+
   const monthFormat = 'MMMM y';
+  const dayFormat = 'd MMM y';
+
   const formattedMonth = format(currentDate, monthFormat);
+
+  const formattedDay = format(selectedDay, dayFormat);
+
   return (
     <GroupPeriod>
-      <PeriodView>{formattedMonth}</PeriodView>
+      <PeriodView>
+        {params.currentDay ? formattedDay : formattedMonth}
+      </PeriodView>
       <PeriodTabsContainer>
-        <PeriodTabs onClick={prevMonth}>
+        <PeriodTabs onClick={params.currentDay ? prevDay : prevMonth}>
           <svg width="16" height="16">
             <use href={`${sprite}#calendar-right-sf`}></use>
           </svg>
         </PeriodTabs>
-        <PeriodTabs style={{ transform: 'rotate(180deg)' }} onClick={nextMonth}>
+        <PeriodTabs
+          style={{ transform: 'rotate(180deg)' }}
+          onClick={params.currentDay ? nextDay : nextMonth}
+        >
           <svg width="16" height="16">
             <use href={`${sprite}#calendar-right-sf`}></use>
           </svg>
