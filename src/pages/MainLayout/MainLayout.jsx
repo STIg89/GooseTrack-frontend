@@ -39,7 +39,6 @@ const MainLayout = () => {
         }
       }
     }
-
     document.addEventListener("mousedown", handleSidebarClickOutside);
 
     return () => {

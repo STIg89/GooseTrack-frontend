@@ -4,19 +4,13 @@ export const ColumnsList = styled.ul`
    {
     display: flex;
     padding: 0px;
-    justify-content: space-between;
-    height: 568px;
+    padding-bottom: 44px;
+
     gap: 16px;
     overflow: auto;
 
-    @media screen and (min-width: 768px) {
-      justify-content: flex-start;
-    }
-    @media screen and (min-width: 820) {
-      justify-content: flex-start;
-    }
-    @media screen and (min-width: 1150px) {
-      justify-content: space-around;
+    @media screen and (min-width: 1440px) {
+      gap: 27px;
     }
 
     ::-webkit-scrollbar {

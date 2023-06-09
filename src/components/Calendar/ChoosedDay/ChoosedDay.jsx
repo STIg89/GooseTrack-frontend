@@ -2,17 +2,12 @@ import Container from './ChoosedDay.Styled';
 import DayCalendarHead from './DayCalendarHead/DayCalendarHead';
 import TasksColumnsList from './TasksColumnsList/TasksColumnsList';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { fetchDayTasks } from 'redux/tasks/operations';
 import { selectTasks } from 'redux/tasks/selectors';
-import { useDateValidation } from 'helpers/useDateValidation';
 import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/selectors';
 
-const ChoosedDay = () => {
-  // check the date from the request parameter. if invalid, we return the current date
-  const validDate = useDateValidation();
-  const [selectedDay, setSelectedDay] = useState(new Date(validDate));
-
+const ChoosedDay = ({ selectedDay, setSelectedDay }) => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
   const isLoggedIn = useSelector(selectIsLoggedIn);

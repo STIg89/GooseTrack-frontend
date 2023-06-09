@@ -5,23 +5,22 @@ import { useState } from 'react';
 import CalendarToolbar from 'components/Calendar/CalendarToolbar/CalendarToolbar';
 import ChoosedMonth from 'components/Calendar/ChoosedMonth/ChoosedMonth';
 
-const CalendarPage = () => {
+const CalendarPage = ({ selectedDay, setSelectedDay }) => {
   const params = useParams();
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
   return (
     <div>
       <CalendarToolbar
         setCurrentDate={setCurrentDate}
         currentDate={currentDate}
-        selectedDate={selectedDate}
+        selectedDay={selectedDay}
+        setSelectedDay={setSelectedDay}
       />
       {!params?.currentDay && (
         <ChoosedMonth
           setCurrentDate={setCurrentDate}
           currentDate={currentDate}
-          selectedDate={selectedDate}
-          setSelectedDate={setSelectedDate}
+          setSelectedDay={setSelectedDay}
         />
       )}
       <Outlet />

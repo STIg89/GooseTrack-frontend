@@ -23,7 +23,7 @@ export const AuthLink = styled(Link)`
   }
 
   @media (max-width: 375px) {
-    width: 100%;
+    width: fit-content;
     text-align: center;
   }
 `;

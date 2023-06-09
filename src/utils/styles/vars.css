@@ -29,6 +29,7 @@
   --border-auth-correct: 1px solid #3cbc81;
   --border-AddTaskBtn: 1px dashed #3e85f3;
   --border-account-input: 1px solid rgba(17, 17, 17, 0.15);
+  --border-cloud-color: #abcdef;
 
   /* text-color */
   --primary-text-color: #111111;
@@ -43,6 +44,7 @@
   --text-correct-color: #3cbc81;
   --label-text: #343434;
   --feedback-text: rgba(17, 17, 17, 0.7);
+  --cloud-text-color: #6d92be;
 
   /* calendar */
   --calendar-digit-color: #343434;
@@ -106,6 +108,7 @@
   --border: 1px solid rgba(255, 255, 255, 0.15);
   --border-account-input: 1px solid rgba(255, 255, 255, 0.15);
   --border-label-color: rgba(255, 255, 255, 0.15);
+  --border-cloud-color: grey;
 
   /* text-color */
   --primary-text-color: #ffffff;
@@ -118,6 +121,7 @@
   --secondary-text-color: #ffffff;
   --label-text: rgba(250, 250, 250, 0.3);
   --feedback-text: rgba(255, 255, 255, 0.7);
+  --cloud-text-color: #3e85f3;
 
   --calendar-digit-color: #ffffff;
   --task-input-bg-color: rgba(255, 255, 255, 0);
