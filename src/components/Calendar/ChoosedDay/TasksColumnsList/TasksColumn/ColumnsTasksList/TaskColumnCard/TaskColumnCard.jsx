@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {
   Avatar,
   CardWraper,
+  NoAvatar,
   PriorityWraper,
   TaskText,
   ToolsWraper,
@@ -32,7 +33,12 @@ const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
       </TaskText>
       <Wraper>
         <ToolsWraper>
-          <Avatar src={user.avatarURL} alt="avatar"></Avatar>
+          {user.avatarURL ? (
+            <Avatar src={user.avatarURL} alt="user avatar" />
+          ) : (
+            <NoAvatar>{user.name?.charAt(0)}</NoAvatar>
+          )}
+
           <PriorityWraper text={priority}>{priority}</PriorityWraper>
         </ToolsWraper>
         <TaskToolBar id={id} addCategory={addCategory} />
