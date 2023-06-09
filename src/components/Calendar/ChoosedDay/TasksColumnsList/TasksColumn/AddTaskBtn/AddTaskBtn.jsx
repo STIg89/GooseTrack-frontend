@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import TaskModal from '../TaskModal/TaskModal';
 
@@ -11,13 +12,15 @@ const AddTaskBtn = ({ addCategory }) => {
 
   const handleToggleModal = () => setIsOpened(!isOpened);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <TaskBtn type="button" onClick={handleToggleModal}>
         <TaskBtnsvg>
           <use href={`${Icons}#add-btn-s`}></use>
         </TaskBtnsvg>
-        Add task
+        {t('Add task')}
       </TaskBtn>
       {isOpened && (
         <TaskModal

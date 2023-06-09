@@ -4,12 +4,15 @@ import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { DayWrap } from './DayCalendarHead.Styled';
+import { useTranslation } from 'react-i18next';
 
 const DayCalendarHead = ({ selectedDay, setSelectedDay }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [viewport, setViewport] = useState(window.innerWidth);
   const week = [];
+
+  const { t } = useTranslation();
 
   // days of the week from 0-6 for getDat()
   const getWeek = () => {

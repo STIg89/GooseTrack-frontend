@@ -165,7 +165,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  {t('user_name')}
+                  {t('User Name')}
                   <StyledInput
                     type="text"
                     name="name"
@@ -204,7 +204,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  {t('birthday')}
+                  {t('Birthday')}
                   <StyledDatePicker
                     className={`${
                       touched.birthday
@@ -299,7 +299,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  {t('phone')}
+                  {t('Phone')}
                   <StyledInput
                     className={`${
                       values.phone && touched.phone
@@ -374,7 +374,7 @@ export const UserForm = () => {
               </InputWrapper>
             </Inputs>
             <SubmitBtn type="submit" disabled={!dirty}>
-              {t('save_changes')}
+              {t('Save changes')}
             </SubmitBtn>
           </StyledForm>
         </Wrapper>
