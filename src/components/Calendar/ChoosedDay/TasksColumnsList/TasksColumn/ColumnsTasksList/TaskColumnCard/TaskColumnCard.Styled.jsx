@@ -27,6 +27,20 @@ export const Avatar = styled.img`
   height: 32px;
   border-radius: 50%;
 `;
+export const NoAvatar = styled.div`
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+  border-radius: 50%;
+  color: var(--secondary-text-color);
+  background-color: var(--avatar-background-color);
+  font-size: 25px;
+  outline: 2px solid var(--accent-background-color);
+`;
+
 export const PriorityWraper = styled.p`
   padding: 4px 12px;
   border-radius: 4px;

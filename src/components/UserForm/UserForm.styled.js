@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 1440px) {
     margin-top: 32px;
     margin-bottom: 32px;
-    height: calc(100vh - 148px);
+    min-height: calc(100vh - 148px);
   }
 `;
 
@@ -287,23 +287,23 @@ export const StyledDatePicker = styled(DatePicker)`
 
 export const DatePickerWrapper = styled.div`
   & .react-datepicker {
-    position: absolute;
-    top: -50px;
     background-color: var(--color-button-period-type);
     border-radius: 16px;
     overflow: hidden;
     border: none;
     color: var(--primary-background-color);
     width: 327px;
-    height: 327px;
+    height: 310px;
     display: flex;
     justify-content: center;
     font-size: 16px;
     line-height: 2.2;
 
     @media screen and (min-width: 768px) {
+      position: absolute;
+      top: -80px;
       width: 354px;
-      height: 310px;
+      height: 340px;
       font-size: 18px;
     }
   }
@@ -316,6 +316,52 @@ export const DatePickerWrapper = styled.div`
   .react-datepicker__navigation-icon {
     ::before {
       border-color: var(--primary-background-color);
+    }
+  }
+
+  .react-datepicker__month-select,
+  .react-datepicker__year-select {
+    padding: 5px;
+    width: 110px;
+    background-color: var(--color-button-period-type);
+    border: 1px solid var(--primary-background-color);
+    border-radius: 24px;
+    color: var(--primary-background-color);
+
+    text-align: center;
+    font-size: 14px;
+    overflow-y: auto;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--color-button-period-type);
+    }
+    &:focus {
+      outline: none;
+    }
+
+    ::-webkit-scrollbar {
+      box-sizing: border-box;
+      width: 5px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: var(--primary-background-color);
+      border-radius: 10px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-button-period-type);
+      border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-text-color);
     }
   }
 
@@ -357,7 +403,7 @@ export const SubmitBtn = styled.button`
   padding: 0;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40px;
+  margin-top: 22px;
   width: 195px;
   height: 46px;
   border-radius: 16px;

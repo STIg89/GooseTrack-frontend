@@ -8,6 +8,8 @@ const media = {
 export const Container = styled.div`
     padding-right: 20px;
     padding-left: 20px;
+    padding-top: 65px;
+    padding-bottom: 100px;
     background-color: var(--primary-background-color);
 
     ${media.tablet} {
@@ -79,13 +81,19 @@ export const TextWrapper = styled.div`
   max-width: 375px;
     ${media.tablet} {
         margin-left: 32px;
-        padding-left: 350px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: start;
+        gap: 15px; 
     }
     ${media.desktop} {
         margin: 70px;
         margin-top: 194px;
         display: block;
         padding-left: 0;
+    }
+    &.text-reverse { 
+        margin-left: auto;
     }
 `;
 
@@ -99,6 +107,7 @@ export const TextNumber = styled.p`
 
     ${media.tablet} {
         font-size: 104px;
+        margin-right: 50px
     }
 `;
 
@@ -115,9 +124,10 @@ export const TextButton = styled.button`
     border: none;
 
     ${media.tablet} {
+        margin-right: 20px;
         font-size: 40px;
         line-height: 44px;
-           
+
         width: 264px;
         height: 56px;
     }
@@ -128,8 +138,9 @@ export const Title = styled.h2`
     font-family: Inter;
     font-weight: 700;
     line-height: 40px;
-    color: var(--secondary-background-color);
-    margin: 8px 0;
+    color: var(--primary-text-color);
+    margin-top: 8px;
+    margin-bottom: 20px;
 
     ${media.tablet} {
         font-size: 40px ;

@@ -70,6 +70,11 @@ export const RadioLabel = styled.label`
   font-size: 12px;
   line-height: 14px;
   color: var(--calendar-digit-color);
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 `;
 
 export const RadioInput = styled.input`

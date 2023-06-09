@@ -1,7 +1,7 @@
-import gooseDesk3x from '../../../images/start-page-goose-desktop-1x.png';
-import gooseDesk2x from '../../../images/start-page-goose-desktop-2x.png';
-import gooseDesk1x from '../../../images/start-page-goose-desktop-3x.png';
-import Icons from '../../../images/sprite.svg'
+import gooseDesk3x from 'images/start-page-goose-desktop-1x.png';
+import gooseDesk2x from 'images/start-page-goose-desktop-2x.png';
+import gooseDesk1x from 'images/start-page-goose-desktop-3x.png';
+import Icons from 'images/sprite.svg'
 import {Container, Box, Img,  MainTitle, SpanTitle, BoxBtn, BtnSignUp, BtnLogIn, BtnSignUpMob, SvgIcon} from './AuthSection.styled';
 
 const AuthSection = () => { 
