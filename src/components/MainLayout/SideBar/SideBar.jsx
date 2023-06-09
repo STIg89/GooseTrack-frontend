@@ -57,21 +57,21 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
           </CloseBtn>
         </LogoDiv>
         <SideBarNav>
-          <TitleSideBar>{t('user_panel')}</TitleSideBar>
+          <TitleSideBar>{t('User Panel')}</TitleSideBar>
           <SideBarLinks>
             <li>
               <StyledNavLink to="account" onClick={onCloseClick}>
                 <Svg>
                   <use href={`${Icons}#icon-user-check`}></use>
                 </Svg>
-                {t('my_account')}
+                {t('My account')}
               </StyledNavLink>
             </li>
 
             <li>
               <StyledNavLink to="calendar" onClick={onCloseClick}>
                 <StyledCalendarIcon />
-                {t('calendar')}
+                {t('Calendar')}
               </StyledNavLink>
             </li>
           </SideBarLinks>

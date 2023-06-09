@@ -20,6 +20,7 @@ const PeriodTypeSelect = ({
   return (
     <TabsFlex>
       <TypesTabsContainer>
+
         <TypesTabs
           to="/calendar"
           end

@@ -12,9 +12,12 @@ import { Rating } from 'react-simple-star-rating';
 // import './FeedbackForm.css';
 // import StarRatingComponent from 'react-star-rating-component';
 
+import { useTranslation } from 'react-i18next';
 const FeedbackForm = ({ fetchData }) => {
   const [newComment, setNewComment] = useState('');
   const [newRate, setNewRate] = useState(0);
+
+  const { t } = useTranslation();
 
   const onStarClickClick = nextValue => {
     changeRate(nextValue);
@@ -39,7 +42,8 @@ const FeedbackForm = ({ fetchData }) => {
   return (
     <>
       <ModalForm>
-        <Label>Rating</Label>
+        <Label>{t('Rating')}</Label>
+
         {/* <StarRating/> */}
         {/* <StarRatingComponent
           className="test"
@@ -58,7 +62,7 @@ const FeedbackForm = ({ fetchData }) => {
         />
 
         <Label>
-          Review
+          {t('Review')}
           <TextInput
             placeholder="Enter text"
             value={newComment}
