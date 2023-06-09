@@ -15,9 +15,9 @@ const PeriodTypeSelect = ({ selectedDate }) => {
     <TabsFlex>
       <TypesTabsContainer>
         <TypesTabs to="/calendar" end>
-          {t('month')}
+          {t('Month')}
         </TypesTabs>
-        <TypesTabs to={`day/${parsedDate}`}>{t('day')}</TypesTabs>
+        <TypesTabs to={`day/${parsedDate}`}>{t('Day')}</TypesTabs>
       </TypesTabsContainer>
     </TabsFlex>
   );

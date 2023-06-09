@@ -19,6 +19,7 @@ import {
 } from './TaskForm.styled';
 import { format } from 'date-fns';
 import { Notify } from 'notiflix';
+import { useTranslation } from 'react-i18next';
 
 import Icons from 'images/sprite.svg';
 
@@ -121,11 +122,12 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
         return value;
     }
   };
+  const { t } = useTranslation();
 
   return (
     <Form onSubmit={handleSubmit}>
       <InputContaiter>
-        <Label>Title</Label>
+        <Label>{t('Title')}</Label>
         <Input
           type="text"
           placeholder="Enter text"
@@ -137,7 +139,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
 
       <InputTimeContaiter>
         <InputContaiter>
-          <Label>Start</Label>
+          <Label>{t('Start')}</Label>
           <Input
             type="time"
             name="start"
@@ -148,7 +150,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
         </InputContaiter>
 
         <InputContaiter>
-          <Label>End</Label>
+          <Label>{t('End')}</Label>
           <Input
             type="time"
             name="end"
@@ -168,7 +170,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             checked={selectedOption === 'low'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>Low</RadioLabel>
+          <RadioLabel>{t('Low')}</RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioInput
@@ -178,7 +180,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             checked={selectedOption === 'medium'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>Medium</RadioLabel>
+          <RadioLabel>{t('Medium')}</RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioInput
@@ -188,7 +190,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             checked={selectedOption === 'high'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>High</RadioLabel>
+          <RadioLabel>{t('High')}</RadioLabel>
         </RadioButtonContainer>
       </RadioButtonsContainer>
 
@@ -198,7 +200,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             <EditIcon>
               <use href={`${Icons}#edit-btn-s`}></use>
             </EditIcon>
-            Edit
+            {t('Edit')}
           </EditButton>
         ) : (
           <>
@@ -206,10 +208,10 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
               <AddIcon>
                 <use href={`${Icons}#add-btn-s`}></use>
               </AddIcon>
-              Add
+              {t('Add')}
             </AddButton>
             <CancelButton type="button" onClick={() => onCloseModal()}>
-              Cancel
+              {t('Cancel')}
             </CancelButton>
           </>
         )}

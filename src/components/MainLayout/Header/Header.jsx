@@ -4,6 +4,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import HeaderImg from 'images/sidebar/GooseHeader.png';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
 import LanguageFlags from './LanguageFlags/LanguageFlags';
+import { useTranslation } from 'react-i18next';
 
 import { ThemeToggler } from './ThemeToggler/ThemeToggler';
 
@@ -26,10 +27,12 @@ import Icons from 'images/sprite.svg';
 
 const Header = ({ isOpen, onOpenClick }) => {
   const { name, avatarURL } = useSelector(selectUser);
- 
+
   const firstLetter = name?.charAt(0).toUpperCase();
   const location = useLocation();
   let { currentDay } = useParams();
+
+  const { t } = useTranslation();
 
   return (
     <Container>
@@ -49,7 +52,7 @@ const Header = ({ isOpen, onOpenClick }) => {
           <>
             <GooseImg src={HeaderImg} alt="Goose" />
             <Div>
-              <Title>Calendar</Title>
+              <Title>{t('Calendar')}</Title>
               <HeaderParagraph>
                 {' '}
                 <Span>Let go</Span> of the past and focus on the present!
