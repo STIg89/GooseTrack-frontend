@@ -3,6 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import PublicRoute from './Auth/AuthRoutes/Public';
 import PrivateRoute from './Auth/AuthRoutes/Private';
 import { Loader } from '../utils/loader/loader';
+import { useDateValidation } from 'helpers/useDateValidation';
+import { useState } from 'react';
 
 import ChoosedMonth from './Calendar/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from './Calendar/ChoosedDay/ChoosedDay';
@@ -17,6 +19,8 @@ const CalendarPage = lazy(() => import('pages/Calendar/CalendarPage'));
 const MainLayout = lazy(() => import('pages/MainLayout/MainLayout'));
 
 export const App = () => {
+  const date = useDateValidation();
+  const [selectedDay, setSelectedDay] = useState(new Date(date));
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
@@ -29,9 +33,25 @@ export const App = () => {
           </Route>
           <Route path="" element={<PrivateRoute />}>
             <Route path="" element={<MainLayout />}>
-              <Route path="calendar" element={<CalendarPage />}>
+              <Route
+                path="calendar"
+                element={
+                  <CalendarPage
+                    selectedDay={selectedDay}
+                    setSelectedDay={setSelectedDay}
+                  />
+                }
+              >
                 <Route path="month/:currentDate" element={<ChoosedMonth />} />
-                <Route path="day/:currentDay" element={<ChoosedDay />} />
+                <Route
+                  path="day/:currentDay"
+                  element={
+                    <ChoosedDay
+                      selectedDay={selectedDay}
+                      setSelectedDay={setSelectedDay}
+                    />
+                  }
+                />
               </Route>
               <Route path="account" element={<AccountPage />} />
             </Route>
