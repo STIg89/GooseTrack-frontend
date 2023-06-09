@@ -24,15 +24,31 @@ import {
   HeaderParagraph,
 } from './Header.styled';
 import Icons from 'images/sprite.svg';
+import { useEffect, useState } from 'react';
 
 const Header = ({ isOpen, onOpenClick }) => {
   const { name, avatarURL } = useSelector(selectUser);
+  const { t } = useTranslation();
 
   const firstLetter = name?.charAt(0).toUpperCase();
   const location = useLocation();
   let { currentDay } = useParams();
 
-  const { t } = useTranslation();
+  const [showLangBtn, setShowLangBtn] = useState(window.innerWidth <= 390);
+  const [showFdbckBtn, setShowFdbckBtn] = useState(window.innerWidth > 374);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowLangBtn(window.innerWidth <= 390);
+      setShowFdbckBtn(window.innerWidth > 374);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <Container>
@@ -62,8 +78,16 @@ const Header = ({ isOpen, onOpenClick }) => {
         )}
       </TitleCalendar>
       <Box>
-        <LanguageFlags />
-        <FeedbackBtn />
+        {!showLangBtn && (
+          <>
+            <LanguageFlags />
+          </>
+        )}
+        {showFdbckBtn && (
+          <>
+            <FeedbackBtn />
+          </>
+        )}
         <ThemeToggler />
         <UserName>{name}</UserName>
         {avatarURL ? (

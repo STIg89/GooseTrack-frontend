@@ -5,11 +5,10 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import cookies from 'js-cookie';
 
-import LanguageIcon from '@mui/icons-material/Language';
-
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import classNames from 'classnames';
+import { LangIcon, Div } from './LanguageFlags.styled'
 
 export default function LanguageFlags() {
   const languages = [
@@ -39,17 +38,10 @@ export default function LanguageFlags() {
   };
 
   return (
-    <div>
+    <Div>
       <Tooltip title={t('language')} arrow>
-        <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-          <LanguageIcon
-            style={{
-              marginRight: '40px',
-              width: '32px',
-              height: '32px',
-              color: 'var(--accent-text-color)',
-            }}
-          />
+        <IconButton onClick={handleClick} size="small">
+          <LangIcon/>
         </IconButton>
       </Tooltip>
       <Menu
@@ -57,8 +49,8 @@ export default function LanguageFlags() {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: 'left', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
         disableScrollLock={true}
         PaperProps={{
           elevation: 0,
@@ -78,7 +70,6 @@ export default function LanguageFlags() {
               display: 'block',
               position: 'absolute',
               top: 0,
-              right: 14,
               width: 10,
               height: 10,
               bgcolor: '#F8F8F8',
@@ -122,6 +113,6 @@ export default function LanguageFlags() {
           </Tooltip>
         ))}
       </Menu>
-    </div>
+    </Div>
   );
 }

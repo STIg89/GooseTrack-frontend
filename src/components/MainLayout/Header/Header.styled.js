@@ -84,9 +84,8 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
   display: none;
 
-  ${media.desktop} {
-    display: block;
-    /* margin-top: 42px; */
+    ${media.desktop} {
+    display: flex;
   }
 `;
 
@@ -144,9 +143,9 @@ export const GooseImg = styled.img`
   width: 64px;
   height: 60px;
 
-  visibility: hidden;
+  display: none;
 
   ${media.desktop} {
-    visibility: visible;
+    display: flex;
   }
 `;
