@@ -1,14 +1,15 @@
 import ColumnsTasksList from './ColumnsTasksList/ColumnsTasksList';
 import ColumnHeadBar from './ColumnHeadBar/ColumnHeadBar';
 import AddTaskBtn from './AddTaskBtn/AddTaskBtn';
+import { ColumnsItem } from './TasksColumn.Styled';
 
-const TasksColumn = ({ headName, tasks }) => {
+const TasksColumn = ({ headName, tasks, addCategory }) => {
   return (
-    <>
-      <ColumnHeadBar headName={headName} />
+    <ColumnsItem>
+      <ColumnHeadBar headName={headName} addCategory={addCategory} />
       {tasks && <ColumnsTasksList tasks={tasks} />}
-      <AddTaskBtn />
-    </>
+      <AddTaskBtn addCategory={addCategory} />
+    </ColumnsItem>
   );
 };
 export default TasksColumn;

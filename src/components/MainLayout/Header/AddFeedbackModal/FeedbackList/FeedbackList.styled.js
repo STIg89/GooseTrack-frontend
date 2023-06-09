@@ -4,7 +4,7 @@ export const FeedbackListWrapper = styled.div`
   position: relative;
   width: 100%;
   max-height: 150px;
-  background-color: rgba(227, 243, 255, 0.5);
+  background-color: var(--feedback-label-background-color);
   border-radius: 8px;
   margin-top: 32px;
   position: relative;
@@ -22,7 +22,6 @@ export const FeedbackListWrapper = styled.div`
     background: #fff;
     left: 0px;
     top: 0px;
-    
   }
   ::-webkit-scrollbar-thumb {
     position: absolute;
@@ -42,7 +41,7 @@ export const FeedbackItem = styled.div`
 `;
 
 export const Avatar = styled.div`
-background-image: url(../../../../../images/avatars/Olena.jpg);
+  background-image: url(../../../../../images/avatars/Olena.jpg);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -51,18 +50,18 @@ background-image: url(../../../../../images/avatars/Olena.jpg);
 `;
 
 export const UserAvatar = styled.img`
-width:50px;
-height:50px;
-border-radius: 50%;
-margin-right: 12px;
-outline:  3px solid var(--accent-background-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 12px;
+  outline: 3px solid var(--accent-background-color);
 
- /* {
+  /* {
 width:44px;
 height:44px;
 margin-left: 14px;
   }  */
-`
+`;
 
 export const FeedbackInfo = styled.div``;
 export const Name = styled.p`
@@ -73,7 +72,7 @@ export const Name = styled.p`
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
-  color: #343434;
+  color: var(--calendar-digit-color);
   margin: 0;
 `;
 
@@ -90,8 +89,7 @@ export const FeedBackText = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
-  color: rgba(17, 17, 17, 0.7);
-
+  color: var(--feedback-text);
 `;
 
 export const ForBtn = styled.div`
@@ -113,7 +111,12 @@ export const EditBtnIcon = styled.svg`
   width: 13px;
   height: 13px;
   fill: transparent;
-  stroke: currentcolor;
+  stroke: var(--primary-text-color);
+
+  &:hover,
+  &:focus {
+    stroke: var(--accent-background-color);
+  }
 `;
 
 export const DelBtn = styled.button`
@@ -128,5 +131,10 @@ export const DelBtnIcon = styled.svg`
   width: 13px;
   height: 13px;
   fill: transparent;
-  stroke: currentcolor;
+  stroke: var(--primary-text-color);
+
+  &:hover,
+  &:focus {
+    stroke: var(--accent-background-color);
+  }
 `;

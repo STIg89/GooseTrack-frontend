@@ -8,8 +8,9 @@ import {
 } from './FeedbackForm.styled';
 // import StarRating from './StarRating/StarRating';
 import axios from 'axios';
-import './FeedbackForm.css';
-import StarRatingComponent from 'react-star-rating-component';
+import { Rating } from 'react-simple-star-rating';
+// import './FeedbackForm.css';
+// import StarRatingComponent from 'react-star-rating-component';
 
 const FeedbackForm = ({ fetchData }) => {
   const [newComment, setNewComment] = useState('');
@@ -40,7 +41,7 @@ const FeedbackForm = ({ fetchData }) => {
       <ModalForm>
         <Label>Rating</Label>
         {/* <StarRating/> */}
-        <StarRatingComponent
+        {/* <StarRatingComponent
           className="test"
           name="rate1"
           starCount={5}
@@ -48,7 +49,14 @@ const FeedbackForm = ({ fetchData }) => {
           onStarClick={e => onStarClickClick(e)}
           emptyStarColor={'grey'}
           //  onStarHover={(e)=>onStarClickClick(e)}
+        /> */}
+        <Rating
+          onClick={e => onStarClickClick(e)}
+          initialValue={newRate}
+          iconsCount={5}
+          transition={true}
         />
+
         <Label>
           Review
           <TextInput

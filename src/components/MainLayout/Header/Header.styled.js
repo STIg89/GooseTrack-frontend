@@ -7,15 +7,12 @@ const media = {
 
 export const Container = styled.div`
   display: flex;
-  margin-top: 40px;
   margin-bottom: 32px;
   justify-content: space-between;
   position: relative;
 
   ${media.desktop} {
     justify-content: space-between;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 `;
 
@@ -41,8 +38,8 @@ export const NoAvatar = styled.div`
 `;
 
 export const Box = styled.div`
-  display: flex;  
-  justify-content: flex-end;
+  display: flex;
+  justify-content: rigth;
   align-items: center;
 `;
 
@@ -78,8 +75,7 @@ export const BrgBtn = styled.button`
     display: none;
   }
 `;
-export const Title = styled.h2`  
-
+export const Title = styled.h2`
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 32px;
@@ -103,20 +99,16 @@ export const UserName = styled.h4`
   line-height: 18px;
   color: var(--primary-text-color);
 
-  margin-left: 8px;
-
   ${media.desktop} {
     font-size: 18px;
     line-height: 18px;
-    margin-left: 14px;
   }
 `;
 
 export const TitleCalendar = styled.div`
-display: flex;
-text-align: left;
-`
-
+  display: flex;
+  text-align: left;
+`;
 
 export const HeaderParagraph = styled.h2`
   font-family: 'Inter';
@@ -136,26 +128,25 @@ export const HeaderParagraph = styled.h2`
 `;
 
 export const Span = styled.span`
-color: var(--accent-text-color);
-`
+  color: var(--accent-text-color);
+`;
 
 export const Div = styled.div`
   display: none;
 
   ${media.desktop} {
-    
     display: flex;
     flex-direction: column;
   }
-`
+`;
 
 export const GooseImg = styled.img`
   width: 64px;
   height: 60px;
-  
+
   visibility: hidden;
 
   ${media.desktop} {
     visibility: visible;
   }
-`
+`;

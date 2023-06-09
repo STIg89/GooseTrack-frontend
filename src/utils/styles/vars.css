@@ -10,12 +10,17 @@
   --accent-background-color: #3e85f3;
   --active-item-sidebar-background: #e3f3ff;
   --hover-active-item-sidebar-background: #e3f3ff;
+  --ovarlay-background-color: rgba(0, 0, 0, 0.1);
+  --star-background-color: #cec9c1;
+  --feedback-label-background-color: rgba(227, 243, 255, 0.5);
+  --cancel-button-background-color: #e5edfa;
 
   --hover-btn-background-color: #2b78ef;
 
   --auth-bg-color: #dcebf7;
 
   --border-color: rgba(220, 227, 229, 0.8);
+  --border-label-color: #f7f7f7;
   --border: 1px solid rgba(220, 227, 229, 0.8);
   --border-calendar: 1px solid rgba(220, 227, 229, 0.5);
   --border-calendar-period-type: 1px solid rgba(62, 133, 243, 0.2);
@@ -23,6 +28,7 @@
   --border-auth-error: 1px solid #e74a3b;
   --border-auth-correct: 1px solid #3cbc81;
   --border-AddTaskBtn: 1px dashed #3e85f3;
+  --border-account-input: 1px solid rgba(17, 17, 17, 0.15);
 
   /* text-color */
   --primary-text-color: #111111;
@@ -35,6 +41,8 @@
   --accent-span-text-color: #3e85f3;
   --text-error-color: #e74a3b;
   --text-correct-color: #3cbc81;
+  --label-text: #343434;
+  --feedback-text: rgba(17, 17, 17, 0.7);
 
   /* calendar */
   --calendar-digit-color: #343434;
@@ -77,14 +85,27 @@
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
   --shadow-logout-btn: 4px 2px 16px rgba(136, 165, 191, 0.48);
   --shadow-logout-btn-hover: 4px 2px 16px rgba(136, 165, 191, 1);
+
+  /* icon time input */
+  --icon-color-time-input: invert(0);
 }
 
 [data-theme='dark'] {
+  --test: invert(1);
   --secondary-background-color: #171820;
   --primary-background-color: #21222c;
   --sidebar-background-color: #13151a;
 
+  --ovarlay-background-color: rgba(255, 255, 255, 0.15);
+  --star-background-color: #353647;
+  --task-input-bg-color: #343434;
+  --feedback-label-background-color: #21222c;
+  --cancel-button-background-color: #21222c;
+  --auth-bg-color: #353647;
+
   --border: 1px solid rgba(255, 255, 255, 0.15);
+  --border-account-input: 1px solid rgba(255, 255, 255, 0.15);
+  --border-label-color: rgba(255, 255, 255, 0.15);
 
   /* text-color */
   --primary-text-color: #ffffff;
@@ -95,6 +116,8 @@
   --accent-span-text-color: #3e85f3;
   --btn-text-color: #ffffff;
   --secondary-text-color: #ffffff;
+  --label-text: rgba(250, 250, 250, 0.3);
+  --feedback-text: rgba(255, 255, 255, 0.7);
 
   --calendar-digit-color: #ffffff;
   --task-input-bg-color: rgba(255, 255, 255, 0);
@@ -118,4 +141,7 @@
 
   /* shadow */
   --shadow-logout-btn: 4px 2px 16px rgba(136, 165, 191, 0.3);
+
+  /* icon time input */
+  --icon-color-time-input: invert(1);
 }

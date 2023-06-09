@@ -25,6 +25,9 @@ export const SideBarContainer = styled.div`
   ${media.desktop} {
     position: fixed;
   }
+
+  transform: ${props => props.isOpen ? "translateX(0)" : "translateX(-100%)"};
+  transition: 0.3s ease-in-out;
 `;
 
 export const SideBarDiv = styled.div`
@@ -181,7 +184,7 @@ export const TitleSideBar = styled.h4`
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-  color: var(--not-active-item-sidebar-text-color);
+  color: grey;
   margin-bottom: 24px;
   margin-top: 64px;
 
@@ -221,5 +224,5 @@ export const CloseBtn = styled.button`
 `;
 
 export const CloseIcon = styled(CgClose)`
- color: var(--primary-text-color);
-` 
+  color: var(--primary-text-color);
+`;

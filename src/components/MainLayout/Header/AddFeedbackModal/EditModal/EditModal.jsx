@@ -11,8 +11,10 @@ import {
   ModalForm,
   TextInput,
 } from './EditModal.styled';
+
+import { Rating } from 'react-simple-star-rating';
 // import StarRating from '../FeedbackForm/StarRating/StarRating';
-import StarRatingComponent from 'react-star-rating-component';
+// import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 
 const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
@@ -20,7 +22,7 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
 
   useEffect(() => {
     setUpdatedItem(updateItem);
-  }, []);
+  }, [updateItem]);
 
   const onStarClickChange = nextValue => {
     changeRate(nextValue);
@@ -62,11 +64,17 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
         <ModalForm>
           <Label>Rating</Label>
           {/* <StarRating /> */}
-          <StarRatingComponent
+          {/* <StarRatingComponent
             name="rate1"
             starCount={5}
             value={updatedItem.rating}
             onStarClick={e => onStarClickChange(e)}
+          /> */}
+          <Rating
+            onClick={e => onStarClickChange(e)}
+            initialValue={updatedItem.rating}
+            iconsCount={5}
+            transition={true}
           />
           <Label>
             Review

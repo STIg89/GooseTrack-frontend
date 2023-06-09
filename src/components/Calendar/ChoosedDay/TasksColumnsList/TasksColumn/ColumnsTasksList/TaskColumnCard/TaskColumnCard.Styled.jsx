@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const CardWraper = styled.li`
   padding: 15px;
   background-color: var(--secondary-background-color);
+  border-radius: 8px;
 `;
 export const Wraper = styled.div`
   display: flex;
@@ -13,16 +14,13 @@ export const ToolsWraper = styled.div`
   gap: 8px;
   align-items: center;
 `;
-export const TaskText = styled.p`
+export const TaskText = styled.div`
   color: var(--primary-text-color);
   font-family: Inter;
   font-style: medium;
   font-size: 14px;
-  line-height: 18px;
+  max-width: 272px;
   margin: 0 0 28px 0;
-  width: 272px;
-  height: 16px;
-  overflow: auto;
 `;
 export const Avatar = styled.img`
   width: 32px;

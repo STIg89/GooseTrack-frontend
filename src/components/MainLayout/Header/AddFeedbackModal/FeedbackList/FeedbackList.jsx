@@ -16,9 +16,10 @@ import {
   UserAvatar,
 } from './FeedbackList.styled';
 import EditModal from '../EditModal/EditModal';
+import { Rating } from 'react-simple-star-rating';
 // import { fetchAllReviews } from 'redux/reviews/operations';
 import axios from 'axios';
-import StarRatingComponent from 'react-star-rating-component';
+// import StarRatingComponent from 'react-star-rating-component';
 
 const FeedbackList = ({ setReviewsList, fetchData }) => {
   const [updateReview, setUpdateReview] = useState('');
@@ -69,12 +70,20 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
                 <FeedbackInfo>
                   <Name>{item.owner.name}</Name>
                   {/* <FeedBackRating>★★★★★</FeedBackRating> */}
-                  <StarRatingComponent
+                  {/* <StarRatingComponent
                     className="test"
                     name="rate1"
                     starCount={5}
                     value={item.rating}
                     //  onStarHover={(e)=>onStarClickClick(e)}
+                  /> */}
+                  <Rating
+                    // onClick={e => e}
+                    initialValue={item.rating}
+                    iconsCount={5}
+                    readonly={true}
+                    size={15}
+                    // transition={true}
                   />
                   <FeedBackText>{item.comment}</FeedBackText>
                 </FeedbackInfo>

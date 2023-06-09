@@ -20,6 +20,7 @@ const CalendarToolbar = ({ setCurrentDate, currentDate, selectedDate }) => {
           prevMonth={prevMonth}
           currentDate={currentDate}
           setCurrentDate={setCurrentDate}
+          selectedDate={selectedDate}
         />
         <PeriodTypeSelect selectedDate={selectedDate} />
       </PeriodContainer>
