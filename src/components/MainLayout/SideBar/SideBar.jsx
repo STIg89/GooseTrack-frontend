@@ -21,16 +21,16 @@ import {
   CloseIcon,
 } from './SideBar.styled';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
-// import LanguageFlags from '../Header/LanguageFlags/LanguageFlags';
+import LanguageFlags from '../Header/LanguageFlags/LanguageFlags';
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
   const { t } = useTranslation();
 
   const [showFdbckBtn, setShowFdbckBtn] = useState(window.innerWidth > 374)
-
+  const [showLangBtn, setShowLangBtn] = useState(window.innerWidth <= 390);
   useEffect(() => {
     const handleResize = () => {
-      // setShowLangBtn(window.innerWidth <= 390);
+      setShowLangBtn(window.innerWidth <= 390);
       setShowFdbckBtn(window.innerWidth > 374);
     };
 
@@ -77,6 +77,12 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
           </SideBarLinks>
         </SideBarNav>
       </SideBarDiv>
+
+      {showLangBtn &&
+        <>
+          <LanguageFlags />
+        </>
+      }
 
       {!showFdbckBtn &&
         <>
