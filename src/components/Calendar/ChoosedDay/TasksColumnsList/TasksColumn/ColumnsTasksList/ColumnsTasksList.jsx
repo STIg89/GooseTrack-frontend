@@ -20,7 +20,7 @@ const ColumnsTasksList = ({ tasks, addCategory }) => {
       style={
         tasks.length === 0
           ? { height: '25px' }
-          : { maxHeight: `${windowHeight - 550}px` }
+          : { maxHeight: `${windowHeight - 500}px` }
       }
     >
       {tasks.map(item => {

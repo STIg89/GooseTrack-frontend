@@ -38,7 +38,6 @@ const TaskToolBar = ({ id, addCategory }) => {
     editTask = { ...editTask, category: event.target.value };
 
     dispatch(patchTask({ id: id, task: { category: editTask.category } }));
-    setIsClicked(false);
   }
   let { currentDay } = useParams();
 
