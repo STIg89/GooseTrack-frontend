@@ -5,19 +5,39 @@ import {
   TabsFlex,
 } from '../PeriodTypeSelect/PeriodTypesSelect.styled';
 import { parseDate } from 'helpers/parseDate';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const PeriodTypeSelect = ({ selectedDate }) => {
+const PeriodTypeSelect = ({
+  setSelectedDay,
+  selectedDay,
+  currentDate,
+  setCurrentDate,
+}) => {
   const { t } = useTranslation();
-
-  const parsedDate = parseDate(selectedDate);
+  const params = useParams();
+  const parsedDate = parseDate(currentDate);
   return (
     <TabsFlex>
       <TypesTabsContainer>
-        <TypesTabs to="/calendar" end>
+        <TypesTabs
+          to="/calendar"
+          end
+          onClick={() => {
+            setCurrentDate(selectedDay);
+          }}
+        >
           {t('month')}
         </TypesTabs>
-        <TypesTabs to={`day/${parsedDate}`}>{t('day')}</TypesTabs>
+        <TypesTabs
+          to={`day/${parsedDate}`}
+          onClick={() => {
+            setSelectedDay(currentDate);
+          }}
+          disabled={params.currentDay ? true : false}
+        >
+          {t('day')}
+        </TypesTabs>
       </TypesTabsContainer>
     </TabsFlex>
   );

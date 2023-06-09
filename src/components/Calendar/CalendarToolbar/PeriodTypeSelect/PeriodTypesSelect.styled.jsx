@@ -18,7 +18,7 @@ export const TypesTabs = styled(NavLink)`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
-
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   text-align: center;
   &:hover,
   &:focus,
@@ -27,6 +27,7 @@ export const TypesTabs = styled(NavLink)`
     background-color: var(--active-button-period-type);
     color: var(--accent-text-color);
   }
+
   @media screen and (min-width: 768px) {
     font-size: 16px;
     line-height: 1.12;

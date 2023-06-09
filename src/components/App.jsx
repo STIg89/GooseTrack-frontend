@@ -4,6 +4,8 @@ import PublicRoute from './Auth/AuthRoutes/Public';
 import PrivateRoute from './Auth/AuthRoutes/Private';
 import MainLayout from 'pages/MainLayout/MainLayout';
 import { Loader } from '../utils/loader/loader';
+import { useDateValidation } from 'helpers/useDateValidation';
+import { useState } from 'react';
 
 import ChoosedMonth from './Calendar/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from './Calendar/ChoosedDay/ChoosedDay';
@@ -18,26 +20,76 @@ const AccountPage = lazy(() => import('pages/Account/AccountPage'));
 const CalendarPage = lazy(() => import('pages/Calendar/CalendarPage'));
 
 // const Loader = () => <>...Loading</>;
-const Lazy = ({children}) => <Suspense fallback={<Loader/>}>{children}</Suspense>
+const Lazy = ({ children }) => (
+  <Suspense fallback={<Loader />}>{children}</Suspense>
+);
 
 export const App = () => {
+  const date = useDateValidation();
+  const [selectedDay, setSelectedDay] = useState(new Date(date));
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
         <Route>
           <Route path="" element={<PublicRoute />}>
-            <Route index element={<Lazy><StartPage /></Lazy>} />
-            <Route path="login" element={<Lazy><LoginPage /></Lazy>} />
-            <Route path="register" element={<Lazy><RegisterPage /></Lazy>} />
+            <Route
+              index
+              element={
+                <Lazy>
+                  <StartPage />
+                </Lazy>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <Lazy>
+                  <LoginPage />
+                </Lazy>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <Lazy>
+                  <RegisterPage />
+                </Lazy>
+              }
+            />
             <Route path="login/:token" element={<LoginWithToken />} />
           </Route>
           <Route path="" element={<PrivateRoute />}>
             <Route path="" element={<MainLayout />}>
-              <Route path="calendar" element={<Lazy><CalendarPage /></Lazy>}>
+              <Route
+                path="calendar"
+                element={
+                  <Lazy>
+                    <CalendarPage
+                      selectedDay={selectedDay}
+                      setSelectedDay={setSelectedDay}
+                    />
+                  </Lazy>
+                }
+              >
                 <Route path="month/:currentDate" element={<ChoosedMonth />} />
-                <Route path="day/:currentDay" element={<ChoosedDay />} />
+                <Route
+                  path="day/:currentDay"
+                  element={
+                    <ChoosedDay
+                      selectedDay={selectedDay}
+                      setSelectedDay={setSelectedDay}
+                    />
+                  }
+                />
               </Route>
-              <Route path="account" element={<Lazy><AccountPage /></Lazy>} />
+              <Route
+                path="account"
+                element={
+                  <Lazy>
+                    <AccountPage />
+                  </Lazy>
+                }
+              />
             </Route>
           </Route>
           <Route path="*" element={<Page404 />} />
