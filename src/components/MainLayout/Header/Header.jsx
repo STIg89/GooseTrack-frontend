@@ -27,15 +27,18 @@ import { useEffect, useState } from 'react';
 
 const Header = ({ isOpen, onOpenClick }) => {
   const { name, avatarURL } = useSelector(selectUser);
-  const [windowSize, setWindowSize] = useState(window.innerWidth >= 300)
 
   const firstLetter = name?.charAt(0).toUpperCase();
   const location = useLocation();
   let { currentDay } = useParams();
 
+  const [showLangBtn, setShowLangBtn] = useState(window.innerWidth <= 390);
+  const [showFdbckBtn, setShowFdbckBtn] = useState(window.innerWidth > 374)
+
   useEffect(() => {
     const handleResize = () => {
-      setWindowSize(window.innerWidth >= 300);
+      setShowLangBtn(window.innerWidth <= 390);
+      setShowFdbckBtn(window.innerWidth > 374);
     };
 
     window.addEventListener('resize', handleResize);
@@ -73,9 +76,13 @@ const Header = ({ isOpen, onOpenClick }) => {
         )}
       </TitleCalendar>
       <Box>
-        {windowSize <= 340 &&
+        {!showLangBtn &&
           <>
             <LanguageFlags />
+          </>
+        }
+        {showFdbckBtn &&
+          <>
             <FeedbackBtn />
           </>
         }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import LanguageIcon from '@mui/icons-material/Language';
 
 const media = {
-  mobile: '@media screen and (max-width: 400px)',
+  mobile: '@media screen and (max-width: 374px)',
   tablet: '@media screen and (min-width: 768px)',
   desktop: '@media screen and (min-width: 1440px)',
 };
@@ -10,11 +10,6 @@ const media = {
 export const Div = styled.div`
 margin-right: 10px;
 padding: 0;
-
-
-${media.mobile} {
-  display: none;
-}
 
 ${media.desktop} {
   margin-right: 27px;

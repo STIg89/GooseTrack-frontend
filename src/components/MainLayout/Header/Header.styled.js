@@ -84,9 +84,8 @@ export const Title = styled.h2`
   letter-spacing: -0.02em;
   display: none;
 
-  ${media.desktop} {
+    ${media.tablet} {
     display: block;
-    /* margin-top: 42px; */
   }
 `;
 

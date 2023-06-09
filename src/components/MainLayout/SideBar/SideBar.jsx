@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from 'react';
 import LogOutBtn from '../SideBar/LogoutBtn/LogoutBtn';
 import Icons from '../../../images/sprite.svg';
 import LogoImg from '../../../images/sidebar/GooseLogo@2x.png';
@@ -18,10 +20,26 @@ import {
   TitleSideBar,
   CloseIcon,
 } from './SideBar.styled';
-import { useTranslation } from 'react-i18next';
+import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
+import LanguageFlags from '../Header/LanguageFlags/LanguageFlags';
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
   const { t } = useTranslation();
+
+  const [windowSize, setWindowSize] = useState(window.innerWidth < 375);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize(window.innerWidth < 375);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <SideBarContainer isOpen={isOpen}>
       <SideBarDiv>
@@ -58,6 +76,13 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
           </SideBarLinks>
         </SideBarNav>
       </SideBarDiv>
+
+      {windowSize &&
+        <>
+          <LanguageFlags />
+          <FeedbackBtn />
+        </>
+      }
       <LogOutBtn />
     </SideBarContainer>
   );
