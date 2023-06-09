@@ -47,7 +47,7 @@ export const Img = styled.img`
 export const MainTitle = styled.h1`
   margin-top: 20px;
   margin-bottom: 40px;
-  color: var(--secondary-background-color);
+  color: #ffffff;
   font-size: 44px;
   font-family: var(--secondary-font);
   font-weight: 400;
@@ -78,14 +78,14 @@ export const BtnSignUp = styled(NavLink)`
   display: none;
 
   &:focus {
-      color: var(--accent-text-color);
-      background-color: var(--primary-background-color);
+      color: #2b78ef;
+      background-color: #ffffff;
       
     }
 
     &:hover {
-        color: var(--accent-text-color);
-        background-color: var(--primary-background-color);
+      color: #2b78ef;
+      background-color: #ffffff;
     }
 
   ${media.tablet} {
@@ -98,7 +98,7 @@ export const BtnSignUp = styled(NavLink)`
     margin: 0;
     border: 0;
     border-radius: 15px;
-    color: var(--primary-background-color);
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 14px;
@@ -126,7 +126,7 @@ export const BtnLogIn = styled(NavLink)`
   font-weight: 600;
   font-size: 14px;
   line-height: 18px;
-  background-color: var(--primary-background-color);
+  background-color: #ffffff;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -134,7 +134,7 @@ export const BtnLogIn = styled(NavLink)`
 
   &:hover ${SvgIcon} {
             transform: scale(1.2);
-            stroke: var(--primary-background-color);
+            stroke: #ffffff;
         }
         &:focus ${SvgIcon} {
             stroke: var(--primary-background-color);
