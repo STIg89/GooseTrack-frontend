@@ -50,7 +50,7 @@ export default function LanguageFlags() {
         onClose={handleClose}
         onClick={handleClose}
         transformOrigin={{ horizontal: 'left', vertical: 'top' }}
-        // anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+        anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
         disableScrollLock={true}
         PaperProps={{
           elevation: 0,
