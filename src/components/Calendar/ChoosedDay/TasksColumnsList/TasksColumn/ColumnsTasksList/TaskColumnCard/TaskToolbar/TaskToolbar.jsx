@@ -31,7 +31,9 @@ const TaskToolBar = ({ id, addCategory }) => {
     setIsClicked(prevState => !prevState);
   };
 
-  const handleToggleModal = () => setIsOpened(!isOpened);
+  const handleToggleModal = () => {
+    setIsOpened(!isOpened);
+  };
 
   function handleOptionChange(event) {
     setSelectedOption(event.target.value);
@@ -59,6 +61,7 @@ const TaskToolBar = ({ id, addCategory }) => {
 
     dispatch(fetchDayTasks(reqObj));
   };
+
   const chouseCatRef = useRef(null);
   useEffect(() => {
     const handleChouseCatClickOutside = e => {
@@ -140,6 +143,7 @@ const TaskToolBar = ({ id, addCategory }) => {
           id={id}
           editTask={editTask}
           addCategory={addCategory}
+          isOpened={isOpened}
         />
       )}
     </Wraper>

@@ -7,9 +7,10 @@ const TaskModal = ({
   id,
   editTask,
   addCategory,
+  isOpened,
 }) => {
   return (
-    <Modal onCloseModal={onCloseModal}>
+    <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
       <TaskForm
         onCloseModal={onCloseModal}
         showEditBtn={showEditBtn}

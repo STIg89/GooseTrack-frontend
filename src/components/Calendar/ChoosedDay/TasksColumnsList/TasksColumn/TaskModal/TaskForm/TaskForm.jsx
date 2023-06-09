@@ -28,19 +28,16 @@ import { selectTasks } from 'redux/tasks/selectors';
 
 const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
   const [title, setTitle] = useState(editTask?.title || '');
-  const [start, setStart] = useState(editTask?.start || '');
-  const [end, setEnd] = useState(editTask?.end || '');
-  const [selectedOption, setSelectedOption] = useState(
-    editTask?.priority || 'low'
-  );
-  const [priority, setPriority] = useState('low');
+  const [start, setStart] = useState(editTask?.start || '09:00');
+  const [end, setEnd] = useState(editTask?.end || '09:30');
+  const [selectedOption, setSelectedOption] = useState(editTask?.priority);
+  const [priority, setPriority] = useState(editTask?.priority || 'low');
   const category = editTask?.category || 'to-do';
   const dispatch = useDispatch();
+  const tasks = useSelector(selectTasks);
 
   const validDate = useDateValidation();
   const currentDay = format(validDate, 'yyyy-MM-dd');
-
-  const tasks = useSelector(selectTasks);
 
   const handleOptionChange = event => {
     setSelectedOption(event.target.value);
@@ -49,10 +46,14 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const title = e.target.elements.title.value;
-    const start = e.target.elements.start.value;
-    const end = e.target.elements.end.value;
-
+    const edit = {
+      title,
+      start,
+      end,
+      priority,
+      date: currentDay,
+      category,
+    };
     const startTime = start.split(':');
     const endTime = end.split(':');
 
@@ -77,17 +78,18 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
       return;
     }
 
-    const editTask = {
-      title,
-      start,
-      end,
-      priority,
-      date: currentDay,
-      category,
-    };
+    if (
+      title === editTask?.title &&
+      end === editTask?.end &&
+      start === editTask?.start &&
+      priority === editTask?.priority
+    ) {
+      Notify.warning('Change at least one field.');
+      return;
+    }
 
     if (tasks.find(task => task._id === id)) {
-      dispatch(patchTask({ id, task: editTask }));
+      dispatch(patchTask({ id, task: edit }));
       Notify.success('Successfully! The task has been changed.');
     } else {
       dispatch(
@@ -127,6 +129,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
       <InputContaiter>
         <Label>Title</Label>
         <Input
+          maxLength={250}
           type="text"
           placeholder="Enter text"
           name="title"
