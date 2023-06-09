@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
-  opacity: 0;
+  /* opacity: 0; */
   display: flex;
   justify-content: center;
   align-items: center;

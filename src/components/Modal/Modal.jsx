@@ -34,10 +34,10 @@ const Modal = ({ children, onCloseModal, isOpened }) => {
   return createPortal(
     <Overlay
       onClick={handleOverlayClick}
-      style={{
-        opacity: isOpened ? 1 : 0,
-        visibility: isOpened ? 'visible' : 'hidden',
-      }}
+      // style={{
+      //   opacity: isOpened ? 1 : 0,
+      //   visibility: isOpened ? 'visible' : 'hidden',
+      // }}
     >
       <ModalStyled>
         <CloseIcon onClick={() => onCloseModal()}>
