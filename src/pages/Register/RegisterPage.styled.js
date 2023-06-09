@@ -104,4 +104,9 @@ export const ButtonText = styled.span`
       transform: scale(1.1);
     }
   }
+
+    @media (max-width: 375px) {
+      margin: 0;
+    }
+  }
 `;
