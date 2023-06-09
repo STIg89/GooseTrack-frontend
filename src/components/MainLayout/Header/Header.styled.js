@@ -143,9 +143,9 @@ export const GooseImg = styled.img`
   width: 64px;
   height: 60px;
 
-  visibility: hidden;
+  display: none;
 
   ${media.desktop} {
-    visibility: visible;
+    display: flex;
   }
 `;

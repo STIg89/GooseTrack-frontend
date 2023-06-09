@@ -49,8 +49,8 @@ export default function LanguageFlags() {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: 'left', vertical: 'top' }}
+        // anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
         disableScrollLock={true}
         PaperProps={{
           elevation: 0,
@@ -62,8 +62,8 @@ export default function LanguageFlags() {
             '& .MuiAvatar-root': {
               width: 32,
               height: 32,
-              // ml: -0.5,
-              // mr: 1,
+              ml: -0.5,
+              mr: 1,
             },
             '&:before': {
               content: '""',

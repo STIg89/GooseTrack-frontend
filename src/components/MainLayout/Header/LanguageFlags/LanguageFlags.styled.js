@@ -8,7 +8,7 @@ const media = {
 };
 
 export const Div = styled.div`
-margin-right: 10px;
+margin-right: 2px;
 padding: 0;
 
 ${media.desktop} {

@@ -76,11 +76,11 @@ const Header = ({ isOpen, onOpenClick }) => {
         )}
       </TitleCalendar>
       <Box>
-        {!showLangBtn &&
-          <>
+        {/* {showLangBtn &&
+          <> */}
             <LanguageFlags />
-          </>
-        }
+          {/* </>
+        } */}
         {showFdbckBtn &&
           <>
             <FeedbackBtn />
