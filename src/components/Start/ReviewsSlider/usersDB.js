@@ -1,3 +1,4 @@
+console.log('init commit');
 export const users = [
     { 
      name: "Olena Doe",
