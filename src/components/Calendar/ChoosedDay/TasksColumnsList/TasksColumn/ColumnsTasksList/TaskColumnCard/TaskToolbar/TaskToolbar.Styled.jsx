@@ -28,6 +28,7 @@ export const ChouseCat = styled.div`
   gap: 14px;
   width: 115px;
   height: 70px;
+  top: -30px;
   border: transparent;
   border-radius: 8px;
   padding: 14px;
