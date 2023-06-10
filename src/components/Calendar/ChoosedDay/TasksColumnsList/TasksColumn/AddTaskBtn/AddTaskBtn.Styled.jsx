@@ -7,12 +7,6 @@ export const TaskBtn = styled.button`
   margin: auto;
   width: 90%;
   height: 48px;
-  @media screen and (min-width: 375px) {
-    width: 299px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 304px;
-  }
 
   color: var(--primary-text-color);
   background-color: var(--active-item-sidebar-background);

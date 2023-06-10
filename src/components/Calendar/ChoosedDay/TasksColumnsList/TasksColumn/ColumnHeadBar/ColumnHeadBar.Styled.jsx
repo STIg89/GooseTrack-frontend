@@ -3,16 +3,11 @@ import styled from 'styled-components';
 export const ColumnHeader = styled.div`
   width: 90%;
   height: 34px;
-  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media screen and (min-width: 375px) {
-    width: 299px;
-  }
-  @media screen and (min-width: 768px) {
-    width: 304px;
-  }
+  margin: auto;
+  margin-bottom: 24px;
 `;
 export const Status = styled.p`
   font-family: Inter;
