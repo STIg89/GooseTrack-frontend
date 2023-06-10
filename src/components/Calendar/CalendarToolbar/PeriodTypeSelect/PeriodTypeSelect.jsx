@@ -20,7 +20,6 @@ const PeriodTypeSelect = ({
   return (
     <TabsFlex>
       <TypesTabsContainer>
-
         <TypesTabs
           to="/calendar"
           end
@@ -28,7 +27,7 @@ const PeriodTypeSelect = ({
             setCurrentDate(selectedDay);
           }}
         >
-          {t('month')}
+          {t('Month')}
         </TypesTabs>
         <TypesTabs
           to={`day/${parsedDate}`}
@@ -37,7 +36,7 @@ const PeriodTypeSelect = ({
           }}
           disabled={params.currentDay ? true : false}
         >
-          {t('day')}
+          {t('Day')}
         </TypesTabs>
       </TypesTabsContainer>
     </TabsFlex>

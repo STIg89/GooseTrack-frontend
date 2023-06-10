@@ -64,7 +64,7 @@ const FeedbackForm = ({ fetchData }) => {
         <Label>
           {t('Review')}
           <TextInput
-            placeholder="Enter text"
+            placeholder={t('Enter text')}
             value={newComment}
             name=""
             id="feedback-text"
@@ -77,7 +77,7 @@ const FeedbackForm = ({ fetchData }) => {
           ></TextInput>
         </Label>
         <SaveBtn type="submit" onClick={addReview}>
-          <SaveBtnText>Save</SaveBtnText>
+          <SaveBtnText>{t('Save')}</SaveBtnText>
         </SaveBtn>
       </ModalForm>
     </>

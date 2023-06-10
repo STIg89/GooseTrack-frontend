@@ -31,6 +31,9 @@
   "Log out": "Log out",
   "Rating": "Rating",
   "Review": "Review",
-  "Save": "Save"
+  "Save": "Save",
+  "No reviews": "No reviews",
+  "['S', 'M', 'T', 'W', 'T', 'F', 'S']": "['S', 'M', 'T', 'W', 'T', 'F', 'S']"
+  
   
 }

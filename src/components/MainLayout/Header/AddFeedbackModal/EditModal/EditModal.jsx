@@ -11,6 +11,7 @@ import {
   ModalForm,
   TextInput,
 } from './EditModal.styled';
+import { useTranslation } from 'react-i18next';
 
 import { Rating } from 'react-simple-star-rating';
 // import StarRating from '../FeedbackForm/StarRating/StarRating';
@@ -19,6 +20,8 @@ import axios from 'axios';
 
 const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
   const [updatedItem, setUpdatedItem] = useState('');
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setUpdatedItem(updateItem);
@@ -62,7 +65,7 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
     <Modal onCloseModal={onCloseModal}>
       <ModalContent onClick={e => e.stopPropagation()}>
         <ModalForm>
-          <Label>Rating</Label>
+          <Label>{t('Rating')}</Label>
           {/* <StarRating /> */}
           {/* <StarRatingComponent
             name="rate1"
@@ -77,11 +80,11 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
             transition={true}
           />
           <Label>
-            Review
+            {t('Review')}
             <TextInput
               onChange={e => changeComment(e.target.value)}
               value={updatedItem.comment}
-              placeholder="Enter text"
+              placeholder={t('Enter text')}
               name=""
               id="feedback-text"
               cols="30"
@@ -91,10 +94,10 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
           </Label>
           <BtnWrapper>
             <EditBtn onClick={updateReview} type="submit">
-              <EditBtnText>Edit</EditBtnText>
+              <EditBtnText>{t('Edit')}</EditBtnText>
             </EditBtn>
             <CancelBtn type="button" onClick={onCloseModal}>
-              <CancelBtnText>Cancel</CancelBtnText>
+              <CancelBtnText>{t('Cancel')}</CancelBtnText>
             </CancelBtn>
           </BtnWrapper>
         </ModalForm>

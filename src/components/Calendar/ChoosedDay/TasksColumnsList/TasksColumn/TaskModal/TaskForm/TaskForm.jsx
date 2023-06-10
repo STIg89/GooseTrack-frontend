@@ -133,7 +133,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
         <Input
           maxLength={250}
           type="text"
-          placeholder="Enter text"
+          placeholder={t('Enter text')}
           name="title"
           onChange={handleChange}
           value={title}
