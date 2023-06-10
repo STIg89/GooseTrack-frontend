@@ -5,9 +5,9 @@ export const ColumnsList = styled.ul`
     display: flex;
     padding: 0px;
     padding-bottom: 44px;
-
     gap: 16px;
     overflow: auto;
+    width: 100%;
 
     @media screen and (min-width: 1440px) {
       gap: 27px;
