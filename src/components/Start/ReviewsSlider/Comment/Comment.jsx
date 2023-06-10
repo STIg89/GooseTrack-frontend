@@ -4,6 +4,7 @@ import sprite from '../../../../images/sprite.svg';
 import { CommentStyled,StarContainerStyled } from "./Comment.styled";
 
 export function Comment(props){
+    const scrollType = props.children.length>240 ? "auto" : "visible"
     return(
             <CommentStyled>
             <div className="comment-container">
@@ -31,7 +32,7 @@ export function Comment(props){
                   </StarContainerStyled>
               </div>
             </div>
-            <p className="comment-content">{props.children}</p>
+            <p className="comment-content"  style={{  overflow:scrollType  } } > {props.children}</p>
         </CommentStyled >
     );
 }
