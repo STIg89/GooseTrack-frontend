@@ -6,6 +6,7 @@ import MainLayout from 'pages/MainLayout/MainLayout';
 import { Loader } from '../utils/loader/loader';
 import { useDateValidation } from 'helpers/useDateValidation';
 import { useState } from 'react';
+import { ScrollToTop } from '../utils/scroll/Scroll';
 
 import ChoosedMonth from './Calendar/ChoosedMonth/ChoosedMonth';
 import ChoosedDay from './Calendar/ChoosedDay/ChoosedDay';
@@ -36,6 +37,7 @@ export const App = () => {
               index
               element={
                 <Lazy>
+                  <ScrollToTop />
                   <StartPage />
                 </Lazy>
               }
