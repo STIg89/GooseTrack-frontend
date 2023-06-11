@@ -36,7 +36,7 @@ const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
           {user.avatarURL ? (
             <Avatar src={user.avatarURL} alt="user avatar" />
           ) : (
-            <NoAvatar>{user.name?.charAt(0)}</NoAvatar>
+            <NoAvatar>{user.name?.charAt(0).toUpperCase()}</NoAvatar>
           )}
 
           <PriorityWraper text={priority}>{priority}</PriorityWraper>
