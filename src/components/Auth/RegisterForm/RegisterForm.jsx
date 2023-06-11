@@ -52,7 +52,7 @@ export const RegisterForm = () => {
   const emailId = nanoid();
   const passwordId = nanoid();
   const nameId = nanoid();
-  const [isOpened, setIsModalOpen] = useState(true);
+  const [isOpened, setIsModalOpen] = useState(false);
 
   const handleToggleModal = () => setIsModalOpen(!isOpened);
 
