@@ -11,18 +11,7 @@ export const ModalContent = styled.div`
   background-color: var(--sidebar-background-color);
 `;
 
-export const RatingWrapper = styled.div`
-  position: relative;
-  font-size: 40px;
-  display: inline-block;
-  margin-bottom: 20px;
-  width: 50%;
-  ::before {
-    content: '★★★★★';
-    display: block;
-    color: lightgray;
-  }
-`;
+
 
 export const TextInput = styled.textarea`
   width: 100%;
@@ -46,46 +35,11 @@ export const TextInput = styled.textarea`
   }
 `;
 
-export const RatingItems = styled.div`
-  position: absolute;
-  width: 41%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  /* flex-direction: row-reverse; */
-`;
 
-export const RatingLabel = styled.label`
-  flex: 0 0 20%;
-  height: 100%;
-  cursor: pointer;
-  color: lightgray;
-  ::before {
-    content: '★';
-    display: block;
-    transition: all 0.3s ease 0s;
-  }
-  :hover,
-  :hover ~ RatingLabel,
-  :checked ~ RatingLabel:hover {
-    color: rgba(255, 172, 51, 0.5);
-  }
-`;
 
-export const RatingItem = styled.input`
-  position: absolute;
-  width: 0%;
-  height: 0%;
-  opacity: 0;
-  visibility: hidden;
-  top: 0;
-  left: 0;
-  :checked,
-  :checked ~ RatingLabel {
-    color: rgba(255, 172, 51, 1);
-  }
-`;
+
+
+
 
 export const Label = styled.label`
   display: flex;

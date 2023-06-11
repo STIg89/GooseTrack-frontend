@@ -14,8 +14,6 @@ import {
 import { useTranslation } from 'react-i18next';
 
 import { Rating } from 'react-simple-star-rating';
-// import StarRating from '../FeedbackForm/StarRating/StarRating';
-// import StarRatingComponent from 'react-star-rating-component';
 import axios from 'axios';
 
 const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
@@ -66,13 +64,6 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
       <ModalContent onClick={e => e.stopPropagation()}>
         <ModalForm>
           <Label>{t('Rating')}</Label>
-          {/* <StarRating /> */}
-          {/* <StarRatingComponent
-            name="rate1"
-            starCount={5}
-            value={updatedItem.rating}
-            onStarClick={e => onStarClickChange(e)}
-          /> */}
           <Rating
             onClick={e => onStarClickChange(e)}
             initialValue={updatedItem.rating}
@@ -108,42 +99,4 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
 
 export default EditModal;
 
-// {/* <RatingWrapper>
-//               <RatingItems>
-//                 <RatingItem
-//                   id="rating-5"
-//                   type="radio"
-//                   name="rating"
-//                   value="5"
-//                 />
-//                 <RatingLabel htmlFor="rating-5"></RatingLabel>
-//                 <RatingItem
-//                   id="rating-4"
-//                   type="radio"
-//                   name="rating"
-//                   value="4"
-//                 />
-//                 <RatingLabel htmlFor="rating-4"></RatingLabel>
-//                 <RatingItem
-//                   id="rating-3"
-//                   type="radio"
-//                   name="rating"
-//                   value="3"
-//                 />
-//                 <RatingLabel htmlFor="rating-3"></RatingLabel>
-//                 <RatingItem
-//                   id="rating-2"
-//                   type="radio"
-//                   name="rating"
-//                   value="2"
-//                 />
-//                 <RatingLabel htmlFor="rating-2"></RatingLabel>
-//                 <RatingItem
-//                   id="rating-1"
-//                   type="radio"
-//                   name="rating"
-//                   value="1"
-//                 />
-//                 <RatingLabel htmlFor="rating-1"></RatingLabel>
-//               </RatingItems>
-//             </RatingWrapper> */}
+
