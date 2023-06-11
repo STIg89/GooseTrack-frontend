@@ -57,6 +57,17 @@ export const loginWithToken = createAsyncThunk(
   }
 );
 
+export const googleAuth = createAsyncThunk(
+  'auth/google',
+  async (_, thunkAPI) => {
+    try {
+      await axios.get('/api/auth/google');
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/api/auth/logout');
