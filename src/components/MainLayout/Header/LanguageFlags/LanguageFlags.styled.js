@@ -7,24 +7,24 @@ const media = {
 };
 
 export const Div = styled.div`
-margin-right: 12px;
+  margin-right: 12px;
 
-${media.tablet} {
-  margin-right: 20px;
-}
+  ${media.tablet} {
+    margin-right: 20px;
+  }
 
-${media.desktop} {
-  margin-right: 27px;
-}
-`
+  ${media.desktop} {
+    margin-right: 27px;
+  }
+`;
 
 export const LangIcon = styled(LanguageIcon)`
-width: 26px !important;
-height: 26px !important;
-color: var(--accent-text-color);
+  width: 26px !important;
+  height: 26px !important;
+  color: var(--accent-background-color);
 
-${media.tablet} {
-  width: 32px !important;
-height: 32px !important;
-}
-`
+  ${media.tablet} {
+    width: 32px !important;
+    height: 32px !important;
+  }
+`;

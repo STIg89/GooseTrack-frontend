@@ -8,7 +8,7 @@ export const ModalForm = styled.form`
 export const ModalContent = styled.div`
   position: relative;
   border-radius: 12px;
-  background-color: #fff;
+  background-color: var(--sidebar-background-color);
 `;
 
 export const RatingWrapper = styled.div`
@@ -27,8 +27,9 @@ export const RatingWrapper = styled.div`
 export const TextInput = styled.textarea`
   width: 100%;
   height: 127px;
-  background-color: #f7f7f7;
-  border: none;
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+  border: var(--border);
   border-radius: 8px;
   margin-top: 8px;
   resize: none;
@@ -98,9 +99,9 @@ export const Label = styled.label`
 `;
 
 export const BtnWrapper = styled.div`
-display: flex;
-gap: 8px;
-`
+  display: flex;
+  gap: 8px;
+`;
 
 export const EditBtn = styled.button`
   display: flex;
@@ -114,6 +115,11 @@ export const EditBtn = styled.button`
   background: #3e85f3;
   border: none;
   border-radius: 8px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--hover-btn-background-color);
+  }
 `;
 
 export const EditBtnText = styled.span`
@@ -135,9 +141,14 @@ export const CancelBtn = styled.button`
   width: 198px;
   height: 48px;
   cursor: pointer;
-  background: #E5EDFA;
+  background: var(--cancel-button-background-color);
   border: none;
   border-radius: 8px;
+
+  &:hover,
+  &:focus {
+    background-color: var(--border-label-color);
+  }
 `;
 
 export const CancelBtnText = styled.span`
@@ -147,9 +158,8 @@ export const CancelBtnText = styled.span`
   font-size: 14px;
   line-height: 18px;
   text-align: center;
-  color: #343434;
+  color: var(--calendar-digit-color);
 `;
-
 
 export const CloseModal = styled.button`
   position: absolute;
