@@ -10,7 +10,7 @@ import { nanoid } from 'nanoid';
 // import { refreshUser } from '../../../redux/auth/operations';
 // import { selectToken } from '../../../redux/auth/selectors';
 import { AuthNavigate } from 'components/Auth/AuthNavigate/AuthNavigate';
-import RegistrationSuccessModal from '../RegisterSuccessModal';
+import RegistrationSuccessModal from './RegisterSuccessModal/RegisterSuccessModal';
 
 import {
   Wrapper,
@@ -52,12 +52,13 @@ export const RegisterForm = () => {
   const emailId = nanoid();
   const passwordId = nanoid();
   const nameId = nanoid();
-  const [isOpened, setIsModalOpen] = useState(false);
+  const [isOpened, setIsModalOpen] = useState(true);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const handleToggleModal = () => setIsModalOpen(!isOpened);
 
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  // };
 
   return (
     <Formik
@@ -73,12 +74,10 @@ export const RegisterForm = () => {
             email: values.email,
             password: values.password,
           })
-        )
-        .then(() => {
-          
+        ).then(() => {
           resetForm();
           setIsModalOpen(true);
-        })
+        });
       }}
       validationSchema={validationSchema}
     >
@@ -156,7 +155,9 @@ export const RegisterForm = () => {
               alt="goose"
             />
           </StyleFormContainer>
-          <RegistrationSuccessModal isOpened={isOpened} onCloseModal={handleCloseModal} />
+          {isOpened && (
+            <RegistrationSuccessModal onCloseModal={handleToggleModal} />
+          )}
         </Wrapper>
       )}
     </Formik>
