@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 const media = {
-  tablet: "@media screen and (min-width: 768px)",
-  desktop: "@media screen and (min-width: 1440px)"
+  tablet: '@media screen and (min-width: 768px)',
+  desktop: '@media screen and (min-width: 1440px)',
 };
 
 export const Container = styled.div`
@@ -65,9 +65,13 @@ export const SpanTitle = styled.span`
 
 export const BoxBtn = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  max-width: 262px;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  column-gap: 10px;
+  row-gap: 60px;
 
   ${media.tablet} {
     flex-direction: row;
@@ -78,15 +82,14 @@ export const BtnSignUp = styled(NavLink)`
   display: none;
 
   &:focus {
-      color: #2b78ef;
-      background-color: #ffffff;
-      
-    }
+    color: #2b78ef;
+    background-color: #ffffff;
+  }
 
-    &:hover {
-      color: #2b78ef;
-      background-color: #ffffff;
-    }
+  &:hover {
+    color: #2b78ef;
+    background-color: #ffffff;
+  }
 
   ${media.tablet} {
     display: flex;
@@ -108,11 +111,11 @@ export const BtnSignUp = styled(NavLink)`
 `;
 
 export const SvgIcon = styled.svg`
-    fill: none;
-    stroke: var(--accent-background-color);
-    width: 18px;
-    margin-left: 6px;
-    transition: all var(--animation);
+  fill: none;
+  stroke: var(--accent-background-color);
+  width: 18px;
+  margin-left: 6px;
+  transition: all var(--animation);
 `;
 
 export const BtnLogIn = styled(NavLink)`
@@ -133,64 +136,115 @@ export const BtnLogIn = styled(NavLink)`
   transition: all var(--animation);
 
   &:hover ${SvgIcon} {
-            transform: scale(1.2);
-            stroke: #ffffff;
-        }
-        &:focus ${SvgIcon} {
-            stroke: var(--primary-background-color);
-        }
-        &:focus {
-            color: var(--btn-text-color);
-            background-color: #1e63cc;
-            
-        }
-        &:hover {
-            color: var(--btn-text-color);
-            background-color: #1e63cc;
-        }
+    transform: scale(1.2);
+    stroke: #ffffff;
+  }
+  &:focus ${SvgIcon} {
+    stroke: var(--primary-background-color);
+  }
+  &:focus {
+    color: var(--btn-text-color);
+    background-color: #1e63cc;
+  }
+  &:hover {
+    color: var(--btn-text-color);
+    background-color: #1e63cc;
+  }
 
-    ${media.tablet} {
-        margin: 0;
-        padding: 14px 22px;
-        border: 0;
-        border-radius: 15px;
-        color: var(--accent-background-color);
-        font-family: 'Inter', sans-serif;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 18px;
+  ${media.tablet} {
+    margin: 0;
+    padding: 14px 22px;
+    border: 0;
+    border-radius: 15px;
+    color: var(--accent-background-color);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
   }
 `;
 
 export const BtnSignUpMob = styled.button`
-    width: 121px;
-    height: 46px;
-    margin-top: 200px;
-    border-radius: 15px;
-    text-decoration: underline;
-    display: block;
-    background-color: transparent;
-    border: 0;
-    color: var(--btn-text-color);
+  width: 121px;
+  height: 46px;
+  margin-top: 30px;
+  border-radius: 15px;
+  text-decoration: underline;
+  display: block;
+  background-color: transparent;
+  border: 0;
+  color: var(--btn-text-color);
 
-    font-size: 12px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    line-height: 14px;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 14px;
 
-    &:focus {
-      color: var(--accent-text-color);
-      background-color: var(--primary-background-color);
-      
-    }
+  &:focus {
+    color: var(--accent-text-color);
+    background-color: var(--primary-background-color);
+  }
 
-    &:hover {
-        color: var(--accent-text-color);
-        background-color: var(--primary-background-color);
-    }
+  &:hover {
+    color: var(--accent-text-color);
+    background-color: var(--primary-background-color);
+  }
 
-    ${media.tablet} {
-        display: none;
-    } 
+  ${media.tablet} {
+    display: none;
+  }
 `;
 
+export const BtnGoogle = styled(NavLink)`
+  width: 131px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+  color: var(--accent-background-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  background-color: #ffffff;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: all var(--animation);
+
+  &:hover ${SvgIcon} {
+    transform: scale(1.2);
+    stroke: #ffffff;
+  }
+  &:focus ${SvgIcon} {
+    stroke: var(--primary-background-color);
+  }
+  &:focus {
+    color: var(--btn-text-color);
+    background-color: #1e63cc;
+  }
+  &:hover {
+    color: var(--btn-text-color);
+    background-color: #1e63cc;
+  }
+
+  ${media.tablet} {
+    margin: 0;
+    padding: 14px 22px;
+    border: 0;
+    border-radius: 15px;
+    color: var(--accent-background-color);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+  }
+`;
+
+export const GoogleIcon = styled.svg`
+  fill: none;
+  stroke: var(--accent-background-color);
+  width: 24px;
+  margin-right: 6px;
+  transition: all var(--animation);
+`;
