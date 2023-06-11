@@ -62,10 +62,7 @@ export const googleAuth = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await axios.get('/api/auth/google');
-      // setAuthHeader(data.token);
-      // return data;
     } catch (error) {
-      // Notify.failure('Please check your email and password and try again');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

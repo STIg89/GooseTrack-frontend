@@ -195,7 +195,7 @@ export const BtnSignUpMob = styled.button`
   }
 `;
 
-export const BtnGoogle = styled(NavLink)`
+export const BtnGoogle = styled.a`
   width: 131px;
   height: 46px;
   padding: 0;

@@ -1,5 +1,5 @@
-import { useDispatch } from 'react-redux';
-import { googleAuth } from 'redux/auth/operations';
+// import { useDispatch } from 'react-redux';
+// import { googleAuth } from 'redux/auth/operations';
 import gooseDesk3x from 'images/start-page-goose-desktop-1x.png';
 import gooseDesk2x from 'images/start-page-goose-desktop-2x.png';
 import gooseDesk1x from 'images/start-page-goose-desktop-3x.png';
@@ -20,7 +20,7 @@ import {
 } from './AuthSection.styled';
 
 const AuthSection = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <Container>
@@ -50,7 +50,7 @@ const AuthSection = () => {
             </SvgIcon>
           </BtnLogIn>
 
-          <BtnGoogle type="button" onClick={dispatch(googleAuth())}>
+          <BtnGoogle href="https://goosetrack-backend.onrender.com/api/auth/google">
             <GoogleIcon>
               <use href={`${Icons}#icon-google`}></use>
             </GoogleIcon>
