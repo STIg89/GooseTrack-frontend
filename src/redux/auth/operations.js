@@ -94,32 +94,22 @@ export const updateUser = createAsyncThunk(
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
-    try {
-      setAuthHeader(persistedToken);
-      const res = await axios.put('/api/auth/user', data);
-      return res.data;
-    } catch (error) {
-      console.log(error);
-      Notify.failure(error.response.data.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-//  Upload User Avatar
-export const uploadAvatar = createAsyncThunk(
-  'auth/user',
-  async (file, thunkAPI) => {
-    const state = thunkAPI.getState();
     const formData = new FormData();
-    formData.append('avatar', file, file.name);
-    const persistedToken = state.auth.token;
+    Object.keys(data).forEach(key => {
+      if (key === 'avatar') {
+        if (data[key] !== null) {
+          let file = data.avatar;
+          formData.append('avatar', file, file.name);
+        }
+      } else formData.append(key, data[key]);
+    });
 
     try {
       setAuthHeader(persistedToken);
       const res = await axios.put('/api/auth/user', formData);
-      return res;
+      return res.data;
     } catch (error) {
+      console.log(error);
       Notify.failure(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
