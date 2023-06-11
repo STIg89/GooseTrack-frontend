@@ -8,7 +8,7 @@ import cookies from 'js-cookie';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import classNames from 'classnames';
-import { LangIcon, Div } from './LanguageFlags.styled'
+import { LangIcon, Div } from './LanguageFlags.styled';
 
 export default function LanguageFlags() {
   const languages = [
@@ -41,7 +41,7 @@ export default function LanguageFlags() {
     <Div>
       <Tooltip title={t('language')} arrow>
         <IconButton onClick={handleClick} size="small">
-          <LangIcon/>
+          <LangIcon />
         </IconButton>
       </Tooltip>
       <Menu
@@ -57,7 +57,7 @@ export default function LanguageFlags() {
           sx: {
             overflow: 'visible',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            mt: 1.5,
+            mt: 1,
             bgcolor: '#F8F8F8',
             '& .MuiAvatar-root': {
               width: 32,
@@ -84,8 +84,11 @@ export default function LanguageFlags() {
           <Tooltip key={code}>
             <MenuItem
               style={{
+                // height: '32px',
                 backgroundColor:
-                  currentLanguageCode === code ? '#D8D8D8' : '#F8F8F8',
+                  currentLanguageCode === code
+                    ? 'var(--accent-background-color)'
+                    : '#F8F8F8',
                 border:
                   currentLanguageCode === code
                     ? '1px solid #989898'
@@ -116,3 +119,5 @@ export default function LanguageFlags() {
     </Div>
   );
 }
+
+// #D8D8D8

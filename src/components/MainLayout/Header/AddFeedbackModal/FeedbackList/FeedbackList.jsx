@@ -19,6 +19,7 @@ import EditModal from '../EditModal/EditModal';
 import { Rating } from 'react-simple-star-rating';
 // import { fetchAllReviews } from 'redux/reviews/operations';
 import axios from 'axios';
+
 // import StarRatingComponent from 'react-star-rating-component';
 
 const FeedbackList = ({ setReviewsList, fetchData }) => {
