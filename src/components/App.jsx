@@ -19,7 +19,6 @@ const RegisterPage = lazy(() => import('pages/Register/RegisterPage'));
 const AccountPage = lazy(() => import('pages/Account/AccountPage'));
 const CalendarPage = lazy(() => import('pages/Calendar/CalendarPage'));
 
-// const Loader = () => <>...Loading</>;
 const Lazy = ({ children }) => (
   <Suspense fallback={<Loader />}>{children}</Suspense>
 );

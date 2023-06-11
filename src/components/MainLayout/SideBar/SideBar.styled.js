@@ -153,8 +153,8 @@ export const StyledNavLink = styled(NavLink)`
   :focus {
     fill: var(--accent-text-color);
     color: var(--accent-text-color);
-    stroke: var(--accent-text-color);
     background: var(--active-item-sidebar-background);
+    stroke: var(--accent-text-color);
 
     &:hover ${Svg}, &:focus ${Svg}, &.active ${Svg} {
       stroke: var(--accent-text-color); /* change the stroke color */
@@ -226,3 +226,9 @@ export const CloseBtn = styled.button`
 export const CloseIcon = styled(CgClose)`
   color: var(--primary-text-color);
 `;
+
+export const LngBtnWrapper = styled.div`
+  position: absolute;
+  bottom: 145px;
+  left: 20px;
+`
