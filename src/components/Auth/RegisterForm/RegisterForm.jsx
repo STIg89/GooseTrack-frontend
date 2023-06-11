@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
+import { useState } from 'react';
 import { register } from 'redux/auth/operations';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -9,6 +10,7 @@ import { nanoid } from 'nanoid';
 // import { refreshUser } from '../../../redux/auth/operations';
 // import { selectToken } from '../../../redux/auth/selectors';
 import { AuthNavigate } from 'components/Auth/AuthNavigate/AuthNavigate';
+import RegistrationSuccessModal from '../RegisterSuccessModal';
 
 import {
   Wrapper,
@@ -50,6 +52,12 @@ export const RegisterForm = () => {
   const emailId = nanoid();
   const passwordId = nanoid();
   const nameId = nanoid();
+  const [isOpened, setIsModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
 
   return (
     <Formik
@@ -65,8 +73,12 @@ export const RegisterForm = () => {
             email: values.email,
             password: values.password,
           })
-        );
-        resetForm();
+        )
+        .then(() => {
+          
+          resetForm();
+          setIsModalOpen(true);
+        })
       }}
       validationSchema={validationSchema}
     >
@@ -144,6 +156,7 @@ export const RegisterForm = () => {
               alt="goose"
             />
           </StyleFormContainer>
+          <RegistrationSuccessModal isOpened={isOpened} onCloseModal={handleCloseModal} />
         </Wrapper>
       )}
     </Formik>
