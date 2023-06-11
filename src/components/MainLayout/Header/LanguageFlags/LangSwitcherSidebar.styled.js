@@ -33,7 +33,9 @@ export const Btn = styled.div`
 `
 
 export const Input = styled.input`
+
 display: none;
+
   &:active {
     background-color: var(--hover-btn-background-color);
     cursor: default;

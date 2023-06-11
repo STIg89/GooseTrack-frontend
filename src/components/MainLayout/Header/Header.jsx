@@ -77,6 +77,7 @@ const Header = ({ isOpen, onOpenClick }) => {
           </>
         )}
       </TitleCalendar>
+      
       <Box>
         {!showLangBtn && (
           <>
