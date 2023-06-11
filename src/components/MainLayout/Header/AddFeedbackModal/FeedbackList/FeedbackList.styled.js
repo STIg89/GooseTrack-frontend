@@ -82,7 +82,7 @@ export const FeedBackRating = styled.p`
 `;
 
 export const FeedBackText = styled.p`
-  width: 314px;
+  max-width: 249px;
   height: 56px;
   font-family: 'Inter';
   font-style: normal;
@@ -90,6 +90,9 @@ export const FeedBackText = styled.p`
   font-size: 14px;
   line-height: 18px;
   color: var(--feedback-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--primary-text-color);
 `;
 
 export const ForBtn = styled.div`

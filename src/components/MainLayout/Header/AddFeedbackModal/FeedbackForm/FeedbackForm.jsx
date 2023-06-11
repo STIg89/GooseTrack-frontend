@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import {
   Label,
+  LabelRating,
   ModalForm,
   SaveBtn,
   SaveBtnText,
   TextInput,
 } from './FeedbackForm.styled';
-// import StarRating from './StarRating/StarRating';
 import axios from 'axios';
 import { Rating } from 'react-simple-star-rating';
-// import './FeedbackForm.css';
-// import StarRatingComponent from 'react-star-rating-component';
 
 import { useTranslation } from 'react-i18next';
 const FeedbackForm = ({ fetchData }) => {
@@ -42,23 +40,13 @@ const FeedbackForm = ({ fetchData }) => {
   return (
     <>
       <ModalForm>
-        <Label>{t('Rating')}</Label>
-
-        {/* <StarRating/> */}
-        {/* <StarRatingComponent
-          className="test"
-          name="rate1"
-          starCount={5}
-          value={newRate}
-          onStarClick={e => onStarClickClick(e)}
-          emptyStarColor={'grey'}
-          //  onStarHover={(e)=>onStarClickClick(e)}
-        /> */}
+        <LabelRating>{t('Rating')}</LabelRating>
         <Rating
           onClick={e => onStarClickClick(e)}
           initialValue={newRate}
           iconsCount={5}
           transition={true}
+          size={24}
         />
 
         <Label>

@@ -5,7 +5,7 @@ export const ModalForm = styled.form`
   flex-direction: column;
 `;
 
-export const Label = styled.label`
+export const LabelRating = styled.label`
   display: flex;
   flex-direction: column;
   font-family: 'Inter';
@@ -13,21 +13,22 @@ export const Label = styled.label`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
+  margin-bottom: 5px;
   color: var(--task-modal-label-color);
 `;
 
-export const RatingWrapper = styled.div`
-  position: relative;
-  font-size: 40px;
-  display: inline-block;
-  margin-bottom: 20px;
-  width: 50%;
-  ::before {
-    content: '★★★★★';
-    display: block;
-    color: lightgray;
-  }
+export const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 18px;
+  line-height: 14px;
+  color: var(--task-modal-label-color);
 `;
+
 
 export const TextInput = styled.textarea`
   width: 100%;
@@ -61,6 +62,12 @@ export const SaveBtn = styled.button`
   background: #3e85f3;
   border: none;
   border-radius: 8px;
+  &:hover,
+  :focus {
+   cursor: pointer;
+   background-color: var(--hover-btn-background-color);
+
+  }
 `;
 
 export const SaveBtnText = styled.span`
@@ -71,46 +78,4 @@ export const SaveBtnText = styled.span`
   line-height: 18px;
   text-align: center;
   color: #ffffff;
-`;
-//==================================
-
-export const RatingItems = styled.div`
-  position: absolute;
-  width: 41%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  /* flex-direction: row-reverse; */
-`;
-
-export const RatingLabel = styled.label`
-  flex: 0 0 20%;
-  height: 100%;
-  cursor: pointer;
-  color: lightgray;
-  ::before {
-    content: '★';
-    display: block;
-    transition: all 0.3s ease 0s;
-  }
-  :hover,
-  :hover ~ RatingLabel,
-  :checked ~ RatingLabel:hover {
-    color: rgba(255, 172, 51, 0.5);
-  }
-`;
-
-export const RatingItem = styled.input`
-  position: absolute;
-  width: 0%;
-  height: 0%;
-  opacity: 0;
-  visibility: hidden;
-  top: 0;
-  left: 0;
-  :checked,
-  :checked ~ RatingLabel {
-    color: rgba(255, 172, 51, 1);
-  }
 `;
