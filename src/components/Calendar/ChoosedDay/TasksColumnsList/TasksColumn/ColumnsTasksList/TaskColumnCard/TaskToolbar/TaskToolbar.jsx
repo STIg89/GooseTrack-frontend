@@ -15,13 +15,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 const TaskToolBar = ({ id, addCategory }) => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
   let editTask = tasks.find(task => task._id === id);
 
-  const category = ['to-do', 'in-progress', 'done'];
+  // const category = ['to-do', 'in-progress', 'done'];
+  const currentLanguageCode = Cookies.get('i18next');
+
+  const category = [
+    { en: 'to-do', ua: 'Зробити' },
+    { en: 'in-progress', ua: 'В процесі' },
+    { en: 'done', ua: 'Зроблено' },
+  ];
 
   const [showEditBtn, setShowEditBtn] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
@@ -97,17 +105,17 @@ const TaskToolBar = ({ id, addCategory }) => {
         >
           {category.map(item => {
             return (
-              item !== editTask.category && (
+              item.en !== editTask.category && (
                 <div key={Math.random()}>
                   <LabelStyled>
-                    {item}
+                    {currentLanguageCode === 'en' ? item.en : item.ua}
                     <ToolBarItem>
                       <use href={`${Icons}#task-move-sf`}></use>
                     </ToolBarItem>
                     <InputStyled
                       type="radio"
-                      value={item}
-                      checked={selectedOption === { item }}
+                      value={item.en}
+                      checked={selectedOption === item.en}
                       onChange={handleOptionChange}
                     />
                   </LabelStyled>
