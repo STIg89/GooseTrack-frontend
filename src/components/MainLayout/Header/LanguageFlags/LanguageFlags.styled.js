@@ -3,7 +3,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 
 const media = {
   tablet: '@media screen and (min-width: 768px)',
-  desktop: '@media screen and (min-width: 1440px)',
+  laptop: '@media screen and (min-width: 1200px)',
 };
 
 export const Div = styled.div`
@@ -13,7 +13,7 @@ export const Div = styled.div`
     margin-right: 20px;
   }
 
-  ${media.desktop} {
+  ${media.laptop} {
     margin-right: 27px;
   }
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const media = {
   tablet: '@media screen and (min-width: 768px)',
-  desktop: '@media screen and (min-width: 1440px)',
+  desktop: '@media screen and (min-width: 1200px)',
 };
 
 export const Container = styled.div`
