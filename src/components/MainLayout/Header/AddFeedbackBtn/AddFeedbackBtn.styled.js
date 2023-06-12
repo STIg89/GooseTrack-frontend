@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const media = {
   mobile: '@media screen and (max-width: 374px)',
   tablet: "@media screen and (min-width: 768px)",
-  desktop: "@media screen and (min-width: 1440px)"
+  laptop: "@media screen and (min-width: 1200px)"
 };
 
 export const StyledBtn = styled.button`
@@ -63,6 +63,4 @@ bottom: 84px;
   font-size: 14px;
   line-height: 18px;
   }
-
-
   `
