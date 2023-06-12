@@ -68,6 +68,7 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
             initialValue={updatedItem.rating}
             iconsCount={5}
             transition={true}
+            size={24}
           />
           <Label>
             {t('Review')}

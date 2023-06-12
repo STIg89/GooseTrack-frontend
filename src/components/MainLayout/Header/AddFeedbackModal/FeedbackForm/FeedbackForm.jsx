@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  ErrorMessage,
   Label,
   LabelRating,
   ModalForm,
@@ -11,11 +12,15 @@ import axios from 'axios';
 import { Rating } from 'react-simple-star-rating';
 
 import { useTranslation } from 'react-i18next';
+
+
 const FeedbackForm = ({ fetchData }) => {
   const { t } = useTranslation();
   const [newComment, setNewComment] = useState('');
   const [newRate, setNewRate] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
+ 
   const onStarClickClick = nextValue => {
     changeRate(nextValue);
   };
@@ -23,12 +28,10 @@ const FeedbackForm = ({ fetchData }) => {
     setNewRate(val);
   };
   const addReview = async e => {
-    e.preventDefault();
     let newEntry = {
       comment: newComment || '',
       rating: newRate || 0,
     };
-    console.log(newEntry);
     await axios.post(`api/reviews`, newEntry).then(() => {
       setNewComment('');
       setNewRate(0);
@@ -36,10 +39,49 @@ const FeedbackForm = ({ fetchData }) => {
     });
   };
 
+  let isValid = false;
+  let isValidComm = false;
+  let isValidrate = false;
+
+  function validateComment() {
+    if (newComment === '') {
+      isValidComm = false;
+    } else if (newComment !== '') {
+      isValidComm = true;
+    }
+  }
+
+  function validateRate() {
+    if (newRate === 0) {
+      isValidrate = false;
+    } else if (newRate !== 0) {
+      isValidrate = true;
+    }
+  }
+
+  function validateForm() {
+    if (isValidComm === true && isValidrate === true) {
+      isValid = true;
+    }
+  }
+  const totalValidateAndSend = e => {
+    e.preventDefault();
+    validateComment();
+    validateRate();
+    validateForm();
+    if (isValid) {
+      addReview();
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
+
   return (
     <>
-      <ModalForm>
-        <LabelRating>{t('Rating')}</LabelRating>
+    <ModalForm>
+        <LabelRating>{t('Rating')}
         <Rating
           onClick={e => onStarClickClick(e)}
           initialValue={newRate}
@@ -47,7 +89,8 @@ const FeedbackForm = ({ fetchData }) => {
           transition={true}
           size={24}
         />
-
+        {isVisible && <ErrorMessage className="par">Rating is a required field</ErrorMessage>}
+        </LabelRating>
         <Label>
           {t('Review')}
           <TextInput
@@ -57,13 +100,13 @@ const FeedbackForm = ({ fetchData }) => {
             id="feedback-text"
             cols="30"
             rows="10"
-            className="text-input"
             onChange={e => {
               setNewComment(e.target.value);
             }}
           ></TextInput>
+          {isVisible && <ErrorMessage className="par">Comment is a required field</ErrorMessage>}
         </Label>
-        <SaveBtn type="submit" onClick={addReview}>
+        <SaveBtn type="submit" onClick={totalValidateAndSend}>
           <SaveBtnText>{t('Save')}</SaveBtnText>
         </SaveBtn>
       </ModalForm>
@@ -72,3 +115,4 @@ const FeedbackForm = ({ fetchData }) => {
 };
 
 export default FeedbackForm;
+

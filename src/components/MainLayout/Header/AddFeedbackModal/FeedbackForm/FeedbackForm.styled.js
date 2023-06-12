@@ -79,3 +79,12 @@ export const SaveBtnText = styled.span`
   text-align: center;
   color: #ffffff;
 `;
+
+export const ErrorMessage = styled.p`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 17px;
+  color: var(--text-error-color);
+  opacity: 0.8;
+`
