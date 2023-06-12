@@ -57,6 +57,7 @@ bottom: 84px;
   ${media.tablet} {
   width: 130px;
   height: 42px;
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   font-size: 14px;
   line-height: 18px;
   }

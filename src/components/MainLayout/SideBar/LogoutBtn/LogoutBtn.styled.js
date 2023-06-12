@@ -19,9 +19,6 @@ position: absolute;
 left: 20px;
 bottom: 24px;
 
-/* margin-left: 20px;
-margin-bottom: 24px; */
-
 font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 14px;
