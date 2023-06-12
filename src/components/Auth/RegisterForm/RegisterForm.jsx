@@ -25,6 +25,9 @@ import {
   ButtonText,
   Svg,
   RegisterGooseImage,
+  BtnGoogle,
+  GoogleIcon,
+  Or,
 } from './RegisterForm.styled';
 import gooseRegister2x from 'images/goose-register@2x.png';
 import gooseRegister from 'images/goose-register.png';
@@ -153,6 +156,13 @@ export const RegisterForm = () => {
                   </Svg>
                 </ButtonText>
               </StyleButton>
+              <Or>or</Or>
+              <BtnGoogle href="https://goosetrack-backend.onrender.com/api/auth/google">
+                <GoogleIcon>
+                  <use href={`${Icons}#icon-google`}></use>
+                </GoogleIcon>
+                Sign Up with Google
+              </BtnGoogle>
             </Form>
             <AuthNavigate route="/login" content="Log In" />
             <RegisterGooseImage

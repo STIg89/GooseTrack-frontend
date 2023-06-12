@@ -71,7 +71,6 @@ export const BoxBtn = styled.div`
   align-items: center;
   justify-content: center;
   column-gap: 10px;
-  row-gap: 60px;
 
   ${media.tablet} {
     flex-direction: row;
@@ -167,7 +166,7 @@ export const BtnLogIn = styled(NavLink)`
 export const BtnSignUpMob = styled.button`
   width: 121px;
   height: 46px;
-  margin-top: 30px;
+  margin-top: 200px;
   border-radius: 15px;
   text-decoration: underline;
   display: block;
@@ -193,58 +192,4 @@ export const BtnSignUpMob = styled.button`
   ${media.tablet} {
     display: none;
   }
-`;
-
-export const BtnGoogle = styled.a`
-  width: 131px;
-  height: 46px;
-  padding: 0;
-  border: 0;
-  border-radius: 15px;
-  color: var(--accent-background-color);
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 18px;
-  background-color: #ffffff;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  transition: all var(--animation);
-
-  &:hover ${SvgIcon} {
-    transform: scale(1.2);
-    stroke: #ffffff;
-  }
-  &:focus ${SvgIcon} {
-    stroke: var(--primary-background-color);
-  }
-  &:focus {
-    color: var(--btn-text-color);
-    background-color: #1e63cc;
-  }
-  &:hover {
-    color: var(--btn-text-color);
-    background-color: #1e63cc;
-  }
-
-  ${media.tablet} {
-    margin: 0;
-    padding: 14px 22px;
-    border: 0;
-    border-radius: 15px;
-    color: var(--accent-background-color);
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
-  }
-`;
-
-export const GoogleIcon = styled.svg`
-  fill: none;
-  stroke: var(--accent-background-color);
-  width: 24px;
-  margin-right: 6px;
-  transition: all var(--animation);
 `;
