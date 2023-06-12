@@ -66,8 +66,8 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
     <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
       <ModalContent
         onClick={e => {
-          handleToggleModal();
           e.stopPropagation();
+          handleToggleModal();
         }}
       >
         <ModalForm>
