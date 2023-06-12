@@ -180,6 +180,7 @@ export const Inputs = styled.div`
   @media screen and (min-width: 1440px) {
     width: 758px;
     column-count: 2;
+    column-gap: 50px;
   }
 `;
 
@@ -192,7 +193,7 @@ export const StyledLabel = styled.label`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.16;
-  color: var(--label-text);
+  color: var(--primary-text-color);
   margin: 0;
   padding: 0;
 
@@ -286,7 +287,7 @@ export const StyledDatePicker = styled(DatePicker)`
 `;
 
 export const DatePickerWrapper = styled.div`
-  & .react-datepicker {
+  .react-datepicker {
     background-color: var(--color-button-period-type);
     border-radius: 16px;
     overflow: hidden;
@@ -414,6 +415,11 @@ export const SubmitBtn = styled.button`
   background: var(--accent-background-color);
   color: var(--btn-text-color);
   cursor: pointer;
+
+  :disabled {
+    cursor: not-allowed;
+  }
+
   :hover,
   :focus {
     background: var(--hover-btn-background-color);
