@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 // Container
 export const Wrapper = styled.div`
-  display: flex;
   background-color: var(--primary-background-color);
   border-radius: 16px;
   margin-top: 95px;
@@ -171,7 +170,11 @@ export const User = styled.p`
 
 //  Inputs
 export const Inputs = styled.div`
-  width: 299px;
+  width: 100%;
+
+  @media screen and (min-width: 375px) {
+    width: 299px;
+  }
 
   @media screen and (min-width: 768px) {
     width: 354px;
@@ -213,7 +216,7 @@ export const StyledLabel = styled.label`
 
 export const StyledInput = styled(Field)`
   margin-top: 8px;
-  width: 299px;
+  width: 100%;
   height: 42px;
   margin-bottom: 18px;
   padding: 14px 18px;
@@ -225,6 +228,10 @@ export const StyledInput = styled(Field)`
   line-height: 1.3;
   color: var(--primary-text-color);
   outline: none;
+
+  @media screen and (min-width: 375px) {
+    width: 299px;
+  }
 
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;
@@ -251,7 +258,7 @@ export const StyledInput = styled(Field)`
 // DatePicker
 export const StyledDatePicker = styled(DatePicker)`
   margin-top: 8px;
-  width: 299px;
+  width: 100%;
   height: 42px;
   margin-bottom: 18px;
   padding: 14px 18px;
@@ -275,6 +282,10 @@ export const StyledDatePicker = styled(DatePicker)`
 
   &.success {
     border: 1px solid var(--text-correct-color);
+  }
+
+  @media screen and (min-width: 375px) {
+    width: 299px;
   }
 
   @media screen and (min-width: 768px) {
@@ -405,7 +416,7 @@ export const SubmitBtn = styled.button`
   margin-left: auto;
   margin-right: auto;
   margin-top: 22px;
-  width: 195px;
+  width: 65%;
   height: 46px;
   border-radius: 16px;
   border: none;
@@ -427,6 +438,10 @@ export const SubmitBtn = styled.button`
 
   :disabled {
     opacity: 0.4;
+  }
+
+  @media screen and (min-width: 375px) {
+    width: 195px;
   }
 
   @media screen and (min-width: 768px) {
