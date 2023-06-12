@@ -19,9 +19,10 @@ import {
   StyledCalendarIcon,
   TitleSideBar,
   CloseIcon,
+  LngBtnWrapper
 } from './SideBar.styled';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
-import LanguageFlags from '../Header/LanguageFlags/LanguageFlags';
+import LangSwitcher from '../Header/LanguageFlags/LangSwitcherSidebar';
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
   const { t } = useTranslation();
@@ -79,9 +80,9 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
       </SideBarDiv>
 
       {showLangBtn &&
-        <>
-          <LanguageFlags />
-        </>
+        <LngBtnWrapper>
+          <LangSwitcher />
+        </LngBtnWrapper>
       }
 
       {!showFdbckBtn &&

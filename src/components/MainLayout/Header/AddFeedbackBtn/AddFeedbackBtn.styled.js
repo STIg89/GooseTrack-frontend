@@ -11,7 +11,7 @@ export const StyledBtn = styled.button`
 width: 97px;
 height: 32px;
 
-background: #3E85F3;
+/* background: #3E85F3; */
 border-radius: 10px;
 border: none;
 margin-left: 0;

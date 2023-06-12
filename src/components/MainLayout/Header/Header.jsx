@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-import { useLocation, useParams } from 'react-router-dom';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
 import HeaderImg from 'images/sidebar/GooseHeader.png';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
 import LanguageFlags from './LanguageFlags/LanguageFlags';
@@ -77,6 +77,7 @@ const Header = ({ isOpen, onOpenClick }) => {
           </>
         )}
       </TitleCalendar>
+
       <Box>
         {!showLangBtn && (
           <>
@@ -90,11 +91,13 @@ const Header = ({ isOpen, onOpenClick }) => {
         )}
         <ThemeToggler />
         <UserName>{name}</UserName>
-        {avatarURL ? (
-          <UserAvatar src={avatarURL} alt="user avatar" />
-        ) : (
-          <NoAvatar>{firstLetter}</NoAvatar>
-        )}
+        <NavLink to="account">
+          {avatarURL ? (
+            <UserAvatar src={avatarURL} alt="user avatar" />
+          ) : (
+            <NoAvatar>{firstLetter}</NoAvatar>
+          )}
+        </NavLink>
       </Box>
     </Container>
   );
