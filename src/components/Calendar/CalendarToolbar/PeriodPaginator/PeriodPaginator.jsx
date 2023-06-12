@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import sprite from 'images/sprite.svg';
-import { format, getMonth, getYear } from 'date-fns';
+import { format } from 'date-fns';
 import {
   PeriodView,
   PeriodTabs,
@@ -45,20 +45,6 @@ const PeriodPaginator = ({
   const monthFormat = 'LLLL y';
   const dayFormat = 'd MMM y';
 
-  const monthsUK = [
-    'Січень',
-    'Лютий',
-    'Березень',
-    'Квітень',
-    'Травень',
-    'Червень',
-    'Липень',
-    'Серпень',
-    'Вересень',
-    'Жовтень',
-    'Листопад',
-    'Грудень',
-  ];
   const formattedMonth = format(currentDate, monthFormat, {
     locale: locales[language],
   });
