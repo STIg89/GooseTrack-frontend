@@ -20,6 +20,10 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
   const { t } = useTranslation();
   const [updatedItem, setUpdatedItem] = useState('');
 
+  const [isOpened, setIsOpened] = useState(true);
+
+  const handleToggleModal = () => setIsOpened(!isOpened);
+
   useEffect(() => {
     setUpdatedItem(updateItem);
   }, [updateItem]);
@@ -59,8 +63,13 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
     });
   };
   return (
-    <Modal onCloseModal={onCloseModal}>
-      <ModalContent onClick={e => e.stopPropagation()}>
+    <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
+      <ModalContent
+        onClick={e => {
+          handleToggleModal();
+          e.stopPropagation();
+        }}
+      >
         <ModalForm>
           <Label>{t('Rating')}</Label>
           <Rating
