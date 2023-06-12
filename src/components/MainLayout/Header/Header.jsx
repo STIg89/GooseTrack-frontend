@@ -27,8 +27,8 @@ import Icons from 'images/sprite.svg';
 import { useEffect, useState } from 'react';
 
 const Header = ({ isOpen, onOpenClick }) => {
-  const { name, avatarURL } = useSelector(selectUser);
   const { t } = useTranslation();
+  const { name, avatarURL } = useSelector(selectUser);
 
   const firstLetter = name?.charAt(0).toUpperCase();
   const location = useLocation();

@@ -17,9 +17,8 @@ import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
 
 const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
-  const [updatedItem, setUpdatedItem] = useState('');
-
   const { t } = useTranslation();
+  const [updatedItem, setUpdatedItem] = useState('');
 
   useEffect(() => {
     setUpdatedItem(updateItem);
@@ -98,5 +97,3 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
 };
 
 export default EditModal;
-
-

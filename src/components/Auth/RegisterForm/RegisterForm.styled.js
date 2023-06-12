@@ -103,6 +103,7 @@ export const StyleButton = styled.button`
   border-radius: 16px;
   border: none;
   cursor: pointer;
+  transition: all var(--animation);
   &:hover,
   :focus {
     transform: scale(1.02);
@@ -176,5 +177,59 @@ export const LoginGooseImage = styled.img`
     right: 60px;
     bottom: 19px;
     display: block;
+  }
+`;
+export const BtnGoogle = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 46px;
+  font-size: 14px;
+  column-gap: 0.8125rem;
+  padding: 14px;
+  margin-top: 14px;
+  border: 1px solid var(--accent-background-color);
+  box-shadow: var(--shadow-logout-btn);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all var(--animation);
+  &:hover,
+  :focus {
+    transform: scale(1.02);
+    background: var(--hover-btn-background-color);
+  }
+  @media (min-width: 768px) {
+    width: 400px;
+    height: 56px;
+    font-size: 16px;
+  }
+  @media (max-width: 375px) {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+`;
+
+export const GoogleIcon = styled.svg`
+  fill: none;
+  stroke: var(--accent-background-color);
+  width: 24px;
+  margin-right: 6px;
+  transition: all var(--animation);
+`;
+
+export const Or = styled.p`
+  align-self: center;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  /* margin-top: 24px; */
+  /* margin-bottom: 8px; */
+  color: var(--primary-text-color);
+  @media (min-width: 768px) {
+    margin-top: 18px;
   }
 `;
