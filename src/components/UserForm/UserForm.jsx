@@ -31,6 +31,7 @@ import {
   ErrorMessage,
   ErrorImg,
   CorrectImg,
+  ChevronDown,
 } from './UserForm.styled';
 
 // Validation for phone
@@ -52,14 +53,16 @@ const validationSchema = yup.object().shape({
 });
 
 export const UserForm = () => {
-  const { t } = useTranslation();
   const user = useSelector(selectUser);
   const [avatarUrl, setAvatarUrl] = useState('');
+  const [username, setUsername] = useState('');
   const [showLoader, setShowLoader] = useState(false);
 
-  const [username, setUsername] = useState('');
-
   const dispatch = useDispatch();
+
+  // Translation
+  const { t } = useTranslation();
+
   useEffect(() => {
     const data = {
       name: user.name || '',
@@ -176,6 +179,8 @@ export const UserForm = () => {
                     onBlur={handleBlur}
                     placeholder="Enter your name"
                   />
+
+                  {/* Error image */}
                   {errors.name && touched.name ? (
                     <ErrorImg>
                       <use href={`${Icons}#icon-input-error`}></use>
@@ -186,6 +191,8 @@ export const UserForm = () => {
                       <use href={`${Icons}#icon-input-correct`}></use>
                     </CorrectImg>
                   ) : null}
+
+                  {/* Error message */}
                   <ErrorMessage>{touched.name && errors.name}</ErrorMessage>
                 </StyledLabel>
               </InputWrapper>
@@ -216,7 +223,7 @@ export const UserForm = () => {
                     type="date"
                     calendarStartDay={1}
                     value={values.birthday}
-                    formatWeekDay={nameOfDay => nameOfDay.substr(0, 1)}
+                    formatWeekDay={nameOfDay => nameOfDay.slice(0, 1)}
                     showMonthDropdown
                     showYearDropdown
                     dropdownMode="select"
@@ -230,16 +237,17 @@ export const UserForm = () => {
                     }}
                     maxDate={new Date()}
                   />
-                  {errors.birthday && touched.birthday ? (
-                    <ErrorImg className="datePickerCheck">
-                      <use href={`${Icons}#icon-input-error`}></use>
-                    </ErrorImg>
-                  ) : null}
-                  {!errors.birthday && touched.birthday ? (
-                    <CorrectImg className="datePickerCheck">
-                      <use href={`${Icons}#icon-input-correct`}></use>
-                    </CorrectImg>
-                  ) : null}
+
+                  {/* Chevron */}
+                  <ChevronDown
+                    className={`${
+                      touched.birthday ? (errors.birthday ? '' : 'success') : ''
+                    }`}
+                  >
+                    <use href={`${Icons}#user-chevron-down-sf`}></use>
+                  </ChevronDown>
+
+                  {/* Error message */}
                   <ErrorMessage>
                     {touched.birthday && errors.birthday}
                   </ErrorMessage>
@@ -267,6 +275,7 @@ export const UserForm = () => {
                     onBlur={handleBlur}
                     placeholder="Enter your email"
                   />
+                  {/* Error image */}
                   {errors.email && touched.email ? (
                     <ErrorImg>
                       <use href={`${Icons}#icon-input-error`}></use>
@@ -277,6 +286,7 @@ export const UserForm = () => {
                       <use href={`${Icons}#icon-input-correct`}></use>
                     </CorrectImg>
                   ) : null}
+                  {/* Error message */}
                   <ErrorMessage>{touched.email && errors.email}</ErrorMessage>
                 </StyledLabel>
               </InputWrapper>
@@ -310,6 +320,8 @@ export const UserForm = () => {
                     onBlur={handleBlur}
                     placeholder="+380XXXXXXXXX"
                   />
+
+                  {/* Error image */}
                   {errors.phone && touched.phone ? (
                     <ErrorImg>
                       <use href={`${Icons}#icon-input-error`}></use>
@@ -320,6 +332,8 @@ export const UserForm = () => {
                       <use href={`${Icons}#icon-input-correct`}></use>
                     </CorrectImg>
                   ) : null}
+
+                  {/* Error message */}
                   <ErrorMessage>{touched.phone && errors.phone}</ErrorMessage>
                 </StyledLabel>
               </InputWrapper>
@@ -353,6 +367,7 @@ export const UserForm = () => {
                     onBlur={handleBlur}
                     placeholder="Add a skype number"
                   />
+                  {/* Error image */}
                   {errors.skype && touched.skype ? (
                     <ErrorImg>
                       <use href={`${Icons}#icon-input-error`}></use>
@@ -363,6 +378,7 @@ export const UserForm = () => {
                       <use href={`${Icons}#icon-input-correct`}></use>
                     </CorrectImg>
                   ) : null}
+                  {/* Error message */}
                   <ErrorMessage>{touched.skype && errors.skype}</ErrorMessage>
                 </StyledLabel>
               </InputWrapper>
