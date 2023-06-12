@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import sprite from 'images/sprite.svg';
-import { format } from 'date-fns';
+import { format, getMonth, getYear } from 'date-fns';
 import {
   PeriodView,
   PeriodTabs,
@@ -9,7 +9,10 @@ import {
 } from './PeriodPaginator.styled';
 import { useNavigate, useParams } from 'react-router-dom';
 import { parseDate } from 'helpers/parseDate';
+import { enGB, eo, uk } from 'date-fns/locale';
+import { useTranslation } from 'react-i18next';
 
+const locales = { enGB, eo, uk };
 const PeriodPaginator = ({
   selectedDay,
   nextMonth,
@@ -21,6 +24,9 @@ const PeriodPaginator = ({
   const params = useParams();
   const navigate = useNavigate();
 
+  const { i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language);
+
   useEffect(() => {
     if (!params.currentDay) {
       return;
@@ -28,13 +34,38 @@ const PeriodPaginator = ({
     const parsedDate = parseDate(selectedDay);
     navigate(`/calendar/day/${parsedDate}`);
   }, [selectedDay, navigate, params.currentDay]);
+  useEffect(() => {
+    if (i18n.language === 'ua') {
+      setLanguage('uk');
+    } else {
+      setLanguage('enGB');
+    }
+  }, [i18n.language]);
 
-  const monthFormat = 'MMMM y';
+  const monthFormat = 'LLLL y';
   const dayFormat = 'd MMM y';
 
-  const formattedMonth = format(currentDate, monthFormat);
+  const monthsUK = [
+    'Січень',
+    'Лютий',
+    'Березень',
+    'Квітень',
+    'Травень',
+    'Червень',
+    'Липень',
+    'Серпень',
+    'Вересень',
+    'Жовтень',
+    'Листопад',
+    'Грудень',
+  ];
+  const formattedMonth = format(currentDate, monthFormat, {
+    locale: locales[language],
+  });
 
-  const formattedDay = format(selectedDay, dayFormat);
+  const formattedDay = format(selectedDay, dayFormat, {
+    locale: locales[language],
+  });
 
   return (
     <GroupPeriod>
