@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
-import { updateUser, uploadAvatar } from 'redux/auth/operations';
+import { updateUser } from 'redux/auth/operations';
 import { useTranslation } from 'react-i18next';
 
 import { Formik } from 'formik';
@@ -54,7 +54,7 @@ const validationSchema = yup.object().shape({
 export const UserForm = () => {
   const user = useSelector(selectUser);
   const [avatarUrl, setAvatarUrl] = useState('');
-  const [showAvatartLoader, setShowAvatartLoader] = useState(false);
+  const [showLoader, setShowLoader] = useState(false);
 
   const [username, setUsername] = useState('');
 
@@ -68,6 +68,7 @@ export const UserForm = () => {
       birthday: user?.birthday?.slice(0, 10) || new Date(),
       skype: user.skype || '',
       email: user.email || '',
+      avatar: null,
     };
     setAvatarUrl(user.avatarURL);
     setUsername(user.name);
@@ -77,26 +78,21 @@ export const UserForm = () => {
   // Initial values for form
   const [initialValues, setInitialValues] = useState({
     name: '',
+    avatar: '',
     phone: '',
     birthday: new Date(),
     skype: '',
     email: '',
   });
 
-  // Change avatar
-  const handleFileChange = e => {
-    setShowAvatartLoader(true);
-    let promise = dispatch(uploadAvatar(e.target.files[0]));
-    promise.then(function (response) {
-      setAvatarUrl(response.payload.data.data.updatedUser.avatarURL);
-      setShowAvatartLoader(false);
-    });
-  };
-
   // Submit form
   const handleSubmit = (values, { resetForm }) => {
+    setShowLoader(true);
     values.birthday = new Date(values.birthday).toISOString().split('T')[0];
-    dispatch(updateUser(values));
+    let promise = dispatch(updateUser(values));
+    promise.then(function (response) {
+      setShowLoader(false);
+    });
     setInitialValues(values);
     resetForm();
   };
@@ -122,8 +118,8 @@ export const UserForm = () => {
         <Wrapper>
           <StyledForm autoComplete="off" onSubmit={handleSubmit}>
             {/* Avatar */}
+            {showLoader && <Loader />}
             <AvatarContainer>
-              {showAvatartLoader && <Loader />}
               <AvatarWrapper>
                 {avatarUrl ? (
                   <AvatarImage alt="avatar" src={avatarUrl} />
@@ -141,8 +137,15 @@ export const UserForm = () => {
                 <AddAvatar
                   id="avatar"
                   type="file"
+                  accept="image/png, image/gif, image/jpeg"
                   name="avatar"
-                  onChange={handleFileChange}
+                  onChange={e => {
+                    if (e.target.files) {
+                      setFieldValue('avatar', e.target.files[0]);
+                      setTouched({ ...touched, avatar: true });
+                      setAvatarUrl(URL.createObjectURL(e.target.files[0]));
+                    }
+                  }}
                 ></AddAvatar>
               </AvatarLabel>
             </AvatarContainer>
