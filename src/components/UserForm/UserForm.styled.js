@@ -304,12 +304,18 @@ export const DatePickerWrapper = styled.div`
     overflow: hidden;
     border: none;
     color: var(--primary-background-color);
-    width: 327px;
-    height: 310px;
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 2.2;
+
+    @media screen and (min-width: 375px) {
+      width: 300px;
+      height: 300px;
+      font-size: 15px;
+    }
 
     @media screen and (min-width: 768px) {
       position: absolute;
@@ -334,16 +340,26 @@ export const DatePickerWrapper = styled.div`
   .react-datepicker__month-select,
   .react-datepicker__year-select {
     padding: 5px;
-    width: 110px;
+    width: 90px;
     background-color: var(--color-button-period-type);
     border: 1px solid var(--primary-background-color);
     border-radius: 24px;
     color: var(--primary-background-color);
 
     text-align: center;
-    font-size: 14px;
+    font-size: 10px;
     overflow-y: auto;
     cursor: pointer;
+
+    @media screen and (min-width: 375px) {
+      width: 110px;
+      font-size: 14px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 120px;
+      font-size: 16px;
+    }
 
     &:hover {
       background-color: var(--color-button-period-type);
@@ -410,6 +426,26 @@ export const DatePickerWrapper = styled.div`
   }
 `;
 
+// Chevron
+export const ChevronDown = styled.svg`
+  position: absolute;
+  top: 75%;
+  left: 90%;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  transform: rotate(0deg);
+
+  :hover,
+  :focus {
+    fill: var(--accent-background-color);
+  }
+
+  &.success {
+    fill: var(--text-correct-color);
+  }
+`;
+
 // Submit Button
 export const SubmitBtn = styled.button`
   padding: 0;
@@ -457,11 +493,15 @@ export const SubmitBtn = styled.button`
 export const ErrorImg = styled.svg`
   position: absolute;
   top: 70%;
-  left: 90%;
+  left: 87%;
   fill: var(--text-error-color);
   align-self: center;
   width: 20px;
   height: 20px;
+
+  @media screen and (min-width: 375px) {
+    left: 90%;
+  }
 
   &.datePickerCheck {
     left: 270px;
@@ -474,11 +514,15 @@ export const ErrorImg = styled.svg`
 export const CorrectImg = styled.svg`
   position: absolute;
   top: 70%;
-  left: 90%;
+  left: 87%;
   fill: var(--text-correct-color);
   align-self: center;
   width: 20px;
   height: 20px;
+
+  @media screen and (min-width: 375px) {
+    left: 90%;
+  }
 
   &.datePickerCheck {
     left: 270px;
@@ -503,7 +547,7 @@ export const ErrorMessage = styled.div`
   letter-spacing: 0.08em;
 
   animation: typing 3.5s steps(22, end) infinite,
-    blink 0.5s step-end infinite alternate;
+    blink 1s step-end infinite alternate;
 
   @media screen and (min-width: 768px) {
     margin-top: -16px;
@@ -517,6 +561,10 @@ export const ErrorMessage = styled.div`
   @keyframes typing {
     from {
       width: 0;
+    }
+
+    to {
+      width: 80%;
     }
   }
 
