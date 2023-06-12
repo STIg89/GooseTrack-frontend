@@ -16,13 +16,9 @@ import { useTranslation } from 'react-i18next';
 import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
 
-const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
+const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
   const { t } = useTranslation();
   const [updatedItem, setUpdatedItem] = useState('');
-
-  const [isOpened, setIsOpened] = useState(true);
-
-  const handleToggleModal = () => setIsOpened(!isOpened);
 
   useEffect(() => {
     setUpdatedItem(updateItem);
@@ -64,12 +60,7 @@ const EditModal = ({ onCloseModal, updateItem, toFetch }) => {
   };
   return (
     <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
-      <ModalContent
-        onClick={e => {
-          e.stopPropagation();
-          handleToggleModal();
-        }}
-      >
+      <ModalContent onClick={e => e.stopPropagation()}>
         <ModalForm>
           <Label>{t('Rating')}</Label>
           <Rating

@@ -82,6 +82,7 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
           toFetch={fetchData}
           updateItem={updateReview}
           onCloseModal={handleToggleModal}
+          isOpened={isOpened}
         />
       )}
     </>
@@ -89,4 +90,3 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
 };
 
 export default FeedbackList;
-
