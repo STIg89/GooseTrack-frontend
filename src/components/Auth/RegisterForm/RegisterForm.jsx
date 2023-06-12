@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 // import { useEffect } from 'react';
 import { useState } from 'react';
-import { register } from 'redux/auth/operations';
+import { register, resendEmail } from 'redux/auth/operations';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { nanoid } from 'nanoid';
@@ -53,12 +53,17 @@ export const RegisterForm = () => {
   const passwordId = nanoid();
   const nameId = nanoid();
   const [isOpened, setIsModalOpen] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
   const handleToggleModal = () => setIsModalOpen(!isOpened);
 
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  // };
+  const handleResendEmail = async () => {
+    try {
+      await dispatch(resendEmail(userEmail));
+    } catch (error) {
+      console.error('Failed to resend email:', error.message);
+    }
+  };
 
   return (
     <Formik
@@ -68,6 +73,7 @@ export const RegisterForm = () => {
         password: '',
       }}
       onSubmit={(values, { resetForm }) => {
+        setUserEmail(values.email);
         dispatch(
           register({
             name: values.name,
@@ -156,7 +162,11 @@ export const RegisterForm = () => {
             />
           </StyleFormContainer>
           {isOpened && (
-            <RegistrationSuccessModal onCloseModal={handleToggleModal} />
+            <RegistrationSuccessModal
+              onCloseModal={handleToggleModal}
+              onResendEmail={() => handleResendEmail(values.email)}
+              email={values.email}
+            />
           )}
         </Wrapper>
       )}
