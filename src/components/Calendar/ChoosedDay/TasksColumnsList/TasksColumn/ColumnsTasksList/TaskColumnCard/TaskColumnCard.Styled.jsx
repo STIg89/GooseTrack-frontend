@@ -49,8 +49,13 @@ export const PriorityWraper = styled.p`
       return 'var(--task-priority-low-color)';
     } else if (props.text.includes('medium')) {
       return 'var(--task-priority-medium-color)';
-    } else {
-      return 'var(--task-priority-high-color)';
-    }
-  }};
+    } else if (props.text.includes('Зробити')) {
+      return 'var(--task-priority-low-color)';
+    } else if (props.text.includes('В процесі')) {
+      return 'var(--task-priority-medium-color)';
+    } else return 'var(--task-priority-high-color)';
+  }}};
+    overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
 `;

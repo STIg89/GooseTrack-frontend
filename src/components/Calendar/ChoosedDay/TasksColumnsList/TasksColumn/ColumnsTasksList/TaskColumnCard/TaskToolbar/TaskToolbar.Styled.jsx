@@ -10,8 +10,10 @@ export const ToolBarItem = styled.svg`
 `;
 export const Wraper = styled.div`
   display: flex;
-  gap: 10px;
   align-items: center;
+  @media screen and (min-width: 375px) {
+    gap: 10px;
+  }
 `;
 export const BtnStyled = styled.button`
   background-color: transparent;
