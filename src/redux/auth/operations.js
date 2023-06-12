@@ -15,15 +15,6 @@ export const register = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const { data } = await axios.post('/api/auth/registration', user);
-      Notify.success(
-        'You are successfully registered! Verification send to your e-mail',
-        {
-          timeout: 8000,
-          fontSize: '22px',
-          position: 'center-center',
-          cssAnimationStyle: 'zoom',
-        }
-      );
       return data;
     } catch (error) {
       Notify.failure('Please check your email and password and try again');
@@ -42,6 +33,28 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const resendEmail = createAsyncThunk(
+  'auth/resendEmail',
+  async (email, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/api/auth/verify', { email });
+      Notify.success(
+        'Verification re-send to your e-mail',
+        {
+          timeout: 3000,
+          fontSize: '20px',
+          position: 'center-center',
+          cssAnimationStyle: 'zoom',
+        }
+      );
+      return data;
+    } catch (error) {
+      Notify.failure(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const loginWithToken = createAsyncThunk(
   'auth/loginWithToken',
