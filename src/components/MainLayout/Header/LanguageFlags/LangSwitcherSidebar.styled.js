@@ -4,7 +4,6 @@ export const LangSwitchWrapper = styled.div`
   display: flex;
   height: 46px;
   width: 131px;
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
   align-items: center;
   justify-content: space-around;
