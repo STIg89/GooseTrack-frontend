@@ -160,11 +160,7 @@ export const UserForm = () => {
                 <StyledLabel
                   htmlFor="name"
                   className={`${
-                    values.name && touched.name
-                      ? errors.name
-                        ? 'error'
-                        : 'success'
-                      : ''
+                    touched.name ? (errors.name ? 'error' : 'success') : ''
                   }`}
                 >
                   {t('User Name')}
@@ -255,11 +251,7 @@ export const UserForm = () => {
                 <StyledLabel
                   htmlFor="email"
                   className={`${
-                    values.email && touched.email
-                      ? errors.email
-                        ? 'error'
-                        : 'success'
-                      : ''
+                    touched.email ? (errors.email ? 'error' : 'success') : ''
                   }`}
                 >
                   Email
@@ -375,7 +367,10 @@ export const UserForm = () => {
                 </StyledLabel>
               </InputWrapper>
             </Inputs>
-            <SubmitBtn type="submit" disabled={!dirty}>
+            <SubmitBtn
+              type="submit"
+              disabled={!dirty || !values.name || !values.email || errors.email}
+            >
               {t('Save changes')}
             </SubmitBtn>
           </StyledForm>
