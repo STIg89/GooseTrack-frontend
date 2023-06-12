@@ -11,6 +11,7 @@ import {
 import TaskToolBar from './TaskToolbar/TaskToolbar';
 import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
   const user = useSelector(selectUser);
@@ -19,6 +20,7 @@ const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
   const toggleCut = () => {
     setIsCut(!isCut);
   };
+  const { t } = useTranslation();
   let styleObj = isCut
     ? { textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }
     : { textOverflow: 'clip', whiteSpace: 'normal', overflow: 'visible' };
@@ -39,7 +41,11 @@ const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
             <NoAvatar>{user.name?.charAt(0).toUpperCase()}</NoAvatar>
           )}
 
-          <PriorityWraper text={priority}>{priority}</PriorityWraper>
+          <PriorityWraper text={priority}>
+            {priority === 'low' && t('Low')}
+            {priority === 'medium' && t('Medium')}
+            {priority === 'high' && t('High')}
+          </PriorityWraper>
         </ToolsWraper>
         <TaskToolBar id={id} addCategory={addCategory} />
       </Wraper>
