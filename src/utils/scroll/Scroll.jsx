@@ -24,18 +24,20 @@ export function ScrollToTop() {
 
   function UpdateDashOffSet() {
     let scrollUpSvgPath = document.getElementById('iconPath');
-    let pageLength = scrollUpSvgPath.getTotalLength();
+    if (scrollUpSvgPath) {
+      let pageLength = scrollUpSvgPath.getTotalLength();
 
-    scrollUpSvgPath.style.strokeDasharray = `${pageLength} ${pageLength}`;
-    scrollUpSvgPath.style.transition = `stroke-dashoffset 25ms`;
+      scrollUpSvgPath.style.strokeDasharray = `${pageLength} ${pageLength}`;
+      scrollUpSvgPath.style.transition = `stroke-dashoffset 25ms`;
 
-    let currentHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
+      let currentHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
 
-    const dashOffSet =
-      pageLength - (window.scrollY * pageLength) / currentHeight;
+      const dashOffSet =
+        pageLength - (window.scrollY * pageLength) / currentHeight;
 
-    scrollUpSvgPath.style.strokeDashoffset = dashOffSet;
+      scrollUpSvgPath.style.strokeDashoffset = dashOffSet;
+    }
   }
 
   return (

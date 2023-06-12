@@ -4,7 +4,7 @@ export const TopButton = styled.div`
   position: fixed;
   bottom: 40px;
   right: 15px;
-  color: var(--modal-border-color);
+  color: var(--border-cloud-color);
   box-shadow: inset 0 0 0 4px var(--border-cloud-color);
   transition: 250ms;
   z-index: 999;
