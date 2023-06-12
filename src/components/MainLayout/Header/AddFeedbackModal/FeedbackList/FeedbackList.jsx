@@ -16,10 +16,17 @@ import {
 import EditModal from '../EditModal/EditModal';
 import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
+// import { selectUser } from 'redux/auth/selectors';
+// import { useSelector } from 'react-redux';
 
 const FeedbackList = ({ setReviewsList, fetchData }) => {
   const [updateReview, setUpdateReview] = useState('');
   const [isOpened, setIsOpened] = useState(false);
+
+  
+  // const { name } = useSelector(selectUser);
+
+  // const firstLetter = name?.charAt(0).toUpperCase();
 
   const deleteReview = async item => {
     await axios.delete(`api/reviews/${item._id}`).then(() => {
