@@ -2,9 +2,23 @@ import styled from 'styled-components';
 import { ModalStyled as BaseModalStyled } from 'components/Modal/Modal.styled';
 import { StyleButton as BaseButton} from '../RegisterForm.styled';
 
+export const ResendModalOverlay = styled.div`
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ovarlay-background-color);
+  z-index: 1200;
+
+`
+
 export const ResendEmailWrapper = styled(BaseModalStyled)`
-  width: 400px; 
-  height: 530px;
+  width: 500px; 
+  height: 700px;
   max-width: 100%;
   display: flex;
   justify-content: center;
@@ -13,7 +27,7 @@ export const ResendEmailWrapper = styled(BaseModalStyled)`
   gap: 30px;
 
   @media screen and (min-width: 768px) {
-    width: 500px; 
+    width: 600px; 
   }
 
   box-shadow: none;
