@@ -5,7 +5,7 @@ import { CgClose } from 'react-icons/cg';
 
 const media = {
   tablet: '@media screen and (min-width: 768px)',
-  desktop: '@media screen and (min-width: 1440px)',
+  laptop: '@media screen and (min-width: 1200px)',
 };
 
 export const SideBarContainer = styled.div`
@@ -22,7 +22,7 @@ export const SideBarContainer = styled.div`
     width: 289px;
   }
 
-  ${media.desktop} {
+  ${media.laptop} {
     position: fixed;
   }
 
@@ -63,7 +63,7 @@ export const LogoIcon = styled.img`
     height: 58px;
   }
 
-  ${media.desktop} {
+  ${media.laptop} {
     width: 71px;
     height: 68px;
     margin-right: 10px;
@@ -79,7 +79,7 @@ export const LogoSvg = styled.svg`
     height: 24px;
   }
 
-  ${media.desktop} {
+  ${media.laptop} {
     width: 120px;
   }
 `;
@@ -192,7 +192,7 @@ export const TitleSideBar = styled.h4`
     margin-top: 50px;
   }
 
-  ${media.desktop} {
+  ${media.laptop} {
     margin-bottom: 32px;
     margin-top: 32px;
   }
@@ -201,7 +201,7 @@ export const BrgBtn = styled.button`
   background: none;
   border: none;
 
-  ${media.desktop} {
+  ${media.laptop} {
     display: none;
   }
 `;
@@ -218,7 +218,7 @@ export const CloseBtn = styled.button`
   ${media.tablet} {
     font-size: 30px;
   }
-  ${media.desktop} {
+  ${media.laptop} {
     display: none;
   }
 `;

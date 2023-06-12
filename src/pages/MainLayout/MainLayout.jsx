@@ -21,11 +21,11 @@ const MainLayout = () => {
     }
   }, [dispatch]);
 
-  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1440)
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1200)
   let sidebarRef = useRef();
 
   const handleSidebarOpen = () => {
-    if (window.innerWidth >= 1440) {
+    if (window.innerWidth >= 1200) {
       return;
     }
     setSidebarOpen(!sidebarOpen);
@@ -33,7 +33,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     const handleSidebarClickOutside = (e) => {
-      if (window.innerWidth < 1440) {
+      if (window.innerWidth < 1200) {
         if (!sidebarRef.current.contains(e.target)) {
           setSidebarOpen(false);
         }
@@ -48,7 +48,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setSidebarOpen(window.innerWidth >= 1440);
+      setSidebarOpen(window.innerWidth >= 1200);
     };
 
     window.addEventListener('resize', handleResize);

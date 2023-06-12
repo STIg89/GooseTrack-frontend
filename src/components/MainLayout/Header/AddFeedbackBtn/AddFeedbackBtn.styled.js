@@ -3,15 +3,13 @@ import styled from 'styled-components';
 const media = {
   mobile: '@media screen and (max-width: 374px)',
   tablet: "@media screen and (min-width: 768px)",
-  desktop: "@media screen and (min-width: 1440px)"
+  laptop: "@media screen and (min-width: 1200px)"
 };
 
 export const StyledBtn = styled.button`
 
 width: 97px;
 height: 32px;
-
-/* background: #3E85F3; */
 border-radius: 10px;
 border: none;
 margin-left: 0;
@@ -47,7 +45,6 @@ bottom: 84px;
     line-height: 18px;
     letter-spacing: -0.02em;
   background-color: var(--color-button-period-type);
-  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   border-radius: 16px;
 
 &:hover,
@@ -60,9 +57,8 @@ bottom: 84px;
   ${media.tablet} {
   width: 130px;
   height: 42px;
+  box-shadow: 4px 2px 16px rgba(136, 165, 191, 0.48);
   font-size: 14px;
   line-height: 18px;
   }
-
-
   `
