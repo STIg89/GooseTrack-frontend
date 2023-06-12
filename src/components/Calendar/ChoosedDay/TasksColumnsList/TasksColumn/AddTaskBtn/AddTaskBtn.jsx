@@ -11,7 +11,9 @@ const AddTaskBtn = ({ addCategory }) => {
   const { t } = useTranslation();
   const [isOpened, setIsOpened] = useState(false);
 
-  const handleToggleModal = () => setIsOpened(!isOpened);
+  const handleToggleModal = () => {
+    setIsOpened(!isOpened);
+  };
 
   return (
     <>

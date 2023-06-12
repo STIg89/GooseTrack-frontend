@@ -1,7 +1,26 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
 
 export const Overlay = styled.div`
-  /* opacity: 0; */
+  opacity: ${props => (props.isOpened ? 1 : 0)};
+  visibility: ${props => (props.isOpened ? 'visible' : 'hidden')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +32,7 @@ export const Overlay = styled.div`
   background-color: var(--ovarlay-background-color);
   z-index: 1200;
 
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  animation: ${props => (props.isOpened ? fadeIn : fadeOut)} 400ms ease;
 `;
 
 export const ModalStyled = styled.div`
