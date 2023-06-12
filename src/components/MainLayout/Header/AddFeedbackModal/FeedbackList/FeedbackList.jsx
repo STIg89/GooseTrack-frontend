@@ -20,7 +20,7 @@ import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
 import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
-import { NoAvatar } from '../../Header.styled';
+
 
 const FeedbackList = ({ setReviewsList, fetchData }) => {
   const [updateReview, setUpdateReview] = useState('');
@@ -71,7 +71,6 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
                     </DelBtnIcon>
                   </DelBtn>
                 </ForBtn>
-                {/* <UserAvatar src={item.owner.avatarURL} alt="user avatar" /> */}
                 {avatarURL ? (
             <UserAvatar src={item.owner.avatarURL} alt="user avatar" />
           ) : (
