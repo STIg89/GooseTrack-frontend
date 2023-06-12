@@ -40,26 +40,16 @@ export const FeedbackItem = styled.div`
   max-height: 108px;
 `;
 
-export const Avatar = styled.div`
-  background-image: url(../../../../../images/avatars/Olena.jpg);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 12px;
-  background-color: gray;
-`;
-
 export const UserAvatar = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 12px;
-  outline: 3px solid var(--accent-background-color);
 `;
 
 export const UserAvatarLater = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,4 +150,4 @@ export const NoReview = styled.p`
   display: flex;
   justify-content: center;
   color: var(--primary-text-color);
-`
+`;
