@@ -8,11 +8,11 @@ import cookies from 'js-cookie';
 import { useTranslation } from 'react-i18next';
 
 const DayCalendarHead = ({ selectedDay, setSelectedDay }) => {
+  useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [viewport, setViewport] = useState(window.innerWidth);
   const week = [];
-  useTranslation();
 
   const currentLanguageCode = cookies.get('i18next');
 

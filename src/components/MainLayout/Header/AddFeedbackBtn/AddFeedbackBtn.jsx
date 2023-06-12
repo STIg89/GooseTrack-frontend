@@ -5,11 +5,10 @@ import FeedbackModal from '../AddFeedbackModal/AddFeedbackModal';
 import { useTranslation } from 'react-i18next';
 
 const FeedbackBtn = () => {
+  const { t } = useTranslation();
   const [isOpened, setIsOpened] = useState(false);
 
   const handleToggleModal = () => setIsOpened(!isOpened);
-
-  const { t } = useTranslation();
 
   return (
     <div>

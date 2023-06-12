@@ -8,11 +8,10 @@ import { TaskBtn, TaskBtnsvg } from './AddTaskBtn.Styled';
 import Icons from 'images/sprite.svg';
 
 const AddTaskBtn = ({ addCategory }) => {
+  const { t } = useTranslation();
   const [isOpened, setIsOpened] = useState(false);
 
   const handleToggleModal = () => setIsOpened(!isOpened);
-
-  const { t } = useTranslation();
 
   return (
     <>

@@ -52,13 +52,12 @@ const validationSchema = yup.object().shape({
 });
 
 export const UserForm = () => {
+  const { t } = useTranslation();
   const user = useSelector(selectUser);
   const [avatarUrl, setAvatarUrl] = useState('');
   const [showLoader, setShowLoader] = useState(false);
 
   const [username, setUsername] = useState('');
-
-  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   useEffect(() => {
