@@ -16,7 +16,9 @@ const FeedbackBtn = () => {
       <StyledBtn type="button" onClick={handleToggleModal}>
         {t('Feedback')}
       </StyledBtn>
-      {isOpened && <FeedbackModal onCloseModal={handleToggleModal} />}
+      {isOpened && (
+        <FeedbackModal onCloseModal={handleToggleModal} isOpened={isOpened} />
+      )}
     </div>
   );
 };

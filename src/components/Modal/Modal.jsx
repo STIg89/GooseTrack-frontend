@@ -7,6 +7,8 @@ import Icons from 'images/sprite.svg';
 const modalRoot = document.getElementById('modal-root');
 
 const Modal = ({ children, onCloseModal, isOpened }) => {
+  console.log(isOpened);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -28,19 +30,14 @@ const Modal = ({ children, onCloseModal, isOpened }) => {
     if (currentTarget !== target) {
       return;
     }
+
     onCloseModal();
   };
 
   return createPortal(
-    <Overlay
-      onClick={handleOverlayClick}
-      // style={{
-      //   opacity: isOpened ? 1 : 0,
-      //   visibility: isOpened ? 'visible' : 'hidden',
-      // }}
-    >
+    <Overlay onClick={handleOverlayClick} isOpened={isOpened}>
       <ModalStyled>
-        <CloseIcon onClick={() => onCloseModal()}>
+        <CloseIcon onClick={onCloseModal}>
           <use href={`${Icons}#icon-close`}></use>
         </CloseIcon>
         {children}

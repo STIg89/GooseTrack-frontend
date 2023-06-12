@@ -10,7 +10,9 @@ import Icons from 'images/sprite.svg';
 const AddTaskBtn = ({ addCategory }) => {
   const [isOpened, setIsOpened] = useState(false);
 
-  const handleToggleModal = () => setIsOpened(!isOpened);
+  const handleToggleModal = () => {
+    setIsOpened(!isOpened);
+  };
 
   const { t } = useTranslation();
 

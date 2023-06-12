@@ -4,20 +4,20 @@ import FeedbackForm from './FeedbackForm/FeedbackForm';
 import FeedbackList from './FeedbackList/FeedbackList';
 import axios from 'axios';
 
-const FeedbackModal = ({ onCloseModal }) => {
+const FeedbackModal = ({ onCloseModal, isOpened }) => {
   const [reviews, setReviews] = useState('');
 
   const fetchData = async () => {
     const response = await axios.get(`api/reviews/user`);
     setReviews(response.data.data);
-    console.log(response);
+    // console.log(response);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
   return (
-    <Modal onCloseModal={onCloseModal}>
+    <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
       <FeedbackForm fetchData={fetchData} />
       <FeedbackList fetchData={fetchData} setReviewsList={reviews} />
     </Modal>
