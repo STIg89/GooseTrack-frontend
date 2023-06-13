@@ -74,9 +74,13 @@ export const resendEmail = createAsyncThunk(
 
 export const loginWithToken = createAsyncThunk(
   'auth/loginWithToken',
-  async (accessToken, thunkAPI) => {
+  async (accessToken, refreshToken, thunkAPI) => {
+    console.log('refreshTokenlWT:', refreshToken);
+    console.log('accessTokenlWT:', accessToken);
     try {
-      const { data } = await axios.get(`/api/auth/login/${accessToken}`);
+      const { data } = await axios.get(
+        `/api/auth/login/?accessToken=${accessToken}&refreshToken=${refreshToken}`
+      );
       setAuthHeader(data.accessToken);
       return data;
     } catch (error) {
