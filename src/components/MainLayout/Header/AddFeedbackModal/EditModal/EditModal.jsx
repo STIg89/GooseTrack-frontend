@@ -7,6 +7,7 @@ import {
   EditBtn,
   EditBtnText,
   Label,
+  LabelRating,
   ModalContent,
   ModalForm,
   TextInput,
@@ -62,7 +63,7 @@ const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
     <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
       <ModalContent onClick={e => e.stopPropagation()}>
         <ModalForm>
-          <Label>{t('Rating')}</Label>
+          <LabelRating>{t('Rating')}</LabelRating>
           <Rating
             onClick={e => onStarClickChange(e)}
             initialValue={updatedItem.rating}

@@ -11,22 +11,25 @@ import {
   FeedbackListWrapper,
   ForBtn,
   Name,
+  NoReview,
   UserAvatar,
+  UserAvatarLater,
 } from './FeedbackList.styled';
 import EditModal from '../EditModal/EditModal';
 import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
-// import { selectUser } from 'redux/auth/selectors';
-// import { useSelector } from 'react-redux';
+import { selectUser } from 'redux/auth/selectors';
+import { useSelector } from 'react-redux';
+
 
 const FeedbackList = ({ setReviewsList, fetchData }) => {
   const [updateReview, setUpdateReview] = useState('');
   const [isOpened, setIsOpened] = useState(false);
 
   
-  // const { name } = useSelector(selectUser);
+  const { name, avatarURL } = useSelector(selectUser);
 
-  // const firstLetter = name?.charAt(0).toUpperCase();
+  const firstLetter = name?.charAt(0).toUpperCase();
 
   const deleteReview = async item => {
     await axios.delete(`api/reviews/${item._id}`).then(() => {
@@ -45,7 +48,7 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
   return (
     <>
       <FeedbackListWrapper>
-        {setReviewsList && setReviewsList.length ? '' : 'No reviews'}
+        {setReviewsList && setReviewsList.length ? '' : <NoReview>No reviews</NoReview> }
         {setReviewsList &&
           setReviewsList.map((item, index) => {
             return (
@@ -68,7 +71,11 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
                     </DelBtnIcon>
                   </DelBtn>
                 </ForBtn>
-                <UserAvatar src={item.owner.avatarURL} alt="user avatar" />
+                {avatarURL ? (
+            <UserAvatar src={item.owner.avatarURL} alt="user avatar" />
+          ) : (
+            <UserAvatarLater>{firstLetter}</UserAvatarLater>
+          )}
                 <FeedbackInfo>
                   <Name>{item.owner.name}</Name>
 
