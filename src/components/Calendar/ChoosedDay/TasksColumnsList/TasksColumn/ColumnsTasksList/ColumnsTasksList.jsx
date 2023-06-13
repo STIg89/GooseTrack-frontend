@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { TaskslistWraper } from './ColumnsTasksList.Styled';
 import TaskColumnCard from './TaskColumnCard/TaskColumnCard';
 
-const ColumnsTasksList = ({ tasks, addCategory }) => {
+const ColumnsTasksList = ({ tasks, addCategory, key, item, onDragStart }) => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   useEffect(() => {
     const handleResize = () => {
@@ -32,6 +32,7 @@ const ColumnsTasksList = ({ tasks, addCategory }) => {
             key={item._id}
             addCategory={addCategory}
             item={item}
+            onDragStart={onDragStart}
           />
         );
       })}

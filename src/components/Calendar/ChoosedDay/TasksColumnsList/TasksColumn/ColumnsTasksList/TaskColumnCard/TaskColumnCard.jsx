@@ -32,6 +32,7 @@ const TaskColumnCard = ({
     ? { textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }
     : { textOverflow: 'clip', whiteSpace: 'normal', overflow: 'visible' };
   const handleDragStart = event => {
+    console.log('handleDragStart in task,event:', event);
     onDragStart(event, item);
   };
   return (

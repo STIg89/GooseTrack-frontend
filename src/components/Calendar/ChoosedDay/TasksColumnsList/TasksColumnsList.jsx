@@ -26,6 +26,26 @@ const TasksColumnsList = ({ readinessTasks }) => {
       addCategory: 'done',
     },
   ]);
+  const handleDragStart = (event, item) => {
+    console.log('handleDragStart in taskscolumnList,event:', event);
+    event.dataTransfer.setData('text/plain', item);
+  };
+
+  const handleDrop = data => {
+    const newItems = boards.filter(item => item !== data);
+    console.log('handleDrop in taskscolumnList boards:', boards);
+    console.log('handleDrop in taskscolumnList data:', data);
+
+    console.log('handleDrop in taskscolumnList newItems:', newItems);
+
+    setBoards(newItems);
+  };
+
+  const handleDragOver = event => {
+    console.log('handleDragOver in taskscolumnList ,event:', event);
+
+    event.preventDefault();
+  };
   return (
     <ColumnsList>
       {boards.map(board => (
@@ -33,6 +53,11 @@ const TasksColumnsList = ({ readinessTasks }) => {
           headName={board.headName}
           tasks={board.tasks}
           addCategory={board.addCategory}
+          key={board.id}
+          item={board}
+          onDragStart={handleDragStart}
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
         />
       ))}
     </ColumnsList>
