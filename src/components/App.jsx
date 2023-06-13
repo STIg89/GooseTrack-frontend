@@ -57,10 +57,7 @@ export const App = () => {
                 </Lazy>
               }
             />
-            <Route
-              path="login/?accessToken=:accessToken&refreshToken=:refreshToken"
-              element={<LoginWithToken />}
-            />
+            <Route path="login/:accessToken" element={<LoginWithToken />} />
           </Route>
           <Route path="" element={<PrivateRoute />}>
             <Route path="" element={<MainLayout />}>

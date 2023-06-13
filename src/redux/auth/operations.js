@@ -2,9 +2,9 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 
-axios.defaults.baseURL = 'http://localhost:4000';
+// axios.defaults.baseURL = 'http://localhost:4000';
 
-// axios.defaults.baseURL = 'https://goosetrack-backend.onrender.com';
+axios.defaults.baseURL = 'https://goosetrack-backend.onrender.com';
 
 export const setAuthHeader = accessToken => {
   axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -16,7 +16,8 @@ axios.interceptors.response.use(
     if (error.response.status === 401) {
       const refreshToken = localStorage.getItem('refreshToken');
       try {
-        const { data } = await axios.post('/auth/refresh', { refreshToken });
+        const { data } = await axios.post('api/auth/refresh', { refreshToken });
+        console.log('data:', data);
         setAuthHeader(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
         // error.config.headers.common.authorization = `Bearer ${data.accessToken}`;
@@ -46,6 +47,7 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
     const { data } = await axios.post('/api/auth/login', user);
     setAuthHeader(data.accessToken);
+    localStorage.setItem('refreshToken', data.refreshToken);
     return data;
   } catch (error) {
     Notify.failure('Please check your email and password and try again');
@@ -74,13 +76,9 @@ export const resendEmail = createAsyncThunk(
 
 export const loginWithToken = createAsyncThunk(
   'auth/loginWithToken',
-  async (accessToken, refreshToken, thunkAPI) => {
-    console.log('refreshTokenlWT:', refreshToken);
-    console.log('accessTokenlWT:', accessToken);
+  async (accessToken, thunkAPI) => {
     try {
-      const { data } = await axios.get(
-        `/api/auth/login/?accessToken=${accessToken}&refreshToken=${refreshToken}`
-      );
+      const { data } = await axios.get(`/api/auth/login/${accessToken}`);
       setAuthHeader(data.accessToken);
       return data;
     } catch (error) {
