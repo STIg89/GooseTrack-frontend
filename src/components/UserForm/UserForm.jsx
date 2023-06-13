@@ -283,6 +283,7 @@ export const UserForm = () => {
                     className={`${
                       touched.email ? (errors.email ? 'error' : 'success') : ''
                     }`}
+                    disabled
                     type="email"
                     name="email"
                     id="email"

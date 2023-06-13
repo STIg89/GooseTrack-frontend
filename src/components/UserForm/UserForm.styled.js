@@ -241,6 +241,10 @@ export const StyledInput = styled(Field)`
     line-height: 1.13;
   }
 
+  :disabled:hover {
+    border: var(--border-account-input);
+  }
+
   :hover,
   :focus {
     border: 1px solid var(--primary-text-color);
