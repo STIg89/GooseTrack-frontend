@@ -166,7 +166,8 @@ export const ChangePassword = () => {
                 htmlFor="new_password"
                 className={`${
                   touched.new_password
-                    ? errors.new_password
+                    ? errors.new_password ||
+                      values.old_password === values.new_password
                       ? 'error'
                       : 'success'
                     : ''
@@ -180,7 +181,8 @@ export const ChangePassword = () => {
                   id="new_password"
                   className={`${
                     touched.new_password
-                      ? errors.new_password
+                      ? errors.new_password ||
+                        values.old_password === values.new_password
                         ? 'error'
                         : 'success'
                       : ''
@@ -188,10 +190,6 @@ export const ChangePassword = () => {
                   value={values.new_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  Confirm
-                  your
-                  new
-                  password
                   placeholder={
                     i18n.language === 'en'
                       ? 'Enter your new password'
@@ -217,7 +215,12 @@ export const ChangePassword = () => {
 
                 {/* Error message */}
                 <ErrorMessage>
-                  {touched.new_password && errors.new_password}
+                  {(touched.new_password && errors.new_password) ||
+                    (values.new_password.length > 0 &&
+                      values.old_password === values.new_password &&
+                      (i18n.language === 'en'
+                        ? 'New password mustn`t be the same'
+                        : 'Новий пароль повинен відрізнятись'))}
                 </ErrorMessage>
               </StyledLabel>
 
