@@ -78,7 +78,7 @@ return(
                         className='tr' 
                         src={ item.owner ? item.owner.avatarURL : defaultUsers[0].owner.avatarURL } 
                         star={item.rating ? item.rating : defaultUsers[0].rating} 
-                        name={item.owner ? item.owner.name : item.name}> 
+                        name={item.owner ? item.owner.name : defaultUsers[0].owner.name}>  
                         {item.comment? item.comment : defaultUsers[0].comment}
                     </Comment>
                     )
