@@ -45,7 +45,7 @@ export const tasksSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.tasks = state.tasks.filter(task => task._id !== payload._id);
+        state.tasks = state.tasks.filter(task => task._id !== payload);
       })
       .addCase(deleteTask.rejected, (state, { payload }) => {
         state.isLoading = false;
