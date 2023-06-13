@@ -39,15 +39,12 @@ export const resendEmail = createAsyncThunk(
   async (email, thunkAPI) => {
     try {
       const { data } = await axios.post('/api/auth/verify', { email });
-      Notify.success(
-        'Verification re-send to your e-mail',
-        {
-          timeout: 3000,
-          fontSize: '20px',
-          position: 'center-center',
-          cssAnimationStyle: 'zoom',
-        }
-      );
+      Notify.success('Verification re-send to your e-mail', {
+        timeout: 3000,
+        fontSize: '20px',
+        position: 'center-center',
+        cssAnimationStyle: 'zoom',
+      });
       return data;
     } catch (error) {
       Notify.failure(error.response.data.message);
@@ -135,6 +132,24 @@ export const updateUser = createAsyncThunk(
     } catch (error) {
       console.log(error);
       Notify.failure(error.response.data.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Update Password
+export const updatePassword = createAsyncThunk(
+  'auth/user/pass',
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.patch('/api/auth/user/pass', data);
+      return res.data;
+    } catch (error) {
+      Notify.failure('Incorrect old password');
       return thunkAPI.rejectWithValue(error.message);
     }
   }

@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectUser } from 'redux/auth/selectors';
-import { updateUser } from 'redux/auth/operations';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { updatePassword } from 'redux/auth/operations';
 import { useTranslation } from 'react-i18next';
+import { Notify } from 'notiflix';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -24,7 +25,17 @@ import {
 
 // Validation Schema YUP
 const validationSchema = yup.object().shape({
+  old_password: yup
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .max(16, 'Password must be at most 16 characters')
+    .required('Password is a required field'),
   new_password: yup
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .max(16, 'Password must be at most 16 characters')
+    .required('Password is a required field'),
+  confirm_password: yup
     .string()
     .min(8, 'Password must be at least 8 characters')
     .max(16, 'Password must be at most 16 characters')
@@ -40,7 +51,7 @@ export const ChangePassword = () => {
   const dispatch = useDispatch();
 
   // Translation
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   // Initial values for form
   const [initialValues, setInitialValues] = useState({
@@ -52,12 +63,24 @@ export const ChangePassword = () => {
   // Submit form
   const handleSubmit = (values, { resetForm }) => {
     setShowLoader(true);
-    // let promise = dispatch(updateUser(values));
-    // promise.then(function (response) {
-    //   setShowLoader(false);
-    // });
-    setInitialValues(values);
-    resetForm();
+
+    let data = { ...values };
+    delete data.confirm_password;
+    let promise = dispatch(updatePassword(data));
+
+    promise.then(function (response) {
+      setShowLoader(false);
+
+      if (!response.meta.rejectedWithValue) {
+        setInitialValues({
+          old_password: '',
+          new_password: '',
+          confirm_password: '',
+        });
+        Notify.success('Password updated');
+        resetForm();
+      }
+    });
   };
 
   return (
@@ -68,7 +91,6 @@ export const ChangePassword = () => {
       onSubmit={handleSubmit}
     >
       {({
-        dirty,
         errors,
         touched,
         values,
@@ -83,39 +105,44 @@ export const ChangePassword = () => {
             {/* Inputs */}
             <Inputs>
               {/* Old Password */}
-
               <StyledLabel
                 htmlFor="old_password"
                 className={`${
                   touched.old_password
                     ? errors.old_password
                       ? 'error'
-                      : 'success'
+                      : ''
                     : ''
                 }`}
               >
-                {t('Old Password')}
+                {i18n.language === 'en' ? 'Old Password' : 'Старий пароль'}
+
                 <StyledInput
                   type={showOldPassword ? 'text' : 'password'} // show or hide password
                   name="old_password"
                   id="old_password"
+                  autoComplete="off"
                   className={`${
                     touched.old_password
                       ? errors.old_password
                         ? 'error'
-                        : 'success'
+                        : ''
                       : ''
                   }`}
                   value={values.old_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Enter your password"
+                  placeholder={
+                    i18n.language === 'en'
+                      ? 'Enter your password'
+                      : 'Введіть старий пароль'
+                  }
                 />
 
                 {/* Show password */}
                 <ShowButton
                   type="button"
-                  onClick={() => setShowOldPassword(!showOldPassword)} // show or hide  password
+                  onClick={() => setShowOldPassword(!showOldPassword)} // show or hide password
                 >
                   {showOldPassword ? (
                     <ViewIcon>
@@ -145,7 +172,8 @@ export const ChangePassword = () => {
                     : ''
                 }`}
               >
-                {t('New Password')}
+                {i18n.language === 'en' ? 'New Password' : 'Новий пароль'}
+
                 <StyledInput
                   type={showNewPassword ? 'text' : 'password'} // show or hide password
                   name="new_password"
@@ -160,13 +188,21 @@ export const ChangePassword = () => {
                   value={values.new_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Enter your new password"
+                  Confirm
+                  your
+                  new
+                  password
+                  placeholder={
+                    i18n.language === 'en'
+                      ? 'Enter your new password'
+                      : 'Введіть новий пароль'
+                  }
                 />
 
                 {/* Show password */}
                 <ShowButton
                   type="button"
-                  onClick={() => setShowNewPassword(!showNewPassword)} // show or hide  password
+                  onClick={() => setShowNewPassword(!showNewPassword)} // show or hide password
                 >
                   {showNewPassword ? (
                     <ViewIcon>
@@ -186,25 +222,29 @@ export const ChangePassword = () => {
               </StyledLabel>
 
               {/* Confirm Password */}
-
               <StyledLabel
                 htmlFor="confirm_password"
                 className={`${
                   touched.confirm_password
-                    ? errors.confirm_password
+                    ? errors.confirm_password ||
+                      values.new_password !== values.confirm_password
                       ? 'error'
                       : 'success'
                     : ''
                 }`}
               >
-                {t('Confirm password')}
+                {i18n.language === 'en'
+                  ? 'Confirm password'
+                  : 'Підтвердіть пароль'}
+
                 <StyledInput
                   type={showConfimedPassword ? 'text' : 'password'} // show or hide password
                   name="confirm_password"
                   id="confirm_password"
                   className={`${
                     touched.confirm_password
-                      ? errors.confirm_password
+                      ? errors.confirm_password ||
+                        values.new_password !== values.confirm_password
                         ? 'error'
                         : 'success'
                       : ''
@@ -212,7 +252,11 @@ export const ChangePassword = () => {
                   value={values.confirm_password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Confirm your new password"
+                  placeholder={
+                    i18n.language === 'en'
+                      ? 'Confirm your new password'
+                      : 'Підтвердіть пароль'
+                  }
                 />
 
                 {/* Show password */}
@@ -233,7 +277,11 @@ export const ChangePassword = () => {
 
                 {/* Error message */}
                 <ErrorMessage>
-                  {touched.confirm_password && errors.confirm_password}
+                  {touched.confirm_password &&
+                    values.new_password !== values.confirm_password &&
+                    (i18n.language === 'en'
+                      ? 'Password mismatch'
+                      : 'Паролі не співпадають')}
                 </ErrorMessage>
               </StyledLabel>
             </Inputs>
@@ -242,11 +290,11 @@ export const ChangePassword = () => {
             <SubmitBtn
               type="submit"
               disabled={
-                values.new_password &&
+                !values.new_password.length > 0 ||
                 values.new_password !== values.confirm_password
               }
             >
-              {t('Save changes')}
+              {i18n.language === 'en' ? 'Save changes' : 'Зберегти зміни'}
             </SubmitBtn>
           </StyledForm>
         </Wrapper>
