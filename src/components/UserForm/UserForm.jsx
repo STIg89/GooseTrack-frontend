@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { updateUser } from 'redux/auth/operations';
 import { useTranslation } from 'react-i18next';
+import { registerLocale } from 'react-datepicker';
+import { enGB, uk } from 'date-fns/locale';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -60,9 +62,6 @@ export const UserForm = () => {
 
   const dispatch = useDispatch();
 
-  // Translation
-  const { t } = useTranslation();
-
   useEffect(() => {
     const data = {
       name: user.name || '',
@@ -98,6 +97,22 @@ export const UserForm = () => {
     setInitialValues(values);
     resetForm();
   };
+
+  // Translation
+  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+
+  registerLocale('enGB', enGB);
+  registerLocale('uk', uk);
+
+  const [language, setLanguage] = useState(i18n.language);
+  useEffect(() => {
+    if (i18n.language === 'ua') {
+      setLanguage('uk');
+    } else {
+      setLanguage('enGB');
+    }
+  }, [i18n.language]);
 
   return (
     <Formik
@@ -218,6 +233,7 @@ export const UserForm = () => {
                           : 'success'
                         : ''
                     }`}
+                    locale={language}
                     name="birthday"
                     id="birthday"
                     type="date"
