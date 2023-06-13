@@ -5,17 +5,17 @@ import { Field, Form } from 'formik';
 export const Wrapper = styled.div`
   background-color: var(--primary-background-color);
   border-radius: 16px;
-  margin-top: 95px;
+  margin-top: 55px;
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 64px;
+    margin-top: 25px;
     margin-bottom: 38px;
   }
   @media screen and (min-width: 1440px) {
     margin-top: 32px;
     margin-bottom: 32px;
-    min-height: calc(100vh - 148px);
+    min-height: calc(100vh - 215px);
   }
 `;
 
@@ -130,6 +130,33 @@ export const StyledInput = styled(Field)`
   &.success {
     border: 1px solid var(--text-correct-color);
   }
+`;
+
+// Show or hide button
+export const ShowButton = styled.button`
+  position: absolute;
+  top: 65%;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+`;
+
+export const ViewIcon = styled.svg`
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent-text-color);
+  stroke-width: 2;
+  fill: var(--btn-text-color);
+`;
+
+export const HideIcon = styled.svg`
+  width: 20px;
+  height: 20px;
+  stroke: var(--accent-text-color);
+  stroke-width: 2;
+  fill: var(--btn-text-color);
 `;
 
 // Submit Button

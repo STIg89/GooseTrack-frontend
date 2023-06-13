@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { Loader } from '../../../utils/loader/loader';
-// import Icons from 'images/sprite.svg';
+import Icons from 'images/sprite.svg';
 
 import {
   Wrapper,
@@ -15,6 +15,9 @@ import {
   Inputs,
   StyledInput,
   StyledLabel,
+  ShowButton,
+  ViewIcon,
+  HideIcon,
   ErrorMessage,
   SubmitBtn,
 } from './ChangePassword.styled';
@@ -29,6 +32,9 @@ const validationSchema = yup.object().shape({
 });
 
 export const ChangePassword = () => {
+  const [showOldPassword, setShowOldPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfimedPassword, setShowConfimedPassword] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 
   const dispatch = useDispatch();
@@ -90,7 +96,7 @@ export const ChangePassword = () => {
               >
                 {t('Old Password')}
                 <StyledInput
-                  type="text"
+                  type={showOldPassword ? 'text' : 'password'} // show or hide password
                   name="old_password"
                   id="old_password"
                   className={`${
@@ -106,6 +112,22 @@ export const ChangePassword = () => {
                   placeholder="Enter your password"
                 />
 
+                {/* Show password */}
+                <ShowButton
+                  type="button"
+                  onClick={() => setShowOldPassword(!showOldPassword)} // show or hide  password
+                >
+                  {showOldPassword ? (
+                    <ViewIcon>
+                      <use href={`${Icons}#icon-eye`}></use>
+                    </ViewIcon>
+                  ) : (
+                    <HideIcon>
+                      <use href={`${Icons}#icon-eye-blocked`}></use>
+                    </HideIcon>
+                  )}
+                </ShowButton>
+
                 {/* Error message */}
                 <ErrorMessage>
                   {touched.old_password && errors.old_password}
@@ -113,7 +135,6 @@ export const ChangePassword = () => {
               </StyledLabel>
 
               {/* New Password */}
-
               <StyledLabel
                 htmlFor="new_password"
                 className={`${
@@ -126,7 +147,7 @@ export const ChangePassword = () => {
               >
                 {t('New Password')}
                 <StyledInput
-                  type="text"
+                  type={showNewPassword ? 'text' : 'password'} // show or hide password
                   name="new_password"
                   id="new_password"
                   className={`${
@@ -141,6 +162,22 @@ export const ChangePassword = () => {
                   onBlur={handleBlur}
                   placeholder="Enter your new password"
                 />
+
+                {/* Show password */}
+                <ShowButton
+                  type="button"
+                  onClick={() => setShowNewPassword(!showNewPassword)} // show or hide  password
+                >
+                  {showNewPassword ? (
+                    <ViewIcon>
+                      <use href={`${Icons}#icon-eye`}></use>
+                    </ViewIcon>
+                  ) : (
+                    <HideIcon>
+                      <use href={`${Icons}#icon-eye-blocked`}></use>
+                    </HideIcon>
+                  )}
+                </ShowButton>
 
                 {/* Error message */}
                 <ErrorMessage>
@@ -162,7 +199,7 @@ export const ChangePassword = () => {
               >
                 {t('Confirm password')}
                 <StyledInput
-                  type="text"
+                  type={showConfimedPassword ? 'text' : 'password'} // show or hide password
                   name="confirm_password"
                   id="confirm_password"
                   className={`${
@@ -177,6 +214,22 @@ export const ChangePassword = () => {
                   onBlur={handleBlur}
                   placeholder="Confirm your new password"
                 />
+
+                {/* Show password */}
+                <ShowButton
+                  type="button"
+                  onClick={() => setShowConfimedPassword(!showConfimedPassword)} // show or hide  password
+                >
+                  {showConfimedPassword ? (
+                    <ViewIcon>
+                      <use href={`${Icons}#icon-eye`}></use>
+                    </ViewIcon>
+                  ) : (
+                    <HideIcon>
+                      <use href={`${Icons}#icon-eye-blocked`}></use>
+                    </HideIcon>
+                  )}
+                </ShowButton>
 
                 {/* Error message */}
                 <ErrorMessage>

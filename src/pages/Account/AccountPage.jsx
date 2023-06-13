@@ -8,7 +8,7 @@ const AccountPage = () => {
   const [isChangePassword, setIsChangePassword] = useState(false);
 
   return (
-    <div>
+    <>
       {/* Buttons */}
       <Wrapper>
         <Button
@@ -30,7 +30,7 @@ const AccountPage = () => {
 
       {/* Display Personal Details or Change Password */}
       {!isChangePassword ? <UserForm /> : <ChangePassword />}
-    </div>
+    </>
   );
 };
 
