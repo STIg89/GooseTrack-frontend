@@ -21,7 +21,7 @@ import {
 
 // Validation Schema YUP
 const validationSchema = yup.object().shape({
-  password: yup
+  new_password: yup
     .string()
     .min(8, 'Password must be at least 8 characters')
     .max(16, 'Password must be at most 16 characters')
@@ -29,23 +29,12 @@ const validationSchema = yup.object().shape({
 });
 
 export const ChangePassword = () => {
-  const user = useSelector(selectUser);
   const [showLoader, setShowLoader] = useState(false);
 
   const dispatch = useDispatch();
 
   // Translation
   const { t } = useTranslation();
-
-  useEffect(() => {
-    const data = {
-      old_password: user.old_password || '',
-      new_password: user.new_password || '',
-      confirm_password: user.confirm_password || '',
-    };
-
-    setInitialValues({ ...data });
-  }, [user]);
 
   // Initial values for form
   const [initialValues, setInitialValues] = useState({
@@ -57,10 +46,10 @@ export const ChangePassword = () => {
   // Submit form
   const handleSubmit = (values, { resetForm }) => {
     setShowLoader(true);
-    let promise = dispatch(updateUser(values));
-    promise.then(function (response) {
-      setShowLoader(false);
-    });
+    // let promise = dispatch(updateUser(values));
+    // promise.then(function (response) {
+    //   setShowLoader(false);
+    // });
     setInitialValues(values);
     resetForm();
   };
@@ -199,7 +188,10 @@ export const ChangePassword = () => {
             {/* Submit button */}
             <SubmitBtn
               type="submit"
-              disabled={!dirty || !values.name || !values.email || errors.email}
+              disabled={
+                values.new_password &&
+                values.new_password !== values.confirm_password
+              }
             >
               {t('Save changes')}
             </SubmitBtn>
