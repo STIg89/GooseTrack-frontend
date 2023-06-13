@@ -31,6 +31,7 @@ const ColumnsTasksList = ({ tasks, addCategory }) => {
             id={item._id}
             key={item._id}
             addCategory={addCategory}
+            item={item}
           />
         );
       })}

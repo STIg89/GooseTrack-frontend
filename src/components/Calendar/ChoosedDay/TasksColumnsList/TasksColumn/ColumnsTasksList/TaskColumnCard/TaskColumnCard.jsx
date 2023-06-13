@@ -13,7 +13,14 @@ import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
-const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
+const TaskColumnCard = ({
+  taskText,
+  priority,
+  id,
+  addCategory,
+  item,
+  onDragStart,
+}) => {
   const user = useSelector(selectUser);
 
   const [isCut, setIsCut] = useState(true);
@@ -24,8 +31,11 @@ const TaskColumnCard = ({ taskText, priority, id, addCategory }) => {
   let styleObj = isCut
     ? { textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }
     : { textOverflow: 'clip', whiteSpace: 'normal', overflow: 'visible' };
+  const handleDragStart = event => {
+    onDragStart(event, item);
+  };
   return (
-    <CardWraper>
+    <CardWraper draggable="true" onDragStart={handleDragStart}>
       <TaskText
         onMouseEnter={toggleCut}
         onMouseLeave={toggleCut}
