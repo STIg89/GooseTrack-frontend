@@ -5,18 +5,20 @@ import { useDispatch } from 'react-redux';
 import { loginWithToken } from '../redux/auth/operations';
 
 const LoginWithToken = () => {
-  let { token } = useParams();
+  let { accessToken } = useParams();
+  console.log('accessToken:', accessToken);
+  // console.log('refreshToken:', refreshToken);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loginWithToken(token))
-      .then(() => navigate('/calendar')) 
+    dispatch(loginWithToken(accessToken))
+      .then(() => navigate('/calendar'))
       .catch(() => navigate('/login'));
-  }, [token, navigate, dispatch]);
+  }, [accessToken, navigate, dispatch]);
 
-  return null; 
-//   ЛОДЕР 
+  return null;
+  //   ЛОДЕР
 };
 
 export default LoginWithToken;

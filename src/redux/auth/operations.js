@@ -2,13 +2,32 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Notify } from 'notiflix';
 
-// axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.baseURL = 'http://localhost:4000';
 
-axios.defaults.baseURL = 'https://goosetrack-backend.onrender.com';
+// axios.defaults.baseURL = 'https://goosetrack-backend.onrender.com';
 
-export const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+export const setAuthHeader = accessToken => {
+  axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 };
+
+axios.interceptors.response.use(
+  response => response,
+  async error => {
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const { data } = await axios.post('/auth/refresh', { refreshToken });
+        setAuthHeader(data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        // error.config.headers.common.authorization = `Bearer ${data.accessToken}`;
+        return axios(error.config);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -26,7 +45,7 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
   try {
     const { data } = await axios.post('/api/auth/login', user);
-    setAuthHeader(data.token);
+    setAuthHeader(data.accessToken);
     return data;
   } catch (error) {
     Notify.failure('Please check your email and password and try again');
@@ -39,15 +58,12 @@ export const resendEmail = createAsyncThunk(
   async (email, thunkAPI) => {
     try {
       const { data } = await axios.post('/api/auth/verify', { email });
-      Notify.success(
-        'Verification re-send to your e-mail',
-        {
-          timeout: 3000,
-          fontSize: '20px',
-          position: 'center-center',
-          cssAnimationStyle: 'zoom',
-        }
-      );
+      Notify.success('Verification re-send to your e-mail', {
+        timeout: 3000,
+        fontSize: '20px',
+        position: 'center-center',
+        cssAnimationStyle: 'zoom',
+      });
       return data;
     } catch (error) {
       Notify.failure(error.response.data.message);
@@ -58,10 +74,10 @@ export const resendEmail = createAsyncThunk(
 
 export const loginWithToken = createAsyncThunk(
   'auth/loginWithToken',
-  async (token, thunkAPI) => {
+  async (accessToken, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/api/auth/login/${token}`);
-      setAuthHeader(data.token);
+      const { data } = await axios.get(`/api/auth/login/${accessToken}`);
+      setAuthHeader(data.accessToken);
       return data;
     } catch (error) {
       Notify.failure('Please check your token and try again');
@@ -95,7 +111,7 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
 
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
@@ -116,7 +132,7 @@ export const updateUser = createAsyncThunk(
   'auth/user',
   async (data, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
 
     const formData = new FormData();
     Object.keys(data).forEach(key => {
