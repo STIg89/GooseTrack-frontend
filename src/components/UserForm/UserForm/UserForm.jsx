@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { Loader } from '../../utils/loader/loader';
+import { Loader } from '../../../utils/loader/loader';
 import Icons from 'images/sprite.svg';
 
 import {
