@@ -60,9 +60,11 @@ const Header = ({ isOpen, onOpenClick }) => {
         </BrgBtn>
       )}
       <TitleCalendar>
-        {location.pathname === '/calendar' && <Title> Calendar</Title>}
+        {location.pathname === '/calendar' && <Title> {t('Calendar')}</Title>}
 
-        {location.pathname === '/account' && <Title> User Profile</Title>}
+        {location.pathname === '/account' && (
+          <Title> {t('User Profile')}</Title>
+        )}
 
         {location.pathname === `/calendar/day/${currentDay}` && (
           <>
@@ -71,7 +73,8 @@ const Header = ({ isOpen, onOpenClick }) => {
               <Title>{t('Calendar')}</Title>
               <HeaderParagraph>
                 {' '}
-                <Span>Let go</Span> of the past and focus on the present!
+                <Span>{t('Let go')}</Span>{' '}
+                {t('of the past and focus on the present!')}
               </HeaderParagraph>
             </Div>
           </>
