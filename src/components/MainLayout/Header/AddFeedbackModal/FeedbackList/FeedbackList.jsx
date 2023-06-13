@@ -21,12 +21,15 @@ import axios from 'axios';
 import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 
-
-const FeedbackList = ({ setReviewsList, fetchData }) => {
+const FeedbackList = ({
+  setReviewsList,
+  fetchData,
+  setAnimationModal,
+  animationModal,
+}) => {
   const [updateReview, setUpdateReview] = useState('');
   const [isOpened, setIsOpened] = useState(false);
 
-  
   const { name, avatarURL } = useSelector(selectUser);
 
   const firstLetter = name?.charAt(0).toUpperCase();
@@ -48,7 +51,11 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
   return (
     <>
       <FeedbackListWrapper>
-        {setReviewsList && setReviewsList.length ? '' : <NoReview>No reviews</NoReview> }
+        {setReviewsList && setReviewsList.length ? (
+          ''
+        ) : (
+          <NoReview>No reviews</NoReview>
+        )}
         {setReviewsList &&
           setReviewsList.map((item, index) => {
             return (
@@ -72,10 +79,10 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
                   </DelBtn>
                 </ForBtn>
                 {avatarURL ? (
-            <UserAvatar src={item.owner.avatarURL} alt="user avatar" />
-          ) : (
-            <UserAvatarLater>{firstLetter}</UserAvatarLater>
-          )}
+                  <UserAvatar src={item.owner.avatarURL} alt="user avatar" />
+                ) : (
+                  <UserAvatarLater>{firstLetter}</UserAvatarLater>
+                )}
                 <FeedbackInfo>
                   <Name>{item.owner.name}</Name>
 
@@ -97,6 +104,8 @@ const FeedbackList = ({ setReviewsList, fetchData }) => {
           updateItem={updateReview}
           onCloseModal={handleToggleModal}
           isOpened={isOpened}
+          setAnimationModal={setAnimationModal}
+          animationModal={animationModal}
         />
       )}
     </>

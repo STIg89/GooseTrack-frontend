@@ -33,4 +33,5 @@ const AddTaskBtn = ({ addCategory }) => {
     </>
   );
 };
+
 export default AddTaskBtn;
