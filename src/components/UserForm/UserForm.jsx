@@ -99,13 +99,13 @@ export const UserForm = () => {
   };
 
   // Translation
-  const { t } = useTranslation();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   registerLocale('enGB', enGB);
   registerLocale('uk', uk);
 
-  const [language, setLanguage] = useState(i18n.language);
+  const [language, setLanguage] = useState('');
+
   useEffect(() => {
     if (i18n.language === 'ua') {
       setLanguage('uk');
