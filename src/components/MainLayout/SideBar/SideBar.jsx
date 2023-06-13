@@ -19,15 +19,15 @@ import {
   StyledCalendarIcon,
   TitleSideBar,
   CloseIcon,
-  LngBtnWrapper
+  LngBtnWrapper,
 } from './SideBar.styled';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
 import LangSwitcher from '../Header/LanguageFlags/LangSwitcherSidebar';
 
 const Sidebar = ({ isOpen, onCloseClick }) => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
-  const [showFdbckBtn, setShowFdbckBtn] = useState(window.innerWidth > 374)
+  const [showFdbckBtn, setShowFdbckBtn] = useState(window.innerWidth > 374);
   const [showLangBtn, setShowLangBtn] = useState(window.innerWidth <= 390);
   useEffect(() => {
     const handleResize = () => {
@@ -58,38 +58,40 @@ const Sidebar = ({ isOpen, onCloseClick }) => {
           </CloseBtn>
         </LogoDiv>
         <SideBarNav>
-          <TitleSideBar>{t('User Panel')}</TitleSideBar>
+          <TitleSideBar>
+            {i18n.language === 'en' ? 'User Panel' : 'Панель користувача'}
+          </TitleSideBar>
           <SideBarLinks>
             <li>
               <StyledNavLink to="account" onClick={onCloseClick}>
                 <Svg>
                   <use href={`${Icons}#icon-user-check`}></use>
                 </Svg>
-                {t('My account')}
+                {i18n.language === 'en' ? 'My account' : 'Обліковий запис'}
               </StyledNavLink>
             </li>
 
             <li>
               <StyledNavLink to="calendar" onClick={onCloseClick}>
                 <StyledCalendarIcon />
-                {t('Calendar')}
+                {i18n.language === 'en' ? 'Calendar' : 'Календар'}
               </StyledNavLink>
             </li>
           </SideBarLinks>
         </SideBarNav>
       </SideBarDiv>
 
-      {showLangBtn &&
+      {showLangBtn && (
         <LngBtnWrapper>
           <LangSwitcher />
         </LngBtnWrapper>
-      }
+      )}
 
-      {!showFdbckBtn &&
+      {!showFdbckBtn && (
         <>
           <FeedbackBtn />
         </>
-      }
+      )}
       <LogOutBtn />
     </SideBarContainer>
   );

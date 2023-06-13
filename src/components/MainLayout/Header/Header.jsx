@@ -28,6 +28,7 @@ import { useEffect, useState } from 'react';
 
 const Header = ({ isOpen, onOpenClick }) => {
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
   const { name, avatarURL } = useSelector(selectUser);
 
   const firstLetter = name?.charAt(0).toUpperCase();
@@ -60,7 +61,9 @@ const Header = ({ isOpen, onOpenClick }) => {
         </BrgBtn>
       )}
       <TitleCalendar>
-        {location.pathname === '/calendar' && <Title> {t('Calendar')}</Title>}
+        {location.pathname === '/calendar' && (
+          <Title> {i18n.language === 'en' ? 'Calendar' : 'Календар'}</Title>
+        )}
 
         {location.pathname === '/account' && (
           <Title> {t('User Profile')}</Title>
@@ -70,11 +73,15 @@ const Header = ({ isOpen, onOpenClick }) => {
           <>
             <GooseImg src={HeaderImg} alt="Goose" />
             <Div>
-              <Title>{t('Calendar')}</Title>
+              <Title>{i18n.language === 'en' ? 'Calendar' : 'Календар'}</Title>
               <HeaderParagraph>
                 {' '}
-                <Span>{t('Let go')}</Span>{' '}
-                {t('of the past and focus on the present!')}
+                <Span>
+                  {i18n.language === 'en' ? 'Let go' : 'Відпустіть'}
+                </Span>{' '}
+                {i18n.language === 'en'
+                  ? 'of the past and focus on the present!'
+                  : 'минуле і зосередьтесь на сьогоденні!'}
               </HeaderParagraph>
             </Div>
           </>

@@ -18,7 +18,7 @@ import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
 
 const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
   const [updatedItem, setUpdatedItem] = useState('');
 
   useEffect(() => {
@@ -63,7 +63,9 @@ const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
     <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
       <ModalContent onClick={e => e.stopPropagation()}>
         <ModalForm>
-          <LabelRating>{t('Rating')}</LabelRating>
+          <LabelRating>
+            {i18n.language === 'en' ? 'Rating' : 'Рейтинг'}
+          </LabelRating>
           <Rating
             onClick={e => onStarClickChange(e)}
             initialValue={updatedItem.rating}
@@ -72,11 +74,13 @@ const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
             size={24}
           />
           <Label>
-            {t('Review')}
+            {i18n.language === 'en' ? 'Review' : 'Відгук'}
             <TextInput
               onChange={e => changeComment(e.target.value)}
               value={updatedItem.comment}
-              placeholder={t('Enter text')}
+              placeholder={
+                i18n.language === 'en' ? 'Enter text' : 'Введіть текст'
+              }
               name=""
               id="feedback-text"
               cols="30"
@@ -86,10 +90,14 @@ const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
           </Label>
           <BtnWrapper>
             <EditBtn onClick={updateReview} type="submit">
-              <EditBtnText>{t('Edit')}</EditBtnText>
+              <EditBtnText>
+                {i18n.language === 'en' ? 'Edit' : 'Редагувати'}
+              </EditBtnText>
             </EditBtn>
             <CancelBtn type="button" onClick={onCloseModal}>
-              <CancelBtnText>{t('Cancel')}</CancelBtnText>
+              <CancelBtnText>
+                {i18n.language === 'en' ? 'Cancel' : 'Відміна'}
+              </CancelBtnText>
             </CancelBtn>
           </BtnWrapper>
         </ModalForm>
