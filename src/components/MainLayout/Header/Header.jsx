@@ -78,7 +78,9 @@ const Header = ({ isOpen, onOpenClick }) => {
 
         {location.pathname === `/calendar/day/${currentDay}` && (
           <>
-            <GooseImg src={HeaderImg} alt="Goose" />
+            {hasTasks && (
+              <GooseImg src={HeaderImg} alt="Goose" />
+            )}
             <Div>
               <Title>{t('Calendar')}</Title>
               {hasTasks && (
