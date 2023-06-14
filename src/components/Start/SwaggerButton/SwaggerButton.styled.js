@@ -2,6 +2,15 @@ import styled from 'styled-components';
 
 export const SwaggerButtonContainer = styled.div`
   position: relative;
+
+  @media screen and (max-width: 375px) {
+    margin-top: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const SwaggerButtonStyle = styled.a`
@@ -26,6 +35,11 @@ export const SwaggerButtonStyle = styled.a`
   }
   &:hover svg {
     opacity: 0;
+  }
+
+  @media screen and (max-width: 375px) {
+    left: 50%;
+    transform: translateX(-50%);
   }
 `;
 
