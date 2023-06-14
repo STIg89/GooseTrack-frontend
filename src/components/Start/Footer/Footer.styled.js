@@ -6,10 +6,11 @@ export const FooterWrapper = styled.footer`
   background: var(--primary-background-color);
   padding-top: 29px;
   padding-bottom: 29px;
-  border-top: 1px solid var(--modal-border-color);
+  border-top: var(--border);
 `;
 
-export  const FooterContainer = styled.div`
+export const FooterContainer = styled.div`
+  position: relative;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
@@ -21,11 +22,11 @@ export const FooterText = styled.p`
   text-align: center;
   font-size: 14px;
   line-height: 2em;
-  color: var(--accent-background-color);
+  color: var(--accent-text-color);
 `;
 
 export const HeartIcon = styled.svg`
-  fill: var(--accent-heart);
+  fill: red;
 `;
 
 export const StudentsText = styled.span`
@@ -34,6 +35,6 @@ export const StudentsText = styled.span`
   transition: color var(--animation);
   &:hover,
   &:focus {
-    color: var(--primary-text-color);
+    color: var(--students-text-color);
   }
 `;
