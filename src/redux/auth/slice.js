@@ -11,7 +11,6 @@ import {
 const initialState = {
   user: { name: null, email: null },
   accessToken: null,
-  refreshToken: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -36,7 +35,6 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
         state.isRefreshing = false;
       })
       .addCase(login.rejected, (state, _) => {
@@ -64,7 +62,6 @@ const authSlice = createSlice({
       })
       .addCase(loginWithToken.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
         state.isRefreshing = false;
       })
       .addCase(loginWithToken.rejected, (state, _) => {

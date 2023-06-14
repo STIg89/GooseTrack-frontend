@@ -16,8 +16,10 @@ axios.interceptors.response.use(
     if (error.response.status === 401) {
       const refreshToken = localStorage.getItem('refreshToken');
       try {
-        const { data } = await axios.post('auth/refresh', { refreshToken });
-        console.log('data:', data);
+        const { data } = await axios.post('/api/auth/refresh', {
+          refreshToken,
+        });
+        console.log('data:', data.accessToken);
         setAuthHeader(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
         // error.config.headers.common.authorization = `Bearer ${data.accessToken}`;
@@ -80,6 +82,7 @@ export const loginWithToken = createAsyncThunk(
     try {
       const { data } = await axios.get(`/api/auth/login/${accessToken}`);
       setAuthHeader(data.accessToken);
+      localStorage.setItem('refreshToken', data.refreshToken);
       return data;
     } catch (error) {
       Notify.failure('Please check your token and try again');
