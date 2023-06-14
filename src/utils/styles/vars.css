@@ -45,6 +45,7 @@
   --label-text: #343434;
   --feedback-text: rgba(17, 17, 17, 0.7);
   --cloud-text-color: #6d92be;
+  --swagger-text-color: #ffffff;
 
   /* calendar */
   --calendar-digit-color: #343434;
@@ -122,6 +123,7 @@
   --label-text: rgba(250, 250, 250, 0.3);
   --feedback-text: rgba(255, 255, 255, 0.7);
   --cloud-text-color: #3e85f3;
+  --swagger-text-color: #173647;
 
   --calendar-digit-color: #ffffff;
   --task-input-bg-color: rgba(255, 255, 255, 0);
