@@ -59,11 +59,6 @@ export const ItemWrapper = styled.li`
   }
 
   &.reverse {
-    margin-bottom: 64px;
-    opacity: 0;
-    transform: translateX(100px);
-    transition: opacity 2s ease, transform 2s ease;
-
     ${media.desktop} {
         display: flex;
         flex-direction: row-reverse;
