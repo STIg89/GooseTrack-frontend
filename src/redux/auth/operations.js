@@ -157,3 +157,21 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+// Update Password
+export const updatePassword = createAsyncThunk(
+  'auth/user/pass',
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+
+    try {
+      setAuthHeader(persistedToken);
+      const res = await axios.patch('/api/auth/user/pass', data);
+      return res.data;
+    } catch (error) {
+      Notify.failure('Incorrect old password');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -8,17 +8,17 @@ import 'react-datepicker/dist/react-datepicker.css';
 export const Wrapper = styled.div`
   background-color: var(--primary-background-color);
   border-radius: 16px;
-  margin-top: 95px;
+  margin-top: 55px;
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
-    margin-top: 64px;
+    margin-top: 25px;
     margin-bottom: 38px;
   }
   @media screen and (min-width: 1440px) {
     margin-top: 32px;
     margin-bottom: 32px;
-    min-height: calc(100vh - 148px);
+    min-height: calc(100vh - 215px);
   }
 `;
 
@@ -224,13 +224,14 @@ export const StyledInput = styled(Field)`
   border-radius: 8px;
   background: var(--primary-background-color);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.3;
   color: var(--primary-text-color);
   outline: none;
 
   @media screen and (min-width: 375px) {
     width: 299px;
+    font-size: 14px;
   }
 
   @media screen and (min-width: 768px) {
@@ -490,7 +491,7 @@ export const SubmitBtn = styled.button`
   }
 
   @media screen and (min-width: 1440px) {
-    margin-top: 64px;
+    margin-top: 55px;
   }
 `;
 
