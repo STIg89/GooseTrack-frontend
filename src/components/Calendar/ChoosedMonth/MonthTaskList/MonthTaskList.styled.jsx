@@ -40,6 +40,7 @@ export const TaskItem = styled.li`
   font-size: 10px;
   line-height: 14px;
   border-radius: 8px;
+  cursor: pointer;
   background-color: ${props =>
     props.priority === 'low'
       ? 'var(--priority-low-bg-color)'

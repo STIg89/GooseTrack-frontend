@@ -25,6 +25,7 @@ export const DaysRow = styled.div`
   flex-wrap: wrap;
   width: 100%;
   overflow: hidden;
+  cursor: default;
   border: 1px solid rgba(220, 227, 229, 0.5);
   border-radius: 8px;
   margin-bottom: 14px;

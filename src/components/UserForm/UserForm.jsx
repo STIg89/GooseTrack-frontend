@@ -40,19 +40,6 @@ import {
 const phoneRegex = /^\+?3?8?(0\d{9})$/;
 
 // Validation Schema YUP
-const validationSchema = yup.object().shape({
-  name: yup
-    .string()
-    .max(16, 'Name must not exceed 16 characters')
-    .required('Name is a required field'),
-  phone: yup.string().matches(phoneRegex, 'Phone number is not valid'),
-  birthday: yup.date(),
-  skype: yup.string().max(16, 'Skype must not exceed 16 characters'),
-  email: yup
-    .string()
-    .email('Email must be valid email')
-    .required('Email is a required field'),
-});
 
 export const UserForm = () => {
   const user = useSelector(selectUser);
@@ -113,6 +100,51 @@ export const UserForm = () => {
       setLanguage('enGB');
     }
   }, [i18n.language]);
+
+  const validationSchema = yup.object().shape({
+    name: yup
+      .string()
+      .max(
+        16,
+        language === 'enGB'
+          ? 'Name must not exceed 16 characters'
+          : "Ім'я не повинно бути більшим за 16 символів"
+      )
+      .required(
+        language === 'enGB'
+          ? 'Name is a required field'
+          : "Ім'я це обов'язкове поле"
+      ),
+    phone: yup
+      .string()
+      .matches(
+        phoneRegex,
+        language === 'enGB'
+          ? 'Phone number is not valid'
+          : 'Номер телефону введено неправильно'
+      ),
+    birthday: yup.date(),
+    skype: yup
+      .string()
+      .max(
+        16,
+        language === 'enGB'
+          ? 'Skype must not exceed 16 characters'
+          : "Skype ім'я не повинно бути більшим за 16 символів"
+      ),
+    email: yup
+      .string()
+      .email(
+        language === 'enGB'
+          ? 'Email must be valid email'
+          : 'Адреса електронної пошти введена неправильно'
+      )
+      .required(
+        language === 'enGB'
+          ? 'Email is a required field'
+          : 'Електронна пошта це обовєязкове поле'
+      ),
+  });
 
   return (
     <Formik

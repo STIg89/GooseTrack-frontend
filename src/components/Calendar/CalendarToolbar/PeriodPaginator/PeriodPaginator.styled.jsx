@@ -22,6 +22,7 @@ export const PeriodView = styled.div`
   text-transform: uppercase;
   background-color: var(--color-button-period-type);
   color: var(--btn-text-color);
+  cursor: default;
   @media screen and (min-width: 768px) {
     padding: 8px 12px;
     font-size: 16px;
