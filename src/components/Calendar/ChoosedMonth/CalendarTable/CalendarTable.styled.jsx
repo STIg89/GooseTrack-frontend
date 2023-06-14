@@ -47,6 +47,10 @@ export const Number = styled.div`
   border-radius: 6px;
   transition: 0.1s ease-in;
   cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: rgb(62, 133, 243, 0.3);
+  }
   @media screen and (min-width: 768px) {
     padding: 4px 8px;
     top: 8px;
