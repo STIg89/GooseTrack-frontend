@@ -7,7 +7,7 @@ import { nanoid } from 'nanoid';
 
 import { setAuthHeader } from '../../../redux/auth/operations';
 import { refreshUser } from '../../../redux/auth/operations';
-import { selectToken } from '../../../redux/auth/selectors';
+import { selectAccessToken } from '../../../redux/auth/selectors';
 import { AuthNavigate } from '../../../components/Auth/AuthNavigate/AuthNavigate';
 
 import {
@@ -48,7 +48,7 @@ export const LoginForm = () => {
   const emailId = nanoid();
   const passwordId = nanoid();
 
-  const token = useSelector(selectToken);
+  const token = useSelector(selectAccessToken);
   setAuthHeader(token);
   useEffect(() => {
     dispatch(refreshUser());

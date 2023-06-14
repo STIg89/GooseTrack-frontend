@@ -17,7 +17,14 @@ import { useTranslation } from 'react-i18next';
 import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
 
-const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
+const EditModal = ({
+  onCloseModal,
+  updateItem,
+  toFetch,
+  isOpened,
+  setAnimationModal,
+  animationModal,
+}) => {
   const { i18n } = useTranslation();
   const [updatedItem, setUpdatedItem] = useState('');
 
@@ -59,8 +66,17 @@ const EditModal = ({ onCloseModal, updateItem, toFetch, isOpened }) => {
       onCloseModal();
     });
   };
+
+  setTimeout(() => {
+    onCloseModal();
+  }, 300);
+
   return (
-    <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
+    <Modal
+      onCloseModal={onCloseModal}
+      isOpened={isOpened}
+      animationModalOnSubmit={animationModal}
+    >
       <ModalContent onClick={e => e.stopPropagation()}>
         <ModalForm>
           <LabelRating>
