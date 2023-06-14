@@ -47,8 +47,6 @@ const Modal = ({
     closeModal();
   };
 
-  console.log(isOpened);
-
   return createPortal(
     <Overlay
       onClick={handleOverlayClick}
