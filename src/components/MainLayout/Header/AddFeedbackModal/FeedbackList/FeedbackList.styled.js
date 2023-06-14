@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
+const media = {
+  tablet: '@media screen and (min-width: 768px)',
+  desktop: '@media screen and (min-width: 1200px)',
+};
+
 export const FeedbackListWrapper = styled.div`
   position: relative;
   width: 100%;
-  max-height: 150px;
+  max-height: 225px;
   background-color: var(--feedback-label-background-color);
   border-radius: 8px;
   margin-top: 32px;
@@ -32,24 +37,37 @@ export const FeedbackListWrapper = styled.div`
     background: rgba(52, 52, 52, 0.2);
     border-radius: 12px;
   }
+
+  ${media.tablet} {
+    max-height: 295px;
+  }
 `;
 
 export const FeedbackItem = styled.div`
   display: flex;
   position: relative;
   max-height: 108px;
+  margin-right: 12px;
+  ${media.tablet} {
+    max-height: 130px;
+  }
 `;
 
 export const UserAvatar = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   margin-right: 12px;
+  cursor: default;
+  ${media.tablet} {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const UserAvatarLater = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,6 +78,11 @@ export const UserAvatarLater = styled.div`
   background-color: var(--avatar-background-color);
   font-size: 25px;
   outline: 3px solid var(--accent-background-color);
+  cursor: default;
+  ${media.tablet} {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 export const FeedbackInfo = styled.div``;
@@ -69,10 +92,13 @@ export const Name = styled.p`
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 18px;
   color: var(--calendar-digit-color);
   margin: 0;
+  ${media.tablet} {
+    font-size: 16px;
+  }
 `;
 
 export const FeedBackRating = styled.p`
@@ -82,16 +108,20 @@ export const FeedBackRating = styled.p`
 
 export const FeedBackText = styled.p`
   max-width: 249px;
-  height: 56px;
+  height: 60px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 18px;
   color: var(--feedback-text);
-  overflow: hidden;
   text-overflow: ellipsis;
+  overflow: hidden;
   color: var(--primary-text-color);
+  ${media.tablet} {
+    font-size: 14px;
+    height: 75px;
+  }
 `;
 
 export const ForBtn = styled.div`
@@ -110,14 +140,18 @@ export const EditBtn = styled.button`
   cursor: pointer;
 `;
 export const EditBtnIcon = styled.svg`
-  width: 13px;
-  height: 13px;
+  width: 11px;
+  height: 11px;
   fill: transparent;
   stroke: var(--primary-text-color);
 
   &:hover,
   &:focus {
     stroke: var(--accent-background-color);
+  }
+  ${media.tablet} {
+    width: 13px;
+    height: 13px;
   }
 `;
 
@@ -130,14 +164,18 @@ export const DelBtn = styled.button`
   cursor: pointer;
 `;
 export const DelBtnIcon = styled.svg`
-  width: 13px;
-  height: 13px;
+  width: 11px;
+  height: 11px;
   fill: transparent;
   stroke: var(--primary-text-color);
 
   &:hover,
   &:focus {
     stroke: var(--accent-background-color);
+  }
+  ${media.tablet} {
+    width: 13px;
+    height: 13px;
   }
 `;
 

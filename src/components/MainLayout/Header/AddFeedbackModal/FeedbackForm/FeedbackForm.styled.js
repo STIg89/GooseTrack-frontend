@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const media = {
+  tablet: '@media screen and (min-width: 768px)',
+  desktop: '@media screen and (min-width: 1200px)',
+};
+
 export const ModalForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -29,10 +34,9 @@ export const Label = styled.label`
   color: var(--task-modal-label-color);
 `;
 
-
 export const TextInput = styled.textarea`
   width: 100%;
-  height: 127px;
+  height: 111px;
   background-color: var(--task-input-bg-color);
   border: 1px solid var(--border-label-color);
   border-radius: 8px;
@@ -47,7 +51,10 @@ export const TextInput = styled.textarea`
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
-    color: var(--label-text);;
+    color: var(--label-text);
+  }
+  ${media.tablet} {
+    height: 127px;
   }
 `;
 
@@ -57,6 +64,7 @@ export const SaveBtn = styled.button`
   justify-content: center;
   align-items: center;
   padding: 10px;
+  height: 42px;
   margin-top: 18px;
   cursor: pointer;
   background: #3e85f3;
@@ -64,9 +72,11 @@ export const SaveBtn = styled.button`
   border-radius: 8px;
   &:hover,
   :focus {
-   cursor: pointer;
-   background-color: var(--hover-btn-background-color);
-
+    cursor: pointer;
+    background-color: var(--hover-btn-background-color);
+  }
+  ${media.tablet} {
+    height: 48px;
   }
 `;
 
@@ -87,4 +97,4 @@ export const ErrorMessage = styled.p`
   line-height: 17px;
   color: var(--text-error-color);
   opacity: 0.8;
-`
+`;
