@@ -189,7 +189,7 @@ const TaskForm = ({
             checked={selectedOption === 'low'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{i18n.language === 'en' ? 'Low' : 'Низький'}</RadioLabel>
+          <RadioLabel>{i18n.language === 'en' ? 'Low' : 'Легка'}</RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioInput
@@ -200,7 +200,7 @@ const TaskForm = ({
             onChange={handleOptionChange}
           />
           <RadioLabel>
-            {i18n.language === 'en' ? 'Medium' : 'Середній'}
+            {i18n.language === 'en' ? 'Medium' : 'Середня'}
           </RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
@@ -211,7 +211,7 @@ const TaskForm = ({
             checked={selectedOption === 'high'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{i18n.language === 'en' ? 'High' : 'Високий'}</RadioLabel>
+          <RadioLabel>{i18n.language === 'en' ? 'High' : 'Складна'}</RadioLabel>
         </RadioButtonContainer>
       </RadioButtonsContainer>
 
