@@ -67,10 +67,6 @@ const EditModal = ({
     });
   };
 
-  setTimeout(() => {
-    onCloseModal();
-  }, 300);
-
   return (
     <Modal
       onCloseModal={onCloseModal}
