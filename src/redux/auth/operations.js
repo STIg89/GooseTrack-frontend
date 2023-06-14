@@ -163,7 +163,7 @@ export const updatePassword = createAsyncThunk(
   'auth/user/pass',
   async (data, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
 
     try {
       setAuthHeader(persistedToken);
