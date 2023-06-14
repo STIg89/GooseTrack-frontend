@@ -67,13 +67,9 @@ const EditModal = ({
     });
   };
 
-  const handleSubmit = () => {
-    setAnimationModal(false);
-
-    setTimeout(() => {
-      onCloseModal();
-    }, 300);
-  };
+  setTimeout(() => {
+    onCloseModal();
+  }, 300);
 
   return (
     <Modal
