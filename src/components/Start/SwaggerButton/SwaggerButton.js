@@ -11,7 +11,6 @@ const SwaggerButton = () => {
     button.style.width = '100px';
     button.style.borderRadius = '50px';
     button.querySelector('.swagger-text').style.opacity = '1';
-    button.querySelector('.swagger-text::before').style.opacity = '0';
   };
   const handleMouseLeave = event => {
     const button = event.currentTarget;
