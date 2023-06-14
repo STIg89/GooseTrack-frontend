@@ -40,27 +40,26 @@ export const FeedbackItem = styled.div`
   max-height: 108px;
 `;
 
-export const Avatar = styled.div`
-  background-image: url(../../../../../images/avatars/Olena.jpg);
-  width: 50px;
-  height: 50px;
+export const UserAvatar = styled.img`
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   margin-right: 12px;
-  background-color: gray;
 `;
 
-export const UserAvatar = styled.img`
-  width: 50px;
-  height: 50px;
+export const UserAvatarLater = styled.div`
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
   border-radius: 50%;
   margin-right: 12px;
+  color: var(--secondary-text-color);
+  background-color: var(--avatar-background-color);
+  font-size: 25px;
   outline: 3px solid var(--accent-background-color);
-
-  /* {
-width:44px;
-height:44px;
-margin-left: 14px;
-  }  */
 `;
 
 export const FeedbackInfo = styled.div``;
@@ -140,4 +139,15 @@ export const DelBtnIcon = styled.svg`
   &:focus {
     stroke: var(--accent-background-color);
   }
+`;
+
+export const NoReview = styled.p`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 18px;
+  display: flex;
+  justify-content: center;
+  color: var(--primary-text-color);
 `;

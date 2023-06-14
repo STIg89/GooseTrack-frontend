@@ -8,11 +8,11 @@ import { useTranslation } from 'react-i18next';
 const LogOutBtn = () => {
   const dispatch = useDispatch();
 
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <StyledLogOutBtn type="button" onClick={() => dispatch(logout())}>
-      {t('Log out')} <FiLogOut />{' '}
+      {i18n.language === 'en' ? 'Log out' : 'Вихід'} <FiLogOut />{' '}
     </StyledLogOutBtn>
   );
 };

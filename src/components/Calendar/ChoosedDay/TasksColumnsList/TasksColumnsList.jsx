@@ -4,24 +4,24 @@ import { useTranslation } from 'react-i18next';
 import { ColumnsList } from './TasksColumnsList.Styled';
 
 const TasksColumnsList = ({ readinessTasks }) => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
 
   return (
     <ColumnsList>
       <TasksColumn
-        headName={t('To do')}
+        headName={i18n.language === 'en' ? 'To do' : 'Потрібно зробити'}
         tasks={readinessTasks.todotasks}
         addCategory="to-do"
       />
 
       <TasksColumn
-        headName={t('In progress')}
+        headName={i18n.language === 'en' ? 'In progress' : 'В процесі'}
         tasks={readinessTasks.inprogresstasks}
         addCategory="in-progress"
       />
 
       <TasksColumn
-        headName={t('Done')}
+        headName={i18n.language === 'en' ? 'Done' : 'Зроблено'}
         tasks={readinessTasks.donetasks}
         addCategory="done"
       />

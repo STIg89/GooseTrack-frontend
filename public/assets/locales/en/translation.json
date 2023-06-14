@@ -4,6 +4,7 @@
   "User Panel": "User Panel",
   "My account": "My account",
   "Calendar": "Calendar",
+  "User Profile": "User Profile",
   "user": "User",
   "User Name": "User Name",
   "Birthday": "Birthday",
@@ -25,15 +26,21 @@
   "Sun": "Sun",
   "Mon": "Mon",
   "To do": "To do",
+  "to-do": "to-do",
   "In progress": "In progress",
+  "in-progress": "in-progress",
   "Done": "Done",
+  "done": "done",
   "Add task": "Add task",
   "Log out": "Log out",
   "Rating": "Rating",
   "Review": "Review",
   "Save": "Save",
   "No reviews": "No reviews",
-  "['S', 'M', 'T', 'W', 'T', 'F', 'S']": "['S', 'M', 'T', 'W', 'T', 'F', 'S']"
-  
-  
+  "Let go": "Let go",
+  "of the past and focus on the present!": "of the past and focus on the present!",
+  "Enter your name": "Enter your name",
+  "Enter your email": "Enter your email",
+  "Add a skype number": "Add a skype number",
+  "Name is a required field": "Name is a required field"
 }

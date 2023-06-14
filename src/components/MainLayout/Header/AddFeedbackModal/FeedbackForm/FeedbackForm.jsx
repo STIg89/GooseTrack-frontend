@@ -13,14 +13,12 @@ import { Rating } from 'react-simple-star-rating';
 
 import { useTranslation } from 'react-i18next';
 
-
-const FeedbackForm = ({ fetchData }) => {
+const FeedbackForm = ({ fetchData, setAnimationModal, onCloseModal }) => {
   const { t } = useTranslation();
   const [newComment, setNewComment] = useState('');
   const [newRate, setNewRate] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
- 
   const onStarClickClick = nextValue => {
     changeRate(nextValue);
   };
@@ -77,11 +75,18 @@ const FeedbackForm = ({ fetchData }) => {
     }
   };
 
+  const handleSubmit = () => {
+    setAnimationModal(false);
+
+    setTimeout(() => {
+      onCloseModal();
+    }, 300);
+  };
 
   return (
     <>
-    <ModalForm>
-        <LabelRating>{t('Rating')}
+      <ModalForm onSubmit={handleSubmit}>
+        <LabelRating>{t('Rating')}</LabelRating>
         <Rating
           onClick={e => onStarClickClick(e)}
           initialValue={newRate}
@@ -89,8 +94,12 @@ const FeedbackForm = ({ fetchData }) => {
           transition={true}
           size={24}
         />
-        {isVisible && <ErrorMessage className="par">Rating is a required field</ErrorMessage>}
-        </LabelRating>
+        {isVisible && (
+          <ErrorMessage className="par">
+            Rating is a required field
+          </ErrorMessage>
+        )}
+
         <Label>
           {t('Review')}
           <TextInput
@@ -104,7 +113,11 @@ const FeedbackForm = ({ fetchData }) => {
               setNewComment(e.target.value);
             }}
           ></TextInput>
-          {isVisible && <ErrorMessage className="par">Comment is a required field</ErrorMessage>}
+          {isVisible && (
+            <ErrorMessage className="par">
+              Comment is a required field
+            </ErrorMessage>
+          )}
         </Label>
         <SaveBtn type="submit" onClick={totalValidateAndSend}>
           <SaveBtnText>{t('Save')}</SaveBtnText>
@@ -115,4 +128,3 @@ const FeedbackForm = ({ fetchData }) => {
 };
 
 export default FeedbackForm;
-

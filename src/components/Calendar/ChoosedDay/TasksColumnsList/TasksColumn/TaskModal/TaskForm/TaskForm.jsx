@@ -27,8 +27,14 @@ import { useDateValidation } from 'helpers/useDateValidation';
 import { addTask, patchTask } from 'redux/tasks/operations';
 import { selectTasks } from 'redux/tasks/selectors';
 
-const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
-  const { t } = useTranslation();
+const TaskForm = ({
+  onCloseModal,
+  showEditBtn,
+  id,
+  editTask,
+  addCategory,
+  setAnimationModal,
+}) => {
   const [title, setTitle] = useState(editTask?.title || '');
   const [start, setStart] = useState(editTask?.start || '09:00');
   const [end, setEnd] = useState(editTask?.end || '09:30');
@@ -38,6 +44,8 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
 
+  const { i18n } = useTranslation();
+
   const validDate = useDateValidation();
   const currentDay = format(validDate, 'yyyy-MM-dd');
 
@@ -46,7 +54,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
     setPriority(event.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const edit = {
       title,
@@ -107,7 +115,15 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
       Notify.success('Successfully! Task added.');
     }
 
-    onCloseModal();
+    closeModal();
+  };
+
+  const closeModal = () => {
+    setAnimationModal(false);
+
+    setTimeout(() => {
+      onCloseModal();
+    }, 300);
   };
 
   const handleChange = e => {
@@ -129,11 +145,11 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <InputContaiter>
-        <Label>{t('Title')}</Label>
+        <Label>{i18n.language === 'en' ? 'Title' : 'Заголовок'}</Label>
         <Input
           maxLength={250}
           type="text"
-          placeholder={t('Enter text')}
+          placeholder={i18n.language === 'en' ? 'Enter text' : 'Введіть текст'}
           name="title"
           onChange={handleChange}
           value={title}
@@ -142,7 +158,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
 
       <InputTimeContaiter>
         <InputContaiter>
-          <Label>{t('Start')}</Label>
+          <Label>{i18n.language === 'en' ? 'Start' : 'Початок'}</Label>
           <Input
             type="time"
             name="start"
@@ -153,7 +169,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
         </InputContaiter>
 
         <InputContaiter>
-          <Label>{t('End')}</Label>
+          <Label>{i18n.language === 'en' ? 'End' : 'Кінець'}</Label>
           <Input
             type="time"
             name="end"
@@ -173,7 +189,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             checked={selectedOption === 'low'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{t('Low')}</RadioLabel>
+          <RadioLabel>{i18n.language === 'en' ? 'Low' : 'Низький'}</RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioInput
@@ -183,7 +199,9 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             checked={selectedOption === 'medium'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{t('Medium')}</RadioLabel>
+          <RadioLabel>
+            {i18n.language === 'en' ? 'Medium' : 'Середній'}
+          </RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioInput
@@ -193,7 +211,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             checked={selectedOption === 'high'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{t('High')}</RadioLabel>
+          <RadioLabel>{i18n.language === 'en' ? 'High' : 'Високий'}</RadioLabel>
         </RadioButtonContainer>
       </RadioButtonsContainer>
 
@@ -203,7 +221,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
             <EditIcon>
               <use href={`${Icons}#edit-btn-s`}></use>
             </EditIcon>
-            {t('Edit')}
+            {i18n.language === 'en' ? 'Edit' : 'Редагувати'}
           </EditButton>
         ) : (
           <>
@@ -211,10 +229,10 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
               <AddIcon>
                 <use href={`${Icons}#add-btn-s`}></use>
               </AddIcon>
-              {t('Add')}
+              {i18n.language === 'en' ? 'Add' : 'Додати'}
             </AddButton>
-            <CancelButton type="button" onClick={() => onCloseModal()}>
-              {t('Cancel')}
+            <CancelButton type="button" onClick={closeModal}>
+              {i18n.language === 'en' ? 'Cancel' : 'Відміна'}
             </CancelButton>
           </>
         )}

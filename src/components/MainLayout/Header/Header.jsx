@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
+import { useTranslation } from 'react-i18next';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import HeaderImg from 'images/sidebar/GooseHeader.png';
 import FeedbackBtn from '../Header/AddFeedbackBtn/AddFeedbackBtn';
 import LanguageFlags from './LanguageFlags/LanguageFlags';
-import { useTranslation } from 'react-i18next';
-
+import { selectTasks } from 'redux/tasks/selectors';
 import { ThemeToggler } from './ThemeToggler/ThemeToggler';
 
 import {
@@ -28,6 +28,7 @@ import { useEffect, useState } from 'react';
 
 const Header = ({ isOpen, onOpenClick }) => {
   const { t } = useTranslation();
+  const { i18n } = useTranslation();
   const { name, avatarURL } = useSelector(selectUser);
 
   const firstLetter = name?.charAt(0).toUpperCase();
@@ -36,6 +37,18 @@ const Header = ({ isOpen, onOpenClick }) => {
 
   const [showLangBtn, setShowLangBtn] = useState(window.innerWidth <= 390);
   const [showFdbckBtn, setShowFdbckBtn] = useState(window.innerWidth > 374);
+
+  const tasks = useSelector(selectTasks);
+
+  const readinessTasks = {
+    todotasks: tasks.filter(item => item.category === 'to-do'),
+    inprogresstasks: tasks.filter(item => item.category === 'in-progress'),
+    donetasks: tasks.filter(item => item.category === 'done'),
+  };
+
+  const hasTasks =
+    readinessTasks.todotasks.length > 0 ||
+    readinessTasks.inprogresstasks.length > 0;
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,19 +73,30 @@ const Header = ({ isOpen, onOpenClick }) => {
         </BrgBtn>
       )}
       <TitleCalendar>
-        {location.pathname === '/calendar' && <Title> Calendar</Title>}
+        {location.pathname === '/calendar' && (
+          <Title> {i18n.language === 'en' ? 'Calendar' : 'Календар'}</Title>
+        )}
 
-        {location.pathname === '/account' && <Title> User Profile</Title>}
+        {location.pathname === '/account' && (
+          <Title> {t('User Profile')}</Title>
+        )}
 
         {location.pathname === `/calendar/day/${currentDay}` && (
           <>
-            <GooseImg src={HeaderImg} alt="Goose" />
+            {hasTasks && <GooseImg src={HeaderImg} alt="Goose" />}
             <Div>
-              <Title>{t('Calendar')}</Title>
-              <HeaderParagraph>
-                {' '}
-                <Span>Let go</Span> of the past and focus on the present!
-              </HeaderParagraph>
+              <Title>{i18n.language === 'en' ? 'Calendar' : 'Календар'}</Title>
+              {hasTasks && (
+                <HeaderParagraph>
+                  {' '}
+                  <Span>
+                    {i18n.language === 'en' ? 'Let go' : 'Відпустіть'}
+                  </Span>{' '}
+                  {i18n.language === 'en'
+                    ? 'of the past and focus on the present!'
+                    : 'минуле і зосередьтесь на сьогоденні!'}
+                </HeaderParagraph>
+              )}
             </Div>
           </>
         )}

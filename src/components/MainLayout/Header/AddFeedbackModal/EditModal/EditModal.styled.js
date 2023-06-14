@@ -35,7 +35,17 @@ export const TextInput = styled.textarea`
   }
 `;
 
-
+export const LabelRating = styled.label`
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 8px;
+  color: rgba(52, 52, 52, 0.8);
+`;
 
 
 
@@ -49,6 +59,7 @@ export const Label = styled.label`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
+  margin-top: 24px;
   color: rgba(52, 52, 52, 0.8);
 `;
 

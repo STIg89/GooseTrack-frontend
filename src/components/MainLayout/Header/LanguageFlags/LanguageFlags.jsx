@@ -20,7 +20,7 @@ export default function LanguageFlags() {
     {
       code: 'ua',
       country_code: 'ua',
-      name: 'Ukrainian',
+      name: 'Українська',
     },
   ];
 
@@ -79,38 +79,34 @@ export default function LanguageFlags() {
           },
         }}
       >
-        {/* title={name} key={code} arrow placement="left" */}
         {languages.map(({ code, name, country_code }) => (
           <Tooltip key={code}>
             <MenuItem
               style={{
-                // height: '32px',
+                height: '24px',
+                padding: '4px',
                 backgroundColor:
                   currentLanguageCode === code
                     ? 'var(--accent-background-color)'
                     : '#F8F8F8',
                 border:
                   currentLanguageCode === code
-                    ? '1px solid #989898'
+                    ? '1px solid #ffffff'
+                    : '#F8F8F8',
+                textColor:
+                  currentLanguageCode === code
+                    ? 'var(--primary-background-color)'
                     : '#F8F8F8',
               }}
             >
-              {/* <FlagsImg srcSet={`${gbFlag}`} src={gbFlag} alt="gbFlag" /> */}
               <IconButton
                 className={classNames('dropdown-item')}
                 onClick={() => {
                   i18next.changeLanguage(code);
                 }}
+                style={{ fontSize: '18px' }}
               >
                 {name}
-                {/* <div
-                  className={`flag-icons flag-icons-${country_code}`}
-                  style={{
-                    opacity: currentLanguageCode === code ? 1 : 0.3,
-                    width: '3rem',
-                    height: '2rem',
-                  }}
-                ></div> */}
               </IconButton>
             </MenuItem>
           </Tooltip>
@@ -119,5 +115,3 @@ export default function LanguageFlags() {
     </Div>
   );
 }
-
-// #D8D8D8

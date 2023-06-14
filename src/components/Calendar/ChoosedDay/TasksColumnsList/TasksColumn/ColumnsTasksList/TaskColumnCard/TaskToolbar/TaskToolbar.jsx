@@ -22,7 +22,6 @@ const TaskToolBar = ({ id, addCategory }) => {
   const tasks = useSelector(selectTasks);
   let editTask = tasks.find(task => task._id === id);
 
-  // const category = ['to-do', 'in-progress', 'done'];
   const currentLanguageCode = Cookies.get('i18next');
 
   const category = [
@@ -50,15 +49,13 @@ const TaskToolBar = ({ id, addCategory }) => {
     dispatch(patchTask({ id: id, task: { category: editTask.category } }));
   }
   let { currentDay } = useParams();
-
-  const onDeleteHendler = () => {
-    dispatch(deleteTask(id));
+  const onDeleteHendler = async () => {
+    await dispatch(deleteTask(id));
 
     const date = new Date(currentDay);
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
-
     const reqObj = {
       month,
       day,
@@ -66,8 +63,7 @@ const TaskToolBar = ({ id, addCategory }) => {
       page: 1,
       limit: 100,
     };
-
-    dispatch(fetchDayTasks(reqObj));
+    await dispatch(fetchDayTasks(reqObj));
   };
 
   const chouseCatRef = useRef(null);
@@ -138,7 +134,7 @@ const TaskToolBar = ({ id, addCategory }) => {
         </ToolBarItem>
       </BtnStyled>
 
-      <BtnStyled type="button" onClick={() => onDeleteHendler(id)}>
+      <BtnStyled type="button" onClick={onDeleteHendler}>
         <ToolBarItem>
           <use href={`${Icons}#task-trash-sf`}></use>
         </ToolBarItem>

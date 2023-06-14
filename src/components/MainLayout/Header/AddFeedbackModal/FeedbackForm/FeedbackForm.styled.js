@@ -13,7 +13,7 @@ export const LabelRating = styled.label`
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   color: var(--task-modal-label-color);
 `;
 
@@ -47,7 +47,7 @@ export const TextInput = styled.textarea`
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
-    color: #343434;
+    color: var(--label-text);;
   }
 `;
 

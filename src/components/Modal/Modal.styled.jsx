@@ -19,8 +19,12 @@ const fadeOut = keyframes`
  `;
 
 export const Overlay = styled.div`
-  opacity: ${props => (props.isOpened ? 1 : 0)};
-  visibility: ${props => (props.isOpened ? 'visible' : 'hidden')};
+  opacity: ${props =>
+    props.animationModal && props.animationModalOnSubmit ? 1 : 0};
+  visibility: ${props =>
+    props.animationModal && props.animationModalOnSubmit
+      ? 'visible'
+      : 'hidden'};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,8 +35,10 @@ export const Overlay = styled.div`
   height: 100%;
   background-color: var(--ovarlay-background-color);
   z-index: 1200;
-
-  animation: ${props => (props.isOpened ? fadeIn : fadeOut)} 400ms ease;
+  transition: opacity 300ms ease, visibility 300ms ease;
+  animation: ${props =>
+      props.animationModal && props.animationModalOnSubmit ? fadeIn : fadeOut}
+    300ms ease;
 `;
 
 export const ModalStyled = styled.div`
