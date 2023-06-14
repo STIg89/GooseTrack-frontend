@@ -20,6 +20,7 @@ import { Rating } from 'react-simple-star-rating';
 import axios from 'axios';
 import { selectUser } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 const FeedbackList = ({
   setReviewsList,
@@ -31,6 +32,8 @@ const FeedbackList = ({
   const [isOpened, setIsOpened] = useState(false);
 
   const { name, avatarURL } = useSelector(selectUser);
+
+  const { i18n } = useTranslation();
 
   const firstLetter = name?.charAt(0).toUpperCase();
 
@@ -54,7 +57,9 @@ const FeedbackList = ({
         {setReviewsList && setReviewsList.length ? (
           ''
         ) : (
-          <NoReview>No reviews</NoReview>
+          <NoReview>
+            {i18n.language === 'en' ? 'No reviews' : 'Немає відгуків'}
+          </NoReview>
         )}
         {setReviewsList &&
           setReviewsList.map((item, index) => {
