@@ -91,6 +91,7 @@ export const AvatarPlaceholder = styled.div`
   background-color: var(--avatar-background-color);
   color: var(--avatar-fill-color);
   font-size: 48px;
+  cursor: default;
 `;
 
 export const AvatarLabel = styled.label`
@@ -147,6 +148,7 @@ export const UserTitle = styled.h2`
   font-size: 14px;
   line-height: 1.3;
   color: var(--calendar-digit-color);
+  cursor: default;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -161,6 +163,7 @@ export const User = styled.p`
   font-size: 12px;
   line-height: 1.16;
   color: var(--label-text);
+  cursor: default;
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
