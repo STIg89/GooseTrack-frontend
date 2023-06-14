@@ -25,9 +25,9 @@ const TaskToolBar = ({ id, addCategory }) => {
   const currentLanguageCode = Cookies.get('i18next');
 
   const category = [
-    { en: 'to-do', ua: 'Зробити' },
-    { en: 'in-progress', ua: 'В процесі' },
-    { en: 'done', ua: 'Зроблено' },
+    { name: 'to-do', en: 'To do', ua: 'Зробити' },
+    { name: 'in-progress', en: 'In progress', ua: 'В процесі' },
+    { name: 'done', en: 'Done', ua: 'Зроблено' },
   ];
 
   const [showEditBtn, setShowEditBtn] = useState(false);
@@ -101,7 +101,7 @@ const TaskToolBar = ({ id, addCategory }) => {
         >
           {category.map(item => {
             return (
-              item.en !== editTask.category && (
+              item.name !== editTask.category && (
                 <div key={Math.random()}>
                   <LabelStyled>
                     {currentLanguageCode === 'en' ? item.en : item.ua}
@@ -110,8 +110,8 @@ const TaskToolBar = ({ id, addCategory }) => {
                     </ToolBarItem>
                     <InputStyled
                       type="radio"
-                      value={item.en}
-                      checked={selectedOption === item.en}
+                      value={item.name}
+                      checked={selectedOption === item.name}
                       onChange={handleOptionChange}
                     />
                   </LabelStyled>

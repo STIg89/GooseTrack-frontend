@@ -9,7 +9,7 @@ const TasksColumnsList = ({ readinessTasks }) => {
   return (
     <ColumnsList>
       <TasksColumn
-        headName={i18n.language === 'en' ? 'To do' : 'Потрібно зробити'}
+        headName={i18n.language === 'en' ? 'To do' : 'Зробити'}
         tasks={readinessTasks.todotasks}
         addCategory="to-do"
       />
