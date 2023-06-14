@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/GooseTrack-frontend/static/css/main.c83fad16.css",
-    "main.js": "/GooseTrack-frontend/static/js/main.377332af.js",
+    "main.js": "/GooseTrack-frontend/static/js/main.b883e439.js",
     "static/js/66.e996407b.chunk.js": "/GooseTrack-frontend/static/js/66.e996407b.chunk.js",
     "static/js/735.aa8baa2d.chunk.js": "/GooseTrack-frontend/static/js/735.aa8baa2d.chunk.js",
     "static/js/725.e683db75.chunk.js": "/GooseTrack-frontend/static/js/725.e683db75.chunk.js",
-    "static/js/87.a9b645a3.chunk.js": "/GooseTrack-frontend/static/js/87.a9b645a3.chunk.js",
+    "static/js/87.2104c51a.chunk.js": "/GooseTrack-frontend/static/js/87.2104c51a.chunk.js",
     "static/js/921.1d3af901.chunk.js": "/GooseTrack-frontend/static/js/921.1d3af901.chunk.js",
     "static/js/568.ab011492.chunk.js": "/GooseTrack-frontend/static/js/568.ab011492.chunk.js",
     "static/css/44.7be6b325.chunk.css": "/GooseTrack-frontend/static/css/44.7be6b325.chunk.css",
@@ -58,11 +58,11 @@
     "index.html": "/GooseTrack-frontend/index.html",
     "static/media/getFetch.cjs": "/GooseTrack-frontend/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.c83fad16.css.map": "/GooseTrack-frontend/static/css/main.c83fad16.css.map",
-    "main.377332af.js.map": "/GooseTrack-frontend/static/js/main.377332af.js.map",
+    "main.b883e439.js.map": "/GooseTrack-frontend/static/js/main.b883e439.js.map",
     "66.e996407b.chunk.js.map": "/GooseTrack-frontend/static/js/66.e996407b.chunk.js.map",
     "735.aa8baa2d.chunk.js.map": "/GooseTrack-frontend/static/js/735.aa8baa2d.chunk.js.map",
     "725.e683db75.chunk.js.map": "/GooseTrack-frontend/static/js/725.e683db75.chunk.js.map",
-    "87.a9b645a3.chunk.js.map": "/GooseTrack-frontend/static/js/87.a9b645a3.chunk.js.map",
+    "87.2104c51a.chunk.js.map": "/GooseTrack-frontend/static/js/87.2104c51a.chunk.js.map",
     "921.1d3af901.chunk.js.map": "/GooseTrack-frontend/static/js/921.1d3af901.chunk.js.map",
     "568.ab011492.chunk.js.map": "/GooseTrack-frontend/static/js/568.ab011492.chunk.js.map",
     "44.7be6b325.chunk.css.map": "/GooseTrack-frontend/static/css/44.7be6b325.chunk.css.map",
@@ -71,6 +71,6 @@
   },
   "entrypoints": [
     "static/css/main.c83fad16.css",
-    "static/js/main.377332af.js"
+    "static/js/main.b883e439.js"
   ]
 }
