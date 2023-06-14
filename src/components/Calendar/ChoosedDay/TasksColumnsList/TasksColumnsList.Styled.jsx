@@ -8,6 +8,7 @@ export const ColumnsList = styled.ul`
     gap: 16px;
     overflow: auto;
     width: 100%;
+    cursor: default;
 
     @media screen and (min-width: 1440px) {
       gap: 27px;

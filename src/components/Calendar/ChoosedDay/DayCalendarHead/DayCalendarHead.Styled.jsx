@@ -13,6 +13,7 @@ export const DayList = styled.ul`
     height: 68px;
     font-size: 14px;
   }
+  cursor: pointer;
 `;
 
 export const DayWrap = styled.div`
