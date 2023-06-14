@@ -10,10 +10,13 @@ export const FooterWrapper = styled.footer`
 `;
 
 export const FooterContainer = styled.div`
-  position: relative;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0 auto;
+
+  @media screen and (max-width: 375px) {
+    padding-bottom: 60px;
+  }
 `;
 
 export const FooterText = styled.p`
