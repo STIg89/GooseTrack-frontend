@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { UserForm } from '../../components/UserForm/UserForm/UserForm';
 import { ChangePassword } from '../../components/UserForm/ChangePassword/ChangePassword';
+import { useTranslation } from 'react-i18next';
 
 import { Wrapper, Button, Separator } from './AccountPage.styled';
 
 const AccountPage = () => {
   const [isChangePassword, setIsChangePassword] = useState(false);
+
+  // Translation
+  const { i18n } = useTranslation();
 
   return (
     <>
@@ -16,7 +20,7 @@ const AccountPage = () => {
           onClick={() => setIsChangePassword(false)}
           className={`${isChangePassword ? 'notactive' : 'active'}`}
         >
-          Personal Details
+          {i18n.language === 'en' ? 'Personal Details' : 'Особисті дані'}
         </Button>
         <Separator> | </Separator>
         <Button
@@ -24,7 +28,7 @@ const AccountPage = () => {
           onClick={() => setIsChangePassword(true)}
           className={` ${isChangePassword ? 'active' : 'notactive'}`}
         >
-          Change Passcode
+          {i18n.language === 'en' ? 'Change Password' : 'Змінити пароль'}
         </Button>
       </Wrapper>
 

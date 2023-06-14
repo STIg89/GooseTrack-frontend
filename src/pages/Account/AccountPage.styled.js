@@ -9,7 +9,7 @@ export const Button = styled.div`
   padding: 6px 12px;
   border-radius: 8px;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1.29;
   width: 200px;
   text-align: center;
@@ -17,6 +17,10 @@ export const Button = styled.div`
 
   background-color: var(--color-button-period-type);
   color: var(--btn-text-color);
+
+  @media screen and (min-width: 375px) {
+    font-size: 12px;
+  }
 
   @media screen and (min-width: 768px) {
     padding: 8px 12px;
@@ -36,7 +40,7 @@ export const Button = styled.div`
   }
 
   &:hover {
-    background-color: var(--border-cloud-color);
+    background-color: var(--priority-low-bg-color);
     color: var(--color-button-period-type);
   }
 `;

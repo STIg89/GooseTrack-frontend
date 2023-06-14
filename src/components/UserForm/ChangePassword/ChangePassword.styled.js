@@ -101,13 +101,14 @@ export const StyledInput = styled(Field)`
   border-radius: 8px;
   background: var(--primary-background-color);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.3;
   color: var(--primary-text-color);
   outline: none;
 
   @media screen and (min-width: 375px) {
     width: 299px;
+    font-size: 14px;
   }
 
   @media screen and (min-width: 768px) {
