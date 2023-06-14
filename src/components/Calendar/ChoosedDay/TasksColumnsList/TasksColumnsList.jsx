@@ -9,19 +9,19 @@ const TasksColumnsList = ({ readinessTasks }) => {
   const [boards, setBoards] = useState([
     {
       id: 1,
-      headName: 'To do',
+      headName: i18n.language === 'en' ? 'To do' : 'Потрібно зробити',
       tasks: readinessTasks.todotasks,
       addCategory: 'to-do',
     },
     {
       id: 2,
-      headName: 'In progress',
+      headName: i18n.language === 'en' ? 'In progress' : 'В процесі',
       tasks: readinessTasks.inprogresstasks,
       addCategory: 'in-progress',
     },
     {
       id: 3,
-      headName: 'Done',
+      headName: i18n.language === 'en' ? 'Done' : 'Зроблено',
       tasks: readinessTasks.donetasks,
       addCategory: 'done',
     },
@@ -48,7 +48,19 @@ const TasksColumnsList = ({ readinessTasks }) => {
   };
   return (
     <ColumnsList>
-      <TasksColumn
+      {boards.map(board => (
+        <TasksColumn
+          headName={board.headName}
+          tasks={board.tasks}
+          addCategory={board.addCategory}
+          key={board.id}
+          item={board}
+          onDragStart={handleDragStart}
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+        />
+      ))}
+      {/* <TasksColumn
         headName={i18n.language === 'en' ? 'To do' : 'Потрібно зробити'}
         tasks={readinessTasks.todotasks}
         addCategory="to-do"
@@ -64,7 +76,7 @@ const TasksColumnsList = ({ readinessTasks }) => {
         headName={i18n.language === 'en' ? 'Done' : 'Зроблено'}
         tasks={readinessTasks.donetasks}
         addCategory="done"
-      />
+      /> */}
     </ColumnsList>
   );
 };
