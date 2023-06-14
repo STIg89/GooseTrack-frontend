@@ -35,7 +35,6 @@ const TaskForm = ({
   addCategory,
   setAnimationModal,
 }) => {
-  const { t } = useTranslation();
   const [title, setTitle] = useState(editTask?.title || '');
   const [start, setStart] = useState(editTask?.start || '09:00');
   const [end, setEnd] = useState(editTask?.end || '09:30');
@@ -44,6 +43,8 @@ const TaskForm = ({
   const category = editTask?.category || 'to-do';
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
+
+  const { i18n } = useTranslation();
 
   const validDate = useDateValidation();
   const currentDay = format(validDate, 'yyyy-MM-dd');
@@ -144,11 +145,11 @@ const TaskForm = ({
   return (
     <Form onSubmit={handleSubmit}>
       <InputContaiter>
-        <Label>{t('Title')}</Label>
+        <Label>{i18n.language === 'en' ? 'Title' : 'Заголовок'}</Label>
         <Input
           maxLength={250}
           type="text"
-          placeholder={t('Enter text')}
+          placeholder={i18n.language === 'en' ? 'Enter text' : 'Введіть текст'}
           name="title"
           onChange={handleChange}
           value={title}
@@ -157,7 +158,7 @@ const TaskForm = ({
 
       <InputTimeContaiter>
         <InputContaiter>
-          <Label>{t('Start')}</Label>
+          <Label>{i18n.language === 'en' ? 'Start' : 'Початок'}</Label>
           <Input
             type="time"
             name="start"
@@ -168,7 +169,7 @@ const TaskForm = ({
         </InputContaiter>
 
         <InputContaiter>
-          <Label>{t('End')}</Label>
+          <Label>{i18n.language === 'en' ? 'End' : 'Кінець'}</Label>
           <Input
             type="time"
             name="end"
@@ -188,7 +189,7 @@ const TaskForm = ({
             checked={selectedOption === 'low'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{t('Low')}</RadioLabel>
+          <RadioLabel>{i18n.language === 'en' ? 'Low' : 'Низький'}</RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioInput
@@ -198,7 +199,9 @@ const TaskForm = ({
             checked={selectedOption === 'medium'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{t('Medium')}</RadioLabel>
+          <RadioLabel>
+            {i18n.language === 'en' ? 'Medium' : 'Середній'}
+          </RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
           <RadioInput
@@ -208,7 +211,7 @@ const TaskForm = ({
             checked={selectedOption === 'high'}
             onChange={handleOptionChange}
           />
-          <RadioLabel>{t('High')}</RadioLabel>
+          <RadioLabel>{i18n.language === 'en' ? 'High' : 'Високий'}</RadioLabel>
         </RadioButtonContainer>
       </RadioButtonsContainer>
 
@@ -218,7 +221,7 @@ const TaskForm = ({
             <EditIcon>
               <use href={`${Icons}#edit-btn-s`}></use>
             </EditIcon>
-            {t('Edit')}
+            {i18n.language === 'en' ? 'Edit' : 'Редагувати'}
           </EditButton>
         ) : (
           <>
@@ -226,10 +229,10 @@ const TaskForm = ({
               <AddIcon>
                 <use href={`${Icons}#add-btn-s`}></use>
               </AddIcon>
-              {t('Add')}
+              {i18n.language === 'en' ? 'Add' : 'Додати'}
             </AddButton>
             <CancelButton type="button" onClick={closeModal}>
-              {t('Cancel')}
+              {i18n.language === 'en' ? 'Cancel' : 'Відміна'}
             </CancelButton>
           </>
         )}

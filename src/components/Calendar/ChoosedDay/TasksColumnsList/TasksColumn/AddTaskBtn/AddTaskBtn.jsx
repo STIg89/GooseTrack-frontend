@@ -8,7 +8,7 @@ import { TaskBtn, TaskBtnsvg } from './AddTaskBtn.Styled';
 import Icons from 'images/sprite.svg';
 
 const AddTaskBtn = ({ addCategory }) => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
   const [isOpened, setIsOpened] = useState(false);
 
   const handleToggleModal = () => {
@@ -21,7 +21,7 @@ const AddTaskBtn = ({ addCategory }) => {
         <TaskBtnsvg>
           <use href={`${Icons}#add-btn-s`}></use>
         </TaskBtnsvg>
-        {t('Add task')}
+        {i18n.language === 'en' ? 'Add task' : 'Додати завдання'}
       </TaskBtn>
       {isOpened && (
         <TaskModal

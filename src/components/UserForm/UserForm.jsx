@@ -192,7 +192,7 @@ export const UserForm = () => {
                     value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="Enter your name"
+                    placeholder={t('Enter your name')}
                   />
 
                   {/* Error image */}
@@ -290,7 +290,7 @@ export const UserForm = () => {
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="Enter your email"
+                    placeholder={t('Enter your email')}
                   />
                   {/* Error image */}
                   {errors.email && touched.email ? (
@@ -382,7 +382,7 @@ export const UserForm = () => {
                     value={values.skype}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="Add a skype number"
+                    placeholder={t('Add a skype number')}
                   />
                   {/* Error image */}
                   {errors.skype && touched.skype ? (
