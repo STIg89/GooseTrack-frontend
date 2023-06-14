@@ -27,24 +27,27 @@ const TasksColumnsList = ({ readinessTasks }) => {
     },
   ]);
   const handleDragStart = (event, item) => {
-    console.log('handleDragStart in taskscolumnList,event:', event);
-    event.dataTransfer.setData('text/plain', item);
+    // console.log('handleDragStart in taskscolumnList,event:', event);
+    console.log('handleDragStart in taskscolumnList,item:', item);
+
+    event.dataTransfer.setData('task/moving', JSON.stringify(item));
   };
 
   const handleDrop = data => {
-    const newItems = boards.filter(item => item !== data);
-    console.log('handleDrop in taskscolumnList boards:', boards);
+    // const newItems = boards.filter(item => item.id !== data.id);
+
+    // console.log('handleDrop in taskscolumnList boards:', boards);
     console.log('handleDrop in taskscolumnList data:', data);
+    // console.log('handleDrop in taskscolumnList newItems:', newItems);
 
-    console.log('handleDrop in taskscolumnList newItems:', newItems);
+    // console.log('handleDrop in taskscolumnList newItems:', newItems);
 
-    setBoards(newItems);
+    // setBoards(newItems);
   };
 
   const handleDragOver = event => {
-    console.log('handleDragOver in taskscolumnList ,event:', event);
-
-    event.preventDefault();
+    // console.log('handleDragOver in taskscolumnList ,event:', event);
+    // event.preventDefault();
   };
   return (
     <ColumnsList>

@@ -14,14 +14,18 @@ const TasksColumn = ({
   onDragStart,
 }) => {
   const handleDrop = event => {
-    console.log('handleDrop in Task Column,event:', event);
+    // console.log('handleDrop in Task Column,event:', event);
     event.preventDefault();
-    const data = event.dataTransfer.getData('text/plain');
+    const data = event.dataTransfer.getData('task/moving');
+    // console.log('handleDrop in Task Column,data:', JSON.stringify(data));
+    console.log('handleDrop in Task Column,data.id:', data.id);
+    console.log('handleDrop in Task Column,key:', key);
+
     onDrop(data);
   };
 
   const handleDragOver = event => {
-    console.log('handleDragOver in Task Column,event:', event);
+    // console.log('handleDragOver in Task Column,event:', event);
 
     event.preventDefault();
     onDragOver();
