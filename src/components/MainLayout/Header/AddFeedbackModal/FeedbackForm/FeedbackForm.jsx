@@ -13,7 +13,7 @@ import { Rating } from 'react-simple-star-rating';
 
 import { useTranslation } from 'react-i18next';
 
-const FeedbackForm = ({ fetchData }) => {
+const FeedbackForm = ({ fetchData, setAnimationModal, onCloseModal }) => {
   const { t } = useTranslation();
   const [newComment, setNewComment] = useState('');
   const [newRate, setNewRate] = useState(0);
@@ -75,9 +75,17 @@ const FeedbackForm = ({ fetchData }) => {
     }
   };
 
+  const handleSubmit = () => {
+    setAnimationModal(false);
+
+    setTimeout(() => {
+      onCloseModal();
+    }, 300);
+  };
+
   return (
     <>
-      <ModalForm>
+      <ModalForm onSubmit={handleSubmit}>
         <LabelRating>{t('Rating')}</LabelRating>
         <Rating
           onClick={e => onStarClickClick(e)}

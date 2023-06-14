@@ -16,7 +16,7 @@ import { tasksSliceReducer } from '../redux/tasks/slice';
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken', 'refreshToken'],
 };
 
 const persistedReducer = persistReducer(persistConfig, authReducer);

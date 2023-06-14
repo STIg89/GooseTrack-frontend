@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const FeedbackModal = ({ onCloseModal, isOpened }) => {
   const [reviews, setReviews] = useState('');
+  const [animationModal, setAnimationModal] = useState(isOpened);
 
   const fetchData = async () => {
     const response = await axios.get(`api/reviews/user`);
@@ -17,9 +18,23 @@ const FeedbackModal = ({ onCloseModal, isOpened }) => {
     fetchData();
   }, []);
   return (
-    <Modal onCloseModal={onCloseModal} isOpened={isOpened}>
-      <FeedbackForm fetchData={fetchData} />
-      <FeedbackList fetchData={fetchData} setReviewsList={reviews} />
+    <Modal
+      onCloseModal={onCloseModal}
+      isOpened={isOpened}
+      animationModalOnSubmit={animationModal}
+    >
+      <FeedbackForm
+        fetchData={fetchData}
+        setAnimationModal={setAnimationModal}
+        onCloseModal={onCloseModal}
+      />
+      <FeedbackList
+        fetchData={fetchData}
+        setReviewsList={reviews}
+        setAnimationModal={setAnimationModal}
+        onCloseModal={onCloseModal}
+        animationModal={animationModal}
+      />
     </Modal>
   );
 };

@@ -37,7 +37,10 @@
   "Review": "Відгук",
   "Save": "Зберегти",
   "No reviews": "Немає відгуків",
-   "Let go": "Відпустіть",
-  "of the past and focus on the present!": "минуле і зосередьтесь на сьогоденні!"
-  
+  "Let go": "Відпустіть",
+  "of the past and focus on the present!": "минуле і зосередьтесь на сьогоденні!",
+  "Enter your name": "Ведіть своє ім'я",
+  "Enter your email": "Введіть свою електронну адресу",
+  "Add a skype number": "Додайте номер Skype",
+  "Name is a required field": "Ім'я обов'язкове поле"
 }

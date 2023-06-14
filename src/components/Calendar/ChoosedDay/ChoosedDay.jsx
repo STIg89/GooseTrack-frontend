@@ -32,6 +32,7 @@ const ChoosedDay = ({ selectedDay, setSelectedDay }) => {
     dispatch(fetchDayTasks(reqObj));
   }, [selectedDay, dispatch, isLoggedIn, isRefreshing]);
 
+
   const tasks = useSelector(selectTasks);
 
   const readinessTasks = {

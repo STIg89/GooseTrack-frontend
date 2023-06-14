@@ -14,7 +14,7 @@ const PeriodTypeSelect = ({
   currentDate,
   setCurrentDate,
 }) => {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
   const params = useParams();
   const parsedDate = parseDate(currentDate);
   return (
@@ -27,7 +27,7 @@ const PeriodTypeSelect = ({
             setCurrentDate(selectedDay);
           }}
         >
-          {t('Month')}
+          {i18n.language === 'en' ? 'Month' : 'Місяць'}
         </TypesTabs>
         <TypesTabs
           to={`day/${parsedDate}`}
@@ -36,7 +36,7 @@ const PeriodTypeSelect = ({
           }}
           disabled={params.currentDay ? true : false}
         >
-          {t('Day')}
+          {i18n.language === 'en' ? 'Day' : 'День'}
         </TypesTabs>
       </TypesTabsContainer>
     </TabsFlex>
