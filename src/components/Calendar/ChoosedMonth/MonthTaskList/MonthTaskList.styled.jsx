@@ -40,6 +40,7 @@ export const TaskItem = styled.li`
   font-size: 10px;
   line-height: 14px;
   border-radius: 8px;
+  cursor: pointer;
   background-color: ${props =>
     props.priority === 'low'
       ? 'var(--priority-low-bg-color)'
@@ -59,6 +60,15 @@ export const TaskItem = styled.li`
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
+  &:hover,
+  &:focus {
+    background-color: ${props =>
+      props.priority === 'low'
+        ? 'var(--task-priority-low-checked-color)'
+        : props.priority === 'medium'
+        ? 'var(--task-priority-medium-checked-color)'
+        : 'var(--task-priority-high-checked-color)'};
+  }
   @media screen and (min-width: 768px) {
     font-size: 14px;
     line-height: 1.29;

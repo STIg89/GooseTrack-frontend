@@ -18,6 +18,7 @@ export const ColumnCell = styled.div`
   color: var(--calendar-digit-color);
 
   pointer-events: pointer;
+
   &.disabled {
     color: transparent;
     pointer-events: none;
@@ -45,6 +46,11 @@ export const Number = styled.div`
   padding: 4px 6px;
   border-radius: 6px;
   transition: 0.1s ease-in;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: rgb(62, 133, 243, 0.3);
+  }
   @media screen and (min-width: 768px) {
     padding: 4px 8px;
     top: 8px;
