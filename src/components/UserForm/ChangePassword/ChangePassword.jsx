@@ -146,11 +146,11 @@ export const ChangePassword = () => {
                 >
                   {showOldPassword ? (
                     <ViewIcon>
-                      <use href={`${Icons}#icon-eye`}></use>
+                      <use href={`${Icons}#opened-eye`}></use>
                     </ViewIcon>
                   ) : (
                     <HideIcon>
-                      <use href={`${Icons}#icon-eye-blocked`}></use>
+                      <use href={`${Icons}#closed-eye`}></use>
                     </HideIcon>
                   )}
                 </ShowButton>
@@ -204,11 +204,11 @@ export const ChangePassword = () => {
                 >
                   {showNewPassword ? (
                     <ViewIcon>
-                      <use href={`${Icons}#icon-eye`}></use>
+                      <use href={`${Icons}#opened-eye`}></use>
                     </ViewIcon>
                   ) : (
                     <HideIcon>
-                      <use href={`${Icons}#icon-eye-blocked`}></use>
+                      <use href={`${Icons}#closed-eye`}></use>
                     </HideIcon>
                   )}
                 </ShowButton>
@@ -269,11 +269,11 @@ export const ChangePassword = () => {
                 >
                   {showConfimedPassword ? (
                     <ViewIcon>
-                      <use href={`${Icons}#icon-eye`}></use>
+                      <use href={`${Icons}#opened-eye`}></use>
                     </ViewIcon>
                   ) : (
                     <HideIcon>
-                      <use href={`${Icons}#icon-eye-blocked`}></use>
+                      <use href={`${Icons}#closed-eye`}></use>
                     </HideIcon>
                   )}
                 </ShowButton>

@@ -38,23 +38,6 @@ export const StyledForm = styled(Form)`
   }
 `;
 
-// User
-export const UserTitle = styled.h2`
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 4px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.3;
-  color: var(--calendar-digit-color);
-
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    margin-bottom: 8px;
-    line-height: 1;
-  }
-`;
-
 //  Inputs
 export const Inputs = styled.div`
   width: 100%;
