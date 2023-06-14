@@ -131,3 +131,45 @@ export const ReviewsSliderStyled = styled.main`
     }
   }
 `;
+
+export const SwaggerButtonStyle = styled.a`
+  display: flex;
+  position: absolute;
+  bottom: -60px;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  background-color: blue;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto;
+  transition: all 0.3s;
+  overflow: hidden;
+
+  &::before {
+    content: 'S';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 14px;
+    font-weight: bold;
+    transition: opacity 0.3s;
+  }
+
+  &:hover::before {
+    transform: translate(-50%, -50%) scale(0);
+  }
+`;
+
+export const SwaggerText = styled.span`
+  position: absolute;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 5px;
+  opacity: 0;
+  transition: all 0.3s;
+`;
