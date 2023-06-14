@@ -110,8 +110,8 @@ const TaskToolBar = ({ id, addCategory }) => {
                     </ToolBarItem>
                     <InputStyled
                       type="radio"
-                      value={item.en}
-                      checked={selectedOption === item.en}
+                      value={item.name}
+                      checked={selectedOption === item.name}
                       onChange={handleOptionChange}
                     />
                   </LabelStyled>
