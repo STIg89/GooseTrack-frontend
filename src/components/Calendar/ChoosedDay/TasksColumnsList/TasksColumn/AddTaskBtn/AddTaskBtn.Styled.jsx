@@ -18,6 +18,8 @@ export const TaskBtn = styled.button`
   line-height: 18px;
   align: center;
   vertical-align: top;
+  transition: background-color 250ms;
+
   :hover {
     background-color: var(--hover-btn-background-color);
   }
@@ -25,5 +27,6 @@ export const TaskBtn = styled.button`
 export const TaskBtnsvg = styled.svg`
   width: 14px;
   height: 14px;
+  margin-right: 8px;
   stroke: var(--primary-text-color);
 `;

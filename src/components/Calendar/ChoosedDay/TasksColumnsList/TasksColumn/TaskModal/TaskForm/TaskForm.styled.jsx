@@ -20,7 +20,11 @@ export const InputTimeContaiter = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 15px;
+  gap: 11px;
+
+  @media screen and (min-width: 375px) {
+    gap: 15px;
+  }
 `;
 
 export const Label = styled.label`
@@ -53,6 +57,7 @@ export const RadioButtonsContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-left: 2px;
 
   @media screen and (min-width: 768px) {
     margin-top: 10px;
@@ -150,7 +155,7 @@ export const RadioInput = styled.input`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 14px;
-  margin-top: 32px;
+  margin-top: 18px;
   width: 100%;
 `;
 
@@ -167,18 +172,18 @@ export const AddButton = styled.button`
   color: var(--btn-text-color);
   outline: none;
   border: none;
-  padding: 12px 40px;
+  padding: 12px 21px;
   background-color: var(--color-button-period-type);
   border-radius: 8px;
   transition: background-color 250ms;
 
   &:hover,
   &:focus {
-    background-color: #1f78fc;
+    background-color: var(--hover-btn-background-color);
   }
 
   @media screen and (min-width: 768px) {
-    padding: 15px 63px;
+    padding: 15px 51px;
   }
 `;
 
@@ -204,7 +209,7 @@ export const CancelButton = styled.button`
   color: var(--calendar-digit-color);
   outline: none;
   border: none;
-  padding: 12px 40px;
+  padding: 12px 18px;
   background-color: var(--cancel-button-background-color);
   border-radius: 8px;
   transition: background-color 250ms;
