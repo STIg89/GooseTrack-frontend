@@ -27,7 +27,14 @@ import { useDateValidation } from 'helpers/useDateValidation';
 import { addTask, patchTask } from 'redux/tasks/operations';
 import { selectTasks } from 'redux/tasks/selectors';
 
-const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
+const TaskForm = ({
+  onCloseModal,
+  showEditBtn,
+  id,
+  editTask,
+  addCategory,
+  setAnimationModal,
+}) => {
   const { t } = useTranslation();
   const [title, setTitle] = useState(editTask?.title || '');
   const [start, setStart] = useState(editTask?.start || '09:00');
@@ -46,7 +53,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
     setPriority(event.target.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const edit = {
       title,
@@ -107,7 +114,15 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
       Notify.success('Successfully! Task added.');
     }
 
-    onCloseModal();
+    closeModal();
+  };
+
+  const closeModal = () => {
+    setAnimationModal(false);
+
+    setTimeout(() => {
+      onCloseModal();
+    }, 300);
   };
 
   const handleChange = e => {
@@ -213,7 +228,7 @@ const TaskForm = ({ onCloseModal, showEditBtn, id, editTask, addCategory }) => {
               </AddIcon>
               {t('Add')}
             </AddButton>
-            <CancelButton type="button" onClick={() => onCloseModal()}>
+            <CancelButton type="button" onClick={closeModal}>
               {t('Cancel')}
             </CancelButton>
           </>
