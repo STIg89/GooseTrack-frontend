@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+const media = {
+  tablet: '@media screen and (min-width: 768px)',
+  desktop: '@media screen and (min-width: 1200px)',
+};
+
 export const ModalForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -10,8 +15,6 @@ export const ModalContent = styled.div`
   border-radius: 12px;
   background-color: var(--sidebar-background-color);
 `;
-
-
 
 export const TextInput = styled.textarea`
   width: 100%;
@@ -47,10 +50,6 @@ export const LabelRating = styled.label`
   color: rgba(52, 52, 52, 0.8);
 `;
 
-
-
-
-
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
@@ -75,7 +74,7 @@ export const EditBtn = styled.button`
   align-items: center;
   padding: 10px;
   width: 198px;
-  height: 48px;
+  height: 42px;
   cursor: pointer;
   background: #3e85f3;
   border: none;
@@ -84,6 +83,9 @@ export const EditBtn = styled.button`
   &:hover,
   &:focus {
     background-color: var(--hover-btn-background-color);
+  }
+  ${media.tablet} {
+    height: 48px;
   }
 `;
 
@@ -104,7 +106,7 @@ export const CancelBtn = styled.button`
   align-items: center;
   padding: 10px;
   width: 198px;
-  height: 48px;
+  height: 42px;
   cursor: pointer;
   background: var(--cancel-button-background-color);
   border: none;
@@ -113,6 +115,9 @@ export const CancelBtn = styled.button`
   &:hover,
   &:focus {
     background-color: var(--border-label-color);
+  }
+  ${media.tablet} {
+    height: 48px;
   }
 `;
 
