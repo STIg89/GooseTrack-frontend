@@ -34,6 +34,7 @@ const PeriodTypeSelect = ({
           onClick={() => {
             setSelectedDay(currentDate);
           }}
+          className={window.location.pathname.includes('/day/') ? 'active' : ''}
           disabled={params.currentDay ? true : false}
         >
           {i18n.language === 'en' ? 'Day' : 'День'}
