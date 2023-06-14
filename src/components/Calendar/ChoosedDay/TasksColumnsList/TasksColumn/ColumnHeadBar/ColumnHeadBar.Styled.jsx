@@ -26,6 +26,7 @@ export const AddBtn = styled.button`
   background-color: var(--primary-background-color);
   border-radius: 50%;
   padding: 0;
+  cursor: pointer;
 `;
 export const SvgStyled = styled.svg`
   stroke: var(--close-btn-color);

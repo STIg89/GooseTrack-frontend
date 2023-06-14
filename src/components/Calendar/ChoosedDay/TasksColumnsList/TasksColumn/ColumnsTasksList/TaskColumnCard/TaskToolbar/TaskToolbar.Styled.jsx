@@ -18,6 +18,7 @@ export const Wraper = styled.div`
 export const BtnStyled = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
 `;
 export const BtnArrow = styled.div`
   background-color: transparent;
