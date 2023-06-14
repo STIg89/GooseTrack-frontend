@@ -14,10 +14,11 @@ import { Rating } from 'react-simple-star-rating';
 import { useTranslation } from 'react-i18next';
 
 const FeedbackForm = ({ fetchData, setAnimationModal, onCloseModal }) => {
-  const { t } = useTranslation();
   const [newComment, setNewComment] = useState('');
   const [newRate, setNewRate] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+
+  const { i18n } = useTranslation();
 
   const onStarClickClick = nextValue => {
     changeRate(nextValue);
@@ -86,7 +87,9 @@ const FeedbackForm = ({ fetchData, setAnimationModal, onCloseModal }) => {
   return (
     <>
       <ModalForm onSubmit={handleSubmit}>
-        <LabelRating>{t('Rating')}</LabelRating>
+        <LabelRating>
+          {i18n.language === 'en' ? 'Rating' : 'Рейтинг'}
+        </LabelRating>
         <Rating
           onClick={e => onStarClickClick(e)}
           initialValue={newRate}
@@ -101,9 +104,11 @@ const FeedbackForm = ({ fetchData, setAnimationModal, onCloseModal }) => {
         )}
 
         <Label>
-          {t('Review')}
+          {i18n.language === 'en' ? 'Review' : 'Відгук'}
           <TextInput
-            placeholder={t('Enter text')}
+            placeholder={
+              i18n.language === 'en' ? 'Enter text' : 'Введіть текст'
+            }
             value={newComment}
             name=""
             id="feedback-text"
@@ -120,7 +125,9 @@ const FeedbackForm = ({ fetchData, setAnimationModal, onCloseModal }) => {
           )}
         </Label>
         <SaveBtn type="submit" onClick={totalValidateAndSend}>
-          <SaveBtnText>{t('Save')}</SaveBtnText>
+          <SaveBtnText>
+            {i18n.language === 'en' ? 'Save' : 'Зберегти'}
+          </SaveBtnText>
         </SaveBtn>
       </ModalForm>
     </>
