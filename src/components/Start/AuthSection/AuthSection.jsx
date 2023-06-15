@@ -1,8 +1,6 @@
 import gooseDesk3x from 'images/start-page-goose-desktop-1x.png';
 import gooseDesk2x from 'images/start-page-goose-desktop-2x.png';
 import gooseDesk1x from 'images/start-page-goose-desktop-3x.png';
-import { useTranslation } from 'react-i18next';
-
 import Icons from 'images/sprite.svg';
 import {
   Container,
@@ -18,8 +16,6 @@ import {
 } from './AuthSection.styled';
 
 const AuthSection = () => {
-  const { i18n } = useTranslation();
-
   return (
     <Container>
       <Box>
@@ -38,19 +34,17 @@ const AuthSection = () => {
 
         <BoxBtn>
           <BtnSignUp to={'/register'} type="button">
-            {i18n.language === 'en' ? 'Sign Up' : 'Зареєструватися'}
+            Sign Up
           </BtnSignUp>
 
           <BtnLogIn to={'/login'} type="button">
-            {i18n.language === 'en' ? 'Log In' : 'Увійти'}
+            Log In
             <SvgIcon>
               <use href={`${Icons}#login-door-sf`}></use>
             </SvgIcon>
           </BtnLogIn>
 
-          <BtnSignUpMob type="button">
-            {i18n.language === 'en' ? 'Sign Up' : 'Зареєструватися'}
-          </BtnSignUpMob>
+          <BtnSignUpMob type="button">Sign Up</BtnSignUpMob>
         </BoxBtn>
       </Box>
     </Container>

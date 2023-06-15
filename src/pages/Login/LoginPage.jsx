@@ -15,7 +15,7 @@ const LoginPage = () => {
     <Container>
       <CloudButton to="/">
         <ButtonText>
-          {i18n.language === 'en' ? 'Home' : 'Головна сторінка'}
+          {i18n.language === 'en' ? 'Home' : 'На головну'}
         </ButtonText>
       </CloudButton>
       <LoginForm />
