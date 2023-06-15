@@ -1,5 +1,7 @@
 import { LoginForm } from '../../components/Auth/LoginForm/LoginForm';
 import { AuthNavigate } from '../../components/Auth/AuthNavigate/AuthNavigate';
+import { useTranslation } from 'react-i18next';
+
 import {
   Container,
   CloudButton,
@@ -7,10 +9,14 @@ import {
 } from '../Register/RegisterPage.styled';
 
 const LoginPage = () => {
+  const { i18n } = useTranslation();
+
   return (
     <Container>
       <CloudButton to="/">
-        <ButtonText>Home</ButtonText>
+        <ButtonText>
+          {i18n.language === 'en' ? 'Home' : 'Головна сторінка'}
+        </ButtonText>
       </CloudButton>
       <LoginForm />
       <AuthNavigate route={'/register'} pageName={'Sign Up'} />
