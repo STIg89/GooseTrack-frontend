@@ -47,6 +47,12 @@ export const Input = styled.input`
   border-radius: 8px;
   background-color: var(--task-input-bg-color);
   color: var(--calendar-digit-color);
+  transition: border var(--animation);
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--accent-background-color);
+  }
 
   &::-webkit-calendar-picker-indicator {
     filter: var(--icon-color-time-input);
@@ -85,10 +91,10 @@ export const RadioLabel = styled.label`
 export const RadioInput = styled.input`
   margin-right: 6px;
   appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  outline: 2px solid
+  outline: 1px solid
     ${props => {
       if (props.checked) {
         switch (props.value) {
@@ -115,7 +121,7 @@ export const RadioInput = styled.input`
       }
     }};
 
-  border: 2px solid
+  border: 1px solid
     ${props => {
       if (props.checked) {
         return 'var(--primary-background-color)';
@@ -146,9 +152,58 @@ export const RadioInput = styled.input`
     }
   }};
 
+  @media screen and (min-width: 375px) {
+    width: 10px;
+    height: 10px;
+    border: 2px solid
+      ${props => {
+        if (props.checked) {
+          return 'var(--primary-background-color)';
+        }
+
+        switch (props.value) {
+          case 'low':
+            return 'var(--task-priority-low-color)';
+          case 'medium':
+            return 'var(--task-priority-medium-color)';
+          case 'high':
+            return 'var(--task-priority-high-color)';
+          default:
+            return '';
+        }
+      }};
+
+    outline: 2px solid
+      ${props => {
+        if (props.checked) {
+          switch (props.value) {
+            case 'low':
+              return 'var(--task-priority-low-checked-color)';
+            case 'medium':
+              return 'var(--task-priority-medium-checked-color)';
+            case 'high':
+              return 'var(--task-priority-high-checked-color)';
+            default:
+              return '';
+          }
+        }
+
+        switch (props.value) {
+          case 'low':
+            return 'var(--task-priority-low-color)';
+          case 'medium':
+            return 'var(--task-priority-medium-color)';
+          case 'high':
+            return 'var(--task-priority-high-color)';
+          default:
+            return '';
+        }
+      }};
+  }
+
   &:hover,
   &:focus {
-    transition: border 250ms, outline 250ms;
+    transition: border var(--animation), outline var(--animation);
   }
 `;
 
@@ -175,7 +230,7 @@ export const AddButton = styled.button`
   padding: 12px 21px;
   background-color: var(--color-button-period-type);
   border-radius: 8px;
-  transition: background-color 250ms;
+  transition: background-color var(--animation);
 
   &:hover,
   &:focus {
@@ -212,7 +267,7 @@ export const CancelButton = styled.button`
   padding: 12px 18px;
   background-color: var(--cancel-button-background-color);
   border-radius: 8px;
-  transition: background-color 250ms;
+  transition: background-color var(--animation);
 
   &:hover,
   &:focus {
@@ -240,7 +295,7 @@ export const EditButton = styled.button`
   padding: 12px 40px;
   background-color: #3e85f3;
   border-radius: 8px;
-  transition: background-color 250ms;
+  transition: background-color var(--animation);
 
   &:hover,
   &:focus {

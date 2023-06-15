@@ -1,5 +1,19 @@
 import styled from 'styled-components';
 
+// var(--animation)
+
+export const Svg = styled.svg`
+  transition: color var(--animation), fill var(--animation),
+    stroke var(--animation);
+
+  &:hover,
+  &:focus {
+    color: var(--accent-background-color);
+    fill: var(--accent-background-color);
+    stroke: var(--accent-background-color);
+  }
+`;
+
 export const GroupPeriod = styled.div`
   display: flex;
   gap: 8px;
@@ -11,6 +25,7 @@ export const GroupPeriod = styled.div`
     justify-content: space-between;
   }
 `;
+
 export const PeriodView = styled.div`
   padding: 6px 12px;
   border-radius: 8px;
@@ -29,6 +44,7 @@ export const PeriodView = styled.div`
     line-height: 1.12;
   }
 `;
+
 export const PeriodTabs = styled.button`
   display: flex;
   justify-content: center;
@@ -51,11 +67,13 @@ export const PeriodTabs = styled.button`
     fill: transparent;
   }
 `;
+
 export const PeriodTabsContainer = styled.div`
   display: flex;
   border-radius: 8px;
   overflow: hidden;
 `;
+
 export const PeriodContainer = styled.div`
   display: flex;
   justify-content: space-between;

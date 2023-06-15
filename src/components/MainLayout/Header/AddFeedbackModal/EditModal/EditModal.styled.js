@@ -79,6 +79,7 @@ export const EditBtn = styled.button`
   background: #3e85f3;
   border: none;
   border-radius: 8px;
+  transition: background-color var(--animation);
 
   &:hover,
   &:focus {
@@ -111,6 +112,7 @@ export const CancelBtn = styled.button`
   background: var(--cancel-button-background-color);
   border: none;
   border-radius: 8px;
+  transition: background-color var(--animation);
 
   &:hover,
   &:focus {

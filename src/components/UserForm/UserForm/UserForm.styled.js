@@ -471,13 +471,15 @@ export const SubmitBtn = styled.button`
   color: var(--btn-text-color);
   cursor: pointer;
 
+  transition: background-color var(--animation);
+
   :disabled {
     cursor: not-allowed;
   }
 
   :hover,
   :focus {
-    background: var(--hover-btn-background-color);
+    background-color: var(--hover-btn-background-color);
   }
 
   :disabled {

@@ -26,8 +26,22 @@ export const Day = styled.span`
   text-align: center;
   width: 20px;
   height: 22px;
-  :hover {
+  transition: background-color var(--animation), color var(--animation);
+
+  &.active-day.selected {
     background-color: var(--accent-background-color);
+    color: var(--btn-text-color);
+  }
+
+  &.active-day.selected:hover,
+  &.active-day.selected:focus {
+    background-color: var(--accent-background-color);
+    color: var(--btn-text-color);
+  }
+
+  &.active-day:hover,
+  &.active-day:focus {
+    background-color: rgb(62, 133, 243, 0.7);
     color: var(--btn-text-color);
   }
 `;

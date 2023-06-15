@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import sprite from 'images/sprite.svg';
 import { format } from 'date-fns';
 import {
+  Svg,
   PeriodView,
   PeriodTabs,
   PeriodTabsContainer,
@@ -60,17 +61,17 @@ const PeriodPaginator = ({
       </PeriodView>
       <PeriodTabsContainer>
         <PeriodTabs onClick={params.currentDay ? prevDay : prevMonth}>
-          <svg width="16" height="16">
+          <Svg width="16" height="16">
             <use href={`${sprite}#calendar-right-sf`}></use>
-          </svg>
+          </Svg>
         </PeriodTabs>
         <PeriodTabs
           style={{ transform: 'rotate(180deg)' }}
           onClick={params.currentDay ? nextDay : nextMonth}
         >
-          <svg width="16" height="16">
+          <Svg width="16" height="16">
             <use href={`${sprite}#calendar-right-sf`}></use>
-          </svg>
+          </Svg>
         </PeriodTabs>
       </PeriodTabsContainer>
     </GroupPeriod>

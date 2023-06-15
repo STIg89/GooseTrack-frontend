@@ -70,6 +70,8 @@ export const SaveBtn = styled.button`
   background: #3e85f3;
   border: none;
   border-radius: 8px;
+  transition: background-color var(--animation);
+
   &:hover,
   :focus {
     cursor: pointer;

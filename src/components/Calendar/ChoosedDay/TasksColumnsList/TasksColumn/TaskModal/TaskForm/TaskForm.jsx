@@ -182,36 +182,40 @@ const TaskForm = ({
 
       <RadioButtonsContainer>
         <RadioButtonContainer>
-          <RadioInput
-            type="radio"
-            name="option"
-            value="low"
-            checked={selectedOption === 'low'}
-            onChange={handleOptionChange}
-          />
-          <RadioLabel>{i18n.language === 'en' ? 'Low' : 'Легка'}</RadioLabel>
+          <RadioLabel>
+            <RadioInput
+              type="radio"
+              name="option"
+              value="low"
+              checked={selectedOption === 'low'}
+              onChange={handleOptionChange}
+            />
+            {i18n.language === 'en' ? 'Low' : 'Легка'}
+          </RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
-          <RadioInput
-            type="radio"
-            name="option"
-            value="medium"
-            checked={selectedOption === 'medium'}
-            onChange={handleOptionChange}
-          />
           <RadioLabel>
+            <RadioInput
+              type="radio"
+              name="option"
+              value="medium"
+              checked={selectedOption === 'medium'}
+              onChange={handleOptionChange}
+            />
             {i18n.language === 'en' ? 'Medium' : 'Середня'}
           </RadioLabel>
         </RadioButtonContainer>
         <RadioButtonContainer>
-          <RadioInput
-            type="radio"
-            name="option"
-            value="high"
-            checked={selectedOption === 'high'}
-            onChange={handleOptionChange}
-          />
-          <RadioLabel>{i18n.language === 'en' ? 'High' : 'Складна'}</RadioLabel>
+          <RadioLabel>
+            <RadioInput
+              type="radio"
+              name="option"
+              value="high"
+              checked={selectedOption === 'high'}
+              onChange={handleOptionChange}
+            />
+            {i18n.language === 'en' ? 'High' : 'Складна'}
+          </RadioLabel>
         </RadioButtonContainer>
       </RadioButtonsContainer>
 
