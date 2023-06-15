@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 export const CurrentTeamContainer = styled.div`
-  width: 280px;
+  width: 520px;
   height: 600px;
   padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     height: 583px;
-    /* padding-left: 7px; */
   }
 `;
 
@@ -26,7 +29,6 @@ export const CurrentTeamItem = styled.div`
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 260px;
-    /* padding-left: 7px; */
   }
 `;
 
@@ -58,9 +60,8 @@ export const TeamName = styled.p`
   max-width: 165px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
   text-align: center;
-  color: var(--primary-background-color);
+  color: #ffffff;
 `;
 
 export const TeamSubtitle = styled.h3`
@@ -106,7 +107,8 @@ export const SocIcon = styled.svg`
 
   &:hover,
   &:focus {
-    fill: var(--primary-background-color);
+    fill: var(--accent-btn-background);
+    transition: fill var(--animation);
   }
 `;
 
@@ -114,7 +116,7 @@ export const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 30px;
 `;
 
 export const TeamText = styled.ul`
@@ -122,5 +124,5 @@ export const TeamText = styled.ul`
   font-size: 18px;
   line-height: 1em;
   text-align: center;
-  color: var(--team-background-color);
+  color: #ffffff;
 `;
