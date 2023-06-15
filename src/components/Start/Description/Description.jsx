@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-
 import {
   Container,
   List,
@@ -30,19 +28,15 @@ const Description = () => {
   const ref2 = useRef(null);
   const ref3 = useRef(null);
 
-  const { i18n } = useTranslation();
-
   const blocks = useMemo(
     () => [
       {
         ref: ref1,
         number: '1.',
-        title: 18n.language === 'en' ? 'CALENDAR' : 'КАЛЕНДАР',
-        name: 18n.language === 'en' ? 'VIEW' : 'ПЕРЕГЛЯД',
+        title: 'CALENDAR',
+        name: 'VIEW',
         description:
-          i18n.language === 'en'
-            ? "GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout."
-            : 'Перегляд календаря GooseTrack забезпечує повний огляд вашого розкладу, відображаючи всі ваші завдання, події та зустрічі у візуально привабливому та інтуїтивно зрозумілому макеті.',
+          "GooseTrack's Calendar view provides a comprehensive overview of your schedule, displaying all your tasks, events, and appointments in a visually appealing and intuitive layout.",
         imgSrcSet: `${img01x1} 1x, ${img01x2} 2x, ${img01x3} 3x`,
       },
       {
