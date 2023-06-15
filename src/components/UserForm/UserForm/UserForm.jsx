@@ -86,7 +86,7 @@ export const UserForm = () => {
   };
 
   // Translation
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   registerLocale('enGB', enGB);
   registerLocale('uk', uk);
@@ -201,7 +201,7 @@ export const UserForm = () => {
 
             {/* User data */}
             <UserTitle>{user.name}</UserTitle>
-            <User>{t('user')}</User>
+            <User>{i18n.language === 'en' ? 'user' : 'користувач'}</User>
 
             {/* Inputs */}
             <Inputs>
@@ -213,7 +213,7 @@ export const UserForm = () => {
                     touched.name ? (errors.name ? 'error' : 'success') : ''
                   }`}
                 >
-                  {t('User Name')}
+                  {i18n.language === 'en' ? 'User Name' : "Ім'я користувача"}
                   <StyledInput
                     type="text"
                     name="name"
@@ -224,7 +224,9 @@ export const UserForm = () => {
                     value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder={t('Enter your name')}
+                    placeholder={
+                      i18n.language === 'en' ? 'Enter text' : "Ведіть своє ім'я"
+                    }
                   />
 
                   {/* Error image */}
@@ -256,7 +258,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  {t('Birthday')}
+                  {i18n.language === 'en' ? 'Birthday' : 'Дата народження'}
                   <StyledDatePicker
                     className={`${
                       touched.birthday
@@ -322,7 +324,11 @@ export const UserForm = () => {
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder={t('Enter your email')}
+                    placeholder={
+                      i18n.language === 'en'
+                        ? 'Enter your email'
+                        : 'Введіть вашу електронну адресу'
+                    }
                   />
                   {/* Error image */}
                   {errors.email && touched.email ? (
@@ -352,7 +358,7 @@ export const UserForm = () => {
                       : ''
                   }`}
                 >
-                  {t('Phone')}
+                  {i18n.language === 'en' ? 'Phone' : 'Номер телефону'}
                   <StyledInput
                     className={`${
                       values.phone && touched.phone
@@ -414,7 +420,11 @@ export const UserForm = () => {
                     value={values.skype}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder={t('Add a skype number')}
+                    placeholder={
+                      i18n.language === 'en'
+                        ? 'Add a skype number'
+                        : 'Додайте номер Skype'
+                    }
                   />
                   {/* Error image */}
                   {errors.skype && touched.skype ? (
@@ -436,7 +446,7 @@ export const UserForm = () => {
               type="submit"
               disabled={!dirty || !values.name || !values.email || errors.email}
             >
-              {t('Save changes')}
+              {i18n.language === 'en' ? 'Save changes' : 'Зберегти зміни'}
             </SubmitBtn>
           </StyledForm>
         </Wrapper>
