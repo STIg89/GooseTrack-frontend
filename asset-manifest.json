@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/GooseTrack-frontend/static/css/main.1adcc114.css",
-    "main.js": "/GooseTrack-frontend/static/js/main.39e62b0b.js",
+    "main.js": "/GooseTrack-frontend/static/js/main.2e743ab6.js",
     "static/css/245.dd715ae4.chunk.css": "/GooseTrack-frontend/static/css/245.dd715ae4.chunk.css",
-    "static/js/245.f43bbe30.chunk.js": "/GooseTrack-frontend/static/js/245.f43bbe30.chunk.js",
+    "static/js/245.7d2f8086.chunk.js": "/GooseTrack-frontend/static/js/245.7d2f8086.chunk.js",
     "static/js/735.85239095.chunk.js": "/GooseTrack-frontend/static/js/735.85239095.chunk.js",
     "static/js/725.88dc75fc.chunk.js": "/GooseTrack-frontend/static/js/725.88dc75fc.chunk.js",
     "static/js/946.02e4e3a9.chunk.js": "/GooseTrack-frontend/static/js/946.02e4e3a9.chunk.js",
@@ -25,9 +25,8 @@
     "static/media/start-page-desc-3-3x.png": "/GooseTrack-frontend/static/media/start-page-desc-3-3x.94e9eefb921c1f57c561.png",
     "static/media/start-page-desc-2-2x.png": "/GooseTrack-frontend/static/media/start-page-desc-2-2x.9b6712db9de58cceb5db.png",
     "static/media/Borysenko.jpg": "/GooseTrack-frontend/static/media/Borysenko.6493d2ff51a61b6e163c.jpg",
-    "static/media/Losieva.jpg": "/GooseTrack-frontend/static/media/Losieva.24bdacd69318bf42e41a.jpg",
-    "static/media/Zaitseva.jpg": "/GooseTrack-frontend/static/media/Zaitseva.afabfaeb9b846c4d0238.jpg",
     "static/media/Vabishchevich.jpg": "/GooseTrack-frontend/static/media/Vabishchevich.a4c79ea8043642e66a0a.jpg",
+    "static/media/Losieva.jpg": "/GooseTrack-frontend/static/media/Losieva.1efa893542f1d91a848e.jpg",
     "static/media/start-page-desc-1-1x.png": "/GooseTrack-frontend/static/media/start-page-desc-1-1x.e73a95bd3776273cce75.png",
     "static/media/start-page-desc-3-2x.png": "/GooseTrack-frontend/static/media/start-page-desc-3-2x.d049122b01ae6baf2020.png",
     "static/media/Alexeev.jpg": "/GooseTrack-frontend/static/media/Alexeev.7a0045283c295ed301a8.jpg",
@@ -36,6 +35,7 @@
     "static/media/Inter-Medium.woff": "/GooseTrack-frontend/static/media/Inter-Medium.5aebe1f6c4605768582d.woff",
     "static/media/Inter-Regular.woff": "/GooseTrack-frontend/static/media/Inter-Regular.16cbea275b2ab28453af.woff",
     "static/media/404-3x.png": "/GooseTrack-frontend/static/media/404-3x.d7c7fa6d5b5b22048ade.png",
+    "static/media/Zaitseva.jpg": "/GooseTrack-frontend/static/media/Zaitseva.606e5267a5ff8bfee04c.jpg",
     "static/media/Inter-Bold.woff2": "/GooseTrack-frontend/static/media/Inter-Bold.33a5a4566bb3413901e3.woff2",
     "static/media/Inter-SemiBold.woff2": "/GooseTrack-frontend/static/media/Inter-SemiBold.f8f55aa9d497b7683ed5.woff2",
     "static/media/Inter-Medium.woff2": "/GooseTrack-frontend/static/media/Inter-Medium.3b9cdcf0bbb18875523f.woff2",
@@ -50,7 +50,6 @@
     "static/media/Kostenko.jpg": "/GooseTrack-frontend/static/media/Kostenko.f1da047a0401179fbddc.jpg",
     "static/media/404-2x.png": "/GooseTrack-frontend/static/media/404-2x.1163f319583519d934c7.png",
     "static/media/Bilauchuk.jpg": "/GooseTrack-frontend/static/media/Bilauchuk.0389ea386aa7bfdbb341.jpg",
-    "static/media/Chernomorets.jpg": "/GooseTrack-frontend/static/media/Chernomorets.8e9ffc11c051f32ab709.jpg",
     "static/media/start-page-desc-3-1x.png": "/GooseTrack-frontend/static/media/start-page-desc-3-1x.8733dd862f8bd4e8b653.png",
     "static/media/goose-login-2x.png": "/GooseTrack-frontend/static/media/goose-login-2x.c3cb5d08668040ff1ee0.png",
     "static/media/CoolveticaRg-Italic.woff": "/GooseTrack-frontend/static/media/CoolveticaRg-Italic.d2afb6348017cacb5a92.woff",
@@ -60,6 +59,7 @@
     "static/media/404-1x.png": "/GooseTrack-frontend/static/media/404-1x.f2b3438c6d872698d2d9.png",
     "static/media/Solomianiy.jpg": "/GooseTrack-frontend/static/media/Solomianiy.f506c18633c4464dd575.jpg",
     "static/media/goose-register.png": "/GooseTrack-frontend/static/media/goose-register.423b362919999790dd1f.png",
+    "static/media/Chernomorets.jpg": "/GooseTrack-frontend/static/media/Chernomorets.b1f695c928b5a54b801b.jpg",
     "static/media/sprite.svg": "/GooseTrack-frontend/static/media/sprite.b86ac313b6c9e4baccf54b53fb404b51.svg",
     "static/media/Samaryn.jpg": "/GooseTrack-frontend/static/media/Samaryn.8138951366b57a31b333.jpg",
     "static/media/CoolveticaRg-Italic.woff2": "/GooseTrack-frontend/static/media/CoolveticaRg-Italic.354b20eb1b8d25af62a1.woff2",
@@ -71,9 +71,9 @@
     "index.html": "/GooseTrack-frontend/index.html",
     "static/media/getFetch.cjs": "/GooseTrack-frontend/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.1adcc114.css.map": "/GooseTrack-frontend/static/css/main.1adcc114.css.map",
-    "main.39e62b0b.js.map": "/GooseTrack-frontend/static/js/main.39e62b0b.js.map",
+    "main.2e743ab6.js.map": "/GooseTrack-frontend/static/js/main.2e743ab6.js.map",
     "245.dd715ae4.chunk.css.map": "/GooseTrack-frontend/static/css/245.dd715ae4.chunk.css.map",
-    "245.f43bbe30.chunk.js.map": "/GooseTrack-frontend/static/js/245.f43bbe30.chunk.js.map",
+    "245.7d2f8086.chunk.js.map": "/GooseTrack-frontend/static/js/245.7d2f8086.chunk.js.map",
     "735.85239095.chunk.js.map": "/GooseTrack-frontend/static/js/735.85239095.chunk.js.map",
     "725.88dc75fc.chunk.js.map": "/GooseTrack-frontend/static/js/725.88dc75fc.chunk.js.map",
     "946.02e4e3a9.chunk.js.map": "/GooseTrack-frontend/static/js/946.02e4e3a9.chunk.js.map",
@@ -84,6 +84,6 @@
   },
   "entrypoints": [
     "static/css/main.1adcc114.css",
-    "static/js/main.39e62b0b.js"
+    "static/js/main.2e743ab6.js"
   ]
 }
