@@ -34,17 +34,17 @@ const AuthSection = () => {
 
         <BoxBtn>
           <BtnSignUp to={'/register'} type="button">
-            Sign up
+            Sign Up
           </BtnSignUp>
 
           <BtnLogIn to={'/login'} type="button">
-            Log in
+            Log In
             <SvgIcon>
               <use href={`${Icons}#login-door-sf`}></use>
             </SvgIcon>
           </BtnLogIn>
 
-          <BtnSignUpMob type="button">Sign up</BtnSignUpMob>
+          <BtnSignUpMob type="button">Sign Up</BtnSignUpMob>
         </BoxBtn>
       </Box>
     </Container>
