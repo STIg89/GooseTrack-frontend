@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 export const CurrentTeamContainer = styled.div`
-  width: 520px;
+  width: 450px;
   height: 600px;
   padding-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-right: 20px;
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     height: 583px;
@@ -15,16 +16,16 @@ export const CurrentTeamContainer = styled.div`
 `;
 
 export const CurrentTeamItem = styled.div`
-  height: 80%;
+  height: 70%;
   width: 250px;
-  padding: 5px;
+  padding: 10px;
   background-color: var(--accent-background-color);
-  border-radius: 50px;
+  border-radius: 20px;
   margin-top: 10px;
 
   @media screen and (min-width: 375px) and (max-width: 767px) {
     width: 215px;
-    padding-left: 7px;
+    /* padding-left: 7px; */
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
@@ -44,12 +45,16 @@ export const SwiperImg = styled.div`
   justify-content: center;
   align-items: center;
   padding: 5px;
+  width: 115px; 
+  height: 115px;
 `;
 
 export const TeamImage = styled.img`
-  width: 115px;
-  height: 115px;
-  border-radius: 65px;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
   box-sizing: border-box;
 `;
 
@@ -120,7 +125,7 @@ export const TextContainer = styled.div`
 `;
 
 export const TeamText = styled.ul`
-  font-weight: 600;
+  font-weight: 400;
   font-size: 18px;
   line-height: 1em;
   text-align: center;
