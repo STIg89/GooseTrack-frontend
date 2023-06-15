@@ -5,7 +5,7 @@ import { EffectCoverflow, Pagination, Navigation, FreeMode } from 'swiper';
 import { teams } from './teamDB';
 import ModalFooter from 'components/Modal/ModalFooter/ModalFooter';
 import CurrentTeam from '../CurrentTeam/CurrentTeam';
-import { FooterModalContainer, FooterModalTeam} from './Team.styled';
+import { FooterModalContainer, FooterModalTeam,} from './Team.styled';
 
 
 import 'swiper/css';

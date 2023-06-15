@@ -17,7 +17,6 @@ export const Overlay = styled.div`
 export const ModalStyled = styled.div`
   position: relative;
   box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1);
-  outline: 30px solid var(--accent-background-color);
   border-radius: 8px;
 
   @media screen and (min-width: 50px) {
@@ -37,11 +36,10 @@ export const CloseIcon = styled.svg`
   top: 14px;
   right: 14px;
   transition: fill var(--animation);
-  fill: var(--primary-background-color);
-  cursor: pointer;
+  fill: var(--primary-text-color);
 
   &:hover,
   &:focus {
-    fill: var(--accent-span-text-color);
+    fill: var(--accent-background-color);
   }
 `;

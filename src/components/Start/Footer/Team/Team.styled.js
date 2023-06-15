@@ -12,7 +12,7 @@ export const FooterModalTeam = styled.h3`
   position: absolute;
   top: 20px;
   align-items: center;
-  // left: 30px;
+  // left: 30px;u7jyj
   font-size: 30px;
   font-weight: 700;
   color: var(--calendar-digit-color);
