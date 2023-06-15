@@ -18,6 +18,8 @@ export const Button = styled.div`
   background-color: var(--color-button-period-type);
   color: var(--btn-text-color);
 
+  transition: background-color var(--animation), color var(--animation);
+
   @media screen and (min-width: 375px) {
     font-size: 12px;
   }

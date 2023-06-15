@@ -65,7 +65,7 @@ export const CloseIcon = styled.svg`
   height: 14px;
   top: 14px;
   right: 14px;
-  transition: fill 250ms;
+  transition: fill var(--animation);
   fill: var(--primary-text-color);
 
   &:hover,

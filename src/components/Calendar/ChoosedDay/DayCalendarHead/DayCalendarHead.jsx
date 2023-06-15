@@ -53,19 +53,7 @@ const DayCalendarHead = ({ selectedDay, setSelectedDay }) => {
     week.push(
       <DayWrap key={i} onClick={() => onPickOftheDay(date)}>
         <span>{getWeek()[date.getDay()]}</span>
-        <Day
-          style={
-            isDaySelected
-              ? {
-                  backgroundColor: 'var(--accent-background-color)',
-                  color: 'var(--btn-text-color)',
-                }
-              : {
-                  backgroundColor: 'transparent',
-                  color: 'var(--primary-text-color)',
-                }
-          }
-        >
+        <Day className={`active-day ${isDaySelected ? 'selected' : ''}`}>
           {date.getDate()}
         </Day>
       </DayWrap>

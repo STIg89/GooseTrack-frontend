@@ -20,6 +20,8 @@ export const TypesTabs = styled(NavLink)`
   line-height: 1.29;
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
   text-align: center;
+  transition: background-color var(--animation), color var(--animation);
+
   &:hover,
   &:focus,
   &:active,
