@@ -14,18 +14,16 @@ export const ThemeToggler = () => {
     }
   };
   return (
-    location.pathname !== '/' && (
-      <Button type="button" onClick={handleTheme}>
-        {theme === 'light' ? (
-          <Moon>
-            <use href={`${Icons}#profile-moon-f`}></use>
-          </Moon>
-        ) : (
-          <Sun>
-            <use href={`${Icons}#profile-sun-f`}></use>
-          </Sun>
-        )}
-      </Button>
-    )
+    <Button type="button" onClick={handleTheme}>
+      {theme === 'light' ? (
+        <Moon>
+          <use href={`${Icons}#profile-moon-f`}></use>
+        </Moon>
+      ) : (
+        <Sun>
+          <use href={`${Icons}#profile-sun-f`}></use>
+        </Sun>
+      )}
+    </Button>
   );
 };
