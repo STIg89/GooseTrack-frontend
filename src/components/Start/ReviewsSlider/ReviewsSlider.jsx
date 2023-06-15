@@ -31,58 +31,57 @@ const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
   </div>
 );
 
-
-export default function ReviewsSlider(){
-const [Reviews, setReviews] = useState(null);
-
-useEffect(() => {
-    const ReviewsSliderUsers = async () => {
-      try {
-        const data = await fetchAllReviews();
-        setReviews(data.data.data)
-    } catch (error) {
-        console.log(error);
-      } 
-    };
-    ReviewsSliderUsers();
-  }, []);
-
-
-      const settings={
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow:2,
-        slidesToScroll: 1,
-        adaptiveHeight:true,
-        responsive:[
-            {
-                breakpoint:1439,
-                settings:{
-                    slidesToShow:1,
-                }
-            }
-        ],
-        nextArrow:<SlickArrowRight></SlickArrowRight>,
-        prevArrow:<SlickArrowLeft></SlickArrowLeft>
-      }
-    
-return(
-    Reviews && <ReviewsSliderStyled>
+export default function ReviewsSlider() {
+    const [Reviews, setReviews] = useState(null);
+  
+    useEffect(() => {
+      const ReviewsSliderUsers = async () => {
+        try {
+          const data = await fetchAllReviews();
+          setReviews(data.data.data)
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      ReviewsSliderUsers();
+    }, []);
+  
+    const settings = {
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+      responsive: [
+        {
+          breakpoint: 1439,
+          settings: {
+            slidesToShow: 1,
+          }
+        }
+      ],
+      prevArrow: <SlickArrowRight></SlickArrowRight>, // Зміна стрілок місцями
+      nextArrow: <SlickArrowLeft></SlickArrowLeft>, // Зміна стрілок місцями
+    }
+  
+    return (
+      Reviews && <ReviewsSliderStyled>
         <section className="content-review">
-            <h2 className="content-h2">Reviews</h2>
-            <Slider  className="slider"  {...settings} >
-                { Reviews.map( (item, index) =>         
-                    <Comment 
-                        key={index} 
-                        className='tr' 
-                        src={ item.owner && item.owner.avatarURL } 
-                        star={item.rating ? item.rating : defaultUsers[0].rating} 
-                        name={item.owner ? item.owner.name : defaultUsers[0].owner.name}>  
-                        {item.comment? item.comment : defaultUsers[0].comment}
-                    </Comment>
-                    )
-                }
-            </Slider>
+          <h2 className="content-h2">Reviews</h2>
+          <Slider className="slider" {...settings}>
+            {Reviews.map((item, index) =>
+              <Comment
+                key={index}
+                className='tr'
+                src={item.owner && item.owner.avatarURL}
+                star={item.rating ? item.rating : defaultUsers[0].rating}
+                name={item.owner ? item.owner.name : defaultUsers[0].owner.name}>
+                {item.comment ? item.comment : defaultUsers[0].comment}
+              </Comment>
+            )}
+          </Slider>
         </section>
-    </ReviewsSliderStyled>);}
+      </ReviewsSliderStyled>
+    );
+  }
