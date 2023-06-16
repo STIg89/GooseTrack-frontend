@@ -19,7 +19,6 @@ axios.interceptors.response.use(
         const { data } = await axios.post('/api/auth/refresh', {
           refreshToken,
         });
-        console.log('data:', data.accessToken);
         setAuthHeader(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
         // error.config.headers.common.authorization = `Bearer ${data.accessToken}`;

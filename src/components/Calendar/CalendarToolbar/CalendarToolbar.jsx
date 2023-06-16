@@ -20,7 +20,6 @@ const CalendarToolbar = ({
     setSelectedDay(addDays(selectedDay, 1));
   };
   const prevDay = () => {
-    console.log(selectedDay);
     setSelectedDay(subDays(selectedDay, 1));
   };
   return (

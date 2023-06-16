@@ -11,7 +11,6 @@ const FeedbackModal = ({ onCloseModal, isOpened }) => {
   const fetchData = async () => {
     const response = await axios.get(`api/reviews/user`);
     setReviews(response.data.data);
-    // console.log(response);
   };
 
   useEffect(() => {
